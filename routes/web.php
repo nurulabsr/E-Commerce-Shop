@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BackendData\AdminController;
+use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('admin/dashboard', [AdminController::class, 'Dashboard'])->middleware()->name('admin.dashboard');
+Route::get('vendor/dashboard', [VendorController::class, 'Dashboard'])->middleware('auth')->name('vendor.dashboard');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
