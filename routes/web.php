@@ -21,8 +21,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('admin/dashboard', [AdminController::class, 'Dashboard'])->middleware('auth')->name('admin.dashboard');
-Route::get('vendor/dashboard', [VendorController::class, 'Dashboard'])->middleware('auth')->name('vendor.dashboard');
+Route::get('admin/dashboard', [AdminController::class, 'Dashboard'])->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+Route::get('vendor/dashboard', [VendorController::class, 'Dashboard'])->middleware(['auth', 'role:vendor'])->name('vendor.dashboard');
 
 
 Route::get('/dashboard', function () {
