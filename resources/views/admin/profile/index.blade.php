@@ -35,14 +35,15 @@
                   </div> 
                  </div>                     
                 </div>
-                <div class="container">
-                        
+            </form>
+            <form action="">
+             <div class="container">            
                       <div class="card">
                         <div class="card-header">
                           <h1>Update Password</h1>
                         </div>
                         <div class="card-body">
-                          <form action="">
+                          
                             @csrf
                             <div class="form-group">
                               <label for="">Current Password</label>
@@ -54,19 +55,18 @@
                             </div>
                             <div class="form-group">
                               <label for="">Confirm Password</label>
-                              <input type="password" name="confirm_password" class="form-control">
+                              <input type="password" name="password_confirmation" class="form-control">
                             </div>
                             <div class="form-group text-right">
                               <button class="btn btn-primary">Save Changes</button>
                             </div>
-                        </form>
                         </div>
                       </div>
                 </div> 
+              </form>
              </div>
                       
             </div>
             </div>
-            </form>
   </section>
 @endsection
