@@ -36,7 +36,8 @@
                  </div>                     
                 </div>
             </form>
-            <form action="">
+            <form action="{{route('admin.password.update')}}" method="POST" enctype="multipart/form-data">
+              @csrf
              <div class="container">            
                       <div class="card">
                         <div class="card-header">
@@ -48,23 +49,35 @@
                             <div class="form-group">
                               <label for="">Current Password</label>
                               <input type="password" name="current_password" class="form-control">
+                              @if ($errors->has('current_password'))
+                              <code>{{$errors->first('current_password')}}</code>
+                              @endif
                             </div>
+
                             <div class="form-group">
                               <label for="">New Password</label>
-                              <input type="password" name="new_password" class="form-control">
+                              <input type="password" name="password" class="form-control">
+                              @if ($errors->has('new_password'))
+                              <code>{{$errors->first('new_password')}}</code>
+                              @endif
                             </div>
+
                             <div class="form-group">
                               <label for="">Confirm Password</label>
                               <input type="password" name="password_confirmation" class="form-control">
+                              @if ($errors->has('password_confirmation'))
+                              <code>{{$errors->first('password_confirmation')}}</code>
+                              @endif
                             </div>
+
                             <div class="form-group text-right">
                               <button class="btn btn-primary">Save Changes</button>
                             </div>
                         </div>
                       </div>
                 </div> 
-              </form>
-             </div>
+            </form>
+            </div>
                       
             </div>
             </div>
