@@ -10,4 +10,9 @@ class ProfileController extends Controller
     public function Index(){
         return view('admin.profile.index');
     }
+
+    public function UpdateProfile(Request $request){
+        // return view();
+        dd($request->all());
+    }
 }
