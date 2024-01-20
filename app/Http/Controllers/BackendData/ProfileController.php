@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackendData;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
