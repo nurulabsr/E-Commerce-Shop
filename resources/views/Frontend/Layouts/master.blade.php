@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -34,33 +33,27 @@
         HEADER START
     ==============================-->
    @include('Frontend.Layouts.header')
-    <!--============================
-        HEADER END
-    ==============================-->
+   
 
 
     <!--============================
         MAIN MENU START
     ==============================-->
     @include('Frontend.Layouts.manu')
-    <!--============================
-        MAIN MENU END
-    ==============================-->
+
+
      <!--==========================
       PRODUCT MODAL VIEW START
     ===========================-->
            @yield('content')
- 
-       <!--==========================
-      PRODUCT MODAL VIEW END
-    ===========================-->
+
+
+
     <!--============================
         FOOTER PART START
     ==============================-->
      @include('Frontend.Layouts.footer')
-    <!--============================
-        FOOTER PART END
-    ==============================-->
+ 
 
 
     <!--============================
