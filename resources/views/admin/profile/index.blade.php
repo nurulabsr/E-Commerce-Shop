@@ -21,11 +21,11 @@
                       </div>
                     <div class="form-group">                             
                         <label>Name</label>
-                        <input type="text" class="form-control" value="{{Auth::user()->name}}" required="">
+                        <input type="text" name="name_admin" class="form-control" value="{{Auth::user()->name}}" required="">
                      </div>
                       <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" value="{{Auth::user()->email}}" required="">
+                        <input type="email" name="email_admin" class="form-control" value="{{Auth::user()->email}}" required="">
                       </div>
                       <div class="form-group">
                         <div class="card-footer text-right">
