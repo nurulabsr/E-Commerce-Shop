@@ -21,8 +21,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('admin/dashboard', [AdminController::class, 'Dashboard'])->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+// Route::get('admin/dashboard', [AdminController::class, 'Dashboard'])->middleware(['auth', 'role:admin'])->name('admin.dashboard');
 
+Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
