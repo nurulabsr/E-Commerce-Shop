@@ -79,7 +79,8 @@
                             <div class="tab-pane fade" id="pills-profiles" role="tabpanel"
                                 aria-labelledby="pills-profile-tab2">
                                 <div class="wsus__login">
-                                    <form method="POST" action="{{ route('register') }}>
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
                                             <input id="name" name="name" value="{{old('name')}}"  type="text" placeholder="Name" required autofocus autocomplete="name">
@@ -104,7 +105,7 @@
                                                     to the privacy policy</label>
                                             </div>
                                         </div> --}}
-                                        <button class="common_btn" type="submit">signup</button>
+                                        <button class="common_btn mt-5" type="submit">signup</button>
                                     </form>
                                 </div>
                             </div>
