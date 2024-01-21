@@ -51,11 +51,11 @@
                                         @csrf
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
-                                            <input type="email" id="email" name="email" value="{{old('email')}}" placeholder="Email Address"  autofocus autocomplete="username">
+                                            <input type="email" id="email" name="email" value="{{old('email')}}" placeholder="Email Address" required  autofocus autocomplete="username">
                                         </div>
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input id="password" name="password"  type="password" placeholder="Password"  autocomplete="current-password">
+                                            <input id="password" name="password"  type="password" placeholder="Password" required  autocomplete="current-password">
                                         </div>
                                         <div class="wsus__login_save">
                                             <div class="form-check form-switch">

@@ -103,15 +103,15 @@
     <script src="{{asset('FrontendData/js/venobox.min.js')}}"></script>
     <!--classycountdown js-->
     <script src="{{asset('FrontendData/js/jquery.classycountdown.js')}}"></script>
+    <!-- toasterjs cdn -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!--main/custom js-->
     <script src="{{asset('FrontendData/js/main.js')}}"></script>
-    <!-- toasterjs cdn -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         @if($errors->any())
             @foreach ($errors->all() as $error )
-                 toastr.error({{"$error"}})
+                 toastr.error("{{$error}}")
             @endforeach
         @endif
     </script>
