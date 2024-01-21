@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('Frontend.Dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
