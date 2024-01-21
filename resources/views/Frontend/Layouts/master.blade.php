@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{asset('FrontendData/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('FrontendData/css/responsive.css')}}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+    <!-- toaster.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -104,6 +106,8 @@
 
     <!--main/custom js-->
     <script src="{{asset('FrontendData/js/main.js')}}"></script>
+    <!-- toasterjs cdn -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </body>
 
 </html>
