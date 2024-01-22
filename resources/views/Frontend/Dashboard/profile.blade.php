@@ -51,33 +51,37 @@
                         </form>
                       </section>
                   </div>
-                 <form action="">
-                          <div class="wsus__dash_pass_change mt-2">
-                            <div class="row">
-                              <div class="col-xl-4 col-md-6">
-                                <div class="wsus__dash_pro_single">
-                                  <i class="fas fa-unlock-alt"></i>
-                                  <input type="password" placeholder="Current Password">
-                                </div>
-                              </div>
-                              <div class="col-xl-4 col-md-6">
-                                <div class="wsus__dash_pro_single">
-                                  <i class="fas fa-lock-alt"></i>
-                                  <input type="password" placeholder="New Password">
-                                </div>
-                              </div>
-                              <div class="col-xl-4">
-                                <div class="wsus__dash_pro_single">
-                                  <i class="fas fa-lock-alt"></i>
-                                  <input type="password" placeholder="Confirm Password">
-                                </div>
-                              </div>
-                              <div class="col-xl-12">
-                                <button class="common_btn" type="submit">upload</button>
-                              </div>
+                  <section>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                       @csrf
+                       @method('PUT')
+                      <div class="wsus__dash_pass_change mt-2">
+                        <div class="row">
+                          <div class="col-xl-4 col-md-6">
+                            <div class="wsus__dash_pro_single">
+                              <i class="fas fa-unlock-alt"></i>
+                              <input type="password" placeholder="Current Password">
                             </div>
                           </div>
-                 </form>
+                          <div class="col-xl-4 col-md-6">
+                            <div class="wsus__dash_pro_single">
+                              <i class="fas fa-lock-alt"></i>
+                              <input type="password" placeholder="New Password">
+                            </div>
+                          </div>
+                          <div class="col-xl-4">
+                            <div class="wsus__dash_pro_single">
+                              <i class="fas fa-lock-alt"></i>
+                              <input type="password" placeholder="Confirm Password">
+                            </div>
+                          </div>
+                          <div class="col-xl-12">
+                            <button class="common_btn" type="submit">upload</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </section>
                  
                 
               </div>
