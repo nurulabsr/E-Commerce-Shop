@@ -27,10 +27,6 @@ Route::get('/', function () {
 
 Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
-Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user'], function () {
-    Route::get('dashboard', [DashboardController::class, 'Index'])->name('dashboard');
-    Route::get('profile', [ProfileDahboardController::class, 'Index'])->name('profile');
-}); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,3 +35,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('dashboard', [DashboardController::class, 'Index'])->name('dashboard');
+    Route::get('profile', [ProfileDahboardController::class, 'Index'])->name('profile');
+}); 
