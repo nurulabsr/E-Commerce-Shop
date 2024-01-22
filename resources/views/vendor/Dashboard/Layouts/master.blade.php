@@ -7,14 +7,13 @@
   ==============================-->
   <div class="wsus__dashboard_menu">
     <div class="wsusd__dashboard_user">
-      <img src="images/dashboard_user.jpg" alt="img" class="img-fluid">
-      <p>anik roy</p>
+      <img src="{{Auth::user()->user_image?asset(Auth::user()->user_image) : asset('FrontendData/images/dashboard_user.jpg')}}" alt="img" class="img-fluid">
+      <p>{{Auth::user()->name}}</p>
     </div>
   </div>
   <!--=============================
     DASHBOARD MENU END
   ==============================-->
-
    @yield('dashboard-content')
 
   

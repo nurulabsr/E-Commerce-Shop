@@ -32,7 +32,6 @@ class ProfileVendorController extends Controller
                         if ($validator->fails()) {
                             // Handle validation failure
                         }
-
          */
         
          $user = Auth::user();
@@ -41,7 +40,6 @@ class ProfileVendorController extends Controller
               File::delete(public_path($user->user_image));
             }
          }
-
          $image = $request->user_profile_image;
          $image_name = Str::uuid() .'__'.Str::slug($image->getClientOriginalName());
          $image->move(public_path('uploads'), $image_name);

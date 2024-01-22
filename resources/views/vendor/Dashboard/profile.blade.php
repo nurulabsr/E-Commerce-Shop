@@ -1,4 +1,4 @@
-@extends('Frontend.Dashboard.Layouts.master')
+@extends('vendor.Dashboard.Layouts.master')
 @section('dashboard-content')
       <!--=============================
     DASHBOARD START
@@ -6,7 +6,7 @@
   <section id="wsus__dashboard">
     <div class="container-fluid">
       
-        @include('Frontend.Dashboard.Layouts.sidebar')
+        @include('vendor.Dashboard.Layouts.sidebar')
 
       <div class="row">
         <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
@@ -17,7 +17,7 @@
                 <h4>basic information</h4>
                     <div class="col-xl-9">
                       <section class="row">
-                        <form action="{{route('user.profile.update')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('vendor.profile.update')}}" method="POST" enctype="multipart/form-data">
                           @csrf
                           @method('PUT')
                           <div class="col-xl-3 col-sm-6 col-md-6">
@@ -44,13 +44,13 @@
                             </div>
                           </div>
                           <div class="col-xl-12">
-                            <button class="common_btn mb-4 mt-2" type="submit">upload</button>
+                            <button class="common_btn mb-4 mt-2" type="submit">Update Profile</button>
                           </div>
                         </form>
                       </section>
                   </div>
                   <section>
-                    <form action="{{route('user.profile.password')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('vendor.profile.password')}}" method="POST" enctype="multipart/form-data">
                        @csrf
                        @method('PUT')
                       <div class="wsus__dash_pass_change mt-2">
@@ -74,7 +74,7 @@
                             </div>
                           </div>
                           <div class="col-xl-12">
-                            <button class="common_btn" type="submit">upload</button>
+                            <button class="common_btn" type="submit">Update Password</button>
                           </div>
                         </div>
                       </div>
