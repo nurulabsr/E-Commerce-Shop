@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BackendData;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
@@ -26,8 +27,16 @@ class SliderController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {  
+       $slider = new Slider();
+       $slider->slider_type = $request->slider_type;
+       $slider->slider_title = $request->slider_title;
+       $slider->product_price_slider = $request->product_price_slider;
+       $slider->slider_button_url = $request->slider_button_url;
+       $slider->slider_serial = $request->slider_serial;
+       $slider->slider_status = $request->slider_status;
+       $slider->save();
+
     }
 
     /**

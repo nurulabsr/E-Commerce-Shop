@@ -15,37 +15,41 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="">
+                   <form action="{{route('admin.slider.store')}}" method="POST" enctype="multipart/form-data">
                      @csrf
                      <div class="form-group">
                         <label for="">Banner</label>
                         <input type="file" name="slider_banner" class="form-control">
                      </div>
                      <div class="form-group">
+                        <label for="">Slider Type</label>
+                        <input type="text" name="slider_type" value="{{old('slider_type')}}" class="form-control">
+                     </div>
+                     <div class="form-group">
                         <label for="">Title</label>
-                        <input type="text" name="slider_title" class="form-control">
+                        <input type="text" name="slider_title" value="{{old('slider_title')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Starting Price</label>
-                        <input type="text" name="product_price_slider" class="form-control">
+                        <input type="text" name="product_price_slider" value="{{old('product_price_slider')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Button URL</label>
-                        <input type="text" name="slider_button_url" class="form-control">
+                        <input type="text" name="slider_button_url" value="{{old('slider_button_url')}}" class="form-control">
                      </div>
                      <div class="form-group">
-                        <select name="banner_serial" class="form-control">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
+                        <select name="banner_serial" value="{{old('banner_serial')}}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select>
                      </div>
                      <div class="form-group">
-                        <select name="slidder_status" class="form-control">
+                        <select name="slidder_status" value="{{old('slidder_status')}}" class="form-control">
                             <option value="">Select</option>
-                            <option value="">Active</option>
-                            <option value="">Inactive</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
                         </select>
                      </div>
                      <div class="form-group">

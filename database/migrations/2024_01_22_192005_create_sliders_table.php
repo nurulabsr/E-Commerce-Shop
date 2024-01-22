@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->text('slider_banner')->nullable();
+            $table->string('slider_type')->nullable();
             $table->string('slider_title')->nullable();
             $table->integer('product_price_slider');
             $table->string('slider_button_url');
-            $table->integer('banner_serial');
-            $table->boolean('slidder_status');
+            $table->integer('slider_serial');
+            $table->boolean('slider_status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,7 +29,11 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
+        Schema::table('sliders', function(Blueprint $table){
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('sliders');
+        
     }
 };
