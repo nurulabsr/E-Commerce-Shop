@@ -15,7 +15,7 @@
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">
                 <h4>basic information</h4>
-                <form>
+                {{-- <form> --}}
                   <div class="row">
                     <div class="col-xl-9">
                       <div class="row">
@@ -107,7 +107,7 @@
                       </div>
                     </div>
                   </div>
-                </form>
+                {{-- </form> --}}
               </div>
             </div>
           </div>

@@ -306,7 +306,18 @@
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="contact.html">contact</a></li>
                         <li><a href="dsahboard.html">my account</a></li>
-                        <li><a href="{{ route('login') }}">login</a></li>
+                        <li>
+                            @if (auth()->check())
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="route('logout')" onclick="event.preventDefault();
+                                this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a></li>
+                            </form>
+                            @else
+                                <a href="{{ route('login') }}"><i class="far fa-sign-in-alt"></i> Log in</a>
+                            @endif
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
