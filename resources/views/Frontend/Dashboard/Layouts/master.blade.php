@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('Frontend.Common.header')
+<head>
+  @include('CommonLink.header')
+</head>
 <body>
   <!--=============================
     DASHBOARD MENU START
@@ -29,7 +31,7 @@
       ==============================-->
     
     
-    @include('Frontend.Common.footer')
+    @include('CommonLink.footer')
     </body>
     
     </html>
