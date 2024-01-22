@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BackendData\AdminController;
+use App\Http\Controllers\BackendData\ErrorController;
 use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\FrontendData\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -42,3 +43,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('profile', [ProfileUserController::class, 'Index'])->name('profile');
     Route::put('profile/update', [ProfileUserController::class, 'UpdateUserProfile'])->name('profile.update');
 }); 
+
+
+Route::get('page-exfire', [ErrorController::class, 'Handle_419_Error'])->name('error.419');
+Route::get('/{any}', [ErrorController::class, 'Handle_404_Error'])->where('any', '.*');
