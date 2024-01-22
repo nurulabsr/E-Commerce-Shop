@@ -5,6 +5,7 @@ use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\FrontendData\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileDahboardController;
+use App\Http\Controllers\ProfileUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,5 +39,6 @@ require __DIR__.'/auth.php';
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('dashboard', [DashboardController::class, 'Index'])->name('dashboard');
-    Route::get('profile', [ProfileDahboardController::class, 'Index'])->name('profile');
+    Route::get('profile', [ProfileUserController::class, 'Index'])->name('profile');
+    Route::put('profile/update', [ProfileUserController::class, 'UpdateUserProfile'])->name('profile.update');
 }); 
