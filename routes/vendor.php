@@ -7,3 +7,6 @@ use Illuminate\Support\Facades\Route;
 //Vendor Route
 Route::get('dashboard', [VendorController::class, 'Dashboard'])->name('dashboard');
 Route::get('profile', [ProfileVendorController::class, 'Index'])->name('profile');
+
+Route::put('profile/update', [ProfileVendorController::class, 'UpdateVendorProfile'])->name('profile.update');
+Route::put('profile/password', [ProfileVendorController::class, 'UpdateVendorPassword'])->name('profile.password');
