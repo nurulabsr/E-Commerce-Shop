@@ -59,8 +59,16 @@ class ProfileUserController extends Controller
     }
 
     public function UpdateUserPassword(Request $request){
-         $request->validate([
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'new_password' => ['required', 'confirmed', 'min:12']
+        ]);
 
+        $request->user()->update([
+            'new_password' => bcrypt($request->password),
          ]);
+
+         toastr()->success('Password Updated Successfully!');
+         return redirect()->back();
     }
 }
