@@ -17,10 +17,25 @@ class ProfileUserController extends Controller
     public function UpdateUserProfile(Request $request){
          $request->validate([
             'user_name' => ['required', 'string', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
-            'user_email' => ['required', 'email', 'max:80', Rule::endsWith(['edu.com', 'gmail.com', 'yandex.com', 'yahoo.com', 'outlook.com',])],
-            'user_detail' => ['required', 'string', 'min:5', 'max:500', 'regex:/^[\w\s\-]+$/'],
+            'user_email' => ['required', 'email', 'max:80', 'ends_with:edu.com, gmail.com,yandex.com,yahoo.com,outlook.com'],
+            'user_detail' => ['required', 'string', 'min:4', 'max:500', 'regex:/^[\w\s\-]+$/'],
             'user_profile_image' => ['required', 'image', 'file', 'max:4096'],
          ]);
+
+         /*
+                       use Illuminate\Support\Facades\Validator;
+
+                        // ...
+
+                        $validator = Validator::make($request->all(), [
+                            'user_email' => ['required', 'email', 'max:80', 'ends_with:gmail.com,yandex.com,yahoo.com,outlook.com'],
+                        ]);
+
+                        if ($validator->fails()) {
+                            // Handle validation failure
+                        }
+
+         */
         
          $user = Auth::user();
          if($request->hasFile('user_profile_image')){
@@ -29,15 +44,18 @@ class ProfileUserController extends Controller
             }
          }
 
-         $image = $request->image;
+         $image = $request->user_profile_image;
          $image_name = Str::uuid() .'__'.Str::slug($image->getClientOriginalName());
          $image->move(public_path('uploads'), $image_name);
          $image_path = 'uploads/'.$image_name;
+
          $user->name = $request->user_name;
          $user->email = $request->user_email;
          $user->user_detail = $request->user_detail;
-         $user->user_image = $request->user_profile_image;
-         
+         $user->user_image = $image_path;
+         $user->save();
+         toastr()->success('Profile Updated Successfully!');
+         return redirect()->back();
     }
 
     public function UpdateUserPassword(){

@@ -50,7 +50,7 @@
                       </section>
                   </div>
                   <section>
-                    <form action="{{route('profile.password.password')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('user.profile.password')}}" method="POST" enctype="multipart/form-data">
                        @csrf
                        @method('PUT')
                       <div class="wsus__dash_pass_change mt-2">
