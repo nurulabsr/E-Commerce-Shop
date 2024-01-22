@@ -23,19 +23,19 @@
                           <div class="col-xl-3 col-sm-6 col-md-6">
                             <div class="wsus__dash_pro_img">
                               <img src="images/ts-2.jpg" alt="img" class="img-fluid w-100 pt-4">
-                              <input type="file" class="pt-4">
+                              <input type="file" name="user_profile_image" class="pt-4">
                             </div>
                           </div>
                           <div class="col-xl-6 col-md-6">
                             <div class="wsus__dash_pro_single">
                               <i class="fas fa-user-tie"></i>
-                              <input type="text" name="name" placeholder="Name">
+                              <input type="text" name="user_name" placeholder="Name">
                             </div>
                           </div>
                           <div class="col-xl-6 col-md-6">
                             <div class="wsus__dash_pro_single">
                               <i class="fal fa-envelope-open"></i>
-                              <input type="email" name="email" placeholder="Email">
+                              <input type="email" name="user_email" placeholder="Email">
                             </div>
                           </div>
                           <div class="col-xl-12">
@@ -80,8 +80,6 @@
                       </div>
                     </form>
                   </section>
-                 
-                
               </div>
             </div>
           </div>
