@@ -29,18 +29,18 @@
                           <div class="col-xl-6 col-md-6">
                             <div class="wsus__dash_pro_single">
                               <i class="fas fa-user-tie"></i>
-                              <input type="text" name="user_name" placeholder="Name">
+                              <input type="text" name="user_name" placeholder="Name" value="{{Auth::user()->name??''}}">
                             </div>
                           </div>
                           <div class="col-xl-6 col-md-6">
                             <div class="wsus__dash_pro_single">
                               <i class="fal fa-envelope-open"></i>
-                              <input type="email" name="user_email" placeholder="Email">
+                              <input type="email" name="user_email" placeholder="Email" value="{{ old('user_email', Auth::user()->email ?? '') }}">
                             </div>
                           </div>
                           <div class="col-xl-12">
                             <div class="wsus__dash_pro_single">
-                              <textarea cols="3" rows="5" name="user_detail" placeholder="About You"></textarea>
+                              <textarea cols="3" rows="5" name="user_detail" placeholder="About You">{{Auth::user()->user_detail??''}}</textarea>
                             </div>
                           </div>
                           <div class="col-xl-12">
