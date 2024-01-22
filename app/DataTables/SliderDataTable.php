@@ -62,15 +62,18 @@ class SliderDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id')->title('ID'),
+            Column::make('slider_title')->title('Title'),
+            Column::make('slider_type')->title('Type'),
+            Column::make('slider_banner')->title('Banner'),
+            Column::make('product_price_slider')->title('Price'),
+            Column::make('slider_serial')->title('Serial'),
+            Column::make('created_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 
