@@ -14,4 +14,8 @@ class ProfileUserController extends Controller
     public function UpdateUserProfile(){
         
     }
+
+    public function UpdateUserPassword(){
+        
+    }
 }

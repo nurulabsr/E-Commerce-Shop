@@ -15,11 +15,9 @@
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">
                 <h4>basic information</h4>
-               
-                 
                     <div class="col-xl-9">
                       <section class="row">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('user.profile.update')}}" method="POST" enctype="multipart/form-data">
                           @csrf
                           @method('PUT')
                           <div class="col-xl-3 col-sm-6 col-md-6">
@@ -52,7 +50,7 @@
                       </section>
                   </div>
                   <section>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('profile.password.password')}}" method="POST" enctype="multipart/form-data">
                        @csrf
                        @method('PUT')
                       <div class="wsus__dash_pass_change mt-2">
