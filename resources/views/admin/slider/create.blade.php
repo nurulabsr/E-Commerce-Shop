@@ -38,7 +38,8 @@
                         <input type="text" name="slider_button_url" value="{{old('slider_button_url')}}" class="form-control">
                      </div>
                      <div class="form-group">
-                        <select name="banner_serial" value="{{old('banner_serial')}}" class="form-control">
+                        <label for="">Slider Serial</label>
+                        <select name="slider_serial" value="{{old('banner_serial')}}" class="form-control">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -46,8 +47,8 @@
                         </select>
                      </div>
                      <div class="form-group">
+                        <label for="">Slider Status</label>
                         <select name="slidder_status" value="{{old('slidder_status')}}" class="form-control">
-                            <option value="">Select</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                         </select>

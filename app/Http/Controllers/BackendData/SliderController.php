@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\SliderDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -11,9 +12,9 @@ class SliderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SliderDataTable $dataTable)
     {
-       return view('admin.slider.index');
+       return $dataTable->render('admin.slider.index');
     }
 
     /**
@@ -26,15 +27,18 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {  
+    public function store(Request $request){
+        // $request->validate([
+        //     'slider_banner' => ['required', 'image', 'max:4096'],
+
+        // ]);  
        $slider = new Slider();
        $slider->slider_type = $request->slider_type;
        $slider->slider_title = $request->slider_title;
        $slider->product_price_slider = $request->product_price_slider;
        $slider->slider_button_url = $request->slider_button_url;
        $slider->slider_serial = $request->slider_serial;
-       $slider->slider_status = $request->slider_status;
+       $slider->slider_status = $request->slidder_status;
        $slider->save();
 
     }
