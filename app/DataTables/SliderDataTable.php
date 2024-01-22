@@ -23,6 +23,9 @@ class SliderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'slider.action')
+            ->addColumn('slider_banner', function($query){
+               return $img = "<img src='".asset($query->slider_banner)."' >";
+            })
             ->setRowId('id');
     }
 
