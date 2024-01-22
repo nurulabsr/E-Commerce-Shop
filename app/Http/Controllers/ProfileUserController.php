@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -17,7 +17,7 @@ class ProfileUserController extends Controller
     public function UpdateUserProfile(Request $request){
          $request->validate([
             'user_name' => ['required', 'string', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
-            'user_email' => ['required', 'email', 'max:80', 'ends_with:edu.com, gmail.com,yandex.com,yahoo.com,outlook.com'],
+            'user_email' => ['required', 'email', 'max:80', 'ends_with:edu.com, gmail.com,yandex.com,yahoo.com,outlook.com', 'unique:users,email,'. Auth::user()->id],
             'user_detail' => ['required', 'string', 'min:4', 'max:500', 'regex:/^[\w\s\-]+$/'],
             'user_profile_image' => ['required', 'image', 'file', 'max:4096'],
          ]);
@@ -58,7 +58,9 @@ class ProfileUserController extends Controller
          return redirect()->back();
     }
 
-    public function UpdateUserPassword(){
+    public function UpdateUserPassword(Request $request){
+         $request->validate([
 
+         ]);
     }
 }

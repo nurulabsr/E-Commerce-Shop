@@ -22,7 +22,7 @@
                           @method('PUT')
                           <div class="col-xl-3 col-sm-6 col-md-6">
                             <div class="wsus__dash_pro_img">
-                              <img src="images/ts-2.jpg" alt="img" class="img-fluid w-100 pt-4">
+                              <img src="{{Auth::user()->user_image ? asset(Auth::user()->user_image) : asset('FrontendData/images/ts-2.jpg')}}" alt="img" class="img-fluid w-100 pt-4">
                               <input type="file" name="user_profile_image" class="pt-4">
                             </div>
                           </div>
