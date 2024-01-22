@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-@include('Frontend.Common.header')
-<body>
-  <!--=============================
-    DASHBOARD MENU START
-  ==============================-->
-  <div class="wsus__dashboard_menu">
-    <div class="wsusd__dashboard_user">
-      <img src="images/dashboard_user.jpg" alt="img" class="img-fluid">
-      <p>anik roy</p>
-    </div>
-  </div>
-  <!--=============================
-    DASHBOARD MENU END
-  ==============================-->
-
-
+  @extends('Frontend.Dashboard.Layouts.master')
+  @section('dashboard-content')
   <!--=============================
     DASHBOARD START
   ==============================-->
   <section id="wsus__dashboard">
     <div class="container-fluid">
+      {{-- Sidebar --}}
       @include('Frontend.Dashboard.Layouts.sidebar')
+      {{-- end sidebar --}}
+      
       <div class="row">
         <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
           <div class="dashboard_content">
@@ -171,19 +158,4 @@
     DASHBOARD START
   ==============================-->
 
-
-  <!--============================
-      SCROLL BUTTON START
-    ==============================-->
-  <div class="wsus__scroll_btn">
-    <i class="fas fa-chevron-up"></i>
-  </div>
-  <!--============================
-    SCROLL BUTTON  END
-  ==============================-->
-
-
-@include('Frontend.Common.footer')
-</body>
-
-</html>
+@endsection

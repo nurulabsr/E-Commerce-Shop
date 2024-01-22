@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class VendorController extends Controller{
     
     public function Dashboard(){
-        return view('vendor/dashboard');
+        return view('vendor.dashboard');
     }
 }

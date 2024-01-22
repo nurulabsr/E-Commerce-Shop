@@ -4,6 +4,7 @@ use App\Http\Controllers\BackendData\AdminController;
 use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\FrontendData\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileDahboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.l
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user'], function () {
     Route::get('dashboard', [DashboardController::class, 'Index'])->name('dashboard');
+    Route::get('profile', [ProfileDahboardController::class, 'Index'])->name('profile');
 }); 
 
 Route::middleware('auth')->group(function () {
