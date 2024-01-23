@@ -34,7 +34,7 @@
     <script src="{{asset('FrontendData/js/jquery.classycountdown.js')}}"></script>
     <!-- toasterjs cdn -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="{{asset('BackendData/assets/modules/jquery.min.js')}}"></script>
     <script src="{{asset('BackendData/assets/modules/popper.js')}}"></script>
@@ -69,5 +69,12 @@
             @endforeach
         @endif
     </script>
+          $(document).ready(function(){
+            $('body').on('click')
+          })
+    <script> 
+  
+  </script>
 
   @stack('scripts')
+

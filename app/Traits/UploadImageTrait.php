@@ -35,4 +35,11 @@ trait UploadImageTrait
             return $path . '/' . $newFilename;
         }
     }
+
+
+    public function DeleteImage(string $path){
+        if(File::exists(public_path($path))){
+            File::delete(public_path($path));
+        }
+    }
 }

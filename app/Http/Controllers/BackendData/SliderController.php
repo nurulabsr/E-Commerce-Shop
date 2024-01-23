@@ -77,7 +77,7 @@ class SliderController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'slider_banner' => ['required', 'image', 'max:4096'],
+            'slider_banner' => ['required', 'image', 'max:4096'], // will be nullable 
             'slider_type' => ['required', 'string', 'min:2', 'max:250'],
             'slider_title' => ['required', 'string', 'min:4', 'max:254'],
             'product_price_slider' => ['required', 'numeric', 'min:0'],
@@ -89,7 +89,7 @@ class SliderController extends Controller
 
        $slider = Slider::FindOrFail($id);
        $path = $this->UpdateImageFilePathHandling($request, 'slider_banner', 'Uploads', $slider->slider_banner);
-       $slider->slider_banner = empty(!$path) ? $path : $slider->slider_banner;
+       $slider->slider_banner = empty(!$path) ? $path : $slider->slider_banner;   // if validation will nullable then working otherwise throw validation error
        $slider->slider_type = $request->slider_type;
        $slider->slider_title = $request->slider_title;
        $slider->product_price_slider = $request->product_price_slider;
@@ -106,6 +106,13 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       try{
+        $slider = Slider::FindOrFail($id);
+        $this->DeleteImage($slider->slider_banner);
+        $slider->delete();
+        toastr()->success('Deleted Successfully!');
+       }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return response()->json(['error' => 'Slider not found'], 404);
+    }
     }
 }
