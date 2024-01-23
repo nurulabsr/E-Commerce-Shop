@@ -6,9 +6,11 @@ use App\DataTables\SliderDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use App\Traits\UploadImageTrait;
 
 class SliderController extends Controller
 {
+    use UploadImageTrait;
     /**
      * Display a listing of the resource.
      */
@@ -28,11 +30,14 @@ class SliderController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
-        // $request->validate([
-        //     'slider_banner' => ['required', 'image', 'max:4096'],
+        $request->validate([
+            'slider_banner' => ['required', 'image', 'max:4096'],
 
-        // ]);  
+        ]);  
+
        $slider = new Slider();
+       $path = $this->ImageFilePathHandling($request, 'slider_banner', 'Uploads');
+       $slider->slider_banner = $path;
        $slider->slider_type = $request->slider_type;
        $slider->slider_title = $request->slider_title;
        $slider->product_price_slider = $request->product_price_slider;

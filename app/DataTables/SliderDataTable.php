@@ -1,7 +1,6 @@
 <?php
 
 namespace App\DataTables;
-
 use App\Models\Slider;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
