@@ -21,10 +21,14 @@ class SliderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'slider.action')
-            ->addColumn('slider_banner', function($query){
-               return $img = "<img src='".asset($query->slider_banner)."' >";
+            ->addColumn('action', function($query){
+               return $editBtn = "<a href='' class='btn btn-primary'>Edit</a>";
             })
+
+            ->addColumn('slider_banner', function($query){
+               return $img = "<img width='50px' src='".asset($query->slider_banner)."' ></img>";
+            })
+            ->rawColumns(['slider_banner', 'action'])
             ->setRowId('id');
     }
 

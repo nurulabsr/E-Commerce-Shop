@@ -46,6 +46,8 @@ class SliderController extends Controller
        $slider->slider_status = $request->slidder_status;
        $slider->save();
 
+       return redirect()->back();
+
     }
 
     /**
