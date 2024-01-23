@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-    @include('CommonLink.header')
-</header>
-
+    <head>
+       @include('Frontend.FrontendCommonLink.header')
+    </head>
 <body>
 
     <!--============================
@@ -44,7 +43,8 @@
     ==============================-->
 
 
-@include('CommonLink.footer')
+ @include('Frontend.FrontendCommonLink.footer')
+
 </body>
 
 </html>

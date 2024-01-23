@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  @include('CommonLink.header')
-</head>
+  <head>
+    @include('Frontend.FrontendCommonLink.header')
+  </head>
 <body>
   <!--=============================
     DASHBOARD MENU START
@@ -30,8 +30,8 @@
         SCROLL BUTTON  END
       ==============================-->
     
+    @include('Frontend.FrontendCommonLink.footer')
     
-    @include('CommonLink.footer')
     </body>
     
     </html>
