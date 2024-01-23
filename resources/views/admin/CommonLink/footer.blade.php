@@ -70,34 +70,52 @@
         @endif
     </script>
        {{--  --}}
-        <script> 
-                $(document).ready(function(){
-                    $('body').on('click', '.delete-item', function(event){
-                        event.preventDefault();
-                        let DeleteURL = $(this). altr('href');
-                         
-
-                        Swal.fire({
-                                title: "Are you sure?",
-                                text: "You won't be able to revert this!",
-                                icon: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#3085d6",
-                                cancelButtonColor: "#d33",
-                                confirmButtonText: "Yes, delete it!"
-                                }).then((result) => {
-                                if (result.isConfirmed) {
+       <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+            $('body').on('click', '.delete-item', function(event) {
+                event.preventDefault();
+                let DeleteURL = $(this).attr('href');
+        
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: DeleteURL,
+                            success: function(data) {
+                                if (data.status == 'success') {
                                     Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Your file has been deleted.",
-                                    icon: "success"
+                                        title: "Deleted!",
+                                        text: data.message,
+                                        icon: "success"
                                     });
+                                    window.location.reload();
                                 }
-                           });
-
-                    })
-                })
-        </script>
-
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    {{--  // text: "Your file has been deleted.",
+                                    // icon: "success" --}}
   @stack('scripts')
 

@@ -50,7 +50,7 @@ class SliderController extends Controller
        $slider->slider_serial = $request->slider_serial;
        $slider->slider_status = $request->slider_status;
        $slider->save();
-
+       toastr()->success('Created Successfully!');
        return redirect()->back();
 
     }
@@ -106,13 +106,14 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-       try{
         $slider = Slider::FindOrFail($id);
+        // dd($slider);
         $this->DeleteImage($slider->slider_banner);
         $slider->delete();
-        toastr()->success('Deleted Successfully!');
-       }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-        return response()->json(['error' => 'Slider not found'], 404);
-    }
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+        // toastr()->success('Deleted Successfully!');
+        // try{ }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        // return response()->json(['error' => 'Slider not found'], 404);
+        // }
     }
 }

@@ -30,7 +30,16 @@ class SliderDataTable extends DataTable
             ->addColumn('slider_banner', function($query){
                return $img = "<img width='40px' src='".asset($query->slider_banner)."'></img>";
             })
-            ->rawColumns(['slider_banner', 'action'])
+            ->addColumn('slider_status', function($query){
+                $Active = '<i class="badge badge-info">Active</i>';
+                $InActive = '<i class="badge badge-warning">In Active</i>';
+                if($query->slider_status==1){
+                    return $Active;
+                } else{
+                    return $InActive;
+                }
+            })
+            ->rawColumns(['slider_banner', 'action', 'slider_status'])
             ->setRowId('id');
     }
 
@@ -76,7 +85,7 @@ class SliderDataTable extends DataTable
             Column::make('slider_banner')->title('Banner'),
             Column::make('product_price_slider')->title('Price'),
             Column::make('slider_serial')->title('Serial'),
-            Column::make('created_at'),
+            Column::make('slider_status')->title('Status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
