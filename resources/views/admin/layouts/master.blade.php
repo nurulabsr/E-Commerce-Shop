@@ -30,5 +30,16 @@
   <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
   <!-- General JS Scripts -->
    @include('admin.CommonLink.footer')
+
+  <script>
+  $(document).ready(function(){
+    $('body').on('click', '.delete-item', function(event){
+        event.preventDefault();
+        {{-- let DeleteURL = $(this). altr('href'); --}}
+
+
+    })
+  })
+</script> 
 </body>
 </html>

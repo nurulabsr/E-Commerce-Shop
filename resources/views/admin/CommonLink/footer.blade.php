@@ -69,12 +69,35 @@
             @endforeach
         @endif
     </script>
-          $(document).ready(function(){
-            $('body').on('click')
-          })
-    <script> 
-  
-  </script>
+       {{--  --}}
+        <script> 
+                $(document).ready(function(){
+                    $('body').on('click', '.delete-item', function(event){
+                        event.preventDefault();
+                        let DeleteURL = $(this). altr('href');
+                         
+
+                        Swal.fire({
+                                title: "Are you sure?",
+                                text: "You won't be able to revert this!",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Yes, delete it!"
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                    });
+                                }
+                           });
+
+                    })
+                })
+        </script>
 
   @stack('scripts')
 
