@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @include('CommonLink.header')
+  @include('admin.CommonLink.header')
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
   <div id="app">
@@ -24,8 +26,9 @@
       </footer>
     </div>
   </div>
-
+  <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
   <!-- General JS Scripts -->
-   @include('CommonLink.footer')
+   @include('admin.CommonLink.footer')
 </body>
 </html>

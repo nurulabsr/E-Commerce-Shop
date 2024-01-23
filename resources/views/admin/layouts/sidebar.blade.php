@@ -23,7 +23,7 @@
             <li><a class="nav-link" href="{{route('admin.slider.index')}}">Sidebar Table</a></li>
           </ul>
         </li>
-        <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+        {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
         
 
 

@@ -22,11 +22,13 @@ class SliderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-               return $editBtn = "<a href='' class='btn btn-primary'>Edit</a>";
+               $editBtn = "<a href='".route('admin.slider.edit', $query->id)."' class='btn btn-primary'>Edit</a>";
+               $dltBtn = "<a href='".route('admin.slider.destroy', $query->id)."' class='btn btn-warning ml-2'>Delete</a>";
+               return $editBtn.$dltBtn;
             })
 
             ->addColumn('slider_banner', function($query){
-               return $img = "<img width='50px' src='".asset($query->slider_banner)."' ></img>";
+               return $img = "<img width='40px' src='".asset($query->slider_banner)."'></img>";
             })
             ->rawColumns(['slider_banner', 'action'])
             ->setRowId('id');

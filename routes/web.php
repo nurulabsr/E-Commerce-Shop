@@ -46,5 +46,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
 }); 
 
 
+Route::get('/error-page', [ErrorController::class, 'Handle_419_Error'])->name('error.page');
+
+
 Route::get('page-exfire', [ErrorController::class, 'Handle_419_Error'])->name('error.419');
 // Route::get('/{any}', [ErrorController::class, 'Handle_404_Error'])->where('any', '.*');
+
