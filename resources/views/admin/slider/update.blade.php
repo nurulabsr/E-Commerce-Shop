@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="{{route('admin.slider.store')}}" method="POST" enctype="multipart/form-data">
+                   <form action="{{route('admin.slider.update', $slider->id)}}" method="POST" enctype="multipart/form-data">
                      @csrf
                      @method('PUT')
                      <div class="form-group">
@@ -50,9 +50,10 @@
                      </div>
                      <div class="form-group">
                         <label for="">Slider Status</label>
-                        <select name="slidder_status" value="{{$slider->slidder_status}}" class="form-control">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
+                        <select name="slider_status" value="{{$slider->slidder_status}}" class="form-control">
+                            <option value="">Select</option>
+                            <option {{$slider->slider_status==1?'slected' : ''}} value="1">Active</option>
+                            <option {{$slider->slider_status==0?'slected': ''}} value="0">Inactive</option>
                         </select>
                      </div>
                      <div class="form-group">

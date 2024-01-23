@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sliders', function (Blueprint $table) {
-            $table->id();
-            $table->text('slider_banner')->nullable();
-            $table->string('slider_type')->nullable();
-            $table->string('slider_title')->nullable();
-            $table->integer('product_price_slider')->nullable();
-            $table->string('slider_button_url')->nullable();
-            $table->integer('slider_serial')->nullable();
-            $table->boolean('slider_status')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+            Schema::create('sliders', function (Blueprint $table) {
+                $table->id();
+                $table->text('slider_banner')->nullable();
+                $table->string('slider_type')->nullable();
+                $table->string('slider_title')->nullable();
+                $table->integer('product_price_slider')->nullable();
+                $table->string('slider_button_url')->nullable();
+                $table->integer('slider_serial')->nullable();
+                $table->boolean('slider_status')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
         });
     }
 

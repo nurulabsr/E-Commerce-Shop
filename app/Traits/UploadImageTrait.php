@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 trait UploadImageTrait
@@ -11,20 +12,26 @@ trait UploadImageTrait
     {
         if ($request->hasFile($imageInputName)) {
             $image = $request->file($imageInputName);
-
-            // Generate a unique identifier
             $uniqueIdentifier = Str::uuid();
-
-            // Get the original extension
             $originalExtension = $image->getClientOriginalExtension();
-
-            // Generate a new filename with a unique identifier and the original extension
             $newFilename = $uniqueIdentifier . '.' . $originalExtension;
-
-            // Move the uploaded file to the desired path with the new filename
             $image->move(public_path($path), $newFilename);
+            return $path . '/' . $newFilename;
+        }
+    }
 
-            // Return the full file path
+
+    public function UpdateImageFilePathHandling(Request $request, $imageInputName, $path, $oldPath=null)
+    {
+        if ($request->hasFile($imageInputName)) {
+            if(File::exists(public_path($oldPath))){
+                File::delete(public_path($oldPath));
+            }
+            $image = $request->file($imageInputName);
+            $uniqueIdentifier = Str::uuid();
+            $originalExtension = $image->getClientOriginalExtension();
+            $newFilename = $uniqueIdentifier . '.' . $originalExtension;
+            $image->move(public_path($path), $newFilename);
             return $path . '/' . $newFilename;
         }
     }

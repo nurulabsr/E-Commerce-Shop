@@ -48,7 +48,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Slider Status</label>
-                        <select name="slidder_status" value="{{old('slidder_status')}}" class="form-control">
+                        <select name="slider_status" value="{{old('slidder_status')}}" class="form-control">
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                         </select>

@@ -32,8 +32,13 @@ class SliderController extends Controller
     public function store(Request $request){
         $request->validate([
             'slider_banner' => ['required', 'image', 'max:4096'],
-
-        ]);  
+            'slider_type' => ['required', 'string', 'min:2', 'max:250'],
+            'slider_title' => ['required', 'string', 'min:4', 'max:254'],
+            'product_price_slider' => ['required', 'numeric', 'min:0'],
+            'slider_button_url' => ['required', 'url'],
+            'slider_serial' => ['required', 'integer'],
+            'slider_status' => ['required', 'boolean'],
+        ]);
 
        $slider = new Slider();
        $path = $this->ImageFilePathHandling($request, 'slider_banner', 'Uploads');
@@ -43,7 +48,7 @@ class SliderController extends Controller
        $slider->product_price_slider = $request->product_price_slider;
        $slider->slider_button_url = $request->slider_button_url;
        $slider->slider_serial = $request->slider_serial;
-       $slider->slider_status = $request->slidder_status;
+       $slider->slider_status = $request->slider_status;
        $slider->save();
 
        return redirect()->back();
@@ -75,21 +80,24 @@ class SliderController extends Controller
             'slider_banner' => ['required', 'image', 'max:4096'],
             'slider_type' => ['required', 'string', 'min:2', 'max:250'],
             'slider_title' => ['required', 'string', 'min:4', 'max:254'],
-            'product_price_slider' => ['required', 'string', 'numeric', 'integer'],
-        
-        ]);  
+            'product_price_slider' => ['required', 'numeric', 'min:0'],
+            'slider_button_url' => ['required', 'url'],
+            'slider_serial' => ['required', 'integer'],
+            'slider_status' => ['required', 'boolean'],
+        ]);
+         
 
-       $slider = new Slider();
-       $path = $this->ImageFilePathHandling($request, 'slider_banner', 'Uploads');
+       $slider = Slider::FindOrFail($id);
+       $path = $this->UpdateImageFilePathHandling($request, 'slider_banner', 'Uploads', $slider->slider_banner);
        $slider->slider_banner = $path;
        $slider->slider_type = $request->slider_type;
        $slider->slider_title = $request->slider_title;
        $slider->product_price_slider = $request->product_price_slider;
        $slider->slider_button_url = $request->slider_button_url;
        $slider->slider_serial = $request->slider_serial;
-       $slider->slider_status = $request->slidder_status;
+       $slider->slider_status = $request->slider_status;
        $slider->save();
-
+       toastr()->success('Updated Successfully!');
        return redirect()->back();
     }
 
