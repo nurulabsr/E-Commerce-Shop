@@ -17,8 +17,10 @@
                 <div class="card-body">
                    <form action="{{route('admin.slider.store')}}" method="POST" enctype="multipart/form-data">
                      @csrf
+                     @method('PUT')
                      <div class="form-group">
                         <label for="">Banner</label>
+                        <img src="{{asset($slider->slider_banner)}}" alt="Slider" width="50px">
                         <input type="file" name="slider_banner" class="form-control">
                      </div>
                      <div class="form-group">
@@ -54,7 +56,7 @@
                         </select>
                      </div>
                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary rounded">Create Slider</button>
+                        <button type="submit" class="btn btn-primary rounded">Update Slider</button>
                      </div>
                    </form>
                 </div>

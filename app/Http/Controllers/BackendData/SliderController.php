@@ -71,7 +71,26 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'slider_banner' => ['required', 'image', 'max:4096'],
+            'slider_type' => ['required', 'string', 'min:2', 'max:250'],
+            'slider_title' => ['required', 'string', 'min:4', 'max:254'],
+            'product_price_slider' => ['required', 'string', 'numeric', 'integer'],
+        
+        ]);  
+
+       $slider = new Slider();
+       $path = $this->ImageFilePathHandling($request, 'slider_banner', 'Uploads');
+       $slider->slider_banner = $path;
+       $slider->slider_type = $request->slider_type;
+       $slider->slider_title = $request->slider_title;
+       $slider->product_price_slider = $request->product_price_slider;
+       $slider->slider_button_url = $request->slider_button_url;
+       $slider->slider_serial = $request->slider_serial;
+       $slider->slider_status = $request->slidder_status;
+       $slider->save();
+
+       return redirect()->back();
     }
 
     /**
