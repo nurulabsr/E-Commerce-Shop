@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller{
     
     public function Index(){
-        $sliders = Slider::where('slider_status', 1)->get();
+        $sliders = Slider::where('slider_status', 1)->orderBy('slider_serial', 'asc')->get();
+        // dd($sliders);
         return view('Frontend.Home.home', compact(
            'sliders'
 

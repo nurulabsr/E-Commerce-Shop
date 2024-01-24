@@ -4,6 +4,7 @@ use App\Http\Controllers\BackendData\AdminController;
 use App\Http\Controllers\BackendData\ErrorController;
 use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\FrontendData\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileDahboardController;
 use App\Http\Controllers\ProfileUserController;
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Frontend.Home.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'Index'])->name('home');
 
 
 // Route::get('admin/dashboard', [AdminController::class, 'Dashboard'])->middleware(['auth', 'role:admin'])->name('admin.dashboard');
