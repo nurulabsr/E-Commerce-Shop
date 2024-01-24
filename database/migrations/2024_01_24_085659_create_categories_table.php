@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('category_name');
+            $table->string('category_slug');
+            $table->text('category_icon');
+            $table->boolean('category_status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -23,5 +28,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('categories');
+        Schema::table('categories', function(Blueprint $table){
+           $table->dropSoftDeletes();
+        });
     }
 };
