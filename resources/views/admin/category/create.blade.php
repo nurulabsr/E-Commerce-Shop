@@ -15,26 +15,26 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="{{route('admin.slider.store')}}" method="POST" enctype="multipart/form-data">
+                   <form action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data">
                      @csrf
                      <div class="form-group">
                         <label for="">Banner</label>
                         <input type="file" name="slider_banner" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Slider Type</label>
+                        <label for="">Category Name</label>
                         <input type="text" name="slider_type" value="{{old('slider_type')}}" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Slider Serial</label>
-                        <select name="slider_serial" value="{{old('banner_serial')}}" class="form-control">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                        <label for="">Category Status</label>
+                        <select name="category_status" value="{{old('banner_serial')}}" class="form-control">
+                            <option value="1">Active</option>
+                            <option value="0">In Active</option>
                         </select>
                      </div>
-                     
+                      <div class="form-group">
+                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                      </div>
                    </form>
                 </div>
             </div>

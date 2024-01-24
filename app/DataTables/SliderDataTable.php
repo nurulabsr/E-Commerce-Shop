@@ -13,7 +13,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class SliderDataTable extends DataTable
 {
-    /**
+    /** 
      * Build the DataTable class.
      *
      * @param QueryBuilder $query Results from query() method.
@@ -22,8 +22,8 @@ class SliderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-               $editBtn = "<a href='".route('admin.slider.edit', $query->id)."' class='btn btn-primary'>Edit</a>";
-               $dltBtn = "<a href='".route('admin.slider.destroy', $query->id)."' class='btn btn-warning delete-item ml-2'>Delete</a>";
+               $editBtn = "<a href='".route('admin.slider.edit', $query->id)."' class='btn btn-primary btn-sm'><i class=fa-regular fa-pen-to-square'></i>Edit</a>";
+               $dltBtn = "<a href='".route('admin.slider.destroy', $query->id)."' class='btn btn-warning btn-sm delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                return $editBtn.$dltBtn;
             })
 

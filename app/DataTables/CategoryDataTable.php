@@ -66,7 +66,7 @@ class CategoryDataTable extends DataTable
             Column::make('category_name'),
             Column::make('category_slug'),
             Column::make('category_icon'),
-            Column::make('category_status'),
+            Column::make('category_status'), 
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
