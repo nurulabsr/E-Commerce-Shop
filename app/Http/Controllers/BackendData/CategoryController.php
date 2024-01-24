@@ -30,7 +30,8 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
+        //  dd($request->all());
         $request->validate([
             'category_icon' => ['required', 'not_in:empty'],
             'category_name' => ['required', 'max:254', 'unique:categories,category_name'],
@@ -57,8 +58,8 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   $category = Category::findOrFail($id);
+        return view('admin.category.update', compact('category'));
     }
 
     /**
@@ -66,7 +67,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-      
+        $request->validate([
+            'category_icon' => ['required', 'not_in:empty'],
+            'category_name' => ['required', 'max:254', 'unique:categories,category_name'],
+            'category_status' => ['required', 'boolean'],
+        ]);
+
+        $category = Category::findOrFail($id);
+        $category->category_icon = $request->category_icon;
+        $category->category_name = $request->category_name;
+        $category->category_status = $request->category_status;
+        $category->category_slug = Str::slug($request->category_name);
+        $category->save();
     }
 
     /**
