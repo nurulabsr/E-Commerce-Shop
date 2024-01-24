@@ -6,7 +6,7 @@
                     <div class="row banner_slider">
                         @foreach ($sliders as $slider)
                         <div class="col-xl-12">
-                            <div class="wsus__single_slider" style=background: url({{asset($slider->slider_banner)}});>
+                            <div class="wsus__single_slider" style="background: url({{asset($slider->slider_banner)}});">
                               
                               <div class="wsus__single_slider_text">
                                 <h3>{{$slider->slider_title}}</h3>
