@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
-            $table->string('category_slug');
-            $table->text('category_icon');
-            $table->boolean('category_status');
+            $table->string('category_name')->nullable();
+            $table->string('category_slug')->nullable();
+            $table->text('category_icon')->nullable();
+            $table->boolean('category_status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,10 +26,10 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::dropIfExists('categories');
-        Schema::table('categories', function(Blueprint $table){
-           $table->dropSoftDeletes();
+    {   Schema::table('categories', function(Blueprint $table){
+          $table->dropSoftDeletes();
         });
+        Schema::dropIfExists('categories');
+      
     }
 };

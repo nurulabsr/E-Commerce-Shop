@@ -16,8 +16,8 @@
             <div class="card">
                 <div class="card-header">
                      <h4>Category Table</h4>
-                    <div class="card-header-action">
-                        <a href="{{route('admin.category.create')}}" class="btn btn-primary d-flex justify-content-end">+Creat New</a>
+                    <div class="card-header-action"> 
+                        <a href="{{route('admin.category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
                     </div>
                 </div>
                 <div class="card-body">
