@@ -15,15 +15,18 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data">
+                   <form action="{{route('admin.category.create')}}" method="POST" > 
                      @csrf
+                    
                      <div class="form-group">
-                        <label for="">Banner</label>
-                        <input type="file" name="slider_banner" class="form-control">
+                        <label for="">Icon</label>
+                        <div>
+                            <button name="category_icon" type="button" class="btn btn-primary btn-lg" data-selected-class="btn-danger" data-unselected-class="btn-primary" data-rows="4" data-cols="8" role="iconpicker"></button>
+                        </div>
                      </div>
                      <div class="form-group">
                         <label for="">Category Name</label>
-                        <input type="text" name="slider_type" value="{{old('slider_type')}}" class="form-control">
+                        <input type="text" name="category_name" value="{{old('slider_type')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Category Status</label>
