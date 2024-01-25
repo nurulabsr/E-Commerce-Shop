@@ -33,8 +33,8 @@ class SubCategoryController extends Controller
     public function store(Request $request){
          $request->validate([
              'category_name' => ['required', 'max:254'],
-             'sub_category_name' => ['required', 'max:254', 'unique:sub_categories,sub-category_name'],
-             'sub-category_status' => ['required', 'boolean'],
+             'sub_category_name' => ['required', 'max:254', 'unique:sub_categories,sub_category_name'],
+             'sub_category_status' => ['required', 'boolean'],
              
          ]);
 

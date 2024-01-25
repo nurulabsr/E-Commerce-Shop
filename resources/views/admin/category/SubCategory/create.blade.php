@@ -28,7 +28,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub Category Name</label>
-                        <input type="text" name=sub_category_name" value="{{old('sub-category_name')}}" class="form-control">
+                        <input type="text" name="sub_category_name" value="{{old('sub-category_name')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Sub-Category Status</label>

@@ -23,6 +23,9 @@ class SubCategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'subcategory.action')
+            ->addColumn('category', function($query){
+                 
+            })
             ->setRowId('id');
     }
 
