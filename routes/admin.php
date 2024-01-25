@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\BackendData\AdminController;
 use App\Http\Controllers\BackendData\CategoryController;
+use App\Http\Controllers\BackendData\ChildCategoryController;
 use App\Http\Controllers\BackendData\ProfileController;
 use App\Http\Controllers\BackendData\SliderController;
 use App\Http\Controllers\BackendData\SubCategoryController;
@@ -23,3 +24,7 @@ Route::resource('category', CategoryController::class);
 //SubCategory 
 Route::put('change-sub-category-status', [SubCategoryController::class, 'UpdateStatus'])->name('sub-category.change-status');
 Route::resource('sub-category', SubCategoryController::class);
+
+//Child Category
+
+Route::resource('child-category', ChildCategoryController::class);
