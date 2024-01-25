@@ -60,16 +60,30 @@ class SubCategoryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        return view('admin.category.SubCategory.update');
+    {    $subCategory = SubCategory::findOrFail($id);
+         $categories = Category::all();
+        return view('admin.category.SubCategory.update', compact('subCategory', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, string $id){
+       $request->validate([
+        'category_name' => ['required', 'max:254'],
+        'sub_category_name' => ['required', 'max:254', 'unique:sub_categories,sub_category_name,'.$id],
+        'sub_category_status' => ['required', 'boolean'],
+       ]);
+
+       $subCategory = SubCategory::findOrFail($id);
+       $subCategory->sub_category_name = $request->sub_category_name;
+       $subCategory->sub_category_slug = Str::slug($request->sub_category_name);
+       $subCategory->sub_category_status = $request->sub_category_status;
+       $subCategory->category_id = $request->category_name;
+       $subCategory->save();
+       toastr()->success("Sub Category Data Updated!");
+       return redirect()->route('admin.sub-category.index');
+       
     }
 
     /**

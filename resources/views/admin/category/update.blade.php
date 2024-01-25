@@ -19,13 +19,13 @@
                      @csrf
                      @method('PUT')
                      <div class="form-group">
-                        <div>
+                        {{-- <div>
                            <label for="" >Current Icon : </label>
                            <i class="{{$category->category_icon}} pl-2" style="font-size: 20px;"></i>
-                         </div>
+                         </div> --}}
                         <label for="">Update Icon</label>
                         <div>
-                            <button name="category_icon" type="button" class="btn btn-primary btn-lg" data-selected-class="btn-danger" data-unselected-class="btn-primary" data-rows="4" data-cols="8" role="iconpicker"></button>
+                            <button name="category_icon" type="button" data-icon="{{category->category_icon}}" class="btn btn-primary btn-lg" data-selected-class="btn-danger" data-unselected-class="btn-primary" data-rows="4" data-cols="8" role="iconpicker"></button>
                            
                         </div>
                      </div>
