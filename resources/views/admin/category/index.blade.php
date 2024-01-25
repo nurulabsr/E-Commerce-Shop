@@ -36,8 +36,26 @@
   $(function(){
       $('body').on('click', '.status', function(){
           let isChecked = $(this).is(':checked');
-          let id = $(this).attr('id');
-          console.log(id);
+          // let id = $(this).attr('id');
+          let id = $(this).data('id');
+          // console.log(id);
+
+          $.ajax({
+            url:'',
+            method: 'PUT',
+            data:{
+              isChecked:isChecked,
+              id:id,
+            },
+            success: function(data){
+
+            },
+            error: function(xhr, status, error){
+              console.log(error);
+            }
+
+
+          })
       });
   });
 </script>
