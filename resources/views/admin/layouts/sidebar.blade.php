@@ -28,6 +28,8 @@
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{route('admin.category.create')}}">Create Category</a></li>
             <li><a class="nav-link" href="{{route('admin.category.index')}}">Category Table</a></li>
+            <li><a class="nav-link" href="{{route('admin.sub-category.create')}}">Create Sub Category</a></li>
+            <li><a class="nav-link" href="{{route('admin.sub-category.index')}}">Sub Category Table</a></li>
           </ul>
         </li>
         {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}

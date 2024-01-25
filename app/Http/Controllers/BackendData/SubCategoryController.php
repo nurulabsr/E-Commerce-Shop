@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\SubCategoryDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -10,17 +12,17 @@ class SubCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(SubCategoryDataTable  $dataTable){
+       
+        return $dataTable->render('admin.category.SubCategory.index');
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create(){   
+        $categories = Category::all(); 
+        return view('admin.category.SubCategory.create', compact('categories'));
     }
 
     /**
@@ -44,7 +46,7 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.category.SubCategory.update');
     }
 
     /**
