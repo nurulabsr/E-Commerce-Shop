@@ -36,10 +36,7 @@
   $(function(){
       $('body').on('click', '.status', function(){
           let isChecked = $(this).is(':checked');
-          // let id = $(this).attr('id');
-          let id = $(this).data('id');
-          // console.log(id);
-
+          let id = $(this).data('id');               // console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
             url:'{{route("admin.category.change-status")}}',
             method: 'PUT',
