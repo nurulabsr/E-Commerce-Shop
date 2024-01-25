@@ -33,10 +33,13 @@
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
 <script>
-    $(document).ready(function(){
-      $(body).on('click', '.status', function(event){
-        
-      })
-    })
+  $(function(){
+      $('body').on('click', '.status', function(){
+          let isChecked = $(this).is(':checked');
+          let id = $(this).attr('id');
+          console.log(id);
+      });
+  });
 </script>
 @endpush
+
