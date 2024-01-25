@@ -44,6 +44,7 @@ class CategoryController extends Controller
         $category->category_status = $request->category_status;
         $category->category_slug = Str::slug($request->category_name);
         $category->save();
+        toastr()->success('Stored Successfully!');
         return redirect()->back();
     }
 

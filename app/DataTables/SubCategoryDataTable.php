@@ -90,7 +90,6 @@ class SubCategoryDataTable extends DataTable
             Column::make('category')->title('Category Name'),
             Column::make('sub_category_status')->title('Sub Category Status'),
             Column::make('sub_category_slug')->title('Slug'),
-            Column::make('created_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
