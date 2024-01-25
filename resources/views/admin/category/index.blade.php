@@ -31,4 +31,12 @@
 @endsection
 @push('scripts')
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
+<script>
+    $(document).ready(function(){
+      $(body).on('click', '.status', function(event){
+        
+      })
+    })
+</script>
 @endpush

@@ -44,13 +44,13 @@ class CategoryDataTable extends DataTable
             ->addColumn('category_status', function($query){
                  if($query->category_status==1){
                     $toggleBtn = '<label>
-                    <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input">
+                    <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" id="'.$query->id.'">
                     <span class="custom-switch-indicator"> </span>
                    </label>';
                 return $toggleBtn;
                  } else{
                     $toggleBtn = '<label>
-                    <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
+                    <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" id="'.$query->id.'">
                     <span class="custom-switch-indicator"> </span>
                   </label>';
                   return $toggleBtn;
