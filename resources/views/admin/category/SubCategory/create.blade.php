@@ -19,7 +19,7 @@
                      @csrf
                      <div class="form-group">
                         <label for="">Category</label>
-                        <select name="category" class="form-control">
+                        <select name="category_name" class="form-control">
                             <option value="">Select</option>
                              @foreach ($categories as $category)
                                  <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -28,11 +28,11 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub Category Name</label>
-                        <input type="text" name="category_name" value="{{old('slider_type')}}" class="form-control">
+                        <input type="text" name=sub_category_name" value="{{old('sub-category_name')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Sub-Category Status</label>
-                        <select name="sub-category_status" value="{{old('banner_serial')}}" class="form-control">
+                        <select name="sub_category_status" value="{{old('sub-category_status')}}" class="form-control">
                             <option value="1">Active</option>
                             <option value="0">In Active</option>
                         </select>

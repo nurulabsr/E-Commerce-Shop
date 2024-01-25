@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('sub-category_name')->nullable();
-            $table->string('sub-category_slug')->nullable();
-            $table->boolean('sub-category_status')->nullable();
+            $table->string('sub_category_name')->nullable();
+            $table->string('sub_category_slug')->nullable();
+            $table->boolean('sub_category_status')->nullable();
             $table->integer('category_id');
             $table->timestamps();
             $table->softDeletes();
