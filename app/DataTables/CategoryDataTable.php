@@ -24,11 +24,11 @@ class CategoryDataTable extends DataTable
         return (new EloquentDataTable($query))  
             ->addColumn('action', function($query){
                 $editBtn = '<a href="'.route("admin.category.edit", $query->id).'" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i>Edit</a>';
-                $deleteBtn='<a href="'.route("admin.category.destroy", $query->id).'" class="btn btn-warning btn-sm ml-2"><i class="fa-solid fa-trash"></i>Delete</a>';
+                $deleteBtn='<a href="'.route("admin.category.destroy", $query->id).'" class="btn btn-warning btn-sm ml-2 delete-item"><i class="fa-solid fa-trash"></i>Delete</a>';
                 return $editBtn.$deleteBtn;
             })
             ->addColumn('category_icon', function($query){
-               return $icon = '<i style="font-size:40px;" class="'.$query->category_icon.'"></i>';
+               return $icon = '<i style="font-size:30px;" class="'.$query->category_icon.'"></i>';
             })
             ->addColumn('category_status', function($query){
                 $activeStatus = '<i class="badge badge-info">Active<i/>';

@@ -44,6 +44,7 @@ class CategoryController extends Controller
         $category->category_status = $request->category_status;
         $category->category_slug = Str::slug($request->category_name);
         $category->save();
+        return redirect()->back();
     }
 
     /**
@@ -84,8 +85,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(string $id){
+        
+        $category = Category::FindOrFail($id);
+        $category->delete();
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }
