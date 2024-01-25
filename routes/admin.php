@@ -3,6 +3,8 @@ use App\Http\Controllers\BackendData\AdminController;
 use App\Http\Controllers\BackendData\CategoryController;
 use App\Http\Controllers\BackendData\ProfileController;
 use App\Http\Controllers\BackendData\SliderController;
+use App\Http\Controllers\BackendData\SubCategoryController;
+use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
 
 //admin dashboard
@@ -17,3 +19,7 @@ Route::resource('slider', SliderController::class);
 //Category Resource Controller
 Route::put('change-status', [CategoryController::class, 'UpdateStatus'])->name('category.change-status');
 Route::resource('category', CategoryController::class);
+
+//SubCategory 
+
+Route::resource('sub-category', SubCategoryController::class);
