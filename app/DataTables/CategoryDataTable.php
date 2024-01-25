@@ -30,7 +30,18 @@ class CategoryDataTable extends DataTable
             ->addColumn('category_icon', function($query){
                return $icon = '<i style="font-size:40px;" class="'.$query->category_icon.'"></i>';
             })
-            ->rawColumns(['category_icon', 'action'])
+            ->addColumn('category_status', function($query){
+                $activeStatus = '<i class="badge badge-info">Active<i/>';
+                $inactivStatus = '<i class="badge badge-warning">In Active</i>';
+                if($query->category_status==1){
+                return $activeStatus;
+                } elseif($query->category_status==0){
+                    return $inactivStatus;
+                } else{
+                    return '<i class="badge badge-warning">Out of Control</i>';
+                }
+            })
+            ->rawColumns(['category_icon', 'action', 'category_status'])
             ->setRowId('id');
     }
 
