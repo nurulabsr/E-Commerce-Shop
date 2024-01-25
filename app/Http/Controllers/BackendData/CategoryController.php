@@ -70,7 +70,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_icon' => ['required', 'not_in:empty'],
-            'category_name' => ['required', 'max:254', 'unique:categories,category_name'],
+            'category_name' => ['required', 'max:254', 'unique:categories,category_name,'.$id],
             'category_status' => ['required', 'boolean'],
         ]);
 
@@ -80,6 +80,8 @@ class CategoryController extends Controller
         $category->category_status = $request->category_status;
         $category->category_slug = Str::slug($request->category_name);
         $category->save();
+        toastr()->success('Updated Successfully!');
+        return redirect()->route('admin.category.index');
     }
 
     /**

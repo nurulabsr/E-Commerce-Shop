@@ -19,18 +19,23 @@
                      @csrf
                      @method('PUT')
                      <div class="form-group">
-                        <label for="">Icon</label>
+                        <div>
+                           <label for="" >Current Icon : </label>
+                           <i class="{{$category->category_icon}} pl-2" style="font-size: 20px;"></i>
+                         </div>
+                        <label for="">Update Icon</label>
                         <div>
                             <button name="category_icon" type="button" class="btn btn-primary btn-lg" data-selected-class="btn-danger" data-unselected-class="btn-primary" data-rows="4" data-cols="8" role="iconpicker"></button>
+                           
                         </div>
                      </div>
                      <div class="form-group">
                         <label for="">Category Name</label>
-                        <input type="text" name="category_name" value="{{old('slider_type')}}" class="form-control">
+                        <input type="text" name="category_name" value="{{$category->category_name}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Category Status</label>
-                        <select name="category_status" value="{{old('banner_serial')}}" class="form-control">
+                        <select name="category_status" value="{{$category->category_status?$category->category_status:'Select'}}" class="form-control">
                             <option value="">Select</option>
                             <option {{$category->category_status==1?'selected':''}} value="1">Active</option>
                             <option {{$category->category_status==0?'selected':''}} value="0">In Active</option>

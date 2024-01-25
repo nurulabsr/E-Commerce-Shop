@@ -30,16 +30,31 @@ class CategoryDataTable extends DataTable
             ->addColumn('category_icon', function($query){
                return $icon = '<i style="font-size:30px;" class="'.$query->category_icon.'"></i>';
             })
+            // ->addColumn('category_status', function($query){
+            //     $activeStatus = '<i class="badge badge-info">Active<i/>';
+            //     $inactivStatus = '<i class="badge badge-warning">In Active</i>';
+            //     if($query->category_status==1){
+            //     return $activeStatus;
+            //     } elseif($query->category_status==0){
+            //         return $inactivStatus;
+            //     } else{
+            //         return '<i class="badge badge-danger">Out of Control</i>';
+            //     }
+            // })
             ->addColumn('category_status', function($query){
-                $activeStatus = '<i class="badge badge-info">Active<i/>';
-                $inactivStatus = '<i class="badge badge-warning">In Active</i>';
-                if($query->category_status==1){
-                return $activeStatus;
-                } elseif($query->category_status==0){
-                    return $inactivStatus;
-                } else{
-                    return '<i class="badge badge-warning">Out of Control</i>';
-                }
+                 if($query->category_status==1){
+                    $toggleBtn = '<label>
+                    <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input">
+                    <span class="custom-switch-indicator"> </span>
+                   </label>';
+                return $toggleBtn;
+                 } else{
+                    $toggleBtn = '<label>
+                    <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
+                    <span class="custom-switch-indicator"> </span>
+                  </label>';
+                  return $toggleBtn;
+                 }
             })
             ->rawColumns(['category_icon', 'action', 'category_status'])
             ->setRowId('id');
@@ -63,7 +78,7 @@ class CategoryDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -85,7 +100,7 @@ class CategoryDataTable extends DataTable
             Column::make('category_name'),
             Column::make('category_slug'),
             Column::make('category_icon'),
-            Column::make('category_status'), 
+            Column::make('category_status')->width(160), 
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
