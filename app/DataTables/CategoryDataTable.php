@@ -23,6 +23,10 @@ class CategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'category.action')
+            ->addColumn('category_icon', function($query){
+               return $icon = '<i style="font-size:40px;" class="'.$query->category_icon.'"></i>';
+            })
+            ->rawColumns(['category_icon'])
             ->setRowId('id');
     }
 
