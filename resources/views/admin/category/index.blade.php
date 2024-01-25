@@ -41,10 +41,10 @@
           // console.log(id);
 
           $.ajax({
-            url:'',
+            url:'{{route("admin.category.change-status")}}',
             method: 'PUT',
             data:{
-              isChecked:isChecked,
+              category_status:isChecked,
               id:id,
             },
             success: function(data){
