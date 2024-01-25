@@ -38,14 +38,14 @@
           let isChecked = $(this).is(':checked');
           let id = $(this).data('id');               // console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
-            url:'{{route("admin.category.change-status")}}',
+            url:'{{route("admin.sub-category.change-status")}}',
             method: 'PUT',
             data:{
-              category_status:isChecked,
+              sub_category_status:isChecked,
               id:id,
             },
             success: function(data){
-              console.log(data);
+              toastr.success(data.message);
             },
             error: function(xhr, status, error){
               console.log(error);

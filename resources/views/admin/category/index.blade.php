@@ -45,7 +45,7 @@
               id:id,
             },
             success: function(data){
-              console.log(data);
+              toastr.success(data.message);
             },
             error: function(xhr, status, error){
               console.log(error);
