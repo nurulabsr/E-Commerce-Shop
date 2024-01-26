@@ -22,7 +22,7 @@
                         <select name="category_name" class="form-control paranet-category">
                             <option value="">Select</option>
                              @foreach ($categories as $category)
-                                 <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                 <option {{$category->id == $childCategory->category_id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                              @endforeach
                         </select>
                      </div>
@@ -30,6 +30,9 @@
                         <label for="">Sub Category Name</label>
                         <select name="sub_category_name" class="form-control subcategory_name">
                             <option value="">Select</option>
+                            @foreach ($subCategories as $subCategory)
+                            <option value="{{$subCategory->id}}">{{$subCategory->sub_category_name}}</option>
+                            @endforeach
                         </select>
                      </div>
                      <div class="form-group">
