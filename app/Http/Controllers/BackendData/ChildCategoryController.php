@@ -35,19 +35,21 @@ class ChildCategoryController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'category_name'       => ['required', 'string', 'max:254', 'unique:table,column,except,id'],
+            'category_name'       => ['required', 'string', 'max:254',],
             'sub_category_name'   => ['required', 'string', 'max:254'],
             'child_category_name' => ['required', 'string', 'max:254', 'unique:child_categories,child_category_name'],
             'sub_category_status' => ['required', 'boolean'],
        ]);
 
-       $childCategory = New ChildCategory();
-       $childCategory->child_category_name = $request->sub_category_name;
-       $childCategory->child_category_slug = Str::slug($request->sub_category_name);
+       $childCategory = new ChildCategory();
+       $childCategory->child_category_name = $request->child_category_name;
+       $childCategory->child_category_slug = Str::slug($request->child_category_name);
        $childCategory->child_category_status = $request->sub_category_status;
        $childCategory->category_id = $request->category_name;
        $childCategory->sub_category_id = $request->sub_category_name;
        $childCategory->save();
+       toastr()->success("Child Category Data Added Successfully!");
+       return redirect()->back();
     }
 
     /**
