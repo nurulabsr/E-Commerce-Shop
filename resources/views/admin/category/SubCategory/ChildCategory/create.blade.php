@@ -33,6 +33,10 @@
                         </select>
                      </div>
                      <div class="form-group">
+                        <label for="">Sub Category Name</label>
+                        <input type="text" name="child_category_name" class="form-control">
+                     </div>
+                     <div class="form-group">
                         <label for="">Sub-Category Status</label>
                         <select name="sub_category_status" value="{{old('sub-category_status')}}" class="form-control">
                             <option value="1">Active</option>
