@@ -64,8 +64,11 @@ class ChildCategoryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        return view('admin.category.SubCategory.ChildCategory.update', compact('categories'));
+    {  
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+        $childCategory = ChildCategory::findOrFail($id);
+        return view('admin.category.SubCategory.ChildCategory.update', compact('categories', 'subCategories', 'childCategory'));
     }
 
     /**
