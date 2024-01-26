@@ -65,4 +65,9 @@ class ChildCategoryController extends Controller
     {
         //
     }
+
+    //Get Child Category 
+    public function GetSubdCategory(Request $request){
+         
+    }
 }
