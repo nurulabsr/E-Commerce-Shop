@@ -66,7 +66,7 @@
                     },
                     success: function(items){
 
-                    $.('.subcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
+                    $('.subcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
                     $.each(items, function(i, item){                                        // console.log(item.sub_category_name);
                         $('.subcategory_name').append(`<option value="${item.id}">${item.sub_category_name}</option>`);
                     })
