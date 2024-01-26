@@ -65,7 +65,7 @@ class ChildCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.category.SubCategory.ChildCategory.update', compact('categories'));
     }
 
     /**
