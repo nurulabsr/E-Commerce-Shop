@@ -44,9 +44,9 @@ class ChildCategoryDataTable extends DataTable
                 }
            })
            ->addColumn('category', function($query){
-              return category->category_name;
+              return $query->category->category_name;
            })
-             ->rawColumns(['action', 'child_category_status'])
+             ->rawColumns(['action', 'child_category_status', 'category'])
             ->setRowId('id');
     }
 
@@ -90,6 +90,7 @@ class ChildCategoryDataTable extends DataTable
             Column::make('child_category_name'),
             Column::make('child_category_slug'),
             Column::make('child_category_status'),
+            Column::make('category'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
