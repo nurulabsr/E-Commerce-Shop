@@ -22,13 +22,32 @@ class ChildCategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function(){
-
+            ->addColumn('action', function($query){
+                $editBtn = "<a href='".route('admin.child-category.edit', $query->id)."' class='btn btn-primary btn-sm'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $dltBtn = "<a href='".route('admin.child-category.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+                return $editBtn.$dltBtn;
             })
 
-            ->rawColumns(['action'])
+            ->addColumn('child_category_status', function($query){
+                if($query->child_category_status==1){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
+           ->addColumn('category', function($query){
+              return category->category_name;
+           })
+             ->rawColumns(['action', 'child_category_status'])
             ->setRowId('id');
-            
     }
 
     /**
@@ -49,7 +68,7 @@ class ChildCategoryDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -67,11 +86,10 @@ class ChildCategoryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
             Column::make('id'),
             Column::make('child_category_name'),
             Column::make('child_category_slug'),
-            Column::make('updated_at'),
+            Column::make('child_category_status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
