@@ -28,7 +28,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub Category Name</label>
-                        <select name="sub_category_name" class="form-control">
+                        <select name="sub_category_name" class="form-control subcategory_name">
                             <option value="">Select</option>
                         </select>
                      </div>
@@ -60,16 +60,21 @@
 
                 $.ajax({
                     method: 'GET',
-                    url: '',
+                    url: "{{route('admin.get-sub-categories')}}",
                     data: {
                         id:id,
                     },
-                    success: function(i, item){
+                    success: function(items){
+
+                    $.('.subcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
+                    $.each(items, function(i, item){                                        // console.log(item.sub_category_name);
+                        $('.subcategory_name').append(`<option value="${item.id}">${item.sub_category_name}</option>`);
+                    })
 
                     },
 
                     error: function(xhr, status, error){
-                        
+
                     }
                 })
             })

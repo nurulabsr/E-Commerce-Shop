@@ -27,5 +27,5 @@ Route::resource('sub-category', SubCategoryController::class);
 
 //Child Category
 
-Route::get('get-sub-category', [ChildCategoryController::class, 'GetSubCategory'])->name('get-sub-category');
+Route::get('get-sub-categories', [ChildCategoryController::class, 'GetSubCategories'])->name('get-sub-categories');
 Route::resource('child-category', ChildCategoryController::class);
