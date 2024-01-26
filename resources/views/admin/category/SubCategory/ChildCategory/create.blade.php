@@ -2,14 +2,14 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-      <h1>Create Category</h1>
+      <h1>Create Child Category</h1>
     </div>
       <div class="section-body">
       <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                     <h4>Sub Category</h4>
+                     <h4>Child Category</h4>
                     <div class="card-header-action">
                        
                     </div>
@@ -18,7 +18,7 @@
                    <form action="{{route('admin.child-category.store')}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
                      <div class="form-group">
-                        <label for="">Category</label>
+                        <label for="">Child Category</label>
                         <select name="category_name" class="form-control paranet-category">
                             <option value="">Select</option>
                              @foreach ($categories as $category)
