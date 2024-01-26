@@ -19,7 +19,7 @@
                      @csrf
                      <div class="form-group">
                         <label for="">Category</label>
-                        <select name="category_name" class="form-control">
+                        <select name="category_name" class="form-control paranet-category">
                             <option value="">Select</option>
                              @foreach ($categories as $category)
                                  <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -28,7 +28,9 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub Category Name</label>
-                        <input type="text" name="sub_category_name" value="{{old('sub-category_name')}}" class="form-control">
+                        <select name="sub_category_name" class="form-control">
+                            <option value="">Select</option>
+                        </select>
                      </div>
                      <div class="form-group">
                         <label for="">Sub-Category Status</label>
@@ -48,3 +50,29 @@
     </div>
   </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('body').on('change', '.paranet-category', function(e){
+                // alert('Hi!');
+                let id = $(this).val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: '',
+                    data: {
+                        id:id,
+                    },
+                    success: function(i, item){
+
+                    },
+
+                    error: function(xhr, status, error){
+                        
+                    }
+                })
+            })
+        })
+    </script>
+@endpush
