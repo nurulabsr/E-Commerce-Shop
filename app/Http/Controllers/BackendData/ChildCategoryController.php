@@ -24,7 +24,7 @@ class ChildCategoryController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
         $categories = Category::all();
         return view('admin.category.SubCategory.ChildCategory.create', compact('categories'));
     }
@@ -67,7 +67,7 @@ class ChildCategoryController extends Controller
     {  
         $categories = Category::all();
         $childCategory = ChildCategory::findOrFail($id);
-        $subCategories = SubCategory::where('category_id', $childCategory->category_id)->get();
+        $subCategories = SubCategory::where('category_id', $childCategory->category_id)->get();  //$childCategory->category_id
         return view('admin.category.SubCategory.ChildCategory.update', compact('categories', 'subCategories', 'childCategory'));
     }
 
@@ -76,7 +76,12 @@ class ChildCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'category_name'       => ['required', 'string', 'max:254',],
+            'sub_category_name'   => ['required', 'string', 'max:254'],
+            'child_category_name' => ['required', 'string', 'max:254', 'unique:child_categories,child_category_name'],
+            'sub_category_status' => ['required', 'boolean'],
+       ]);
     }
 
     /**

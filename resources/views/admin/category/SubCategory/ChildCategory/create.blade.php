@@ -18,7 +18,7 @@
                    <form action="{{route('admin.child-category.store')}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
                      <div class="form-group">
-                        <label for="">Child Category</label>
+                        <label for="">Category</label>
                         <select name="category_name" class="form-control paranet-category">
                             <option value="">Select</option>
                              @foreach ($categories as $category)
