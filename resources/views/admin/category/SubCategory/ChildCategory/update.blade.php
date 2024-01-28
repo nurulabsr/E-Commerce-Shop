@@ -44,8 +44,8 @@
                         <label for="">Sub-Category Status</label>
                         <select name="child_category_status" class="form-control">
                             <option value="">Select</option>
-                            <option {{$childCategory->child_category_status ==1?'selected':''}} value="0">Active</option>
-                            <option {{$childCategory->child_category_status ==0?'selected':''}}  value="1">In Active</option>
+                            <option {{$childCategory->child_category_status ==1?'selected':''}} value="1">Active</option>
+                            <option {{$childCategory->child_category_status ==0?'selected':''}}  value="0">In Active</option>
                         </select>
                      </div>
                       <div class="form-group">

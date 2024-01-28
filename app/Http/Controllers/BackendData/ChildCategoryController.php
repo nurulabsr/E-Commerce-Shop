@@ -117,4 +117,11 @@ class ChildCategoryController extends Controller
         toastr()->success("Child Category all Data restore Successfully!");
         return redirect()->route('admin.child-category.index');
     }
+
+    public function UpdateStatus(Request $request){
+        $childCategory = ChildCategory::findOrFail($request->id);
+        $childCategory->child_category_status  = $request->child_category_status == "true" ? 1 : 0;
+        $childCategory->save();
+        return response(['message', 'Status Changed Successfully!'], 200);
+    }
 }
