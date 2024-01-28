@@ -93,7 +93,9 @@ class CategoryController extends Controller
         
         $category = Category::findOrFail($id);
         $subCategory = SubCategory::findOrFail('category_id', $category->id)->count();
-        
+        if($subCategory > 0){
+            return response(['status' => 'error', 'message' => 'Firs Delete Sub Category Data, then Try it!']);
+        }
         $category->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
