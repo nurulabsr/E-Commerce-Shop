@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BackendData;
 use App\DataTables\SubCategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -93,6 +94,14 @@ class SubCategoryController extends Controller
     {
         
         $subCategory = SubCategory::FindOrFail($id);
+        $childCategoryCount = ChildCategory::where('sub_category_id', $subCategory->id)->count();
+        $childCategoryName  = ChildCategory::where('sub_category_id', $subCategory->id)->pluck('child_category_name')->toArray();
+        
+        if($childCategoryCount > 0){
+            $childCategoryNamesString = implode(', ', $childCategoryName);
+            $message = "First delete the following subcategories: $childCategoryNamesString, then try deleting the category.";
+            return response(['status' => 'error', 'message' => $message]);
+        }
         $subCategory->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
