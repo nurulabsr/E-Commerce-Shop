@@ -45,8 +45,8 @@ class ChildCategoryController extends Controller
        $childCategory->child_category_name = $request->child_category_name;
        $childCategory->child_category_slug = Str::slug($request->child_category_name);
        $childCategory->child_category_status = $request->sub_category_status;
-       $childCategory->category_id = $request->category_name;
-       $childCategory->sub_category_id = $request->sub_category_name;
+       $childCategory->category_id = $request->category_id;
+       $childCategory->sub_category_id = $request->sub_category_id;
        $childCategory->save();
        toastr()->success("Child Category Data Added Successfully!");
        return redirect()->back();
@@ -75,13 +75,23 @@ class ChildCategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    { 
         $request->validate([
-            'category_name'       => ['required', 'string', 'max:254',],
-            'sub_category_name'   => ['required', 'string', 'max:254'],
-            'child_category_name' => ['required', 'string', 'max:254', 'unique:child_categories,child_category_name'],
-            'sub_category_status' => ['required', 'boolean'],
+            'category_id'       => ['required', 'string', 'max:254',],
+            'sub_category_id'   => ['required', 'string', 'max:254'],
+            'child_category_name' => ['required', 'string', 'max:254', 'unique:child_categories,child_category_name,'.$id],
+            'child_category_status' => ['required', 'boolean'],
        ]);
+
+       $childCategory = ChildCategory::findOrFail($id);
+       $childCategory->child_category_name = $request->child_category_name;
+       $childCategory->child_category_slug = Str::slug($request->child_category_name);
+       $childCategory->child_category_status = $request->child_category_status;
+       $childCategory->category_id = $request->category_id;
+       $childCategory->sub_category_id = $request->sub_category_id;
+       $childCategory->save();
+       toastr()->success("Child Category Data Updated Successfully!");
+       return redirect()->back();
     }
 
     /**

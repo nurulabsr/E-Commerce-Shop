@@ -20,7 +20,7 @@
                      @method('PUT')
                      <div class="form-group">
                         <label for="">Child Category</label>
-                        <select name="category_name" class="form-control paranet-category">
+                        <select name="category_id" class="form-control paranet-category">
                             <option value="">Select</option>
                              @foreach ($categories as $category)
                                  <option {{$category->id == $childCategory->category_id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
@@ -29,7 +29,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub Category Name</label>
-                        <select name="sub_category_name" class="form-control subcategory_name">
+                        <select name="sub_category_id" class="form-control subcategory_name">
                             <option value="">Select</option>
                             @foreach ($subCategories as $subCategory)
                             <option  {{$subCategory->id == $childCategory->sub_category_id?'selected':''}} value="{{$subCategory->id}}">{{$subCategory->sub_category_name}}</option>
@@ -42,7 +42,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub-Category Status</label>
-                        <select name="sub_category_status" value="{{old('sub-category_status')}}" class="form-control">
+                        <select name="child_category_status" class="form-control">
                             <option value="">Select</option>
                             <option {{$childCategory->child_category_status ==1?'selected':''}} value="0">Active</option>
                             <option {{$childCategory->child_category_status ==0?'selected':''}}  value="1">In Active</option>
