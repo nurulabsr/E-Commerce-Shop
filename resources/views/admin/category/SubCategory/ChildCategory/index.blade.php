@@ -43,6 +43,7 @@
             url:'{{route("admin.child-category.change-status")}}',
             method: 'PUT',
             data:{
+              _token: '{{ csrf_token() }}', 
               child_category_status:isChecked,
               id:id,
             },

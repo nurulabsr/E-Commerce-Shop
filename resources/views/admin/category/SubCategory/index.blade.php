@@ -42,6 +42,7 @@
             url:'{{route("admin.sub-category.change-status")}}',
             method: 'PUT',
             data:{
+              _token: '{{ csrf_token() }}', 
               sub_category_status:isChecked,
               id:id,
             },
