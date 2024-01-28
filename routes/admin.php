@@ -26,6 +26,6 @@ Route::put('change-sub-category-status', [SubCategoryController::class, 'UpdateS
 Route::resource('sub-category', SubCategoryController::class);
 
 //Child Category
-
+Route::get('only-trashed', [ChildCategoryController::class, 'RestoreDeletedChildCategory'])->name('only-trashed.restore');
 Route::get('get-sub-categories', [ChildCategoryController::class, 'GetSubCategories'])->name('get-sub-categories');
 Route::resource('child-category', ChildCategoryController::class);

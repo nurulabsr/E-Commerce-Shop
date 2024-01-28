@@ -101,6 +101,7 @@ class ChildCategoryController extends Controller
     {
         $childCategory = ChildCategory::findOrFail($id);
         $childCategory->delete();
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 
     //Get Child Category 
@@ -109,5 +110,11 @@ class ChildCategoryController extends Controller
 
         $subCategories = SubCategory::where('category_id', $request->id)->where('sub_category_status', 1)->get();
         return $subCategories;
+    }
+
+    public function RestoreDeletedChildCategory(){
+        $childCategory = ChildCategory::onlyTrashed()->restore();
+        toastr()->success("Child Category all Data restore Successfully!");
+        return redirect()->route('admin.child-category.index');
     }
 }
