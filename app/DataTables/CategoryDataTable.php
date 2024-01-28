@@ -23,9 +23,9 @@ class CategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))  
             ->addColumn('action', function($query){
-                $editBtn = '<a href="'.route("admin.category.edit", $query->id).'" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i>Edit</a>';
-                $deleteBtn='<a href="'.route("admin.category.destroy", $query->id).'" class="btn btn-warning btn-sm ml-2 delete-item"><i class="fa-solid fa-trash"></i>Delete</a>';
-                return $editBtn.$deleteBtn;
+                $editBtn = "<a href='".route('admin.category.edit', $query->id)."' class='btn btn-primary btn-sm'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $dltBtn = "<a href='".route('admin.category.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+                return $editBtn.$dltBtn;
             })
             ->addColumn('category_icon', function($query){
                return $icon = '<i style="font-size:30px;" class="'.$query->category_icon.'"></i>';
@@ -94,7 +94,7 @@ class CategoryDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(160)
+                  ->width(200)
                   ->addClass('text-center'),
         ];
     }

@@ -102,15 +102,14 @@
                                         text: data.message,
                                         icon: "success"
                                     });
+                                
                                     window.location.reload();
-                                }
-
-                                else if(data.status == 'error'){
+                                } else if (data.status == 'error') {
                                     Swal.fire({
-                                        "Cant Delete",
-                                        data.message,
-                                        'error'
-                                    })
+                                        title: "Can't Delete!",
+                                        text: data.message,
+                                        icon: "error"
+                                    });
                                 }
                             },
                             error: function(xhr, status, error) {
@@ -123,7 +122,5 @@
         });
     </script>
     
-    {{--  // text: "Your file has been deleted.",
-                                    // icon: "success" --}}
   @stack('scripts')
 

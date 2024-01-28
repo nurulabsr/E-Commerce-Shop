@@ -43,5 +43,15 @@
   <!-- General JS Scripts -->
    @include('admin.CommonLink.footer')
 
+  <script>
+  $(document).ready(function(){
+    $('body').on('click', '.delete-item', function(event){
+        event.preventDefault();
+        {{-- let DeleteURL = $(this). altr('href'); --}}
+
+
+    })
+  })
+</script> 
 </body>
 </html>

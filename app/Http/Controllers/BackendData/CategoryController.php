@@ -90,12 +90,16 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id){
-        
         $category = Category::findOrFail($id);
-        $subCategory = SubCategory::findOrFail('category_id', $category->id)->count();
-        if($subCategory > 0){
-            return response(['status' => 'error', 'message' => 'Firs Delete Sub Category Data, then Try it!']);
+        $subCategoryCount = SubCategory::where('category_id', $category->id)->count();
+        $subCategoryNames = SubCategory::where('category_id', $category->id)->pluck('sub_category_name')->toArray();
+
+        if ($subCategoryCount > 0) {
+            $subCategoryNamesString = implode(', ', $subCategoryNames);
+            $message = "First delete the following subcategories: $subCategoryNamesString, then try deleting the category.";
+            return response(['status' => 'error', 'message' => $message]);
         }
+
         $category->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
