@@ -35,8 +35,8 @@ class ChildCategoryController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'category_name'       => ['required', 'string', 'max:254',],
-            'sub_category_name'   => ['required', 'string', 'max:254'],
+            'category_id'       => ['required', 'string', 'max:254',],
+            'sub_category_id'   => ['required', 'string', 'max:254'],
             'child_category_name' => ['required', 'string', 'max:254', 'unique:child_categories,child_category_name'],
             'sub_category_status' => ['required', 'boolean'],
        ]);
@@ -93,7 +93,6 @@ class ChildCategoryController extends Controller
        toastr()->success("Child Category Data Updated Successfully!");
        return redirect()->back();
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -107,11 +106,10 @@ class ChildCategoryController extends Controller
     //Get Child Category 
     public function GetSubCategories(Request $request){
         //  return $request;
-
         $subCategories = SubCategory::where('category_id', $request->id)->where('sub_category_status', 1)->get();
         return $subCategories;
     }
-
+    
     public function RestoreDeletedChildCategory(){
         $childCategory = ChildCategory::onlyTrashed()->restore();
         toastr()->success("Child Category all Data restore Successfully!");
@@ -120,8 +118,8 @@ class ChildCategoryController extends Controller
 
     public function UpdateStatus(Request $request){
         $childCategory = ChildCategory::findOrFail($request->id);
-        $childCategory->child_category_status  = $request->child_category_status == "true" ? 1 : 0;
+        $childCategory->child_category_status = $request->child_category_status == "true" ? 1 : 0;
         $childCategory->save();
-        return response(['message', 'Status Changed Successfully!'], 200);
+        return response(['message' => 'Status Changed Successfully!']);
     }
 }

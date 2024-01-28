@@ -29,7 +29,7 @@ class ChildCategoryDataTable extends DataTable
             })
 
             ->addColumn('child_category_status', function($query){
-                if($query->child_category_status==1){
+                if($query->child_category_status== '1'){
                    $toggleBtn = '<label>
                    <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
                    <span class="custom-switch-indicator"> </span>

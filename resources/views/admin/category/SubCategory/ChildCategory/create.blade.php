@@ -29,7 +29,7 @@
                      <div class="form-group">
                         <label for="">Sub Category Name</label>
                         <select name="sub_category_id" class="form-control subcategory_name">
-                            <option value="">Select</option>   <!-- get values via ajax -->
+                            <option value="">Select</option>
                         </select>
                      </div>
                      <div class="form-group">
@@ -38,7 +38,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Sub-Category Status</label>
-                        <select name="child_category_status" value="{{old('sub-category_status')}}" class="form-control">
+                        <select name="sub_category_status" value="{{old('sub-category_status')}}" class="form-control">
                             <option value="1">Active</option>
                             <option value="0">In Active</option>
                         </select>
@@ -57,7 +57,6 @@
 
 @push('scripts')
     <script>
-        // push sub-categories on the input filled
         $(document).ready(function(){
             $('body').on('change', '.paranet-category', function(e){
                 // alert('Hi!');
@@ -84,8 +83,5 @@
                 })
             })
         })
-
-        //End push sub-categories on the input filled
-        $(document).ready(function(){
     </script>
 @endpush

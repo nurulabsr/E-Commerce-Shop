@@ -15,9 +15,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                     <h4>Child Category Table</h4>
+                     <h4>Child Category Table</h4> 
                     <div class="card-header-action"> 
                         <a href="{{route('admin.child-category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
+                        <a href="{{route('admin.only-trashed.restore')}}" class="btn btn-primary"><i class="fa-solid fa-recycle"></i> Restore Deleted Data</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -36,15 +37,17 @@
   $(function(){
       $('body').on('click', '.status', function(){
           let isChecked = $(this).is(':checked');
-          let id = $(this).data('id');               // console.log(id);  // let id = $(this).attr('id');                                       
+          let id = $(this).data('id');        
+            console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
-            url:'{{route("admin.sub-category.change-status")}}',
+            url:'{{route("admin.child-category.change-status")}}',
             method: 'PUT',
             data:{
-              sub_category_status:isChecked,
+              child_category_status:isChecked,
               id:id,
             },
             success: function(data){
+              // console.log(data);
               toastr.success(data.message);
             },
             error: function(xhr, status, error){
