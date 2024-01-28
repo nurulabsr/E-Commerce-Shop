@@ -32,7 +32,7 @@
                         <select name="sub_category_name" class="form-control subcategory_name">
                             <option value="">Select</option>
                             @foreach ($subCategories as $subCategory)
-                            <option  {{$subCategory->id == $childCategory->category_id?'selected':''}} value="{{$subCategory->id}}">{{$subCategory->sub_category_name}}</option>
+                            <option  {{$subCategory->id == $childCategory->sub_category_id?'selected':''}} value="{{$subCategory->id}}">{{$subCategory->sub_category_name}}</option>
                             @endforeach
                         </select>
                      </div>
@@ -43,6 +43,7 @@
                      <div class="form-group">
                         <label for="">Sub-Category Status</label>
                         <select name="sub_category_status" value="{{old('sub-category_status')}}" class="form-control">
+                            <option value="">Select</option>
                             <option {{$childCategory->child_category_status ==1?'selected':''}} value="0">Active</option>
                             <option {{$childCategory->child_category_status ==0?'selected':''}}  value="1">In Active</option>
                         </select>
