@@ -1,3 +1,6 @@
+@php
+    $categories = \App\Models\Category::all();
+@endphp
 <nav class="wsus__main_menu d-none d-lg-block">
     <div class="container">
         <div class="row">
