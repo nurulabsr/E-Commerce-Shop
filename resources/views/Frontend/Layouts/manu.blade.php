@@ -188,19 +188,22 @@
                         <ul class="wsus_mobile_menu_category">
                             {{-- <li><a href="#"><i class="fas fa-star"></i> hot promotions</a></li> --}}
                             @foreach ($categories as $category)
-                            <li><a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseThreew" aria-expanded="false"
-                                    aria-controls="flush-collapseThreew"><i class="{{$category->category_icon}}"></i> {{$category->category_name}}</a>
-                                <div id="flush-collapseThreew" class="accordion-collapse collapse"
+                            <li><a href="#" class="{{count($category->sub_category) ? 'accordion-button collapsed' : ''}}" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThreew-{{$loop->index}}" aria-expanded="false"
+                                    aria-controls="flush-collapseThreew-{{$loop->index}}"><i class="{{$category->category_icon}}"></i> {{$category->category_name}}</a>
+                                 @if (count($category->sub_category) > 0 )
+                                <div id="flush-collapseThreew-{{$loop->index}}" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        @foreach ($category->sub_category as $subCategory)
+                                        
                                         <ul>
+                                        @foreach ($category->sub_category as $subCategory)
                                             <li><a href="#">{{$subCategory->sub_category_name}}</a></li>
-                                        </ul>
                                         @endforeach
+                                        </ul>
                                     </div>
                                 </div>
+                                 @endif
                             </li>
                             @endforeach
                             <li><a href="#"><i class="fal fa-gem"></i> View All Categories</a></li>
