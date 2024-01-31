@@ -14,7 +14,8 @@
                         @foreach ($categories as $category)
                         <li><a class="wsus__droap_arrow" href="#"><i class="{{$category->category_icon}}"></i> {{$category->category_name}} </a>
                             <ul class="wsus_menu_cat_droapdown">
-                                <li><a href="#">New Arrivals <i class="fas fa-angle-right"></i></a>
+                                @foreach($category->sub_category as $subCategory)
+                                <li><a href="#">{{$subCategory->sub_category_name}} <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
                                         <li><a href="#">New Arrivals</a> </li>
                                         <li><a href="#">Best Sellers</a></li>
@@ -27,7 +28,7 @@
                                         <li><a href="#">Photos & Videos</a></li>
                                     </ul>
                                 </li>
-                                
+                                @endforeach
                                 <li><a href="#">Clothing</a></li>
                              
                             </ul>
