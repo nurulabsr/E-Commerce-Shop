@@ -17,16 +17,11 @@
                                 @foreach($category->sub_category as $subCategory)
                                 <li><a href="#">{{$subCategory->sub_category_name}} <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
-                                        <li><a href="#">Best Sellers</a></li>
-                                        <li><a href="#">Trending</a></li>
-                                        <li><a href="#">Clothing</a></li>
-                                        <li><a href="#">Bags</a></li>
-                                        <li><a href="#">Home Audio & Theaters</a></li>
-                                        <li><a href="#">TV & Videos</a></li>
-                                        <li><a href="#">Camera</a></li>
-                                        <li><a href="#">Photos & Videos</a></li>
+                                        @foreach ($subCategory->childCategory as $childCategory)
+                                        <li><a href="#">{{ $childCategory->child_category_name }}</a></li>
+                                        @endforeach
                                     </ul>
+                                 
                                 </li>
                                 @endforeach
                                 <li><a href="#">Clothing</a></li>
