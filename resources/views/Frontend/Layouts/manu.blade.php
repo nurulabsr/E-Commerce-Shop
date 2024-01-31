@@ -12,21 +12,21 @@
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
                         {{-- <li><a href="#"><i class="fas fa-star"></i> hot promotions</a></li> --}}
                         @foreach ($categories as $category)
-                        <li><a class="wsus__droap_arrow" href="#"><i class="{{$category->category_icon}}"></i> {{$category->category_name}} </a>
+                        <li><a class="{{count($category->sub_category) > 0 ?'wsus__droap_arrow':''}}" href="#"><i class="{{$category->category_icon}}"></i> {{$category->category_name}} </a>
+                            @if(count($category->sub_category) > 0)
                             <ul class="wsus_menu_cat_droapdown">
                                 @foreach($category->sub_category as $subCategory)
                                 <li><a href="#">{{$subCategory->sub_category_name}} <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
+
                                         @foreach ($subCategory->childCategory as $childCategory)
                                         <li><a href="#">{{ $childCategory->child_category_name }}</a></li>
                                         @endforeach
                                     </ul>
-                                 
                                 </li>
                                 @endforeach
-                                <li><a href="#">Clothing</a></li>
-                             
                             </ul>
+                            @endif
                         </li>
                         @endforeach
 
