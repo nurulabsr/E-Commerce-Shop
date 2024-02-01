@@ -37,5 +37,5 @@ Route::get('get-sub-categories', [ChildCategoryController::class, 'GetSubCategor
 Route::put('change-child-category-status', [ChildCategoryController::class, 'UpdateStatus'])->name('child-category.change-status');
 Route::resource('child-category', ChildCategoryController::class);
 
-Route::get('chane-brand-satatus', [BrandController::class, 'UpdateStatus'])->name('brand.change-status');
+Route::put('chane-brand-satatus', [BrandController::class, 'UpdateStatus'])->name('brand.change-status');
 Route::resource('brand', BrandController::class);

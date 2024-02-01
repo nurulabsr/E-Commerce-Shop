@@ -28,7 +28,7 @@ class BrandDataTable extends DataTable
                 return $editBtn.$dltBtn;
             })
             ->addColumn('brand_status', function($query){
-                if($query->brand_status== '1'){
+                if($query->brand_status== 1){
                    $toggleBtn = '<label>
                    <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
                    <span class="custom-switch-indicator"> </span>

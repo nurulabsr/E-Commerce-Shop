@@ -37,16 +37,17 @@
       $('body').on('click', '.status', function(){
           let isChecked = $(this).is(':checked');
           let id = $(this).data('id');     
-                    // console.log(id);  // let id = $(this).attr('id');                                       
+                //  console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
-            url:'{{route("admin.category.change-status")}}',  //category.change-status
+            url:'{{route("admin.brand.change-status")}}',  //brand.change-status
             method: 'PUT',
             data:{
               _token: '{{ csrf_token() }}', 
-              category_status:isChecked,
+              brand_status:isChecked,
               id:id,
             },
             success: function(data){
+              // console.log(data);
               toastr.success(data.message);
             },
             error: function(xhr, status, error){
