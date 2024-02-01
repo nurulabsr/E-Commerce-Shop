@@ -19,17 +19,17 @@
                      @csrf
                      <div class="form-group">
                         <label for="">Brand Image</label>
-                        <input type="file" name="brand_image" class="">
+                        <input type="file" name="brand_image" class="form-controll">
                      </div>
                      <div class="form-group">
                         <label for="">Brand Name</label>
-                        <input type="text" name="category_name" value="{{old('slider_type')}}" class="form-control">
+                        <input type="text" name="brand_name" value="{{old('brand_name')}}" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Brand Status</label>
-                        <select name="category_status" value="{{old('banner_serial')}}" class="form-control">
-                            <option value="1">Active</option>
-                            <option value="0">In Active</option>
+                        <label for="">Is Brand Featured</label>
+                        <select name="is_brand-featured" value="{{old('is_brand-featured')}}" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
                         </select>
                      </div>
                       <div class="form-group">
