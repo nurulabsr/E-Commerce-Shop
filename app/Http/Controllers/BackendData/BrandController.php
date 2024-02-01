@@ -27,8 +27,7 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){   
         $request->validate([
            'brand_image' => ['required', 'image', 'mimes:png,jpg', 'max:4096'],
            'brand_name'  => ['required', 'string', 'max:254'],
@@ -43,7 +42,7 @@ class BrandController extends Controller
         $brand->brand_slug = Str::slug($request->brand_name);
         $brand->is_brand_featured = $request->is_brand_featured;
         $brand->brand_status = $request->brand_status;
-
+        $brand->save();
         toastr()->success("Brand Created Successfully!");
         return redirect()->route('admin.brand.index');
     }
