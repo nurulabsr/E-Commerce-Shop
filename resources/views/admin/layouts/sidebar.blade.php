@@ -30,12 +30,12 @@
         ])}}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Category</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{route('admin.category.create')}}">Create Category</a></li>
-            <li><a class="nav-link" href="{{route('admin.category.index')}}">Category Table</a></li>
-            <li><a class="nav-link" href="{{route('admin.sub-category.create')}}">Create Sub Category</a></li>
-            <li><a class="nav-link" href="{{route('admin.sub-category.index')}}">Sub Category Table</a></li>
-            <li><a class="nav-link" href="{{route('admin.child-category.create')}}">Create Child Category</a></li>
-            <li><a class="nav-link" href="{{route('admin.child-category.index')}}">Child Category Table</a></li>
+            <li class="{{SetActive(['admin.category.create'])}}"><a class="nav-link" href="{{route('admin.category.create')}}">Create Category</a></li>
+            <li class="{{SetActive(['admin.category.index'])}}"><a class="nav-link" href="{{route('admin.category.index')}}">Category Table</a></li>
+            <li class="{{SetActive(['admin.sub-category.create'])}}"><a class="nav-link" href="{{route('admin.sub-category.create')}}">Create Sub Category</a></li>
+            <li class="{{SetActive(['admin.sub-category.index'])}}"><a class="nav-link" href="{{route('admin.sub-category.index')}}">Sub Category Table</a></li>
+            <li class="{{SetActive(['admin.child-category.create'])}}"><a class="nav-link" href="{{route('admin.child-category.create')}}">Create Child Category</a></li>
+            <li class="{{SetActive(['admin.child-category.index'])}}"><a class="nav-link" href="{{route('admin.child-category.index')}}">Child Category Table</a></li>
 
           </ul>
         </li>

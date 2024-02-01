@@ -1,11 +1,12 @@
-<?php 
-function SetActive(array $route){
-  
-    if(is_array($route)){
-        foreach($route as $r){
-            if(route()->routeIs($r)){
-             return "active";
-            }
+<?php
+use Illuminate\Support\Facades\Route;
+function SetActive(array $routes)
+{
+    foreach ($routes as $route) {
+        if (Route::is($route)) {
+            return "active";
         }
     }
+    
+    return "";
 }
