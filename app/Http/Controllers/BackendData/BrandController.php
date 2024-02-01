@@ -59,8 +59,9 @@ class BrandController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+        $brand = Brand::findOrFail($id);
+        return view('admin.brand.update', compact('brand'));
     }
 
     /**
@@ -68,7 +69,23 @@ class BrandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'brand_image' => ['image', 'mimes:png,jpg', 'max:4096'],
+            'brand_name'  => ['required', 'string', 'max:254'],
+            'is_brand_featured' => ['boolean'],
+            'brand_status' => ['boolean']
+         ]);
+ 
+         $brand = Brand::findOrFail($id);
+         $path = $this->UpdateImageFilePathHandling($request, 'brand_image', 'BrandImage', $brand->brand_image);
+         $brand->brand_image =  empty(!$path) ? $path : $brand->brand_image; 
+         $brand->brand_name = $request->brand_name;
+         $brand->brand_slug = Str::slug($request->brand_name);
+         $brand->is_brand_featured = $request->is_brand_featured;
+         $brand->brand_status = $request->brand_status;
+         $brand->save();
+         toastr()->success("Brand Updated Successfully!");
+         return redirect()->route('admin.brand.index');
     }
 
     /**

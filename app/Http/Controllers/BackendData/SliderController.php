@@ -87,7 +87,7 @@ class SliderController extends Controller
         ]);
          
 
-       $slider = Slider::FindOrFail($id);
+       $slider = Slider::findOrFail($id);
        $path = $this->UpdateImageFilePathHandling($request, 'slider_banner', 'Uploads', $slider->slider_banner);
        $slider->slider_banner = empty(!$path) ? $path : $slider->slider_banner;   // if validation will nullable then working otherwise throw validation error
        $slider->slider_type = $request->slider_type;
