@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BackendData\AdminController;
+use App\Http\Controllers\BackendData\BrandController;
 use App\Http\Controllers\BackendData\CategoryController;
 use App\Http\Controllers\BackendData\ChildCategoryController;
 use App\Http\Controllers\BackendData\ProfileController;
@@ -35,3 +36,5 @@ Route::get('only-trashed', [ChildCategoryController::class, 'RestoreDeletedChild
 Route::get('get-sub-categories', [ChildCategoryController::class, 'GetSubCategories'])->name('get-sub-categories');
 Route::put('change-child-category-status', [ChildCategoryController::class, 'UpdateStatus'])->name('child-category.change-status');
 Route::resource('child-category', ChildCategoryController::class);
+
+Route::resource('brand', BrandController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\BrandDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class BrandController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(BrandDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.brand.index');
     }
 
     /**
@@ -20,7 +21,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brand.create');
     }
 
     /**
