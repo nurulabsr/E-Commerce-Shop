@@ -23,7 +23,11 @@
             <li><a class="nav-link" href="{{route('admin.slider.index')}}">Sidebar Table</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown {{SetActive([
+          'admin.category.*',
+          'admin.sub-category.*',
+          'admin.child-category.*',
+        ])}}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Category</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{route('admin.category.create')}}">Create Category</a></li>
