@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
+            $table->text('brand_image');
+            $table->string('brand_name');
+            $table->boolean('is_brand_featured');
+            $table->boolean('brand_status');
+            $table->string('brand_slug');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -23,5 +29,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('brands');
+        Schema::table('brands', function(Blueprint $table){
+            $table->dropSoftDeletes();
+        });
     }
 };

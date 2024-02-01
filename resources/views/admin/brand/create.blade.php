@@ -26,14 +26,23 @@
                         <input type="text" name="brand_name" value="{{old('brand_name')}}" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Is Brand Featured</label>
-                        <select name="is_brand-featured" value="{{old('is_brand-featured')}}" class="form-control">
+                        <label for="">Is Brand Featured?</label>
+                        <select name="is_brand_featured" value="{{old('is_brand-featured')}}" class="form-control">
+                            <option value="">Select</option>
                             <option value="1">Yes</option>
                             <option value="0">No</option>
                         </select>
                      </div>
+                     <div class="form-group">
+                        <label for="">Brand Status</label>
+                        <select name="brand_status" value="{{old('status')}}" class="form-control">
+                            <option value="">Select</option>
+                            <option value="1">Active</option>
+                            <option value="0">In Active</option>
+                        </select>
+                     </div>
                       <div class="form-group">
-                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                         <button type="submit" class="btn btn-primary mt-3">Create Brand</button>
                       </div>
                    </form>
                 </div>
