@@ -41,8 +41,19 @@ class BrandDataTable extends DataTable
                  </label>';
                  return $toggleBtn;
                 }
-           })
-            ->rawColumns(['action', 'brand_status'])
+              })
+
+              ->addColumn('is_brand_featured', function($query) {
+                $label = $query->is_brand_featured == 1 ? 'Yes' : 'No';
+                $colorClass = $query->is_brand_featured == 1 ? 'success' : 'danger';
+                return "<span class='badge bg-$colorClass text-light rounded-circle'>$label</span>";
+            })
+            
+            
+         ->addColumn('brand_image', function($query){
+            return $img = "<img width='40px' src='".asset($query->brand_image)."'></img>";
+         })
+         ->rawColumns(['action', 'brand_status', 'is_brand_featured', 'brand_image'])
             ->setRowId('id');
     }
 
@@ -64,7 +75,7 @@ class BrandDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -86,6 +97,7 @@ class BrandDataTable extends DataTable
             Column::make('brand_name'),
             Column::make('brand_image'),
             Column::make('brand_status'),
+            Column::make('is_brand_featured')->width(160),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
