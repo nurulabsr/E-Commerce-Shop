@@ -161,7 +161,7 @@
 
                 $.ajax({
                     method: 'GET',
-                    url: "{{route('')}}",
+                    url: "{{route('admin.sub-categories')}}",
                     data: {
                         id:id,
                     },
