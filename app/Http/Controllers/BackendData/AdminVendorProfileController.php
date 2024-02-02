@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackendData;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VendorProfileController extends Controller
+class AdminVendorProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
