@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\BackendData;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vendor;
+use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 
 class AdminVendorProfileController extends Controller
 {
+     use UploadImageTrait;
     /**
      * Display a listing of the resource.
      */
@@ -34,8 +37,15 @@ class AdminVendorProfileController extends Controller
             'admin_vendor_profile_email' => ['required', 'email', 'max:254'],
             'admin_vendor_profile_address' => ['required', 'string', 'max:400'],
             'admin_vendor_profile_description' => ['required', 'string', 'max:500'],
-            ''
+            'admin_vendor_profile_facebook_url' => ['nullable', 'url', 'max:400'],
+            'admin_vendor_profile_twitter_url' => ['nullable', 'url', 'max:400'],
+            'admin_vendor_profile_insagram_url' => ['nullable', 'url', 'max:400'],
+            'admin_vendor_profile_status'  => ['boolean'],
         ]);
+
+        $admin_vendor_profile = new Vendor();
+        $admin_vendor_profile->admin_vendor_profile_banner = $this->ImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads');
+        
     }
 
     /**
