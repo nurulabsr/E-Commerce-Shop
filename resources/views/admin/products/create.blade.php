@@ -102,7 +102,20 @@
                      <div class="form-group">
                         <button class="btn btn-primary">Submit</button>
                      </div>
-                     
+                     <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select name="product_vendor_id" id="">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="product_brand_id" id="">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                     </div>
                    </form>
                 </div>
             </div>
