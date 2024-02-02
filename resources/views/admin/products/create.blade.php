@@ -17,6 +17,38 @@
                 <div class="card-body">
                    <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
+
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                     </div>
                      
                    </form>
                 </div>
