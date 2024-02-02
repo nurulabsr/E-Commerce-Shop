@@ -19,32 +19,49 @@
                      @csrf
 
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for="">Product Thumbnail Image</label>
+                        <input type="file" name="product_thumnail_img" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for="">Product Name</label>
+                        <input type="text" name="product_name" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for=""> Product Quantity</label>
+                        <input type="number" name="product_quantity" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for="">Product Price</label>
+                        <input type="number" name="product_price" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for="">Product Offer Price</label>
+                        <input type="number" name="product_offer_price" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for="">Product Offer Date Start</label>
+                        <input type="date" name="product_offer_start_date" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" name="" class="form-control">
+                        <label for="">Product Offer Date End</label>
+                        <input type="date" name="product_offer_end_date" class="form-control">
+                     </div>
+
+                     <div class="form-group">
+                        <label for="">Product Short Description</label>
+                        <textarea name="product_short_description" class="form-control" cols="30" rows="10"></textarea>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Product Long Description</label>
+                        <textarea name="product_long_description" class="form-control" cols="30" rows="10"></textarea>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Product Video URL</label>
+                        <input type="text" name="product_video_link" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for="">Product Stock Keeping Unit</label>
+                        <input type="text" name="product_Stock_keeping_unit" class="form-control">
                      </div>
                      <div class="form-group">
                         <button class="btn btn-primary">Submit</button>
