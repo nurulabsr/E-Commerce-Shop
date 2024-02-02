@@ -54,6 +54,18 @@
 
         <li class="dropdown {{
           SetActive([
+           'admin.products.*',
+          ])
+       }}">
+         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Product</span></a>
+         <ul class="dropdown-menu">
+              <li class="{{SetActive(['admin.products.create'])}}"> <a class="nav-link" href="{{route('admin.products.create')}}">Create Product</a> </li>
+              <li class="{{SetActive(['admin.products.index'])}}"> <a class="nav-link" href="{{route('admin.products.index')}}">Product Table</a> </li>
+         </ul> 
+       </li>
+
+        <li class="dropdown {{
+          SetActive([
            'admin.vendor-profile.*',
           ])
        }}">

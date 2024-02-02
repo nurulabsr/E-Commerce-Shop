@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\ProductDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,10 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ProductDataTable $datatable)
     {
         //
+        return $datatable->render('admin.products.index');
     }
 
     /**
