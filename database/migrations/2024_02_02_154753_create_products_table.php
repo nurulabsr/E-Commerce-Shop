@@ -32,7 +32,10 @@ return new class extends Migration
             $table->text('product_SEO_description');
             $table->integer('vendor_id');
             $table->integer('category_id');
+            $table->integer('sub_category_id');
+            $table->integer('child_category_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
