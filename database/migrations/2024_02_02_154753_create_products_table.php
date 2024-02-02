@@ -16,6 +16,15 @@ return new class extends Migration
             $table->text('product_thumnail_img');
             $table->string('product_name');
             $table->string('product_slug');
+            $table->integer('product_quantity');
+            $table->double('product_price');
+            $table->double('product_offer_price');
+            $table->date('product_offer_start_date');
+            $table->date('product_offer_end_date');
+            $table->text('product_short_description');
+            $table->text('product_long_description');
+            $table->text('product_video_link');
+            // $table
             $table->timestamps();
         });
     }
