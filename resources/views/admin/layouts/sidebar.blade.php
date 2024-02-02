@@ -51,6 +51,17 @@
                <li class="{{SetActive(['admin.brand.index'])}}"> <a class="nav-link" href="{{route('admin.brand.index')}}">Brand Table</a> </li>
           </ul> 
         </li>
+
+        <li class="dropdown {{
+          SetActive([
+           'admin.vendor-profile.*',
+          ])
+       }}">
+         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Admin Vendor Profile</span></a>
+         <ul class="dropdown-menu">
+              <li class="{{SetActive(['admin.vendor-profile.index'])}}"> <a class="nav-link" href="{{route('admin.vendor-profile.index')}}">Profile</a> </li>
+         </ul> 
+       </li>
         {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
         
 
