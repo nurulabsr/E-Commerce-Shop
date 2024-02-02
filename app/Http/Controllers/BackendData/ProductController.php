@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\ProductDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,8 +22,9 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('admin.products.create');
+    {   
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
