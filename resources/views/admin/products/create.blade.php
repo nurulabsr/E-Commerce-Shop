@@ -119,7 +119,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Category</label>
-                                <select name="product_category_id" class="form-control">
+                                <select name="product_category_id" class="form-control paranet-category">
                                     <option value="">Select</option>
                                     @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -128,7 +128,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Sub Category</label>
-                                <select name="" class="form-control">
+                                <select name="" class="form-control subcategory_name">
                                     <option value="">Select</option>
                                 </select>
                             </div>
@@ -152,3 +152,33 @@
     </div>
   </section>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('body').on('change', '.paranet-category', function(e){
+                // alert('Hi!');
+                let id = $(this).val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: "{{route('')}}",
+                    data: {
+                        id:id,
+                    },
+                    success: function(items){
+
+                    $('.subcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
+                    $.each(items, function(i, item){                                        // console.log(item.sub_category_name);
+                        $('.subcategory_name').append(`<option value="${item.id}">${item.sub_category_name}</option>`);
+                    })
+
+                    },
+
+                    error: function(xhr, status, error){
+
+                    }
+                })
+            })
+        })
+    </script>
+@endpush
