@@ -24,7 +24,12 @@ return new class extends Migration
             $table->text('product_short_description');
             $table->text('product_long_description');
             $table->text('product_video_link');
-            // $table
+            $table->boolean('is_product_top');
+            $table->boolean('is_product_best');
+            $table->boolean('is_product_featured');
+            $table->boolean('product_status');
+            
+            $table->
             $table->timestamps();
         });
     }
