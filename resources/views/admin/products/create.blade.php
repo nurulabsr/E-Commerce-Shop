@@ -119,8 +119,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Category</label>
-                                <select name="" class="form-control">
+                                <select name="product_category_id" class="form-control">
                                     <option value="">Select</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-4">
