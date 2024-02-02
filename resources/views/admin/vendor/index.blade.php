@@ -15,21 +15,48 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data"> 
+                   <form action="{{route('admin.vendor-profile.store')}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
                      <div class="form-group">
-                        <label for="">Icon</label>
+                        <label for="">Banner</label>
                         <div>
-                            <button name="category_icon" type="button" class="btn btn-primary btn-lg" data-selected-class="btn-danger" data-unselected-class="btn-primary" data-rows="4" data-cols="8" role="iconpicker"></button>
+                            <input type="file" name="admin_vendor_profile_banner" class="form-control">
                         </div>
                      </div>
                      <div class="form-group">
-                        <label for="">Category Name</label>
-                        <input type="text" name="category_name" value="{{old('slider_type')}}" class="form-control">
+                        <label for="">Vendor Phone</label>
+                        <input type="text" name="admin_vendor_profile_phone" value="{{old('admin_vendor_profile_phone')}}" class="form-control">
+                     </div>
+
+                     <div class="form-group">
+                        <label for="">Vendor Email</label>
+                        <input type="email" name="admin_vendor_profile_email" class="form-control">
+                     </div>
+
+                     <div class="form-group">
+                        <label for="">Vendor Address</label>
+                        <input type="text" name="admin_vendor_profile_address"  class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Category Status</label>
-                        <select name="category_status" value="{{old('banner_serial')}}" class="form-control">
+                        <label for="">Vendor Description</label>
+                        <input type="text" name="admin_vendor_profile_description" class="form-control">
+                     </div>
+                      
+                     <div class="form-group">
+                        <label for="">Vendor Facebook URL</label>
+                        <input type="url" name="admin_vendor_profile_facebook_url" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for="">Vendor Twitter URL</label>
+                        <input type="url" name="admin_vendor_profile_twitter_url" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for="">Vendor Instagram URL</label>
+                        <input type="url" name="admin_vendor_profile_insagram_url" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for="">Vendor Active Status</label>
+                        <select name="admin_vendor_profile_status" value="{{old('admin_vendor_profile_status')}}" class="form-control">
                             <option value="1">Active</option>
                             <option value="0">In Active</option>
                         </select>
