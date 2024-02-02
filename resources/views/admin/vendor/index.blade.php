@@ -2,14 +2,14 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-      <h1>Create Category</h1>
+      <h1>Admin Vendor Profile</h1>
     </div>
       <div class="section-body">
       <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                     <h4>Category</h4>
+                     <h4>Admin Vendor</h4>
                     <div class="card-header-action">
                        
                     </div>

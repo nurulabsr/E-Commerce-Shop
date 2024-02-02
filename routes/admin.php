@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BackendData\AdminController;
+use App\Http\Controllers\BackendData\AdminVendorProfileController;
 use App\Http\Controllers\BackendData\BrandController;
 use App\Http\Controllers\BackendData\CategoryController;
 use App\Http\Controllers\BackendData\ChildCategoryController;
@@ -39,3 +40,6 @@ Route::resource('child-category', ChildCategoryController::class);
 
 Route::put('chane-brand-satatus', [BrandController::class, 'UpdateStatus'])->name('brand.change-status');
 Route::resource('brand', BrandController::class);
+
+
+Route::resource('vendor-profile', AdminVendorProfileController::class);
