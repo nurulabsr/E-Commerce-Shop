@@ -12,7 +12,7 @@ class AdminVendorProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.vendor.index');
     }
 
     /**

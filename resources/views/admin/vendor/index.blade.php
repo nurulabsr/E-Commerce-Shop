@@ -39,7 +39,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Vendor Description</label>
-                        <input type="text" name="admin_vendor_profile_description" class="form-control">
+                       <textarea name="admin_vendor_profile_description" cols="30" rows="10" class="summernote form-control"></textarea>
                      </div>
                       
                      <div class="form-group">
