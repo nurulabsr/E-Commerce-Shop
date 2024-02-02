@@ -28,8 +28,10 @@ return new class extends Migration
             $table->boolean('is_product_best');
             $table->boolean('is_product_featured');
             $table->boolean('product_status');
-            
-            $table->
+            $table->text('product_SEO_title');
+            $table->text('product_SEO_description');
+            $table->integer('vendor_id');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }
