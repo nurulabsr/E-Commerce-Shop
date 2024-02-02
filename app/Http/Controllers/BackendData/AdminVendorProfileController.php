@@ -28,7 +28,14 @@ class AdminVendorProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'admin_vendor_profile_banner' => ['nullable', 'image', 'max:4096', 'mimes:png,jpg'],
+            'admin_vendor_profile_phone' => ['nullable', 'string', 'max:25'],
+            'admin_vendor_profile_email' => ['required', 'email', 'max:254'],
+            'admin_vendor_profile_address' => ['required', 'string', 'max:400'],
+            'admin_vendor_profile_description' => ['required', 'string', 'max:500'],
+            ''
+        ]);
     }
 
     /**
