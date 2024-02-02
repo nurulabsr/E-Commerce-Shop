@@ -128,13 +128,13 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Sub Category</label>
-                                <select name="" class="form-control subcategory_name">
+                                <select name="product_sub_category_id" class="form-control subcategory_name sub-category">
                                     <option value="">Select</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
                                 <label for="">Child Category</label>
-                                <select name="" class="form-control">
+                                <select name="product_child_category_id" class="form-control childcategory_name">
                                     <option value="">Select</option>
                                 </select>
                             </div>
@@ -181,4 +181,32 @@
             })
         })
     </script>
+    <script>
+    $(document).ready(function(){
+        $('body').on('change', '.sub-category', function(e){
+            // alert('Hi!');
+            let id = $(this).val();
+
+            $.ajax({
+                method: 'GET',
+                url: "{{route('admin.child-categories')}}",
+                data: {
+                    id:id,
+                },
+                success: function(items){
+
+                $('.childcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
+                $.each(items, function(i, item){                                        // console.log(item.sub_category_name);
+                    $('.childcategory_name').append(`<option value="${item.id}">${item.sub_category_name}</option>`);
+                })
+
+                },
+
+                error: function(xhr, status, error){
+
+                }
+            })
+        })
+    })
+  </script>
 @endpush
