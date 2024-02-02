@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
+            $table->text('admin_vendor_profile_banner')->nullable();
+            $table->string('admin_vendor_profile_phone');
+            $table->string('admin_vendor_profile_email');
+            $table->text('admin_vendor_profile_address');
+            $table->text('admin_vendor_profile_facebook_url')->nullable();
+            $table->text('admin_vendor_profile_twitter_url')->nullable();
+            $table->text('admin_vendor_profile_insagram_url')->nullable();
             $table->timestamps();
         });
     }
