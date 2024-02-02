@@ -54,6 +54,8 @@ class AdminVendorProfileController extends Controller
         $admin_vendor_profile->admin_vendor_profile_insagram_url = $request->admin_vendor_profile_insagram_url;
         $admin_vendor_profile->admin_vendor_profile_status = $request->admin_vendor_profile_status;
         $admin_vendor_profile->save();
+        toastr()->success('Admin Vendor Profile Uploaded!');
+        return redirect()->back();
     }
 
     /**
