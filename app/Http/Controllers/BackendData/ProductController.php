@@ -66,4 +66,13 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    /**
+     * Get Sub Categories of Product
+     */
+
+     public function GetSubCategories(Request $request){
+        
+     }
 }
