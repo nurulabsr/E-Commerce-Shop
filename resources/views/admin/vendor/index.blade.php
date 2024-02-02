@@ -20,40 +20,47 @@
                      <div class="form-group">
                         <label for="">Banner</label>
                         <div>
+                            <img src="{{asset($vendor_profile->admin_vendor_profile_banner)}}" width="50px">
                             <input type="file" name="admin_vendor_profile_banner" class="form-control">
                         </div>
                      </div>
                      <div class="form-group">
                         <label for="">Vendor Phone</label>
-                        <input type="text" name="admin_vendor_profile_phone" value="{{old('admin_vendor_profile_phone')}}" class="form-control">
+                        <input type="text" name="admin_vendor_profile_phone"  class="form-control" value="{{$vendor_profile->admin_vendor_profile_phone}}">
                      </div>
 
                      <div class="form-group">
                         <label for="">Vendor Email</label>
-                        <input type="email" name="admin_vendor_profile_email" class="form-control">
+                        <input type="email" name="admin_vendor_profile_email" class="form-control" value="{{$vendor_profile->admin_vendor_profile_email}}">
                      </div>
 
                      <div class="form-group">
                         <label for="">Vendor Address</label>
-                        <input type="text" name="admin_vendor_profile_address"  class="form-control">
+                        <input type="text" name="admin_vendor_profile_address"  class="form-control" value="{{$vendor_profile->admin_vendor_profile_address}}">
                      </div>
                      <div class="form-group">
                         <label for="">Vendor Description</label>
-                       <textarea name="admin_vendor_profile_description" cols="30" rows="10" class="summernote form-control"></textarea>
+                       <textarea name="admin_vendor_profile_description" cols="30" rows="10" class="summernote form-control"> {{$vendor_profile->admin_vendor_profile_description}}</textarea>
                      </div>
                       
                      <div class="form-group">
                         <label for="">Vendor Facebook URL</label>
-                        <input type="url" name="admin_vendor_profile_facebook_url" class="form-control">
+                        <input type="url" name="admin_vendor_profile_facebook_url" class="form-control" value="{{$vendor_profile->admin_vendor_profile_facebook_url}}">
                      </div>
                      <div class="form-group">
                         <label for="">Vendor Twitter URL</label>
-                        <input type="url" name="admin_vendor_profile_twitter_url" class="form-control">
+                        <input type="url" name="admin_vendor_profile_twitter_url" class="form-control" value="{{$vendor_profile->admin_vendor_profile_twitter_url}}">
                      </div>
                      <div class="form-group">
                         <label for="">Vendor Instagram URL</label>
-                        <input type="url" name="admin_vendor_profile_insagram_url" class="form-control">
+                        <input type="url" name="admin_vendor_profile_insagram_url" class="form-control" value="{{$vendor_profile->admin_vendor_profile_insagram_url}}">
                      </div>
+
+                     <div class="form-group">
+                        <label for="">Admin Vendor ID</label>
+                        <input type="number" name="admin_vendor_profile_user_id" class="form-control" value="{{ $user_profile ? $user_profile->id : '' }}">
+                    </div>
+                    
                      <div class="form-group">
                         <label for="">Vendor Active Status</label>
                         <select name="admin_vendor_profile_status" value="{{old('admin_vendor_profile_status')}}" class="form-control">

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('admin_vendor_profile_twitter_url')->nullable();
             $table->text('admin_vendor_profile_insagram_url')->nullable();
             $table->boolean('admin_vendor_profile_status')->nullable();
+            $table->integer('admin_vendor_profile_user_id');
             $table->timestamps();
             $table->softDeletes();
         });
