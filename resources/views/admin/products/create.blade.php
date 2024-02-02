@@ -64,6 +64,34 @@
                         <input type="text" name="product_Stock_keeping_unit" class="form-control">
                      </div>
                      <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">Is Product Top</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Is Product Best</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Is Product Featured</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
                         <button class="btn btn-primary">Submit</button>
                      </div>
                      
