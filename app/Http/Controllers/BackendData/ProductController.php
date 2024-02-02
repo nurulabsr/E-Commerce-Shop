@@ -76,4 +76,8 @@ class ProductController extends Controller
      public function GetSubCategories(Request $request){
        return  $subCategories = SubCategory::where('category_id', $request->id)->get();
      }
+
+     public function GetChildCategories(Request $request){
+        
+     }
 }
