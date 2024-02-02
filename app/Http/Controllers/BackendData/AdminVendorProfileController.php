@@ -49,7 +49,8 @@ class AdminVendorProfileController extends Controller
 
         // $admin_vendor_profile = new Vendor();
         $admin_vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
-        $admin_vendor_profile->admin_vendor_profile_banner = $this->ImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads');
+        // $admin_vendor_profile->admin_vendor_profile_banner = $this->ImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads');
+        $admin_vendor_profile->admin_vendor_profile_banner = empty(!$this->UpdateImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads', $admin_vendor_profile->admin_vendor_profile_banner)) ? $this->UpdateImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads', $admin_vendor_profile->admin_vendor_profile_banner) : $admin_vendor_profile->admin_vendor_profile_banner;
         $admin_vendor_profile->admin_vendor_profile_phone = $request->admin_vendor_profile_phone;
         $admin_vendor_profile->admin_vendor_profile_email = $request->admin_vendor_profile_email;
         $admin_vendor_profile->admin_vendor_profile_address = $request->admin_vendor_profile_address;
