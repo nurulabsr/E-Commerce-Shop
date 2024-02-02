@@ -67,7 +67,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Is Product Top</label>
-                                <select name="" id="" class="form-control">
+                                <select name="is_product_top" id="" class="form-control">
                                     <option value="">Select</option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Is Product Best</label>
-                                <select name="" id="" class="form-control">
+                                <select name="is_product_best" id="" class="form-control">
                                     <option value="">Select</option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
@@ -83,13 +83,21 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Is Product Featured</label>
-                                <select name="" id="" class="form-control">
+                                <select name="is_product_featured" id="" class="form-control">
                                     <option value="">Select</option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                         </div>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Product SEO Title</label>
+                        <input type="text" name="product_SEO_title" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label for="">Product SEO Description</label>
+                        <textarea name="product_SEO_description" class="form-control" cols="30" rows="10"></textarea>
                      </div>
                      <div class="form-group">
                         <button class="btn btn-primary">Submit</button>
