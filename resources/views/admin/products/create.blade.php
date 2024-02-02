@@ -128,7 +128,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Sub Category</label>
-                                <select name="product_sub_category_id" class="form-control subcategory_name sub-category">
+                                <select name="product_sub_category_id" class="form-control subcategory_name">
                                     <option value="">Select</option>
                                 </select>
                             </div>
@@ -180,10 +180,11 @@
                 })
             })
         })
-    </script>
-    <script>
+    /*  
+     Get Child Category Via Ajax
+    */
     $(document).ready(function(){
-        $('body').on('change', '.sub-category', function(e){
+        $('body').on('change', '.subcategory_name', function(e){
             // alert('Hi!');
             let id = $(this).val();
 
@@ -195,9 +196,11 @@
                 },
                 success: function(items){
 
-                $('.childcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
-                $.each(items, function(i, item){                                        // console.log(item.sub_category_name);
-                    $('.childcategory_name').append(`<option value="${item.id}">${item.sub_category_name}</option>`);
+                $('.childcategory_name').html('<option value="">Select</option>')      
+                //    console.log(items); 
+                $.each(items, function(i, item){ 
+                    // console.log(item.child_category_name);
+                    $('.childcategory_name').append(`<option value="${item.id}">${item.child_category_name}</option>`);
                 })
 
                 },
