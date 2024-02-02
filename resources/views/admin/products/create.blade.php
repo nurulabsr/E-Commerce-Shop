@@ -64,6 +64,7 @@
                         <input type="text" name="product_Stock_keeping_unit" class="form-control">
                      </div>
                      <div class="form-group">
+                        <label for="">Product Features</label>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Is Product Top</label>
@@ -100,21 +101,45 @@
                         <textarea name="product_SEO_description" class="form-control" cols="30" rows="10"></textarea>
                      </div>
                      <div class="form-group">
-                        <button class="btn btn-primary">Submit</button>
-                     </div>
-                     <div class="form-group">
+                        <label for="">Vendor and Brand</label>
                         <div class="row">
                             <div class="col-md-6">
-                                <select name="product_vendor_id" id="">
+                                <select name="product_vendor_id" class="form-control">
                                     <option value="">Select</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <select name="product_brand_id" id="">
+                                <select name="product_brand_id" class="form-control">
                                     <option value="">Select</option>
                                 </select>
                             </div>
                         </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">Category</label>
+                                <select name="" class="form-control">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Sub Category</label>
+                                <select name="" class="form-control">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Child Category</label>
+                                <select name="" class="form-control">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
                      </div>
                    </form>
                 </div>
