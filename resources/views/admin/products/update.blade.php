@@ -142,3 +142,64 @@
     </div>
   </section>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('body').on('change', '.paranet-category', function(e){
+                // alert('Hi!');
+                let id = $(this).val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: "{{route('admin.sub-categories')}}",
+                    data: {
+                        id:id,
+                    },
+                    success: function(items){
+
+                    $('.subcategory_name').html('<option value="">Select</option>')       //    console.log(items); 
+                    $.each(items, function(i, item){                                        // console.log(item.sub_category_name);
+                        $('.subcategory_name').append(`<option value="${item.id}">${item.sub_category_name}</option>`);
+                    })
+
+                    },
+
+                    error: function(xhr, status, error){
+
+                    }
+                })
+            })
+        })
+    /*  
+     Get Child Category Via Ajax
+    */
+    $(document).ready(function(){
+        $('body').on('change', '.subcategory_name', function(e){
+            // alert('Hi!');
+            let id = $(this).val();
+
+            $.ajax({
+                method: 'GET',
+                url: "{{route('admin.child-categories')}}",
+                data: {
+                    id:id,
+                },
+                success: function(items){
+
+                $('.childcategory_name').html('<option value="">Select</option>')      
+                //    console.log(items); 
+                $.each(items, function(i, item){ 
+                    // console.log(item.child_category_name);
+                    $('.childcategory_name').append(`<option value="${item.id}">${item.child_category_name}</option>`);
+                })
+
+                },
+
+                error: function(xhr, status, error){
+
+                }
+            })
+        })
+    })
+  </script>
+@endpush
