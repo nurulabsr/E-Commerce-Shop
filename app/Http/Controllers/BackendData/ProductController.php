@@ -127,6 +127,9 @@ class ProductController extends Controller
             'product_offer_end_date' => ['nullable', 'date'],
          // 'product_short_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:400'],
             'product_long_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:1000'],
+            'product_video_link' => ['required', 'url'],
+            'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
+            'product_type' => ['required', 'in:top_product,best_product,new_product,featured_product'],
 
         ]);
     }
