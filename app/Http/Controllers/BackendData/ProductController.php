@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
-            // 'product_name' => ['required', 'regex:/^[\p{N}\p{L}_]+$/u', 'max:254'],
+            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_]+$/u', 'max:254'],
             'product_quantity' => ['required', 'numeric', 'integer'],
             'product_price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], 
             'product_offer_price' => ['nullable', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
