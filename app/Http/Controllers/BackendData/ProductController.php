@@ -117,6 +117,10 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::findOrFail($id);
+        $request->validate([
+            'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
+            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254'],
+        ]);
     }
 
     /**
