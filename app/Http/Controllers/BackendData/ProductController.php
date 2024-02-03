@@ -71,7 +71,16 @@ class ProductController extends Controller
         $product->product_long_description = $request->product_long_description;
         $product->product_video_link = $request->product_video_link;
         $product->product_Stock_keeping_unit = $request->product_Stock_keeping_unit;
-        
+        $product->is_product_approved = 1;
+        $product->product_type = $request->product_type;
+        $product->product_SEO_title = $request->product_SEO_title;
+        $product->product_SEO_description = $request->product_SEO_description;
+        $product->product_brand_id = $request->product_brand_id;
+        $product->product_category_id = $request->product_category_id;
+        $product->product_sub_category_id = $request->product_sub_category_id;
+        $product->product_child_category_id = $request->product_child_category_id;
+
+        $product->save();
         
     }
 
