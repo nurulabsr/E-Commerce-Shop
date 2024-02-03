@@ -123,7 +123,14 @@
                             </div>
                         </div>
                      </div>
-
+                     <div class="col-md-4">
+                        <label for="">Product Status</label>
+                        <select name="product_status" class="form-control childcategory_name">
+                            <option value="">Select</option>
+                            <option value="1">Active</option>
+                            <option value="0">In Active</option>
+                        </select>
+                    </div>
                      <div class="form-group">
                         <button class="btn btn-primary">Submit</button>
                      </div>

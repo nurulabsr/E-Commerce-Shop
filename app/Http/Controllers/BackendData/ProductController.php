@@ -9,10 +9,13 @@ use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class ProductController extends Controller
 {
+    use UploadImageTrait;
     /**
      * Display a listing of the resource.
      */
@@ -60,6 +63,7 @@ class ProductController extends Controller
         ]);
 
         $product = new Product();
+        $product->product_thumnail_img = $this->ImageFilePathHandling($request, 'product_thumnail_img', 'uploads');
         $product->product_name = $request->product_name;
         $product->product_slug = Str::slug($request->product_name);
         $product->product_quantity = $request->product_quantity;
@@ -71,16 +75,19 @@ class ProductController extends Controller
         $product->product_long_description = $request->product_long_description;
         $product->product_video_link = $request->product_video_link;
         $product->product_Stock_keeping_unit = $request->product_Stock_keeping_unit;
-        $product->is_product_approved = 1;
         $product->product_type = $request->product_type;
+        $product->is_product_approved = 1;
+        $product->product_status = $request->product_status;
         $product->product_SEO_title = $request->product_SEO_title;
         $product->product_SEO_description = $request->product_SEO_description;
+        $product->product_vendor_id = Auth::user()->vendor->id;
         $product->product_brand_id = $request->product_brand_id;
         $product->product_category_id = $request->product_category_id;
         $product->product_sub_category_id = $request->product_sub_category_id;
         $product->product_child_category_id = $request->product_child_category_id;
 
         $product->save();
+        return redirect()->route('admin.products.index');
         
     }
 
