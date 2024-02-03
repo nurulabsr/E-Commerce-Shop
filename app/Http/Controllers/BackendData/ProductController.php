@@ -13,6 +13,7 @@ use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+// use App\Rules\AlphaNumSpacesPunctuation;
 class ProductController extends Controller
 {
     use UploadImageTrait;
@@ -42,22 +43,19 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
-            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254'],
-            'product_quantity' => ['required', 'numeric', 'integer'],
-            'product_price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], 
-            'product_offer_price' => ['nullable', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_quantity' => ['required', 'numeric', 'integer',  'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_price' => ['required', 'numeric', 'decimal:2,4', 'not_regex:/<[^>]*>|[=\';"]/'], 
+            'product_offer_price' => ['nullable', 'numeric', 'decimal:2', 'not_regex:/<[^>]*>|[\';"]/'],
             'product_offer_start_date' => ['nullable', 'date'],
             'product_offer_end_date' => ['nullable', 'date'],
-            // 'product_short_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:400'],
-            // 'product_long_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:1000'],
+            'product_short_description' => ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:400'],
+            'product_long_description' => ['required',   'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:1000'],
             'product_video_link' => ['required', 'url'],
             'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
             'product_type' => ['required', 'in:top_product,best_product,new_product,featured_product'],
-
-            // 'product_SEO_title' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
-            // 'product_SEO_description' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
-
-
+            'product_SEO_title' => ['required',       'not_regex:/<[^>]*>|[=\';"]/' ],
+            'product_SEO_description' => ['required', 'not_regex:/<[^>]*>|[=\';"]/' ],
             'product_brand_id' => ['required', 'integer', 'exists:brands,id'],
             'product_category_id' => ['required', 'integer', 'exists:categories,id'],
             'product_sub_category_id' => ['required', 'integer', 'exists:sub_categories,id'],
@@ -119,21 +117,19 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $request->validate([
             'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
-            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254'],
-            'product_quantity' => ['required', 'numeric', 'integer'],
-            'product_price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], 
-            'product_offer_price' => ['nullable', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_quantity' => ['required', 'numeric', 'integer',  'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_price' => ['required', 'numeric', 'decimal:2,4', 'not_regex:/<[^>]*>|[=\';"]/'], 
+            'product_offer_price' => ['nullable', 'numeric', 'decimal:2', 'not_regex:/<[^>]*>|[=\';"]/'],
             'product_offer_start_date' => ['nullable', 'date'],
             'product_offer_end_date' => ['nullable', 'date'],
-         // 'product_short_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:400'],
-            'product_long_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:1000'],
+            'product_short_description' => ['required',  'string', 'not_regex:/<[^>]*>|[=\';"]/',  'max:400'],
+            'product_long_description' => ['required',   'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:1000'],
             'product_video_link' => ['required', 'url'],
             'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
             'product_type' => ['required', 'in:top_product,best_product,new_product,featured_product'],
-            'product_SEO_title' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
-            'product_SEO_description' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
-
-
+            'product_SEO_title' => ['required',       'not_regex:/<[^>]*>|[=\';"]/' ],
+            'product_SEO_description' => ['required', 'not_regex:/<[^>]*>|[=\';"]/' ],
             'product_brand_id' => ['required', 'integer', 'exists:brands,id'],
             'product_category_id' => ['required', 'integer', 'exists:categories,id'],
             'product_sub_category_id' => ['required', 'integer', 'exists:sub_categories,id'],
