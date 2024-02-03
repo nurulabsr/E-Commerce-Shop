@@ -130,6 +130,14 @@ class ProductController extends Controller
             'product_video_link' => ['required', 'url'],
             'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
             'product_type' => ['required', 'in:top_product,best_product,new_product,featured_product'],
+            'product_SEO_title' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
+            'product_SEO_description' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
+
+
+            'product_brand_id' => ['required', 'integer', 'exists:brands,id'],
+            'product_category_id' => ['required', 'integer', 'exists:categories,id'],
+            'product_sub_category_id' => ['required', 'integer', 'exists:sub_categories,id'],
+            'product_child_category_id' => ['required', 'integer', 'exists:child_categories,id']
 
         ]);
     }
