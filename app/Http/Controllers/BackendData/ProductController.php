@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     /**
@@ -56,13 +57,19 @@ class ProductController extends Controller
             'product_sub_category_id' => ['required', 'integer', 'exists:sub_categories,id'],
             'product_child_category_id' => ['required', 'integer', 'exists:child_categories,id']
 
-
-
-
-
-
-
         ]);
+
+        $product = new Product();
+        $product->product_name = $request->product_name;
+        $product->product_slug = Str::slug($request->product_name);
+        $product->product_quantity = $request->product_quantity;
+        $product->product_price = $request->product_price;
+        $product->product_offer_price = $request->product_offer_price;
+        $product->product_offer_start_date = $request->product_offer_start_date;
+        $product->product_offer_end_date = $request->product_offer_end_date;
+        $product->product_short_description = $request->product_short_description;
+        $product->product_long_description = $request->product_long_description;
+        
     }
 
     /**
