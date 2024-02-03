@@ -31,22 +31,29 @@
                         <input type="number" name="product_quantity" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Product Price</label>
-                        <input type="number" name="product_price" class="form-control">
+                          <div class="row">
+                             <div class="col-md-6">
+                                <label for="">Product Price</label>
+                                <input type="number" name="product_price" class="form-control">
+                             </div>
+                             <div class="col-md-6">
+                                <label for="">Product Offer Price</label>
+                                <input type="number" name="product_offer_price" class="form-control">
+                             </div>
+                          </div>
                      </div>
                      <div class="form-group">
-                        <label for="">Product Offer Price</label>
-                        <input type="number" name="product_offer_price" class="form-control">
-                     </div>
-                     <div class="form-group">
-                        <label for="">Product Offer Date Start</label>
-                        <input type="date" name="product_offer_start_date" class="form-control">
-                     </div>
-                     <div class="form-group">
-                        <label for="">Product Offer Date End</label>
+                       <div class="row">
+                          <div class="col-md-6">
+                            <label for="">Product Offer Date Start</label>
+                            <input type="date" name="product_offer_start_date" class="form-control">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="">Product Offer Date End</label>
                         <input type="date" name="product_offer_end_date" class="form-control">
+                          </div>
+                       </div>
                      </div>
-
                      <div class="form-group">
                         <label for="">Product Short Description</label>
                         <textarea name="product_short_description" class="form-control" cols="30" rows="10"></textarea>
@@ -101,15 +108,20 @@
                         <textarea name="product_SEO_description" class="form-control" cols="30" rows="10"></textarea>
                      </div>
                      <div class="form-group">
-                        <label for="">Vendor and Brand</label>
+                        <label for="">Brand && Vendor</label>
                         <div class="row">
                             <div class="col-md-6">
-                                <select name="product_vendor_id" class="form-control">
+                                <label for="">Brand</label>
+                                <select name="product_brand_id" class="form-control">
                                     <option value="">Select</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <select name="product_brand_id" class="form-control">
+                                <label for="">Vendor</label>
+                                <select name="product_vendor_id" class="form-control">
                                     <option value="">Select</option>
                                 </select>
                             </div>

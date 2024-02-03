@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
+  <!-- Include Bootstrap Datepicker CSS -->
+{{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet"> --}}
+
 
 </head>
 <body>
@@ -34,6 +37,9 @@
       </footer>
     </div>
   </div>
+  <!-- Include Bootstrap Datepicker JS -->
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> --}}
+
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
   <script src="{{asset('BackendData/assets/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
@@ -42,16 +48,15 @@
   <script src="<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
   <!-- General JS Scripts -->
    @include('admin.CommonLink.footer')
+ {{-- <script>
+    // Initialize Bootstrap Datepicker
+    $(document).ready(function(){
+        $('#product_offer_start_date').datepicker({
+            format: 'yyyy-mm-dd', // specify the format you want
+            autoclose: true
+        });
+    });
+</script> --}}
 
-  <script>
-  $(document).ready(function(){
-    $('body').on('click', '.delete-item', function(event){
-        event.preventDefault();
-        {{-- let DeleteURL = $(this). altr('href'); --}}
-
-
-    })
-  })
-</script> 
 </body>
 </html>
