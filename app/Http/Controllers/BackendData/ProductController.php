@@ -42,19 +42,22 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
-            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_]+$/u', 'max:254'],
+            // 'product_name' => ['required', 'regex:/^[\p{N}\p{L}_]+$/u', 'max:254'],
             'product_quantity' => ['required', 'numeric', 'integer'],
             'product_price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], 
             'product_offer_price' => ['nullable', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
             'product_offer_start_date' => ['nullable', 'date'],
             'product_offer_end_date' => ['nullable', 'date'],
-            'product_short_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:400'],
-            'product_long_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:1000'],
+            // 'product_short_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:400'],
+            // 'product_long_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:1000'],
             'product_video_link' => ['required', 'url'],
             'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
             'product_type' => ['required', 'in:top_product,best_product,new_product,featured_product'],
-            'product_SEO_title' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/'],
-            'product_SEO_description' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/'],
+
+            // 'product_SEO_title' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
+            // 'product_SEO_description' => ['required', 'regex:/^[a-zA-Z0-9\s\-.,:;!?()&%$@#*\'"\[\]{}|\\\\\/]+$/'],
+
+
             'product_brand_id' => ['required', 'integer', 'exists:brands,id'],
             'product_category_id' => ['required', 'integer', 'exists:categories,id'],
             'product_sub_category_id' => ['required', 'integer', 'exists:sub_categories,id'],
@@ -87,7 +90,8 @@ class ProductController extends Controller
         $product->product_child_category_id = $request->product_child_category_id;
 
         $product->save();
-        return redirect()->route('admin.products.index');
+        toastr()->success("Added!");
+        return redirect()->back();   //route('admin.products.index');
         
     }
 

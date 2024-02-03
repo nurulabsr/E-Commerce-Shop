@@ -45,6 +45,6 @@ class User extends Authenticatable
 
 
     public function vendor(){
-        return $this->hasOne(Vendor::class);
+        return $this->hasOne(Vendor::class, 'admin_vendor_profile_user_id');
     }
 }
