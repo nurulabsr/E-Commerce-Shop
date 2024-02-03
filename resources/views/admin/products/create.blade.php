@@ -72,7 +72,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Product Features</label>
-                        <select name="" id="" class="form-control">
+                        <select name="product_type" id="" class="form-control">
                              <option value="">Select</option>
                              <option value="top_product">Top Product</option>
                              <option value="best_product">Best Product</option>
