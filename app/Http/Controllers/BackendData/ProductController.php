@@ -125,7 +125,8 @@ class ProductController extends Controller
             'product_offer_price' => ['nullable', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
             'product_offer_start_date' => ['nullable', 'date'],
             'product_offer_end_date' => ['nullable', 'date'],
-
+         // 'product_short_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:400'],
+            'product_long_description' => ['required', 'regex:/^[\p{L}\d\s\-_.,:;!?()&%$@#*\'"[\]{}|\\\/]+$/u', 'max:1000'],
 
         ]);
     }
