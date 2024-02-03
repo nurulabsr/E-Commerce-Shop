@@ -36,7 +36,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
+            'product_name' => ['required', 'string', 'max:254'],
+            'product_quantity' => ['required', 'numeric', 'integer'],
+            'product_price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'], 
+            'product_offer_price' => ['nullable', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'product_offer_start_date' => ['nullable', 'date'],
+            
+        ]);
     }
 
     /**

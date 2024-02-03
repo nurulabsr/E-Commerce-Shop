@@ -28,17 +28,17 @@
                      </div>
                      <div class="form-group">
                         <label for=""> Product Quantity</label>
-                        <input type="number" name="product_quantity" class="form-control">
+                        <input type="number" min="0" name="product_quantity" class="form-control">
                      </div>
                      <div class="form-group">
                           <div class="row">
                              <div class="col-md-6">
                                 <label for="">Product Price</label>
-                                <input type="number" name="product_price" class="form-control">
+                                <input type="text" name="product_price" class="form-control">
                              </div>
                              <div class="col-md-6">
                                 <label for="">Product Offer Price</label>
-                                <input type="number" name="product_offer_price" class="form-control">
+                                <input type="text" name="product_offer_price" class="form-control">
                              </div>
                           </div>
                      </div>
@@ -56,11 +56,11 @@
                      </div>
                      <div class="form-group">
                         <label for="">Product Short Description</label>
-                        <textarea name="product_short_description" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="product_short_description" class="form-control summernote" cols="30" rows="10"></textarea>
                      </div>
                      <div class="form-group">
                         <label for="">Product Long Description</label>
-                        <textarea name="product_long_description" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="product_long_description" class="form-control summernote" cols="30" rows="10"></textarea>
                      </div>
                      <div class="form-group">
                         <label for="">Product Video URL</label>
@@ -72,32 +72,14 @@
                      </div>
                      <div class="form-group">
                         <label for="">Product Features</label>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="">Is Product Top</label>
-                                <select name="is_product_top" id="" class="form-control">
-                                    <option value="">Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Is Product Best</label>
-                                <select name="is_product_best" id="" class="form-control">
-                                    <option value="">Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Is Product Featured</label>
-                                <select name="is_product_featured" id="" class="form-control">
-                                    <option value="">Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                </select>
-                            </div>
-                        </div>
+                        <select name="" id="" class="form-control">
+                             <option value="">Select</option>
+                             <option value="top_product">Top Product</option>
+                             <option value="best_product">Best Product</option>
+                             <option value="new_product">New Arraival</option>
+                             <option value="featured_product">Featured Product</option>
+
+                        </select>
                      </div>
                      <div class="form-group">
                         <label for="">Product SEO Title</label>
@@ -108,24 +90,13 @@
                         <textarea name="product_SEO_description" class="form-control" cols="30" rows="10"></textarea>
                      </div>
                      <div class="form-group">
-                        <label for="">Brand && Vendor</label>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Brand</label>
-                                <select name="product_brand_id" class="form-control">
-                                    <option value="">Select</option>
-                                    @foreach ($brands as $brand)
-                                        <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Vendor</label>
-                                <select name="product_vendor_id" class="form-control">
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
-                        </div>
+                        <label for="">Brand</label>
+                        <select name="product_brand_id" class="form-control">
+                            <option value="">Select</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                            @endforeach
+                        </select>
                      </div>
                      <div class="form-group">
                         <div class="row">

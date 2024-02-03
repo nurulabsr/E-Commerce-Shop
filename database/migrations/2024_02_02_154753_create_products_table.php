@@ -25,9 +25,7 @@ return new class extends Migration
             $table->text('product_long_description');
             $table->text('product_video_link')->nullable();
             $table->string('product_Stock_keeping_unit');
-            $table->boolean('is_product_top');
-            $table->boolean('is_product_best');
-            $table->boolean('is_product_featured');
+            $table->string('product_type');
             $table->integer('is_product_approved')->default('0');
             $table->boolean('product_status');
             $table->text('product_SEO_title');
