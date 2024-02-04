@@ -17,7 +17,7 @@
                 <div class="card-header">
                      <h4>Product Image Gallery</h4>
                     <div class="card-header-action"> 
-                        <a href="{{route('admin.category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
+                        <a href="{{route('admin.image-gallery.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -31,5 +31,31 @@
 @endsection
 @push('scripts')
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
-
+<script>
+    $(function(){
+        $('body').on('click', '.status', function(){
+            let isChecked = $(this).is(':checked');
+            let id = $(this).data('id');     
+                      // console.log(id);  // let id = $(this).attr('id');                                       
+            $.ajax({
+              url:'{{route("admin.products.status")}}',  //products.status
+              method: 'PUT',
+              data:{
+                _token: '{{ csrf_token() }}', 
+                product_status:isChecked,
+                id:id,
+              },
+              success: function(data){
+                toastr.success(data.message);
+              },
+              error: function(xhr, status, error){
+                console.log(error);
+              }
+  
+  
+            })
+        });
+    });
+  </script>
+  @endpush
 
