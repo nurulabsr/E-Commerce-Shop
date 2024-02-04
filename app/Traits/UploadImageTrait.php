@@ -58,4 +58,5 @@ trait UploadImageTrait
             return $paths;
         }
     }
+    
 }

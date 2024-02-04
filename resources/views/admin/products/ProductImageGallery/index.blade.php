@@ -20,8 +20,12 @@
                            <div class="form-group">
                              <label for="">Upload Image <code>[Multipe Image Supported]</code> </label>
                             <div>
-                                <input type="file" name="" multiple>
+                                <input type="file" name="product_image_gallery_img[]" multiple class="form-control">
+                                <input type="hidden" name="product_image_gallery_product_id" value="{{$product->id}}">
                             </div>
+                           </div>
+                           <div class="form-group">
+                             <button class="btn btn-primary">Upload</button>
                            </div>
                          </form>
                     </section>
