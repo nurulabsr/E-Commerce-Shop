@@ -50,7 +50,7 @@ class ProductDataTable extends DataTable
                     break;
                }
             })
-            ->rawColumns(['action', 'product_thumnail_img'])
+            ->rawColumns(['action', 'product_thumnail_img', 'product_type'])
             ->setRowId('id');
     }
 
@@ -96,6 +96,7 @@ class ProductDataTable extends DataTable
             Column::make('product_quantity'),
             Column::make('product_price'),
             Column::make('product_short_description'),
+            Column::make('product_type')->title('Product Type'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
