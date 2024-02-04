@@ -144,6 +144,12 @@ class ProductController extends Controller
         $product->product_offer_price = $request->product_offer_price;
         $product->product_offer_start_date = $request->product_offer_start_date;
         $product->product_offer_end_date = $request->product_offer_end_date;
+        $product->product_short_description = $request->product_short_description;
+        $product->product_long_description = $request->product_long_description;
+        $product->product_video_link = $request->product_video_link;
+        $product->product_Stock_keeping_unit = $request->product_Stock_keeping_unit;
+        $product->product_type = $request->product_type;
+        $product->is_product_approved = 1
     }
 
     /**
