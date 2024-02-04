@@ -46,10 +46,26 @@ class ProductDataTable extends DataTable
                     return '<i class="badge badge-warning">Featured Product</i>';
                     break;
                 default:
-                    return "Empty!";
+                    return '<i class="badge badge-dark">No Product Avaiable</i>';
                     break;
                }
             })
+
+            ->addColumn('product_status', function($query){
+                if($query->product_status==1){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
             ->rawColumns(['action', 'product_thumnail_img', 'product_type'])
             ->setRowId('id');
     }
@@ -97,6 +113,7 @@ class ProductDataTable extends DataTable
             Column::make('product_price'),
             Column::make('product_short_description'),
             Column::make('product_type')->title('Product Type'),
+            Column::make('product_status')->title('Product Title'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
