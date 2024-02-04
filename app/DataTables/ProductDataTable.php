@@ -46,7 +46,7 @@ class ProductDataTable extends DataTable
                     return '<i class="badge badge-warning">Featured Product</i>';
                     break;
                 default:
-                    # code...
+                    return "Empty!";
                     break;
                }
             })
