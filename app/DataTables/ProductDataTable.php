@@ -27,7 +27,7 @@ class ProductDataTable extends DataTable
                 $dltBtn = "<a href='".route('admin.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                 $moreBtn = '
                 <div class="btn-group ml-2">
-                  <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden"><i class="fa-solid fa-gear"></i></span>
                   </button>
                   <ul class="dropdown-menu">

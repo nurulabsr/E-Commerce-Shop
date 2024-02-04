@@ -150,13 +150,13 @@
     </div>
   </section>
 @endsection
-{{-- @push('scripts')
+@push('scripts')
     <script>
         $(document).ready(function(){
             $('body').on('change', '.paranet-category', function(e){
                 // alert('Hi!');
+                $('.childcategory_name').html('<option value="">Select</option>')      
                 let id = $(this).val();
-
                 $.ajax({
                     method: 'GET',
                     url: "{{route('admin.sub-categories')}}",
@@ -210,4 +210,4 @@
         })
     })
   </script>
-@endpush --}}
+@endpush
