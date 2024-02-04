@@ -39,7 +39,9 @@ class ProductDataTable extends DataTable
                 case 'best_product':
                      return '<i class="badge badge-success">Best Product</i>';
                      break;
-
+                case 'new_product':
+                return '<i class="badge badge-warning">New Product</i>';
+                break;
                 default:
                     # code...
                     break;
