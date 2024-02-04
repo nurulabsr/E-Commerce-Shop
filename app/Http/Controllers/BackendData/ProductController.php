@@ -149,7 +149,12 @@ class ProductController extends Controller
         $product->product_video_link = $request->product_video_link;
         $product->product_Stock_keeping_unit = $request->product_Stock_keeping_unit;
         $product->product_type = $request->product_type;
-        $product->is_product_approved = 1
+        $product->is_product_approved = 1;
+        $product->product_status = $request->product_status;
+        $product->product_SEO_title = $request->product_SEO_title;
+        $product->product_SEO_description = $request->product_SEO_description;
+        $product->product_vendor_id = Auth::user()->vendor->id;
+        $product->product_brand_id = $request->product_brand_id;
     }
 
     /**
