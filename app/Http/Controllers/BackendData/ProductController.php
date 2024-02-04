@@ -136,7 +136,8 @@ class ProductController extends Controller
             'product_child_category_id' => ['required', 'integer', 'exists:child_categories,id']
 
         ]);
-
+        $path =  $this->UpdateImageFilePathHandling($request, 'product_thumnail_img', 'uploads', $product->product_thumnail_img);
+        $product->product_thumnail_img = empty(!$path) ? $path : $product->product_thumnail_img;
         $product->product_name = $request->product_name;
         $product->product_slug = Str::slug($request->product_name);
         $product->product_quantity = $request->product_quantity;
