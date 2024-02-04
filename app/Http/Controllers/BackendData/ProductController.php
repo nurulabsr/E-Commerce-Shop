@@ -121,14 +121,14 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $request->validate([
-            'product_thumnail_img' => ['required', 'image', 'max:4096', 'mimes:png,jpg'],
-            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_thumnail_img' => ['nullable', 'image', 'max:4096', 'mimes:png,jpg'],
+            'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'not_regex:/<[^>]*>|[=\';"]/', 'max:254', 'unique:products,product_name,'. $id],
             'product_quantity' => ['required', 'numeric', 'integer',  'not_regex:/<[^>]*>|[=\';"]/'],
             'product_price' => ['required', 'numeric', 'decimal:2,4', 'not_regex:/<[^>]*>|[=\';"]/'], 
             'product_offer_price' => ['nullable', 'numeric', 'decimal:2', 'not_regex:/<[^>]*>|[\';"]/'],
             'product_offer_start_date' => ['nullable', 'date'],
             'product_offer_end_date' => ['nullable', 'date'],
-            'product_short_description' => ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:400'],
+            // 'product_short_description' => ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:400'],
             'product_long_description' => ['required',   'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:1000'],
             'product_video_link' => ['required', 'url'],
             'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
@@ -142,7 +142,7 @@ class ProductController extends Controller
 
         ]);
         $path =  $this->UpdateImageFilePathHandling($request, 'product_thumnail_img', 'uploads', $product->product_thumnail_img);
-        $product->product_thumnail_img = empty(!$path) ? $path : $product->product_thumnail_img;
+        $product->product_thumnail_img = !empty($path) ? $path : $product->product_thumnail_img;
         $product->product_name = $request->product_name;
         $product->product_slug = Str::slug($request->product_name);
         $product->product_quantity = $request->product_quantity;

@@ -78,7 +78,7 @@ class BrandController extends Controller
  
          $brand = Brand::findOrFail($id);
          $path = $this->UpdateImageFilePathHandling($request, 'brand_image', 'BrandImage', $brand->brand_image);
-         $brand->brand_image =  empty(!$path) ? $path : $brand->brand_image; 
+         $brand->brand_image =  !empty($path) ? $path : $brand->brand_image; 
          $brand->brand_name = $request->brand_name;
          $brand->brand_slug = Str::slug($request->brand_name);
          $brand->is_brand_featured = $request->is_brand_featured;
