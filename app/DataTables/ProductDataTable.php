@@ -25,7 +25,18 @@ class ProductDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='".route('admin.products.edit', $query->id)."' class='btn btn-primary btn-sm'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
                 $dltBtn = "<a href='".route('admin.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
-                return $editBtn.$dltBtn;
+                $moreBtn = '
+                <div class="btn-group ml-2">
+                  <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden"><i class="fa-solid fa-gear"></i></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>';
+                return $editBtn.$dltBtn.$moreBtn;
             })
             ->addColumn('product_thumnail_img', function($query){
                 return "<img width='40px' src='".asset($query->product_thumnail_img)."'></img>";
@@ -117,7 +128,7 @@ class ProductDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(220)
                   ->addClass('text-center'),
         ];
     }
