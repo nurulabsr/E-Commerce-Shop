@@ -22,7 +22,14 @@ class ProductImageGalleryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'productimagegallery.action')
+            ->addColumn('action', function($query){
+               return $dltBtn = "<a href='".route('admin.products-image-gallery.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+               
+            })
+            ->addColumn('product_image_gallery_img', function($query){
+                return "<img width='40px' src='".asset($query->product_image_gallery_img)."'></img>";
+            })
+            ->rawColumns(['action', 'product_image_gallery_img'])
             ->setRowId('id');
     }
 
@@ -44,7 +51,7 @@ class ProductImageGalleryDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -63,13 +70,12 @@ class ProductImageGalleryDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('add your columns'),
+            Column::make('product_image_gallery_img'),
             Column::make('created_at'),
-            Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(160)
                   ->addClass('text-center'),
         ];
     }
