@@ -30,6 +30,21 @@ class ProductDataTable extends DataTable
             ->addColumn('product_thumnail_img', function($query){
                 return "<img width='40px' src='".asset($query->product_thumnail_img)."'></img>";
             })
+            
+            ->addColumn('product_type', function($query){
+               switch ($query->product_type) {
+                case 'top_product':
+                    return '<i class="badge badge-success">Top Product</i>';
+                    break;
+                case 'best_product':
+                     return '<i class="badge badge-success">Best Product</i>';
+                     break;
+
+                default:
+                    # code...
+                    break;
+               }
+            })
             ->rawColumns(['action', 'product_thumnail_img'])
             ->setRowId('id');
     }
