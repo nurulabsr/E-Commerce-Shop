@@ -155,6 +155,12 @@ class ProductController extends Controller
         $product->product_SEO_description = $request->product_SEO_description;
         $product->product_vendor_id = Auth::user()->vendor->id;
         $product->product_brand_id = $request->product_brand_id;
+        $product->product_category_id = $request->product_category_id;
+        $product->product_sub_category_id = $request->product_sub_category_id;
+        $product->product_child_category_id = $request->product_child_category_id;
+        $product->save();
+        toastr()->success("Updated Successfully!");
+        return redirect()->back();
     }
 
     /**
