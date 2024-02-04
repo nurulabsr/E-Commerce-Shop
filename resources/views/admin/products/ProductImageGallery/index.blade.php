@@ -9,7 +9,23 @@
         <div class="breadcrumb-item">Image Gallery</div>
       </div>
     </div>
-
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                
+                    <section>
+                         <form action="" method="POST" enctype="multipart/form-data">
+                           @csrf
+                           <div class="form-group">
+                             <label for="">Upload Image <code>[Multipe Image Supported]</code> </label>
+                             <input type="file" name="" id="">
+                           </div>
+                         </form>
+                    </section>
+                
+            </div>
+        </div>
+      </div>
     <div class="section-body">
       <div class="row">
         <div class="col-12">
@@ -17,7 +33,7 @@
                 <div class="card-header">
                      <h4>Product Image Gallery</h4>
                     <div class="card-header-action"> 
-                        <a href="{{route('admin.image-gallery.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
+                        <a href="" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
                     </div>
                 </div>
                 <div class="card-body">

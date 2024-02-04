@@ -60,4 +60,4 @@ Route::resource('products', ProductController::class);
 
 
 
-Route::resource('product/image-gallery', ProductImageGalleryController::class);
+Route::resource('products-image-gallery', ProductImageGalleryController::class);
