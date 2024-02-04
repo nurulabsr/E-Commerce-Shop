@@ -194,4 +194,8 @@ class ProductController extends Controller
         $subCategories = ChildCategory::where('sub_category_id', $request->id)->get();
         return $subCategories;
      }
+    
+     public function ChangeProductStatus(Request $request){
+
+     }
 }

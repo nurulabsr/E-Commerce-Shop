@@ -66,7 +66,7 @@ class ProductDataTable extends DataTable
                  return $toggleBtn;
                 }
            })
-            ->rawColumns(['action', 'product_thumnail_img', 'product_type'])
+            ->rawColumns(['action', 'product_thumnail_img', 'product_type', 'product_status'])
             ->setRowId('id');
     }
 
@@ -113,7 +113,7 @@ class ProductDataTable extends DataTable
             Column::make('product_price'),
             Column::make('product_short_description'),
             Column::make('product_type')->title('Product Type'),
-            Column::make('product_status')->title('Product Title'),
+            Column::make('product_status')->title('Product Status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
