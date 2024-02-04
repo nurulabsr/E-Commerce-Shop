@@ -150,7 +150,7 @@
     </div>
   </section>
 @endsection
-@push('scripts')
+{{-- @push('scripts')
     <script>
         $(document).ready(function(){
             $('body').on('change', '.paranet-category', function(e){
@@ -210,4 +210,4 @@
         })
     })
   </script>
-@endpush
+@endpush --}}
