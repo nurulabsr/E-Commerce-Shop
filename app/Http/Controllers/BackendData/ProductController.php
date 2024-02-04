@@ -120,10 +120,10 @@ class ProductController extends Controller
             'product_name' => ['required', 'regex:/^[\p{N}\p{L}_\s]+$/', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
             'product_quantity' => ['required', 'numeric', 'integer',  'not_regex:/<[^>]*>|[=\';"]/'],
             'product_price' => ['required', 'numeric', 'decimal:2,4', 'not_regex:/<[^>]*>|[=\';"]/'], 
-            'product_offer_price' => ['nullable', 'numeric', 'decimal:2', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_offer_price' => ['nullable', 'numeric', 'decimal:2', 'not_regex:/<[^>]*>|[\';"]/'],
             'product_offer_start_date' => ['nullable', 'date'],
             'product_offer_end_date' => ['nullable', 'date'],
-            'product_short_description' => ['required',  'string', 'not_regex:/<[^>]*>|[=\';"]/',  'max:400'],
+            'product_short_description' => ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:400'],
             'product_long_description' => ['required',   'string', 'not_regex:/<[^>]*>|[=\';"]/', 'max:1000'],
             'product_video_link' => ['required', 'url'],
             'product_Stock_keeping_unit' => ['required', 'alpha_dash', 'max:60'],
@@ -136,6 +136,10 @@ class ProductController extends Controller
             'product_child_category_id' => ['required', 'integer', 'exists:child_categories,id']
 
         ]);
+
+        $product->product_name = $request->product_name;
+        $product->product_slug = Str::slug($request->product_name);
+        $product->product_quantity = $request->product_quantity;
     }
 
     /**
