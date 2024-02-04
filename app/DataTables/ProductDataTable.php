@@ -31,7 +31,7 @@ class ProductDataTable extends DataTable
                     <span class="visually-hidden"><i class="fa-solid fa-gear"></i></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="'.route('admin.products-image-gallery.index').'">Image Gallery</a></li>
+                    <li><a class="dropdown-item" href="'.route('admin.products-image-gallery.index',['product' => $query->id]).'">Image Gallery</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                   </ul>

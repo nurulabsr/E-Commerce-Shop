@@ -42,4 +42,20 @@ trait UploadImageTrait
             File::delete(public_path($path));
         }
     }
+
+    public function MultipleImageFilePathHandling(Request $request, $imageInputName, $path)
+    {   
+        if ($request->hasFile($imageInputName)) {
+            $paths = [];
+            $images = $request->file($imageInputName);
+            foreach ($images as $image) {
+                $uniqueIdentifier = Str::uuid();
+                $originalExtension = $image->getClientOriginalExtension();
+                $newFilename = $uniqueIdentifier . '.' . $originalExtension;
+                $image->move(public_path($path), $newFilename);
+                $paths[] = $path . '/' . $newFilename;
+            }
+            return $paths;
+        }
+    }
 }

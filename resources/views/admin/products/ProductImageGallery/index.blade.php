@@ -6,19 +6,22 @@
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
         <div class="breadcrumb-item"><a href="#">Components</a></div>
-        <div class="breadcrumb-item">Image Gallery</div>
+        <div class="breadcrumb-item">Image Gallery {{$product->product_name}}</div>
       </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                
-                    <section>
+            <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    
+                    <section> 
+                        <h4>Product: {{$product->product_name}}</h4>
                          <form action="" method="POST" enctype="multipart/form-data">
                            @csrf
                            <div class="form-group">
                              <label for="">Upload Image <code>[Multipe Image Supported]</code> </label>
-                             <input type="file" name="" id="">
+                            <div>
+                                <input type="file" name="" multiple>
+                            </div>
                            </div>
                          </form>
                     </section>
@@ -31,7 +34,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                     <h4>Product Image Gallery</h4>
+                     <h4>Product Image Gallery Table of {{$product->product_name}}</h4>
                     <div class="card-header-action"> 
                         <a href="" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
                     </div>

@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('product_image_galleries', function (Blueprint $table) {
             $table->id();
+            $table->text('product_image_gallery_img');
+            $table->integer('product_image_gallery_product_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -21,7 +24,10 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
+        Schema::table('product_image_galleries', function(Blueprint $table){
+           $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('product_image_galleries');
     }
 };

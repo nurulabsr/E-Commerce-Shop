@@ -4,16 +4,18 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\ProductImageGalleryDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Traits\UploadImageTrait;
 
 class ProductImageGalleryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(ProductImageGalleryDataTable $datatable)
-    {
-        return $datatable->render('admin.products.ProductImageGallery.index');
+    use UploadImageTrait;
+    public function index(ProductImageGalleryDataTable $datatable, Request $request)
+    {  
+        $product = Product::findOrFail($request->product);
+        // dd($request->product);
+        return $datatable->render('admin.products.ProductImageGallery.index', compact('product'));
     }
 
     /**
@@ -29,7 +31,7 @@ class ProductImageGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ImagePath = $this->MultipleImageFilePathHandling($request, '', '');
     }
 
     /**
