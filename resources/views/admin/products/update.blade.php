@@ -124,6 +124,9 @@
                                 <label for="">Child Category</label>
                                 <select name="product_child_category_id" value="{{old("product_child_category_id")}}" class="form-control childcategory_name">
                                     <option value="">Select</option>
+                                    @foreach ($childCategories as $childCategory)
+                                        <option {{$childCategory->id == $product->product_child_category_id ? 'selected' : ''}} value="{{$childCategory->id}}">{{$childCategory->child_category_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -132,8 +135,8 @@
                         <label for="">Product Status</label>
                         <select name="product_status"value="{{old("product_status")}}"  class="form-control">
                             <option value="">Select</option>
-                            <option value="1">Active</option>
-                            <option value="0">In Active</option>
+                            <option {{$product->product_status == 1 ? 'selected' : ''}} value="1">Active</option>
+                            <option {{$product->product_status == 0 ? 'selected' : ''}} value="0">In Active</option>
                         </select>
                     </div>
                      <div class="form-group">
