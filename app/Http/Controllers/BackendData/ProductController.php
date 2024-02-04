@@ -198,5 +198,7 @@ class ProductController extends Controller
      public function ChangeProductStatus(Request $request){
         $product = Product::findOrFail($request->id);
         $product->product_status = $request->product_status == 'true' ? '1' : '0';
+        $product->save();
+        return response(['message' => 'Status Changed Successfully!'], 200);
      }
 }
