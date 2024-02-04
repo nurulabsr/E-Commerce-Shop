@@ -15,30 +15,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="{{route('admin.products.update')}}" method="POST" enctype="multipart/form-data"> 
+                   <form action="{{route('admin.products.update', $product->id)}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
                      @method('PUT')
                      <div class="form-group">
-                        <label for="">Product Thumbnail Image</label>
+                        <label for="">Product Thumbnail Imagee</label>
+                        <img src="{{asset($product->product_thumnail_img)}}" alt="" width="50px">
                         <input type="file" name="product_thumnail_img"  class="form-control">
+
                      </div>
                      <div class="form-group">
                         <label for="">Product Name</label>
-                        <input type="text" name="product_name"value="{{old("product_name")}}"  class="form-control">
+                        <input type="text" name="product_name"value="{{$product->product_name}}"  class="form-control">
                      </div>
                      <div class="form-group">
                         <label for=""> Product Quantity</label>
-                        <input type="number" min="0" name="product_quantity"value="{{old("product_quantity")}}"  class="form-control">
+                        <input type="number" min="0" name="product_quantity"value="{{$product->product_quantity}}"  class="form-control">
                      </div>
                      <div class="form-group">
                           <div class="row">
                              <div class="col-md-6">
                                 <label for="">Product Price</label>
-                                <input type="text" name="product_price"value="{{old("product_price")}}"  class="form-control">
+                                <input type="text" name="product_price"value="{{$product->product_price}}"  class="form-control">
                              </div>
                              <div class="col-md-6">
                                 <label for="">Product Offer Price</label>
-                                <input type="text" name="product_offer_price"value="{{old("product_offer_price")}}"  class="form-control">
+                                <input type="text" name="product_offer_price"value="{{$product->product_offer_price}}"  class="form-control">
                              </div>
                           </div>
                      </div>
@@ -46,55 +48,55 @@
                        <div class="row">
                           <div class="col-md-6">
                             <label for="">Product Offer Date Start</label>
-                            <input type="date" name="product_offer_start_date"value="{{old("product_offer_start_date")}}"  class="form-control">
+                            <input type="date" name="product_offer_start_date"value="{{$product->product_offer_start_date}}"  class="form-control">
                           </div>
                           <div class="col-md-6">
                             <label for="">Product Offer Date End</label>
-                        <input type="date" name="product_offer_end_date"value="{{old("product_offer_end_date")}}"  class="form-control">
+                        <input type="date" name="product_offer_end_date"value="{{$product->product_offer_end_date}}"  class="form-control">
                           </div>
                        </div>
                      </div>
                      <div class="form-group">
                         <label for="">Product Short Description</label>
-                        <textarea name="product_short_description" class="form-control summernote"   cols="30" rows="10">{{old("product_short_description")}}</textarea>
+                        <textarea name="product_short_description" class="form-control summernote"   cols="30" rows="10">{{$product->product_short_description}}</textarea>
                      </div>
                      <div class="form-group">
                         <label for="">Product Long Description</label>
-                        <textarea name="product_long_description" class="form-control summernote" cols="30" rows="10">{{old("product_long_description")}} </textarea>
+                        <textarea name="product_long_description" class="form-control summernote" cols="30" rows="10">{{$product->product_long_description}} </textarea>
                      </div>
                      <div class="form-group">
                         <label for="">Product Video URL</label>
-                        <input type="text" name="product_video_link" value="{{old("product_video_link")}}" class="form-control">
+                        <input type="text" name="product_video_link" value="{{$product->product_video_link}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Product Stock Keeping Unit</label>
-                        <input type="text" name="product_Stock_keeping_unit"value="{{old("product_Stock_keeping_unit")}}"  class="form-control">
+                        <input type="text" name="product_Stock_keeping_unit"value="{{$product->product_Stock_keeping_unit}}"  class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Product Features</label>
-                        <select name="product_type" value="{{old("product_type")}}"  class="form-control">
+                        <select name="product_type" class="form-control">
                              <option value="">Select</option>
-                             <option value="top_product">Top Product</option>
-                             <option value="best_product">Best Product</option>
-                             <option value="new_product">New Arraival</option>
-                             <option value="featured_product">Featured Product</option>
+                             <option {{$product->product_type == "top_product" ? 'selected' : ''}} value="top_product">Top Product</option>
+                             <option {{$product->product_type == "best_product" ? 'selected' : ''}} value="best_product">Best Product</option>
+                             <option {{$product->product_type == "new_product" ? 'selected' : ''}} value="new_product">New Arraival</option>
+                             <option {{$product->product_type == "featured_product" ? 'selected' : ''}} value="featured_product">Featured Product</option>
 
                         </select>
                      </div>
                      <div class="form-group">
                         <label for="">Product SEO Title</label>
-                        <input type="text" name="product_SEO_title" value="{{old("product_SEO_title")}}"  class="form-control">
+                        <input type="text" name="product_SEO_title" value="{{$product->product_SEO_title}}"  class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Product SEO Description</label>
-                        <textarea name="product_SEO_description" class="form-control" cols="30" rows="10"> {{old('product_SEO_description')}}</textarea>
+                        <textarea name="product_SEO_description" class="form-control" cols="30" rows="10"> {{$product->product_SEO_description}}</textarea>
                      </div>
                      <div class="form-group">
                         <label for="">Brand</label>
-                        <select name="product_brand_id" value="{{old("product_brand_id")}}" class="form-control">
+                        <select name="product_brand_id" value="{{$product->product_brand_id}}" class="form-control">
                             <option value="">Select</option>
                             @foreach ($brands as $brand)
-                                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                <option {{$brand->id == $product->product_brand_id ? 'selected' : ''}} value="{{$brand->id}}">{{$brand->brand_name}}</option>
                             @endforeach
                         </select>
                      </div>
@@ -105,7 +107,7 @@
                                 <select name="product_category_id" value="{{old("product_category_id")}}" class="form-control paranet-category">
                                     <option value="">Select</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                        <option {{$category->id==$product->product_category_id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -113,6 +115,9 @@
                                 <label for="">Sub Category</label>
                                 <select name="product_sub_category_id" value="{{old("product_sub_category_id")}}" class="form-control subcategory_name">
                                     <option value="">Select</option>
+                                   @foreach ($subCategories as $subCategory)
+                                       <option {{$subCategory->id == $product->product_sub_category_id ? 'selected' : ''}} value="{{$subCategory->id}}">{{$subCategory->sub_category_name}}</option>
+                                   @endforeach
                                 </select>
                             </div>
                             <div class="col-md-4">
