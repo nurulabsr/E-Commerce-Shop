@@ -140,6 +140,10 @@ class ProductController extends Controller
         $product->product_name = $request->product_name;
         $product->product_slug = Str::slug($request->product_name);
         $product->product_quantity = $request->product_quantity;
+        $product->product_price = $request->product_price;
+        $product->product_offer_price = $request->product_offer_price;
+        $product->product_offer_start_date = $request->product_offer_start_date;
+        $product->product_offer_end_date = $request->product_offer_end_date;
     }
 
     /**
