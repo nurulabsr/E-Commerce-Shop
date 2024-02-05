@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\ProductVariantDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 
 class ProductVariantController extends Controller
@@ -34,6 +35,14 @@ class ProductVariantController extends Controller
              'product_variant_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
              'product_variant_product_id' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
+
+        $productVariant = new ProductVariant();
+        $productVariant->product_variant_name = $request->product_variant_name;
+        $productVariant->product_variant_status = $request->product_variant_status;
+        $productVariant->product_variant_product_id = $request->product_variant_product_id;
+        $productVariant->save();
+        toastr()->success("Product Variant Added Successfully!");
+        return redirect()->back();
     }
 
     /**

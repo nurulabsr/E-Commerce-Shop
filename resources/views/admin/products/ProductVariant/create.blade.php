@@ -19,7 +19,7 @@
                     <form action="{{route('admin.product-variant.store')}}" method="POST" enctype="multipart/form-data"> 
                         @csrf
                         <div class="form-group">
-                           <label for="">Product Variant</label>
+                           <label for="">Product Variant Name</label>
                            <input type="text" name="product_variant_name" class="form-control">
                            <input type="hidden" name="product_variant_product_id"value="{{request()->product}}">
                         </div>
