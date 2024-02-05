@@ -69,10 +69,9 @@ class ProductVariantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+      $request->validate([
             'product_variant_name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
             'product_variant_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
-            'product_variant_product_id' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
        ]);
     
        $productVariant = ProductVariant::findOrFail($id);
@@ -80,7 +79,7 @@ class ProductVariantController extends Controller
        $productVariant->product_variant_status = $request->product_variant_status;
        $productVariant->save();
        toastr()->success("Product " . $request->product_variant_name . "Variant Updated Successfully!");
-       return redirect()->route("admin.product-variant.index");
+       return redirect()->route('admin.product-variant.index', ['product' => $productVariant->product_variant_product_id]);
 
     }
 
