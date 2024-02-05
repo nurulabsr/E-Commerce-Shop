@@ -30,10 +30,20 @@
                             <input type="text" name="product_variant_item_name" value="{{old('product_variant_item_name')}}" class="form-control">
                          </div>
                          <div class="form-group">
-                            <label for="">Product Variant Price</label>
+                            <label for="">Product Variant Price <code>{set 0 make for it free} </code></label>
                             <input type="text" name="product_variant_item_price" value="{{old('product_variant_item_price')}}" class="form-control">
                          </div>
-                        <div class="fom-group">
+
+                         <div class="fom-group">
+                            <label for="">Is Product Variant Item Default?</label>
+                            <select name="" value=""  class="form-control">
+                                <option value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="fom-group mt-4">
                            <label for="">Product Variant Status</label>
                            <select name="" value=""  class="form-control">
                                <option value="">Select</option>
@@ -41,6 +51,7 @@
                                <option value="0">In Active</option>
                            </select>
                        </div>
+
                         <div class="form-group">
                            <button class="btn btn-primary mt-5">Submit</button>
                         </div>
