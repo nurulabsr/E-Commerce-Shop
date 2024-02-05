@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                   <section>
-                    <form action="{{route('admin.product-variant-items.create')}}" method="POST"POST"> 
+                    <form action="{{route('admin.product-variant-items.store')}}" method="POST"POST"> 
                         @csrf
                         <div class="form-group">
                            <label for="">Product Variant Name</label>

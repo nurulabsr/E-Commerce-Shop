@@ -51,6 +51,8 @@ class ProductVariantItemController extends Controller
         $productVariantItem->product_variant_item_status = $request->product_variant_item_status;
         $productVariantItem->product_variant_item_product_variant_id = $request->product_variant;
         $productVariantItem->save();
+        toastr()->success("Variant Item: " .$request->product_variant_item_name ." Added Successfully!");
+        return redirect()->route('admin.product-variant-items.index', ['product' => $request->product, 'variant' => $request->product_variant]);
 
     }
 
