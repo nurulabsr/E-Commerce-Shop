@@ -16,16 +16,17 @@ class ProductVariantItemController extends Controller
     public function index(ProductVariantItemDataTable $datatable, Request $request)
     {  
         $product = Product::findOrFail($request->product);
-        $variant = ProductVariant::findOrFail($request->variant);
-        return $datatable->render('admin.products.ProductVariantItem.index', compact('product', 'variant'));
+        $productVariant = ProductVariant::findOrFail($request->variant);
+        return $datatable->render('admin.products.ProductVariantItem.index', compact('product', 'productVariant'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('admin.products.ProductVariantItem.create');
+    public function create(Request $request)
+    {   
+       $productVariant = ProductVariant::findOrFail($request->variant);
+        return view('admin.products.ProductVariantItem.create', compact('productVariant'));
     }
 
     /**
