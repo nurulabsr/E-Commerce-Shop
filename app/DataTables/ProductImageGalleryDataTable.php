@@ -70,12 +70,12 @@ class ProductImageGalleryDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('product_image_gallery_img'),
+            Column::make('product_image_gallery_img')->title('Product Images'),
             Column::make('created_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(160)
+                  ->width(260)
                   ->addClass('text-center'),
         ];
     }
