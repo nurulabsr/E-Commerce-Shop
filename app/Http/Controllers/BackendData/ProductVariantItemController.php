@@ -87,4 +87,11 @@ class ProductVariantItemController extends Controller
     {
         //
     }
+
+    public function UpdateStatus(Request $request){
+       $productVariantItem = ProductVariantItem::findOrFail($request->id);
+       $productVariantItem->product_variant_item_status = $request->product_variant_item_status == "true" ? '1' : '0';
+       $productVariantItem->save();
+       return response(['message' => 'Status Changed Successfully!'], 200);
+    }
 }

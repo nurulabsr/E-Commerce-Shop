@@ -69,5 +69,5 @@ Route::put('product-variant-status', [ProductVariantController::class, 'UpdateSt
 Route::resource('product-variant', ProductVariantController::class);
 
 //Product Vatriant Item 
-
+Route::put('product-variant-items-status', [ProductVariantItemController::class, 'UpdateStatus'])->name('product-variant-items.status');
 Route::resource('product-variant-items', ProductVariantItemController::class);
