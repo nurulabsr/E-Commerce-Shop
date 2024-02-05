@@ -17,8 +17,9 @@
                 </div>
                 <div class="card-body">
                   <section>
-                    <form action="{{route('admin.product-variant.store')}}" method="POST" enctype="multipart/form-data"> 
+                    <form action="{{route('admin.product-variant.updated')}}" method="POST" enctype="multipart/form-data"> 
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                            <label for="">Product Variant</label>
                            <input type="text" name="product_variant_name" class="form-control">
