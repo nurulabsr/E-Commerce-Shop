@@ -10,6 +10,7 @@ use App\Http\Controllers\BackendData\ProfileController;
 use App\Http\Controllers\BackendData\SliderController;
 use App\Http\Controllers\BackendData\SubCategoryController;
 use App\Http\Controllers\BackendData\ProductImageGalleryController;
+use App\Http\Controllers\BackendData\ProductVariantController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -61,3 +62,7 @@ Route::resource('products', ProductController::class);
 
 
 Route::resource('products-image-gallery', ProductImageGalleryController::class);
+
+//product variant 
+
+Route::resource('product-variant', ProductVariantController::class);

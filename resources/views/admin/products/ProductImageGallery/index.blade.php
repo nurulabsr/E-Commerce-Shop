@@ -12,23 +12,22 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                    
-                    <section> 
-                        <h4>Product: {{$product->product_name}}</h4>
-                         <form action="" method="POST" enctype="multipart/form-data">
-                           @csrf
-                           <div class="form-group">
-                             <label for="">Upload Image <code>[Multipe Image Supported]</code> </label>
-                            <div>
-                                <input type="file" name="product_image_gallery_img[]" multiple class="form-control">
-                                <input type="hidden" name="product_image_gallery_product_id" value="{{$product->id}}">
-                            </div>
-                           </div>
-                           <div class="form-group">
-                             <button class="btn btn-primary">Upload</button>
-                           </div>
-                         </form>
-                    </section>
+                  <h4>Product: {{$product->product_name}}</h4>
+                <section>
+                      <form action="" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                          <label for="">Upload Image <code>[Multipe Image Supported]</code> </label>
+                        <div>
+                            <input type="file" name="product_image_gallery_img[]" multiple class="form-control">
+                            <input type="hidden" name="product_image_gallery_product_id" value="{{$product->id}}">
+                        </div>
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-primary">Upload</button>
+                        </div>
+                      </form>
+                </section>
                 
             </div>
         </div>
@@ -41,6 +40,7 @@
                      <h4>Product Image Gallery Table of {{$product->product_name}}</h4>
                     <div class="card-header-action"> 
                         <a href="" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
+                        <a href="{{route('admin.products.index')}}" class="btn btn-info"><i class="fas fa-fast-backward p-2"></i>Go Back</a>
                     </div>
                 </div>
                 <div class="card-body">
