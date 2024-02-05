@@ -20,10 +20,19 @@
                         @csrf
                         <div class="form-group">
                            <label for="">Product Variant Name</label>
-                           <input type="text" name="product_variant_name" class="form-control">
+                           <input type="text" name="product_variant_name" value="{{$productVariant->product_variant_name}}" class="form-control" readonly>
                         </div>
-                        
-                      
+                        <div class="form-group">
+                            <input type="hidden" name="product_variant_id" value="{{$productVariant->id}}" class="form-control">
+                         </div>
+                         <div class="form-group">
+                            <label for="">Product Variant Name</label>
+                            <input type="text" name="product_variant_item_name" value="{{old('product_variant_item_name')}}" class="form-control">
+                         </div>
+                         <div class="form-group">
+                            <label for="">Product Variant Price</label>
+                            <input type="text" name="product_variant_item_price" value="{{old('product_variant_item_price')}}" class="form-control">
+                         </div>
                         <div class="fom-group">
                            <label for="">Product Variant Status</label>
                            <select name="" value=""  class="form-control">
