@@ -4,6 +4,8 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\ProductVariantItemDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 
 class ProductVariantItemController extends Controller
@@ -11,9 +13,11 @@ class ProductVariantItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ProductVariantItemDataTable $datatable)
-    {
-        return $datatable->render('admin.products.ProductVariantItem.index');
+    public function index(ProductVariantItemDataTable $datatable, Request $request)
+    {  
+        $product = Product::findOrFail($request->product);
+        $variant = ProductVariant::findOrFail($request->variant);
+        return $datatable->render('admin.products.ProductVariantItem.index', compact('product', 'variant'));
     }
 
     /**
