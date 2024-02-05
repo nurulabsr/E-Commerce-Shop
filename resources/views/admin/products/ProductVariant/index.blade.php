@@ -32,5 +32,31 @@
 @endsection
 @push('scripts')
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+<script>
+    $(function(){
+        $('body').on('click', '.status', function(){
+            let isChecked = $(this).is(':checked');
+            let id = $(this).data('id');     
+                      // console.log(id);  // let id = $(this).attr('id');                                       
+            $.ajax({
+              url:'{{route("")}}',  //
+              method: 'PUT',
+              data:{
+                _token: '{{ csrf_token() }}', 
+                product_variant_status:isChecked,
+                id:id,
+              },
+              success: function(data){
+                toastr.success(data.message);
+              },
+              error: function(xhr, status, error){
+                console.log(error);
+              }
+  
+  
+            })
+        });
+    });
+  </script>
 @endpush
 

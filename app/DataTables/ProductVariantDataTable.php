@@ -23,12 +23,12 @@ class ProductVariantDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.products-image-gallery.edit', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
-                $dltBtn = "<a href='".route('admin.products-image-gallery.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+                $editBtn = "<a href='".route('admin.product-variant.edit', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $dltBtn = "<a href='".route('admin.product-variant.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                 return $editBtn.$dltBtn;
             })
             ->addColumn('product_variant_status', function($query){
-                if($query->product_status==1){
+                if($query->product_variant_status==1){
                    $toggleBtn = '<label>
                    <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
                    <span class="custom-switch-indicator"> </span>
@@ -42,7 +42,7 @@ class ProductVariantDataTable extends DataTable
                  return $toggleBtn;
                 }
            })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'product_variant_status'])
             ->setRowId('id');
     }
 
