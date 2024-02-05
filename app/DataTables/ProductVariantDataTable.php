@@ -25,7 +25,8 @@ class ProductVariantDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='".route('admin.product-variant.edit', $query->id)."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
                 $dltBtn = "<a href='".route('admin.product-variant.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
-                return $editBtn.$dltBtn;
+                $manageBtn = "<a href='".route('admin.product-variant.destroy', $query->id)."' class='btn btn-primary btn-sm ml-2 delete-item'><i class='fas fa-tasks pr-2'></i>Manage Product Variant</a>";
+                return $editBtn.$dltBtn.$manageBtn;
             })
             ->addColumn('product_variant_status', function($query){
                 if($query->product_variant_status==1){
@@ -89,7 +90,7 @@ class ProductVariantDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(160)
+                  ->width(400)
                   ->addClass('text-center'),
         ];
     }
