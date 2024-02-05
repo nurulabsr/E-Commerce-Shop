@@ -21,7 +21,7 @@ class ProductVariantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.ProductVariant.create');
     }
 
     /**
@@ -29,7 +29,11 @@ class ProductVariantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+             'product_variant_name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+             'product_variant_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+             'product_variant_product_id' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+        ]);
     }
 
     /**

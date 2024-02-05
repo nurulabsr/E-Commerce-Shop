@@ -3,7 +3,6 @@
 <section class="section">
     <div class="section-header">
       <h1>Create Product Variant</h1>
-      <h1>Create Product Variant</h1>
     </div>
       <div class="section-body">
       <div class="row">
@@ -35,7 +34,7 @@
                            </select>
                        </div>
                         <div class="form-group">
-                           <button class="btn btn-primary mt-3">Submit</button>
+                           <button class="btn btn-primary mt-5">Submit</button>
                         </div>
                       </form>
                   </section>
