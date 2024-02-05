@@ -3,6 +3,7 @@
 <section class="section">
     <div class="section-header">
       <h1>Create Product Variant</h1>
+      <h1>Create Product Variant</h1>
     </div>
       <div class="section-body">
       <div class="row">
