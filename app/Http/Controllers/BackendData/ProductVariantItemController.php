@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\ProductVariantItemDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class ProductVariantItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ProductVariantItemDataTable $datatable)
     {
-        //
+        return $datatable->render('admin.products.ProductVariantItem.index');
     }
 
     /**
