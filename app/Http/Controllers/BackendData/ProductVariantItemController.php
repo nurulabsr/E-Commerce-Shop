@@ -26,7 +26,8 @@ class ProductVariantItemController extends Controller
     public function create(Request $request)
     {   
        $productVariant = ProductVariant::findOrFail($request->variant);
-        return view('admin.products.ProductVariantItem.create', compact('productVariant'));
+       $product = Product::findOrFail($request->product);
+       return view('admin.products.ProductVariantItem.create', compact('productVariant','product'));
     }
 
     /**
@@ -35,7 +36,8 @@ class ProductVariantItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
+            'product_variant_item_name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_variant_item_price' => ['required', 'numeric', 'max:24', 'not_regex:/<[^>]*>|[=\';"]/',]
         ]);
     }
 

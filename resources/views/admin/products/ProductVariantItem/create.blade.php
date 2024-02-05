@@ -16,16 +16,19 @@
                 </div>
                 <div class="card-body">
                   <section>
-                    <form action="" method="POST" enctype="multipart/form-data"> 
+                    <form action="{{route('admin.product-variant-items.create')}}" method="POST"POST"> 
                         @csrf
                         <div class="form-group">
                            <label for="">Product Variant Name</label>
                            <input type="text" name="product_variant_name" value="{{$productVariant->product_variant_name}}" class="form-control" readonly>
                         </div>
                         <div class="form-group">
-                            <input type="hidden" name="product_variant_id" value="{{$productVariant->id}}" class="form-control">
-                         </div>
-                         <div class="form-group">
+                            <input type="hidden" name="product_variant" value="{{$productVariant->id}}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="product" value="{{$product->id}}" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label for="">Product Variant Name</label>
                             <input type="text" name="product_variant_item_name" value="{{old('product_variant_item_name')}}" class="form-control">
                          </div>
@@ -36,7 +39,7 @@
 
                          <div class="fom-group">
                             <label for="">Is Product Variant Item Default?</label>
-                            <select name="" value=""  class="form-control">
+                            <select name="product_variant_item_is_default" value=""  class="form-control">
                                 <option value="">Select</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
@@ -45,7 +48,7 @@
 
                         <div class="fom-group mt-4">
                            <label for="">Product Variant Status</label>
-                           <select name="" value=""  class="form-control">
+                           <select name="product_variant_item_status" value=""  class="form-control">
                                <option value="">Select</option>
                                <option value="1">Active</option>
                                <option value="0">In Active</option>
