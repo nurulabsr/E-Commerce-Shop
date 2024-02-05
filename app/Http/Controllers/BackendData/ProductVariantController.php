@@ -78,4 +78,8 @@ class ProductVariantController extends Controller
     {
         //
     }
+
+    public function UpdateStatus(){
+        
+    }
 }
