@@ -19,18 +19,16 @@
                   <section>
                     <form action="" method="POST" enctype="multipart/form-data"> 
                         @csrf
-   
                         <div class="form-group">
                            <label for="">Product Variant</label>
-                           <input type="file" name=""  class="form-control">
+                           <input type="text" name="" id="">
+                           <input type="hidden" name="product_variant_product_id"value=""  class="form-control">
                         </div>
-                        <div class="form-group">
-                           <label for="">Product Name</label>
-                           <input type="text" name=""value="{{old("")}}"  class="form-control">
-                        </div>
+                        
+                      
                         <div class="fom-group">
                            <label for="">Product Variant Status</label>
-                           <select name=""value="{{old("")}}"  class="form-control">
+                           <select name=""value=""  class="form-control">
                                <option value="">Select</option>
                                <option value="1">Active</option>
                                <option value="0">In Active</option>
