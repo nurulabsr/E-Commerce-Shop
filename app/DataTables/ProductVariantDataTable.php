@@ -27,6 +27,21 @@ class ProductVariantDataTable extends DataTable
                 $dltBtn = "<a href='".route('admin.products-image-gallery.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                 return $editBtn.$dltBtn;
             })
+            ->addColumn('product_variant_status', function($query){
+                if($query->product_status==1){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
             ->rawColumns(['action'])
             ->setRowId('id');
     }
