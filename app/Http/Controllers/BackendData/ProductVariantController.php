@@ -79,7 +79,10 @@ class ProductVariantController extends Controller
         //
     }
 
-    public function UpdateStatus(){
-        
+    public function UpdateStatus(Request $request){
+        $productVariant = ProductVariant::findOrFail($request->id);
+        $productVariant->product_variant_status = $request->product_variant_status == 'true' ? '1' : '0';
+        $productVariant->save();
+        return response(['message' => 'Status Changed Successfully!'], 200);
     }
 }
