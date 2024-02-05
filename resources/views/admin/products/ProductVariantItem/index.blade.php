@@ -39,7 +39,7 @@
           let id = $(this).data('id');     
                     // console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
-            url:'{{route("admin.")}}',  //
+            url:'{{route("admin.product-variant-items.status")}}',  //
             method: 'PUT',
             data:{
               _token: '{{ csrf_token() }}', 
