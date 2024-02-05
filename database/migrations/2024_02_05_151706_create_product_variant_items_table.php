@@ -17,7 +17,9 @@ return new class extends Migration
             $table->integer("product_variant_item_price");
             $table->boolean("product_variant_item_is_default");
             $table->boolean("product_variant_item_status");
+            $table->integer("product_variant_item_product_variant_id");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,7 +27,10 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
+        Schema::table("product_variant_items", function(Blueprint $table){
+           $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('product_variant_items');
     }
 };
