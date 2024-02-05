@@ -6,6 +6,7 @@ use App\DataTables\ProductVariantItemDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\ProductVariantItem;
 use Illuminate\Http\Request;
 
 class ProductVariantItemController extends Controller
@@ -37,8 +38,20 @@ class ProductVariantItemController extends Controller
     {
         $request->validate([
             'product_variant_item_name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
-            'product_variant_item_price' => ['required', 'numeric', 'max:24', 'not_regex:/<[^>]*>|[=\';"]/',]
+            'product_variant_item_price' => ['required', 'numeric', 'max:24', 'not_regex:/<[^>]*>|[=\';"]/',],
+            'product_variant_item_is_default' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_variant_item_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_variant' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
+
+        $productVariantItem = new ProductVariantItem();
+        $productVariantItem->product_variant_item_name = $request->product_variant_item_name;
+        $productVariantItem->product_variant_item_price = $request->product_variant_item_price;
+        $productVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
+        $productVariantItem->product_variant_item_status = $request->product_variant_item_status;
+        $productVariantItem->product_variant_item_product_variant_id = $request->product_variant;
+        $productVariantItem->save();
+
     }
 
     /**
