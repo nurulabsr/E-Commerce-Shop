@@ -5,7 +5,7 @@ namespace App\Http\Controllers\BackendData;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VariantItemController extends Controller
+class ProductVariantItemController extends Controller
 {
     /**
      * Display a listing of the resource.
