@@ -17,7 +17,7 @@
                 <div class="card-header">
                      <h4>Products Variant Item Table</h4>
                     <div class="card-header-action"> 
-                        <a href="" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
+                        <a href="{{route('admin.product-variant-items.create', $product->id)}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
                     </div>
                 </div>
                 <div class="card-body">

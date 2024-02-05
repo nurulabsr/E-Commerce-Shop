@@ -25,7 +25,7 @@ class ProductVariantItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.ProductVariantItem.create');
     }
 
     /**
