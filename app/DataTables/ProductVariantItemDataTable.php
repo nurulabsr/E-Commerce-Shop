@@ -27,7 +27,29 @@ class ProductVariantItemDataTable extends DataTable
                 $dltBtn = "<a href='".route('admin.product-variant.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                 return $editBtn.$dltBtn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('product_variant_item_status', function($query){
+                if($query->product_variant_item_status==1){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
+           ->addColumn('product_variant_item_is_default', function($query){
+             if($query->product_variant_item_is_default == 0){
+                return' <i class="badge badge-pill badge-warning">No</i>';
+             }else{
+                return '<i class="badge badge-pill badge-success">Yes</i>';
+             }
+           })
+            ->rawColumns(['action', 'product_variant_item_status', 'product_variant_item_is_default'])
             ->setRowId('id');
     }
 
@@ -69,7 +91,7 @@ class ProductVariantItemDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('product_variant_item_name'),
-            Column::make('product_variant_item_price'),
+            Column::make('product_variant_item_price')->title("Price($)"),
             Column::make('product_variant_item_is_default'),
             Column::make('product_variant_item_status'),
             Column::computed('action')
