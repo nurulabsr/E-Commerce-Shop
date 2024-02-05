@@ -23,7 +23,7 @@ class ProductVariantDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.product-variant.edit', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $editBtn = "<a href='".route('admin.product-variant.edit', $query->id)."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
                 $dltBtn = "<a href='".route('admin.product-variant.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                 return $editBtn.$dltBtn;
             })

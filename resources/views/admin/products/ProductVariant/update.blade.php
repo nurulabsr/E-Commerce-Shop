@@ -3,7 +3,6 @@
 <section class="section">
     <div class="section-header">
       <h1>Create Product Variant</h1>
-      <h1>Create Product Variant</h1>
     </div>
       <div class="section-body">
       <div class="row">
@@ -17,13 +16,12 @@
                 </div>
                 <div class="card-body">
                   <section>
-                    <form action="{{route('admin.product-variant.updated')}}" method="POST" enctype="multipart/form-data"> 
+                    <form action="{{route('admin.product-variant.update', $productVariant->id)}}" method="POST" enctype="multipart/form-data"> 
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                            <label for="">Product Variant</label>
-                           <input type="text" name="product_variant_name" class="form-control">
-                           <input type="hidden" name="product_variant_product_id"value="{{request()->product}}">
+                           <input type="text" name="product_variant_name" value="{{$productVariant->product_variant_name}}" class="form-control">
                         </div>
                         
                       
@@ -31,8 +29,8 @@
                            <label for="">Product Variant Status</label>
                            <select name="product_variant_status" value=""  class="form-control">
                                <option value="">Select</option>
-                               <option value="1">Active</option>
-                               <option value="0">In Active</option>
+                               <option {{$productVariant->product_variant_status==1 ?'selected' : ''}} value="1">Active</option>
+                               <option {{$productVariant->product_variant_status==0 ?'selected' : ''}} value="0">In Active</option>
                            </select>
                        </div>
                         <div class="form-group">
