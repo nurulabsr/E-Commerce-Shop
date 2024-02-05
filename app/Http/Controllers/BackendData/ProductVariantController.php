@@ -73,8 +73,14 @@ class ProductVariantController extends Controller
             'product_variant_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
             'product_variant_product_id' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
        ]);
+    
+       $productVariant = ProductVariant::findOrFail($id);
+       $productVariant->product_variant_name = $request->product_variant_name;
+       $productVariant->product_variant_status = $request->product_variant_status;
+       $productVariant->save();
+       toastr()->success("Product " . $request->product_variant_name . "Variant Updated Successfully!");
+       return redirect()->route("admin.product-variant.index");
 
-       
     }
 
     /**
