@@ -80,7 +80,13 @@ class ProductVariantItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'product_variant_item_name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_variant_item_price' => ['required', 'numeric', 'max:24', 'not_regex:/<[^>]*>|[=\';"]/',],
+            'product_variant_item_is_default' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_variant_item_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_variant' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+        ]);
     }
 
     /**
