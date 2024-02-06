@@ -46,10 +46,14 @@ class ProductVariantItemDataTable extends DataTable
              if($query->product_variant_item_is_default == 0){
                 return' <i class="badge badge-pill badge-warning">No</i>';
              }else{
-                return '<i class="badge badge-pill badge-success">Yes</i>';
+                return '<i class="badge badge-pill badge-success">Default</i>';
              }
            })
-            ->rawColumns(['action', 'product_variant_item_status', 'product_variant_item_is_default'])
+           ->addColumn('product_variant_item_product_variant_id', function ($query) {
+            return $query->productVariant->product_variant_name;
+            })
+        
+            ->rawColumns(['action', 'product_variant_item_status', 'product_variant_item_is_default', 'product_variant_item_product_variant_id'])
             ->setRowId('id');
     }
 
@@ -58,7 +62,7 @@ class ProductVariantItemDataTable extends DataTable
      */
     public function query(ProductVariantItem $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('product_variant_item_product_variant_id', request()->variant)->newQuery();
     }
 
     /**
@@ -94,6 +98,7 @@ class ProductVariantItemDataTable extends DataTable
             Column::make('product_variant_item_price')->title("Price($)"),
             Column::make('product_variant_item_is_default'),
             Column::make('product_variant_item_status'),
+            Column::make('product_variant_item_product_variant_id')->title('Product Variant ID'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\ProductImageGallery;
 use App\Models\SubCategory;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -176,6 +177,9 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $this->DeleteImage($product->product_thumnail_img);
+
+        $imageGallery = ProductImageGallery::where('product_image_gallery_product_id', $product->id)->get();
+        
         $product->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
 

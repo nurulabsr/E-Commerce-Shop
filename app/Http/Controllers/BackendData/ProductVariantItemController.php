@@ -88,7 +88,7 @@ class ProductVariantItemController extends Controller
             'product_variant' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
 
-        $productVariantItem = ProductVariantItem::findOrFail();
+        $productVariantItem = ProductVariantItem::findOrFail($id);
         $productVariantItem->product_variant_item_name = $request->product_variant_item_name;
         $productVariantItem->product_variant_item_price = $request->product_variant_item_price;
         $productVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
