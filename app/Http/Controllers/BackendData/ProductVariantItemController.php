@@ -87,6 +87,16 @@ class ProductVariantItemController extends Controller
             'product_variant_item_status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
             'product_variant' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
+
+        $productVariantItem = ProductVariantItem::findOrFail();
+        $productVariantItem->product_variant_item_name = $request->product_variant_item_name;
+        $productVariantItem->product_variant_item_price = $request->product_variant_item_price;
+        $productVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
+        $productVariantItem->product_variant_item_status = $request->product_variant_item_status;
+        $productVariantItem->product_variant_item_product_variant_id = $request->product_variant;
+        $productVariantItem->save();
+        toastr()->success("Variant Item: " .$request->product_variant_item_name ." Updated Successfully!");
+        return redirect()->route('admin.product-variant-items.index', ['product' => $request->product, 'variant' => $request->product_variant]);
     }
 
     /**
