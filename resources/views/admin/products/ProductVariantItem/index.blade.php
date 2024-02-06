@@ -18,7 +18,9 @@
                      <h4>{{$productVariant->product_variant_name}}: Variant Item Table</h4>
                     <div class="card-header-action"> 
                         <a href="{{route('admin.product-variant-items.create', ['variant' => $productVariant->id, 'product' =>$product->id ])}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
-                    </div>
+                        <a href="{{route('admin.products.index')}}" class="btn btn-info"><i class="fas fa-fast-backward p-2"></i>Go Back</a>
+
+                      </div>
                 </div>
                 <div class="card-body">
                   {{ $dataTable->table() }}

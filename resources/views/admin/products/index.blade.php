@@ -18,7 +18,9 @@
                      <h4>Products Table</h4>
                     <div class="card-header-action"> 
                         <a href="{{route('admin.category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
-                    </div>
+                        <a href="{{route('admin.products.index')}}" class="btn btn-info"><i class="fas fa-fast-backward p-2"></i>Go Back</a>
+
+                      </div>
                 </div>
                 <div class="card-body">
                   {{ $dataTable->table() }}
