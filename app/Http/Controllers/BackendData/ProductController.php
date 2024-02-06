@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
 use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use App\Models\SubCategory;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -184,7 +185,11 @@ class ProductController extends Controller
                $image->delete();
         }
 
-        
+        $productVariants = ProductVariant::where('product_variant_product_id', $product->id)->get();
+        foreach($productVariants as $productVariant){
+            $productVariant->productVariantItems()->delete();
+            $productVariant->delete();
+        }
         $product->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
 
