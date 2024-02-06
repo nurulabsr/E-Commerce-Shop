@@ -67,9 +67,12 @@ class ProductVariantItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $id, Request $request)
+    {  
+        $productVariantItem = ProductVariantItem::findOrFail($id);
+        $productVariant =   ProductVariant::findOrFail($request->variant);
+        $product = Product::findOrFail($request->product);
+        return view('admin.products.ProductVariantItem.update', compact('productVariantItem', 'productVariant', 'product'));
     }
 
     /**
