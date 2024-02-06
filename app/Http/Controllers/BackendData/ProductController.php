@@ -187,7 +187,7 @@ class ProductController extends Controller
 
         $productVariants = ProductVariant::where('product_variant_product_id', $product->id)->get();
         foreach($productVariants as $productVariant){
-            $productVariant->productVariantItems()->delete();
+            $productVariant->productVariantItems()->delete();  
             $productVariant->delete();
         }
         $product->delete();
