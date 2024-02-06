@@ -179,6 +179,11 @@ class ProductController extends Controller
         $this->DeleteImage($product->product_thumnail_img);
 
         $imageGallery = ProductImageGallery::where('product_image_gallery_product_id', $product->id)->get();
+        foreach($imageGallery as $image){
+               $this->DeleteImage($image->product_image_gallery_img);
+               $image->delete();
+        }
+
         
         $product->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
