@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use App\Traits\UploadImageTrait;
+use Illuminate\Support\Facades\Auth;
+
 class VendorShopProfileController extends Controller
 {
     use UploadImageTrait;
@@ -73,8 +75,9 @@ class VendorShopProfileController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+        $vendor = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
+        return view('vendor.shop-profile.update', compact('vendor'));
     }
 
     /**
