@@ -12,6 +12,7 @@
       <li><a href="dsahboard_wishlist.html"><i class="far fa-heart"></i> Wishlist</a></li>
       <li><a href="{{route('vendor.profile')}}"><i class="far fa-user"></i> My Profile</a></li>
       <li><a href="{{route('vendor.shop-profile.index')}}"><i class="fas fa-user-circle"></i>Shop Profile</a></li>
+      <li><a href="{{route('vendor.shop-profile.edit', Auth::user()->id)}}"><i class="fas fa-user-circle"></i>Edit Shop Profile</a></li>
       <li><a href="dsahboard_address.html"><i class="fal fa-gift-card"></i> Addresses</a></li>
       <li>
         <form method="POST" action="{{ route('logout') }}">

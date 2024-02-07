@@ -74,8 +74,8 @@ class VendorShopProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {   
+    public function edit(string $id,)
+    {    
         $vendor = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
         return view('vendor.shop-profile.update', compact('vendor'));
     }
@@ -85,7 +85,9 @@ class VendorShopProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            
+        ]);
     }
 
     /**

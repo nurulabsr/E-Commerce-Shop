@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
           <div class="dashboard_content mt-2 mt-md-0">
-            <h3><i class="far fa-user"></i> profile</h3>
+            <h3><i class="far fa-user"></i>Update profile</h3>
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">
                 <section>
@@ -20,42 +20,44 @@
                         <h4>basic information</h4>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data"> 
+                        <form action="{{route('vendor.shop-profile.update', $vendor->id)}}" method="POST" enctype="multipart/form-data"> 
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                <label for="">Banner</label>
+                                   <img src="{{asset($vendor->admin_vendor_profile_banner)}}" alt="img" width="70px">
                                    <input type="file" name="vendor_profile_banner" class="form-control">
                             </div>
                             <div class="form-group">
                                <label for="">Vendor Phone</label>
-                               <input type="text" name="vendor_profile_phone"  class="form-control" value="{{old('vendor_profile_phone')}}">
+                               <input type="text" name="vendor_profile_phone"  class="form-control" value="{{$vendor->admin_vendor_profile_phone}}">
                             </div>
         
                             <div class="form-group">
                                <label for="">Vendor Email</label>
-                               <input type="email" name="vendor_profile_email" class="form-control" value="{{$vendor->email}}" readonly>
+                               <input type="email" name="vendor_profile_email" class="form-control" value="{{$vendor->admin_vendor_profile_email}}" readonly>
                             </div>
         
                             <div class="form-group">
                                <label for="">Vendor Address</label>
-                               <input type="text" name="vendor_profile_address"  class="form-control" value="{{old('vendor_profile_address')}}">
+                               <input type="text" name="vendor_profile_address"  class="form-control" value="{{$vendor->admin_vendor_profile_address}}">
                             </div>
                             <div class="form-group">
                                <label for="">Vendor Description</label>
-                              <textarea name="vendor_profile_description" cols="30" rows="10" class="summernote form-control"></textarea>
+                              <textarea name="vendor_profile_description" cols="30" rows="10" class="summernote form-control">{{$vendor->admin_vendor_profile_description}}</textarea>
                             </div>
                              
                             <div class="form-group">
                                <label for="">Vendor Facebook URL</label>
-                               <input type="url" name="vendor_profile_facebook_url" class="form-control" value="{{old('vendor_profile_facebook_url')}}">
+                               <input type="url" name="vendor_profile_facebook_url" class="form-control" value="{{$vendor->admin_vendor_profile_facebook_url}}">
                             </div>
                             <div class="form-group">
                                <label for="">Vendor Twitter URL</label>
-                               <input type="url" name="vendor_profile_twitter_url" class="form-control" value="{{old('vendor_profile_twitter_url')}}">
+                               <input type="url" name="vendor_profile_twitter_url" class="form-control" value="{{$vendor->admin_vendor_profile_twitter_url}}">
                             </div>
                             <div class="form-group">
                                <label for="">Vendor Instagram URL</label>
-                               <input type="url" name="vendor_profile_insagram_url" class="form-control" value="{{old('vendor_profile_insagram_url')}}">
+                               <input type="url" name="vendor_profile_insagram_url" class="form-control" value="{{$vendor->admin_vendor_profile_insagram_url}}">
                             </div>
         
                             <div class="form-group">
@@ -67,8 +69,8 @@
                                <label for="">Vendor Active Status</label>
                                <select name="vendor_profile_status" value="" class="form-control">
                                    <option value="">Select</option>
-                                   <option value="1">Active</option>
-                                   <option value="0">In Active</option>
+                                   <option {{$vendor->admin_vendor_profile_status == 1 ? 'selected' : ''}} value="1">Active</option>
+                                   <option {{$vendor->admin_vendor_profile_status == 1 ? 'selected' : ''}} value="0">In Active</option>
                                </select>
                             </div>
                              <div class="form-group">
