@@ -1,4 +1,4 @@
-  @extends('vendor.Dashboard.Layouts.master')
+  @extends('vendor.Layouts.master')
   @section('dashboard-content')
   <!--=============================
     DASHBOARD START
@@ -6,7 +6,7 @@
   <section id="wsus__dashboard">
     <div class="container-fluid">
       {{-- Sidebar --}}
-      @include('vendor.Dashboard.Layouts.sidebar')
+      @include('vendor.Layouts.sidebar')
       {{-- end sidebar --}}
       
       <div class="row">
