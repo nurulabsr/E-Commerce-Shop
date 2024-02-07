@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BackendData;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class VendorShopProfileController extends Controller
@@ -11,8 +12,8 @@ class VendorShopProfileController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('vendor.shop-profile.index');
+    {   $vendor = User::where('email', 'vendor@edu.com')->first();
+        return view('vendor.shop-profile.index', compact('vendor'));
     }
 
     /**
