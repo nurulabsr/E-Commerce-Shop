@@ -15,7 +15,64 @@
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">
                 <h4>basic information</h4>
+                <form action="" method="POST" enctype="multipart/form-data"> 
+                    @csrf
+                    <div class="form-group">
+                       <label for="">Banner</label>
+                       <div>
+                           <img src="" width="50px">
+                           <input type="file" name="admin_vendor_profile_banner" class="form-control">
+                       </div>
+                    </div>
+                    <div class="form-group">
+                       <label for="">Vendor Phone</label>
+                       <input type="text" name="admin_vendor_profile_phone"  class="form-control" value="">
+                    </div>
 
+                    <div class="form-group">
+                       <label for="">Vendor Email</label>
+                       <input type="email" name="admin_vendor_profile_email" class="form-control" value="">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="">Vendor Address</label>
+                       <input type="text" name="admin_vendor_profile_address"  class="form-control" value="">
+                    </div>
+                    <div class="form-group">
+                       <label for="">Vendor Description</label>
+                      <textarea name="admin_vendor_profile_description" cols="30" rows="10" class="summernote form-control"></textarea>
+                    </div>
+                     
+                    <div class="form-group">
+                       <label for="">Vendor Facebook URL</label>
+                       <input type="url" name="admin_vendor_profile_facebook_url" class="form-control" value="">
+                    </div>
+                    <div class="form-group">
+                       <label for="">Vendor Twitter URL</label>
+                       <input type="url" name="admin_vendor_profile_twitter_url" class="form-control" value="">
+                    </div>
+                    <div class="form-group">
+                       <label for="">Vendor Instagram URL</label>
+                       <input type="url" name="admin_vendor_profile_insagram_url" class="form-control" value="">
+                    </div>
+
+                    <div class="form-group">
+                       <label for="">Admin Vendor ID</label>
+                       <input type="number" name="admin_vendor_profile_user_id" class="form-control" value="">
+                   </div>
+                   
+                    <div class="form-group">
+                       <label for="">Vendor Active Status</label>
+                       <select name="admin_vendor_profile_status" value="" class="form-control">
+                           <option value="">Select</option>
+                           <option value="1">Active</option>
+                           <option value="0">In Active</option>
+                       </select>
+                    </div>
+                     <div class="form-group">
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                     </div>
+                  </form>
               </div>
             </div>
           </div>

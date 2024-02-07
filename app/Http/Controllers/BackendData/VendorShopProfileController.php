@@ -12,7 +12,7 @@ class VendorShopProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('vendor.shop-profile.index');
     }
 
     /**
