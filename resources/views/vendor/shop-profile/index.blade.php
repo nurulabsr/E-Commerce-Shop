@@ -60,7 +60,7 @@
         
                             <div class="form-group">
                                <label for="">Vendor ID</label>
-                               <input type="number" name="vendor_profile_user_id" class="form-control" value="{{old('vendor_profile_user_id')}}">
+                               <input type="number" name="vendor_profile_user_id" class="form-control" value="{{$vendor->id}}">
                            </div>
                            
                             <div class="form-group">
