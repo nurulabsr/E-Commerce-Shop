@@ -111,6 +111,9 @@ class VendorShopProfileController extends Controller
         $vendor->admin_vendor_profile_twitter_url    = $request->vendor_profile_twitter_url;
         $vendor->admin_vendor_profile_status         = $request->vendor_profile_status;
         $vendor->admin_vendor_profile_user_id        = $request->vendor_profile_user_id; 
+        $vendor->save();
+        toastr()->success("Vendor profile Updated Successfully!");
+        return redirect()->back();
 
     }
 
