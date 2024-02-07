@@ -90,6 +90,11 @@ class VendorShopProfileController extends Controller
             'vendor_profile_phone'  =>      ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_email'  =>      ['required',  'email' , 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_address'=>      ['required', 'string',  'not_regex:/<[^>]*>|[=\';"]/'], 
+            'vendor_profile_description' => ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_facebook_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_twitter_url' => ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_insagram_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
+            
         ]);
     }
 
