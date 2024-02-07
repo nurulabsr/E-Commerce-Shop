@@ -104,7 +104,10 @@ class VendorShopProfileController extends Controller
         $path = $this->UpdateImageFilePathHandling($request, 'vendor_profile_banner', 'uploads', $vendor->admin_vendor_profile_banner);
         $vendor->admin_vendor_profile_phone          = $request->vendor_profile_phone;
         $vendor->admin_vendor_profile_email          = $request->vendor_profile_email;
-
+        $vendor->admin_vendor_profile_address        = $request->vendor_profile_address;
+        $vendor->admin_vendor_profile_description    = $request->vendor_profile_description;
+        $vendor->admin_vendor_profile_facebook_url   = $request->vendor_profile_facebook_url;
+        $vendor->admin_vendor_profile_twitter_url    = $request->vendor_profile_twitter_url;
 
     }
 
