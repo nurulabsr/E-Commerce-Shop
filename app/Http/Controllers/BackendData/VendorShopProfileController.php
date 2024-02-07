@@ -29,7 +29,18 @@ class VendorShopProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'vendor_profile_banner' =>      [],
+            'vendor_profile_phone'  =>      [],
+            'vendor_profile_email'  =>      [],
+            'vendor_profile_address'=>      [],
+            'vendor_profile_description' => [],
+            'vendor_profile_facebook_url'=> [],
+            'vendor_profile_twitter_url' => [],
+            'vendor_profile_insagram_url'=> [],
+            'vendor_profile_user_id' =>     [],
+            'vendor_profile_status'  =>     [],
+        ]);
     }
 
     /**
