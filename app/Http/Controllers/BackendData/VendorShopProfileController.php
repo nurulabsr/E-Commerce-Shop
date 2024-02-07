@@ -94,6 +94,8 @@ class VendorShopProfileController extends Controller
             'vendor_profile_facebook_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_twitter_url' => ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_insagram_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_user_id' =>     ['required',  'numeric',  'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_status'  =>     ['required',  'boolean',  'not_regex:/<[^>]*>|[=\';"]/'],
             
         ]);
     }
