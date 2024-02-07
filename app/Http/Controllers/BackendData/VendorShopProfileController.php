@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
-
+use App\Traits\UploadImageTrait;
 class VendorShopProfileController extends Controller
 {
+    use UploadImageTrait;
     /**
      * Display a listing of the resource.
      */
@@ -31,7 +32,7 @@ class VendorShopProfileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'vendor_profile_banner' =>      ['required', 'image', 'mimes:png,jpg', 'max:4096', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_banner' =>      ['required', 'image', 'mimes:png,jpg', 'max:4096',],
             'vendor_profile_phone'  =>      ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_email'  =>      ['required',  'email' , 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_address'=>      ['required', 'string',  'not_regex:/<[^>]*>|[=\';"]/'],
@@ -39,12 +40,13 @@ class VendorShopProfileController extends Controller
             'vendor_profile_facebook_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_twitter_url' => ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_insagram_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
-            'vendor_profile_user_id' =>     ['required',  'boolean',  'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_user_id' =>     ['required',  'numeric',  'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_status'  =>     ['required',  'boolean',  'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
 
         $vendor = new Vendor();
-        $vendor->admin_vendor_profile_banner         = $request->vendor_profile_banner; 
+        $path = $this->ImageFilePathHandling($request, 'vendor_profile_banner', 'uploads');
+        $vendor->admin_vendor_profile_banner         = $path; 
         $vendor->admin_vendor_profile_phone          = $request->vendor_profile_phone;
         $vendor->admin_vendor_profile_email          = $request->vendor_profile_email;
         $vendor->admin_vendor_profile_address        = $request->vendor_profile_address;
