@@ -84,9 +84,10 @@ class VendorShopProfileController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {  
+        // dd($request->all, $id);
         $request->validate([
-            'vendor_profile_banner' =>      ['required', 'image', 'mimes:png,jpg', 'max:4096',],
+            'vendor_profile_banner' =>      ['nullable', 'image', 'mimes:png,jpg', 'max:4096',],
             'vendor_profile_phone'  =>      ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_email'  =>      ['required',  'email' , 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_address'=>      ['required', 'string',  'not_regex:/<[^>]*>|[=\';"]/'], 
@@ -98,6 +99,13 @@ class VendorShopProfileController extends Controller
             'vendor_profile_status'  =>     ['required',  'boolean',  'not_regex:/<[^>]*>|[=\';"]/'],
             
         ]);
+
+        $vendor = Vendor::findOrFail($id);
+        $path = $this->UpdateImageFilePathHandling($request, 'vendor_profile_banner', 'uploads', $vendor->admin_vendor_profile_banner);
+        $vendor->admin_vendor_profile_phone          = $request->vendor_profile_phone;
+        $vendor->admin_vendor_profile_email          = $request->vendor_profile_email;
+
+
     }
 
     /**

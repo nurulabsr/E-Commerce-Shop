@@ -24,6 +24,7 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
+                                {{$vendor->id}}
                                <label for="">Banner</label>
                                    <img src="{{asset($vendor->admin_vendor_profile_banner)}}" alt="img" width="70px">
                                    <input type="file" name="vendor_profile_banner" class="form-control">
