@@ -24,7 +24,6 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                {{$vendor->id}}
                                <label for="">Banner</label>
                                    <img src="{{asset($vendor->admin_vendor_profile_banner)}}" alt="img" width="70px">
                                    <input type="file" name="vendor_profile_banner" class="form-control">
@@ -63,7 +62,7 @@
         
                             <div class="form-group">
                                <label for="">Vendor ID</label>
-                               <input type="number" name="vendor_profile_user_id" class="form-control" value="{{$vendor->id}}">
+                               <input type="number" name="vendor_profile_user_id" class="form-control" value="{{$user->id}}">
                            </div>
                            
                             <div class="form-group">
@@ -71,7 +70,7 @@
                                <select name="vendor_profile_status" value="" class="form-control">
                                    <option value="">Select</option>
                                    <option {{$vendor->admin_vendor_profile_status == 1 ? 'selected' : ''}} value="1">Active</option>
-                                   <option {{$vendor->admin_vendor_profile_status == 1 ? 'selected' : ''}} value="0">In Active</option>
+                                   <option {{$vendor->admin_vendor_profile_status == 0 ? 'selected' : ''}} value="0">In Active</option>
                                </select>
                             </div>
                              <div class="form-group">

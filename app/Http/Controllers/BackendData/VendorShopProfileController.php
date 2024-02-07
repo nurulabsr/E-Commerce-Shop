@@ -15,8 +15,9 @@ class VendorShopProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {   $vendor = User::where('email', 'vendor@edu.com')->first();
+    public function index(){
+
+        $vendor = User::where('email', 'vendor@edu.com')->first();
         return view('vendor.shop-profile.index', compact('vendor'));
     }
 
@@ -75,9 +76,12 @@ class VendorShopProfileController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id,)
-    {    
+    {   
+        $user = User::findOrFail($id);
+        // dd($user);
         $vendor = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
-        return view('vendor.shop-profile.update', compact('vendor'));
+        // dd($vendor);
+        return view('vendor.shop-profile.update', compact('vendor', 'user'));
     }
 
     /**
@@ -85,7 +89,9 @@ class VendorShopProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {  
-        // dd($request->all, $id);
+        //  dd($id);
+        $vendor = Vendor::findOrFail($id);
+        // dd($vendor);
         $request->validate([
             'vendor_profile_banner' =>      ['nullable', 'image', 'mimes:png,jpg', 'max:4096',],
             'vendor_profile_phone'  =>      ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/'],
@@ -96,11 +102,11 @@ class VendorShopProfileController extends Controller
             'vendor_profile_twitter_url' => ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_insagram_url'=> ['required',  'url', 'not_regex:/<[^>]*>|[=\';"]/'],
             'vendor_profile_user_id' =>     ['required',  'numeric',  'not_regex:/<[^>]*>|[=\';"]/'],
-            'vendor_profile_status'  =>     ['required',  'boolean',  'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_status'  =>     ['required',  'boolean',  'not_regex:/<[^>]*>|[=\';"]/',],
             
         ]);
 
-        $vendor = Vendor::findOrFail($id);
+        
         $path = $this->UpdateImageFilePathHandling($request, 'vendor_profile_banner', 'uploads', $vendor->admin_vendor_profile_banner);
         $vendor->admin_vendor_profile_banner         = !empty($path) ? $path : $vendor->admin_vendor_profile_banner;
         $vendor->admin_vendor_profile_phone          = $request->vendor_profile_phone;
