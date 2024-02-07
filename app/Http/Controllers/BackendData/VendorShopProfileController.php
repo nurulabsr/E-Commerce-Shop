@@ -86,7 +86,10 @@ class VendorShopProfileController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            
+            'vendor_profile_banner' =>      ['required', 'image', 'mimes:png,jpg', 'max:4096',],
+            'vendor_profile_phone'  =>      ['required', 'string', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_email'  =>      ['required',  'email' , 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_address'=>      ['required', 'string',  'not_regex:/<[^>]*>|[=\';"]/'], 
         ]);
     }
 
