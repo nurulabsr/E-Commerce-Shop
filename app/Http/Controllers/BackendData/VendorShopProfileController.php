@@ -30,16 +30,16 @@ class VendorShopProfileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'vendor_profile_banner' =>      [],
-            'vendor_profile_phone'  =>      [],
-            'vendor_profile_email'  =>      [],
-            'vendor_profile_address'=>      [],
-            'vendor_profile_description' => [],
-            'vendor_profile_facebook_url'=> [],
-            'vendor_profile_twitter_url' => [],
-            'vendor_profile_insagram_url'=> [],
-            'vendor_profile_user_id' =>     [],
-            'vendor_profile_status'  =>     [],
+            'vendor_profile_banner' =>      ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_phone'  =>      ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_email'  =>      ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_address'=>      ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_description' => ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_facebook_url'=> ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_twitter_url' => ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_insagram_url'=> ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_user_id' =>     ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'vendor_profile_status'  =>     ['required', 'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
     }
 
