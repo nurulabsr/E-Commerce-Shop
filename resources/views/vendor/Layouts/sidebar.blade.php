@@ -14,7 +14,7 @@
       <li><a href="{{route('vendor.shop-profile.index')}}"><i class="fas fa-user-circle"></i>Shop Profile</a></li>
       <li><a href="{{route('vendor.shop-profile.edit', Auth::user()->id)}}"><i class="fas fa-user-circle"></i>Edit Shop Profile</a></li>
       <li><a href="dsahboard_address.html"><i class="fal fa-gift-card"></i> Addresses</a></li>
-      <li><a href=""><i class="fal fa-gift-card"></i> Create Product</a></li>
+      <li><a href="{{route('vendor.shop-profile.create')}}"><i class="fal fa-gift-card"></i> Create Product</a></li>
       <li><a href="{{route('vendor.products.index')}}"><i class="fal fa-gift-card"></i> Product Data Table</a></li>   
          
 
