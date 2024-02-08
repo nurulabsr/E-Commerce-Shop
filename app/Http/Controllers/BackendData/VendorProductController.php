@@ -10,10 +10,12 @@ use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class VendorProductController extends Controller
 {
+     use UploadImageTrait;
     /**
      * Display a listing of the resource.
      */
@@ -62,6 +64,8 @@ class VendorProductController extends Controller
 
 
         $vendorProduct = new Product();
+        $path = $this->ImageFilePathHandling($request, 'product_thumnail_img', 'uploads');
+        $vendorProduct->product_thumnail_img       = $path;
         $vendorProduct->product_name               = $request->product_name;
         $vendorProduct->product_slug               = Str::slug($request->product_slug);
         $vendorProduct->product_quantity           = $request->product_quantity;
