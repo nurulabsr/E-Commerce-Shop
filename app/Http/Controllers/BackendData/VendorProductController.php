@@ -38,7 +38,28 @@ class VendorProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           'product_thumnail_img'        =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_name'                =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_quantity'            =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_price'               =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_price'         =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_start_date'    =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_end_date'      =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_short_description'   =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_long_description'    =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_video_link'          =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_Stock_keeping_unit'  =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_type'                =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_SEO_title'           =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_SEO_description'     =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_brand_id'            =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_category_id'         =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_sub_category_id'     =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_child_category_id'   =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_status'              =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+
+        ]);
     }
 
     /**
