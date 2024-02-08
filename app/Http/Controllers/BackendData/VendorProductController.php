@@ -69,4 +69,20 @@ class VendorProductController extends Controller
     {
         //
     }
+
+    public function GetSubCategories(Request $request){
+        return  $subCategories = SubCategory::where('category_id', $request->id)->get();
+      }
+ 
+      public function GetChildCategories(Request $request){
+         $subCategories = ChildCategory::where('sub_category_id', $request->id)->get();
+         return $subCategories;
+      }
+     
+      public function ChangeProductStatus(Request $request){
+         $product = Product::findOrFail($request->id);
+         $product->product_status = $request->product_status == 'true' ? '1' : '0';
+         $product->save();
+         return response(['message' => 'Status Changed Successfully!'], 200);
+      }
 }
