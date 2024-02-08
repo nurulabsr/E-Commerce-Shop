@@ -18,7 +18,7 @@
                         <h4>Create Product</h4>
                     </div>
                     <div class="card-body">
-                        <section style="height: 100%;">
+                        <section class="input_style">
                             <form action="{{route('vendor.shop-profile.store')}}" method="POST" enctype="multipart/form-data"> 
                                 @csrf
            

@@ -6673,6 +6673,15 @@ WISHLIST PAGE START
   padding: 40px 30px 40px 0px;
 }
 
+.input_style{
+  height: 100%;
+}
+
+.input_style label {
+  margin-top: 35px; /* Adjust the margin value as needed */
+}
+
+
 .wsus__dashboard_menu {
   display: flex;
   align-items: center;
