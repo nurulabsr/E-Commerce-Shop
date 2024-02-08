@@ -88,7 +88,9 @@ class VendorProductController extends Controller
         $vendorProduct->product_sub_category_id    = $request->product_sub_category_id;
         $vendorProduct->product_child_category_id  = $request->product_child_category_id;
         $vendorProduct->save();
-
+        toastr()->success("Vendor Product: " . $request->product_name . "added Successfully!");
+        
+        return redirect()->route('vendor.products.index');
 
 
         
