@@ -7,6 +7,9 @@ use App\DataTables\VendorProductDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ChildCategory;
+use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class VendorProductController extends Controller
