@@ -17,8 +17,8 @@
       <li class="dropdown">
         <a href="#" class="nav-link has-dropdown text-light"  data-toggle="dropdown"><i class="fas fa-columns text-light"></i> Manage Product</a>
         <ul class="dropdown-menu bg-primary-subtle">
-          <li class=""><a class="nav-link text-dark bg-warning" href="{{route('')}}">Create Product</a></li>
-          <li class=""><a class="nav-link text-dark bg-warning" href="">Product Table</a></li>
+          <li class=""><a class="nav-link text-dark bg-warning" href="{{route('vendor.products.index')}}">Create Product</a></li>
+          <li class=""><a class="nav-link text-dark bg-warning" href="{{route('vendor.products.index')}}">Product Table</a></li>
          
 
         </ul>

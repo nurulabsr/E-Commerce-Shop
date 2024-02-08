@@ -1,1 +1,1 @@
-@extends('nav.nav')
+{{-- @extends('nav.nav') --}}

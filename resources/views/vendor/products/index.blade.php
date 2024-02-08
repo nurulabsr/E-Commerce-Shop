@@ -23,6 +23,7 @@
                       </div>
                 </div>
                 <div class="card-body">
+                  <h1>Hello</h1>
                   {{ $dataTable->table() }}
                 </div>
             </div>

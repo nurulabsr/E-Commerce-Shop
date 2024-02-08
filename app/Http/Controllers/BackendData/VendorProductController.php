@@ -13,6 +13,7 @@ class VendorProductController extends Controller
      */
     public function index(VendorProductDataTable $datatable)
     {
+        // return view('vendor.products.index');
         return $datatable->render('vendor.products.index');
     }
 

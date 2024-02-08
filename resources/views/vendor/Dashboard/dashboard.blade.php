@@ -51,7 +51,7 @@
                   </a>
                 </div>
               </div>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-xl-12">
                   <div class="wsus__message">
                     <h4>message</h4>
@@ -147,7 +147,7 @@
                     </form>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
