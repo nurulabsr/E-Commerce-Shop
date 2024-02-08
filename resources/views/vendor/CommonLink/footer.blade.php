@@ -53,7 +53,9 @@
     <script src="{{asset('BackendData/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
     <script src="{{asset('BackendData/assets/modules/summernote/summernote-bs4.js')}}"></script>
     <script src="{{asset('BackendData/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
-  
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.js" integrity="sha512-HAXr8ULpyrhyIF0miP+mFTwOagNI+UVA38US1XdtBbkU7mse59ar0ck4KBil/jyzkTO37DWLfRQvEeUWgwHu0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     {{-- <script src="{{asset('FrontendData/js/Font-Awesome.js')}}"></script>
     <!--select2 js-->
@@ -84,7 +86,10 @@
     <script src="{{asset('FrontendData/js/venobox.min.js')}}"></script>
     <!--classycountdown js-->
     <script src="{{asset('FrontendData/js/jquery.classycountdown.js')}}"></script> --}}
-
+ <!-- Bootstrap JS and dependencies (optional) -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{asset('BackendData/assets/js/page/index-0.js')}}"></script>

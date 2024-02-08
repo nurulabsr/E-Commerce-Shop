@@ -68,7 +68,10 @@ class VendorProductDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('add your columns'),
+            Column::make('product_name'),
+            Column::make('product_thumnail_img'),
+            Column::make('product_quantity'),
+
             Column::make('created_at'),
             Column::make('updated_at'),
         ];

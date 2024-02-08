@@ -17,13 +17,12 @@
                 <div class="card-header">
                      <h4>Products Table</h4>
                     <div class="card-header-action"> 
-                        <a href="" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New</a>
-                        <a href="" class="btn btn-info"><i class="fas fa-fast-backward p-2"></i>Go Back</a>
+                        <a href="" class="btn btn-primary"><i class="fa-solid fa-plus  pr-1"></i>Creat New</a>
+                        <a href="" class="btn btn-info"><i class="fas fa-fast-backward pr-1"></i>Go Back</a>
 
                       </div>
                 </div>
                 <div class="card-body">
-                  <h1>Hello</h1>
                   {{ $dataTable->table() }}
                 </div>
             </div>
