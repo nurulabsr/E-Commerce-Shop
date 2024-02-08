@@ -11,7 +11,7 @@ use App\Models\ChildCategory;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class VendorProductController extends Controller
 {
     /**
@@ -39,49 +39,69 @@ class VendorProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'product_thumnail_img'        =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_name'                =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_quantity'            =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_price'               =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_offer_price'         =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_offer_start_date'    =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_offer_end_date'      =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_short_description'   =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_long_description'    =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_video_link'          =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_Stock_keeping_unit'  =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_type'                =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_SEO_title'           =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_SEO_description'     =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_brand_id'            =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_category_id'         =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_sub_category_id'     =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_child_category_id'   =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_status'              =>   ['required',  'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_thumnail_img'        =>   ['required',   'image',        'mimes:png,jpg', 'max:4096',                                 ],
+           'product_name'                =>   ['required',   'max:254',      'string',                     'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_quantity'            =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_price'               =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_price'         =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_start_date'    =>   ['required',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_end_date'      =>   ['required',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_short_description'   =>   ['required',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_long_description'    =>   ['required',   'max:1500',      'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_video_link'          =>   ['required',   'max:280',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_Stock_keeping_unit'  =>   ['required',   'max:80',        'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_type'                =>   ['required',   'max:254',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_SEO_title'           =>   ['required',   'max:255',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_SEO_description'     =>   ['required',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_brand_id'            =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_category_id'         =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_sub_category_id'     =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_child_category_id'   =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_status'              =>   ['required',   'boolean',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+         ]);   
 
-        ]);
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $vendorProduct = new Product();
+        $vendorProduct->product_name               = $request->product_name;
+        $vendorProduct->product_slug               = Str::slug($request->product_slug);
+        $vendorProduct->product_quantity           = $request->product_quantity;
+        $vendorProduct->product_price              = $request->product_price;
+        $vendorProduct->product_offer_price        = $request->product_offer_price;
+        $vendorProduct->product_offer_start_date   = $request->product_offer_start_date;
+        $vendorProduct->product_offer_end_date     = $request->product_offer_end_date;
+        $vendorProduct->product_short_description  = $request->product_short_description;
+        $vendorProduct->product_long_description   = $request->product_long_description;
+        $vendorProduct->product_video_link         = $request->product_video_link;
+        
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+        
+  }   
+        
+        
+
+
+
+
+        
+    /*** 
+     * Display the specified resource.  
+     **/                     
+         
+         
+    public function  show( string  $id){           
+
+     }      
+  
+  
+    public function edit ( string $id) 
     {
         //
     }
 
     /**
      * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+     */    public function update(Request $request, string $id)
     {
         //
     }
