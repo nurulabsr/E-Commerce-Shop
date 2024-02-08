@@ -16,9 +16,6 @@
       <li><a href="dsahboard_address.html"><i class="fal fa-gift-card"></i> Addresses</a></li>
       <li><a href="{{route('vendor.shop-profile.create')}}"><i class="fal fa-gift-card"></i> Create Product</a></li>
       <li><a href="{{route('vendor.products.index')}}"><i class="fal fa-gift-card"></i> Product Data Table</a></li>   
-         
-
-  
       <li>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
@@ -26,7 +23,7 @@
           this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a>
       </form>
       </li>
-
-
     </ul>
+  
+    
   </div>
