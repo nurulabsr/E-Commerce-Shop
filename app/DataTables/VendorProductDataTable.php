@@ -23,7 +23,10 @@ class VendorProductDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'vendorproduct.action')
+            ->addColumn('action', function($query){
+                $editBtn = "<a href='".route('vendor.products.edit', $query->id)."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+             return $editBtn;
+            })
             ->setRowId('id');
     }
 

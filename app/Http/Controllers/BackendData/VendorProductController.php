@@ -10,8 +10,10 @@ use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\User;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class VendorProductController extends Controller
 {
@@ -32,9 +34,14 @@ class VendorProductController extends Controller
     {   
         $brands = Brand::all();
         $categories = Category::all();
+        
+        if(Auth::user()->is_vendor !== 1){
+            abort(404);
+        }
+        
         return view('vendor.products.create', compact('categories', 'brands'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -45,16 +52,16 @@ class VendorProductController extends Controller
            'product_name'                =>   ['required',   'max:254',      'string',                     'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_quantity'            =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_price'               =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_offer_price'         =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_offer_start_date'    =>   ['required',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_offer_end_date'      =>   ['required',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_price'         =>   ['nullable',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_start_date'    =>   ['nullable',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_offer_end_date'      =>   ['nullable',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_short_description'   =>   ['required',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_long_description'    =>   ['required',   'max:1500',      'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_video_link'          =>   ['required',   'max:280',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_Stock_keeping_unit'  =>   ['required',   'max:80',        'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_type'                =>   ['required',   'max:254',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_SEO_title'           =>   ['required',   'max:255',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
-           'product_SEO_description'     =>   ['required',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_SEO_title'           =>   ['nullable',   'max:255',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+           'product_SEO_description'     =>   ['nullable',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_brand_id'            =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_category_id'         =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
            'product_sub_category_id'     =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
@@ -87,9 +94,10 @@ class VendorProductController extends Controller
         $vendorProduct->product_category_id        = $request->product_category_id;
         $vendorProduct->product_sub_category_id    = $request->product_sub_category_id;
         $vendorProduct->product_child_category_id  = $request->product_child_category_id;
+        $vendorProduct->product_vendor_id = Auth::user()->id;  //error encontered 
+
         $vendorProduct->save();
         toastr()->success("Vendor Product: " . $request->product_name . "added Successfully!");
-        
         return redirect()->route('vendor.products.index');
 
 
@@ -112,9 +120,11 @@ class VendorProductController extends Controller
      }      
   
   
-    public function edit ( string $id) 
-    {
-        //
+    public function edit (string $id) 
+    {   
+
+        $category = Category::findOrFail();
+        return view('vendor.products.update');
     }
 
     /**

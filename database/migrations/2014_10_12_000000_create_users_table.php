@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('user_phone')->nullable();
             $table->text('user_detail')->nullable();
+            $table->boolean('is_vendor')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
