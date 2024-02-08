@@ -72,7 +72,18 @@ class VendorProductController extends Controller
         $vendorProduct->product_short_description  = $request->product_short_description;
         $vendorProduct->product_long_description   = $request->product_long_description;
         $vendorProduct->product_video_link         = $request->product_video_link;
+        $vendorProduct->product_Stock_keeping_unit = $request->product_Stock_keeping_unit;
+        $vendorProduct->product_type               = $request->product_type;
+        $vendorProduct->is_product_approved        = '0';
+        $vendorProduct->product_status             = $request->product_status;
+        $vendorProduct->product_SEO_title          = $request->product_SEO_title;
+        $vendorProduct->product_SEO_description    = $request->product_SEO_description;
+        $vendorProduct->product_vendor_id          = $request->product_vendor_id;
+        $vendorProduct->product_brand_id           = $request->product_brand_id;
+        $vendorProduct->product_category_id        = $request->product_category_id;
+        $vendorProduct->product_sub_category_id    = $request->product_sub_category_id;
         
+
 
 
         
