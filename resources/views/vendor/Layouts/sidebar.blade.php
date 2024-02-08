@@ -14,12 +14,23 @@
       <li><a href="{{route('vendor.shop-profile.index')}}"><i class="fas fa-user-circle"></i>Shop Profile</a></li>
       <li><a href="{{route('vendor.shop-profile.edit', Auth::user()->id)}}"><i class="fas fa-user-circle"></i>Edit Shop Profile</a></li>
       <li><a href="dsahboard_address.html"><i class="fal fa-gift-card"></i> Addresses</a></li>
+      <li class="dropdown">
+        <a href="#" class="nav-link has-dropdown text-light"  data-toggle="dropdown"><i class="fas fa-columns text-light"></i> Manage Product</a>
+        <ul class="dropdown-menu bg-primary-subtle">
+          <li class=""><a class="nav-link text-dark bg-warning" href="{{route('')}}">Create Product</a></li>
+          <li class=""><a class="nav-link text-dark bg-warning" href="">Product Table</a></li>
+         
+
+        </ul>
+      </li>
       <li>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <a href="route('logout')" onclick="event.preventDefault();
-          this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a></li>
+          this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a>
       </form>
-        
+      </li>
+
+
     </ul>
   </div>

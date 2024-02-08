@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @include('Frontend.FrontendCommonLink.header')
+  {{-- @include('Frontend.FrontendCommonLink.header') --}}
+  @include('vendor.CommonLink.header')
 </head>
 <body>
   <!--=============================
@@ -30,7 +31,8 @@
       ==============================-->
     
     
-    @include('Frontend.FrontendCommonLink.footer')
+    {{-- @include('Frontend.FrontendCommonLink.footer') --}}
+    @include('vendor.CommonLink.footer')
     </body>
     
     </html>

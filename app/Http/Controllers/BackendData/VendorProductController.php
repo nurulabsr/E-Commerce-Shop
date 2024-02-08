@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\VendorProductDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class VendorProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(VendorProductDataTable $datatable)
     {
-        //
+        return $datatable->render('vendor.products.index');
     }
 
     /**
