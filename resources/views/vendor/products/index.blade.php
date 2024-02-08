@@ -1,35 +1,38 @@
 @extends('vendor.Layouts.master')
 @section('dashboard-content')
-<section class="section">
-    <div class="section-header">
-      <h1>Table</h1>
-      <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-        <div class="breadcrumb-item"><a href="#">Components</a></div>
-        <div class="breadcrumb-item">Products</div>
-      </div>
-    </div>
+      <!--=============================
+    DASHBOARD START
+  ==============================-->
+  <section id="wsus__dashboard">
+    <div class="container-fluid">
+      
+        @include('vendor.Layouts.sidebar')
 
-    <div class="section-body">
       <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                     <h4>Products Table</h4>
-                    <div class="card-header-action"> 
-                        <a href="" class="btn btn-primary"><i class="fa-solid fa-plus  pr-1"></i>Creat New</a>
-                        <a href="" class="btn btn-info"><i class="fas fa-fast-backward pr-1"></i>Go Back</a>
-
-                      </div>
-                </div>
-                <div class="card-body">
-                  {{ $dataTable->table() }}
-                </div>
+        <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
+          <div class="dashboard_content mt-2 mt-md-0">
+            <h3><i class="far fa-user"></i>Update profile</h3>
+            <div class="wsus__dashboard_profile">
+              <div class="wsus__dash_pro_area">
+                <section>
+                   <div class="card">
+                    <div class="card-header">
+                        <h4>basic information</h4>
+                    </div>
+                    <div class="card-body">
+                      {{ $dataTable->table() }}
+                   </div>
+                </section>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  <!--=============================
+    DASHBOARD END
+  ==============================-->
 @endsection
 @push('scripts')
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
