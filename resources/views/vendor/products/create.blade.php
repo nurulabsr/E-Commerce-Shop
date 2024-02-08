@@ -161,7 +161,7 @@
 
                 $.ajax({
                     method: 'GET',
-                    url: "{{route('admin.sub-categories')}}",
+                    url: "{{route('vendor.sub-categories')}}",
                     data: {
                         id:id,
                     },
@@ -190,7 +190,7 @@
 
             $.ajax({
                 method: 'GET',
-                url: "{{route('admin.child-categories')}}",
+                url: "{{route('vendor.child-categories')}}",
                 data: {
                     id:id,
                 },
