@@ -82,7 +82,8 @@ class VendorProductController extends Controller
         $vendorProduct->product_brand_id           = $request->product_brand_id;
         $vendorProduct->product_category_id        = $request->product_category_id;
         $vendorProduct->product_sub_category_id    = $request->product_sub_category_id;
-        
+        $vendorProduct->product_child_category_id  = $request->product_child_category_id;
+        $vendorProduct->save();
 
 
 
