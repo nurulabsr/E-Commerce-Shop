@@ -5,6 +5,8 @@ namespace App\Http\Controllers\BackendData;
 use App\DataTables\TestModelDataTable;
 use App\DataTables\VendorProductDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class VendorProductController extends Controller
@@ -22,8 +24,10 @@ class VendorProductController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
+    {   
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('vendor.products.create', compact('categories', 'brands'));
     }
 
     /**

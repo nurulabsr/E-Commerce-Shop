@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <section style="height: 100%;">
-                            <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data"> 
+                            <form action="{{route('vendor.shop-profile.store')}}" method="POST" enctype="multipart/form-data"> 
                                 @csrf
            
                                 <div class="form-group">
