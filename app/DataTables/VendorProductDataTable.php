@@ -24,20 +24,22 @@ class VendorProductDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('vendor.products.edit', $query->id)."' class='btn btn-info btn-sm ml-1'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $editBtn = "<a href='".route('vendor.products.edit', $query->id)."' class='btn btn-info btn-sm ml-1' style=' color:#ffff;'> <i class='fa-regular fa-pen-to-square'></i>Edit</a>";
                 $dltBtn = "<a href='".route('vendor.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-1 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
                 $moreBtn = '
-                <div class="btn-group ml-2" style="width:50px; color:#ffff;">
+                <div class="btn-group ml-2" style="width:50px;">
                   <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-cog"></i> More <span class="visually-hidden"></span>
+                  <span style=" color:#ffff;"> <i class="fas fa-cog"></i> More </span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="'.route('admin.products-image-gallery.index',['product' => $query->id]).'"><i class="fas fa-images pr-2"></i> Image Gallery</a></li>
+                    <li><a class="dropdown-item" href="'.route('vendor.image-gallery.index',['product' => $query->id]).'"><i class="fas fa-images pr-2"></i> Image Gallery</a></li>
                     <li><a class="dropdown-item" href="'.route('admin.product-variant.index', ['product' => $query->id]).'"><i class="fad fa-box pr-2"></i> Product Variant</a></li>
                   </ul>
                 </div>';
                 return $editBtn.$dltBtn.$moreBtn;
             })
+
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
