@@ -19,9 +19,9 @@
                     </div>
                     <div class="card-body">
                         <section class="input_style">
-                            <form action="{{route('vendor.shop-profile.store')}}" method="POST" enctype="multipart/form-data"> 
+                            <form action="{{route('vendor.products.update', $vendorProduct->id)}}" method="POST" enctype="multipart/form-data"> 
                                 @csrf
-           
+                                @method('PUT')
                                 <div class="form-group">
                                    <label for="">Product Thumbnail Image</label>
                                    <img src="{{asset($vendorProduct->product_thumnail_img)}}" width="70px">

@@ -170,7 +170,7 @@ class VendorProductController extends Controller
             abort(404);
         }
 
-        $vendorProduct = Product::findOrFil($id);
+        $vendorProduct = Product::findOrFail($id);
         $path = $this->UpdateImageFilePathHandling($request, 'product_thumnail_img', 'uploads', $request->product_thumnail_img);
         $vendorProduct->product_thumnail_img = !empty($path) ? $path : $request->product_thumnail_img;
         $vendorProduct->product_name = $request->product_name;
@@ -194,9 +194,11 @@ class VendorProductController extends Controller
         $vendorProduct->product_category_id        = $request->product_category_id;
         $vendorProduct->product_sub_category_id    = $request->product_sub_category_id;
         $vendorProduct->product_child_category_id  = $request->product_child_category_id;
+        $vendorProduct->product_vendor_id = Auth::user()->id;  //error encontered 
       
        $vendorProduct->save();
        toastr()->success("Updated");
+       return redirect()->back();
     }
 
     /**
