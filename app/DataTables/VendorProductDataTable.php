@@ -26,8 +26,17 @@ class VendorProductDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='".route('vendor.products.edit', $query->id)."' class='btn btn-info btn-sm ml-1'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
                 $dltBtn = "<a href='".route('vendor.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-1 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
-
-                return $editBtn.$dltBtn;
+                $moreBtn = '
+                <div class="btn-group ml-2">
+                  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden"><i class="fa-solid fa-gear"></i></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="'.route('').'"><i class="fas fa-images pr-2"></i> Image Gallery</a></li>
+                    <li><a class="dropdown-item" href="'.route('').'"><i class="fad fa-box pr-2"></i> Product Variant</a></li>
+                  </ul>
+                </div>';
+                return $editBtn.$dltBtn.$moreBtn;
             })
             ->setRowId('id');
     }
