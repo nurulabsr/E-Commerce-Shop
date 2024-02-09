@@ -1,7 +1,9 @@
     <title>Sazao || e-Commerce HTML Template</title>
+        <!-- toaster.js -->
+ 
     <link rel="icon" type="image/png" href="{{asset('Frontend/images/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('FrontendData/css/all.min.css')}}">
-    
+
     <link rel="stylesheet" href="{{asset('FrontendData/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('FrontendData/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('FrontendData/css/slick.css')}}">
@@ -18,6 +20,10 @@
     <link rel="stylesheet" href="{{asset('FrontendData/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('FrontendData/css/responsive.css')}}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
-    <!-- toaster.js -->
+
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/> --}}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    

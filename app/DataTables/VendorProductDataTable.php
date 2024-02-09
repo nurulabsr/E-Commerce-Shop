@@ -24,8 +24,10 @@ class VendorProductDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('vendor.products.edit', $query->id)."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
-             return $editBtn;
+                $editBtn = "<a href='".route('vendor.products.edit', $query->id)."' class='btn btn-info btn-sm ml-1'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $dltBtn = "<a href='".route('vendor.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-1 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+
+                return $editBtn.$dltBtn;
             })
             ->setRowId('id');
     }
@@ -74,7 +76,7 @@ class VendorProductDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(260)
                   ->addClass('text-center'),
         ];
     }

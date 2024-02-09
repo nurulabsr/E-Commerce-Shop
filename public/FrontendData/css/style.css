@@ -6722,7 +6722,10 @@ WISHLIST PAGE START
   left: 0;
   z-index: 9;
 }
+.dashboard_sidebar li>a{
+  text-decoration: none;
 
+}
 .dash_logo {
   width: 100%;
   text-align: center;

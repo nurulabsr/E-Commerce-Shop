@@ -122,9 +122,19 @@ class VendorProductController extends Controller
   
     public function edit (string $id) 
     {   
-
-        $category = Category::findOrFail();
-        return view('vendor.products.update');
+        $vendorProduct = Product::findOrFail($id);
+        $categories = Category::all();
+        // $category = Category::where('id', $vendorProduct->product_category_id)->first();
+        // dd($categories->category_name);
+        $subCategories = SubCategory::all();
+        // $subCategory = SubCategory::where('id', $vendorProduct->product_sub_category_id)->first();
+        // dd($subCategories->sub_category_name);
+        $childCategories = ChildCategory::all();
+        // $chilCategory = ChildCategory::where('id', $vendorProduct->product_child_category_id)->first();
+        // dd($chilCategories->child_category_name);
+        $brands= Brand::all(); 
+        // $brand = Brand::where('id', $vendorProduct->product_brand_id);
+        return view('vendor.products.update', compact('vendorProduct', 'categories', 'subCategories', 'childCategories', 'brands'));
     }
 
     /**
