@@ -165,6 +165,16 @@ class VendorProductController extends Controller
             'product_child_category_id'   =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
             'product_status'              =>   ['required',   'boolean',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
           ]);   
+
+          if(Auth::user()->is_vendor !== 1){
+            abort(404);
+        }
+
+        $vendorProduct = Product::findOrFil($id);
+        $vendorProduct->product_name = $request->product_name;
+        $vendorProduct->product_slug = Str::slug($request->product_name);
+        $vendorProduct->product_quantity = $request->product_quantity;
+        
  
  
     }
