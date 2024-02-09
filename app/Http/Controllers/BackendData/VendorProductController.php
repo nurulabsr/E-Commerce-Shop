@@ -22,7 +22,10 @@ class VendorProductController extends Controller
      * Display a listing of the resource.
      */
     public function index(VendorProductDataTable $datatable)
-    {
+    {   
+        if(Auth::user()->is_vendor !== 1){
+            abort(404);
+        }
         // return view('vendor.products.index');
         return $datatable->render('vendor.products.index');
     }
@@ -140,7 +143,7 @@ class VendorProductController extends Controller
     /**
      * Update the specified resource in storage.
      */    public function update(Request $request, string $id)
-    {
+    {   
         $request->validate([
             'product_thumnail_img'        =>   ['nullable',   'image',        'mimes:png,jpg', 'max:4096',                                 ],
             'product_name'                =>   ['required',   'max:254',      'string',                     'not_regex:/<[^>]*>|[=\';"]/', ],
