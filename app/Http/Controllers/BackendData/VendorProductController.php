@@ -141,7 +141,29 @@ class VendorProductController extends Controller
      * Update the specified resource in storage.
      */    public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'product_thumnail_img'        =>   ['nullable',   'image',        'mimes:png,jpg', 'max:4096',                                 ],
+            'product_name'                =>   ['required',   'max:254',      'string',                     'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_quantity'            =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_price'               =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_offer_price'         =>   ['nullable',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_offer_start_date'    =>   ['nullable',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_offer_end_date'      =>   ['nullable',   'date',                                       'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_short_description'   =>   ['required',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_long_description'    =>   ['required',   'max:1500',      'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_video_link'          =>   ['required',   'max:280',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_Stock_keeping_unit'  =>   ['required',   'max:80',        'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_type'                =>   ['required',   'max:254',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_SEO_title'           =>   ['nullable',   'max:255',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_SEO_description'     =>   ['nullable',   'max:400',       'string',                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_brand_id'            =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_category_id'         =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_sub_category_id'     =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_child_category_id'   =>   ['required',   'numeric',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+            'product_status'              =>   ['required',   'boolean',                                    'not_regex:/<[^>]*>|[=\';"]/', ],
+          ]);   
+ 
+ 
     }
 
     /**
