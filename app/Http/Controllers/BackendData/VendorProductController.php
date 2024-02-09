@@ -206,7 +206,10 @@ class VendorProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $vendorProduct = Product::findOrFail($id);
+       $this->DeleteImage($vendorProduct->product_thumnail_img);
+       $vendorProduct->delete();
+       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 
     public function GetSubCategories(Request $request){
