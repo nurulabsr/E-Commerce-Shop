@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\BackendData\VendorProductController;
+use App\Http\Controllers\BackendData\VendorProductImageGalleryController;
 use App\Http\Controllers\BackendData\VendorShopProfileController;
 use App\Http\Controllers\ProfileVendorController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::put('profile/password', [ProfileVendorController::class, 'UpdateVendorPas
 Route::get('product/sub-categories', [VendorProductController::class, 'GetSubCategories'])->name('sub-categories');
 Route::get('product/child-categories', [VendorProductController::class, 'GetChildCategories'])->name('child-categories');
 Route::resource('products', VendorProductController::class);
+
+// Vendor Image Gallery
+
+Route::resource('image-gallery', VendorProductImageGalleryController::class);
