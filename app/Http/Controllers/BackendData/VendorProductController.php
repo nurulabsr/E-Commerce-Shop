@@ -171,6 +171,8 @@ class VendorProductController extends Controller
         }
 
         $vendorProduct = Product::findOrFil($id);
+        $path = $this->UpdateImageFilePathHandling($request, 'product_thumnail_img', 'uploads', $request->product_thumnail_img);
+        $vendorProduct->product_thumnail_img = !empty($path) ? $path : $request->product_thumnail_img;
         $vendorProduct->product_name = $request->product_name;
         $vendorProduct->product_slug = Str::slug($request->product_name);
         $vendorProduct->product_quantity = $request->product_quantity;
