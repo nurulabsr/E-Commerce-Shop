@@ -15,6 +15,22 @@
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">
                 <section>
+                    <div class="card">
+                        <div class="card-header">
+                             <h4>Upload Images</h4>
+                        </div>
+                        <div class="card-body">
+                           <form action="{{route('vendor.image-gallery.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                             <div class="form-gorup">
+                                 <input type="file" name="product_image_gallery_product_id" class="form-control" multiple>
+                                 <input type="hidden" name="product">
+                             </div>
+                           </form>
+                        </div>
+                    </div>
+                </section>
+                <section>
                    <div class="card">
                     <div class="card-header">
                         <h4>Image Gallery</h4>

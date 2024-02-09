@@ -29,7 +29,12 @@ class VendorProductImageGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_image_gallery_product_id.*' => ['required', 'image', 'mimes:png,jpg', 'max:5120'],
+             'product' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/']
+        ]);
+
+
     }
 
     /**
