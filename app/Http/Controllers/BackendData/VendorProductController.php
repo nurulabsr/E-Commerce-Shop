@@ -171,8 +171,8 @@ class VendorProductController extends Controller
         }
 
         $vendorProduct = Product::findOrFail($id);
-        $path = $this->UpdateImageFilePathHandling($request, 'product_thumnail_img', 'uploads', $request->product_thumnail_img);
-        $vendorProduct->product_thumnail_img = !empty($path) ? $path : $request->product_thumnail_img;
+        $path = $this->UpdateImageFilePathHandling($request, 'product_thumnail_img', 'uploads', $vendorProduct->product_thumnail_img);
+        $vendorProduct->product_thumnail_img = $path ?? $vendorProduct->product_thumnail_img;
         $vendorProduct->product_name = $request->product_name;
         $vendorProduct->product_slug = Str::slug($request->product_name);
         $vendorProduct->product_quantity = $request->product_quantity;
@@ -198,7 +198,7 @@ class VendorProductController extends Controller
       
        $vendorProduct->save();
        toastr()->success("Updated");
-       return redirect()->back();
+       return redirect()->route('vendor.products.index');
     }
 
     /**
