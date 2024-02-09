@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\VendorProductImageGalleryDataTable;
 use App\DataTables\VendorProductVariantDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\ProductImageGallery;
+use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 
 class VendorProductImageGalleryController extends Controller
 {
+    use UploadImageTrait;
     /**
      * Display a listing of the resource.
      */
-    public function index(VendorProductVariantDataTable $datatables)
+    public function index(VendorProductImageGalleryDataTable $datatables)
     {
           return $datatables->render('vendor.products.imageGallery.index');
     }
@@ -31,8 +35,15 @@ class VendorProductImageGalleryController extends Controller
     {
         $request->validate([
             'product_image_gallery_product_id.*' => ['required', 'image', 'mimes:png,jpg', 'max:5120'],
-             'product' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/']
+            'product' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+
         ]);
+       
+         $path = $this->MultipleImageFilePathHandling($request, 'product_image_gallery_product_id', 'uploads');
+        $vendorProductImageGallery = new ProductImageGallery();
+        $vendorProductImageGallery->product_image_gallery_img = $request->product_image_gallery_img;
+        $vendorProductImageGallery->product_image_gallery_product_id = $request->product_image_gallery_product_id;
+        $vendorProductImageGallery->save();
 
 
     }
