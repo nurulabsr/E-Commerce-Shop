@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductImageGallery;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VendorProductImageGalleryController extends Controller
 {
@@ -18,6 +19,9 @@ class VendorProductImageGalleryController extends Controller
      */
     public function index(VendorProductImageGalleryDataTable $datatables, Request $request)
     {     
+        if(Auth::user()->is_vendor !== 1){
+            abort(404);
+        }
           $product = Product::findOrFail($request->product);
           return $datatables->render('vendor.products.imageGallery.index', compact('product'));
     }
