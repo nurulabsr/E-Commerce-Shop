@@ -22,7 +22,9 @@ class VendorProductImageGalleryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'vendorproductimagegallery.action')
+            ->addColumn('action', function($query){
+             
+            })
             ->setRowId('id');
     }
 

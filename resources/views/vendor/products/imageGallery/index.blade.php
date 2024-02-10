@@ -22,9 +22,12 @@
                         <div class="card-body">
                            <form action="{{route('vendor.image-gallery.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                             <div class="form-gorup">
-                                 <input type="file" name="product_image_gallery_img[]" class="form-control" multiple>
-                                 <input type="hidden" name="product">
+                            <div>
+                                <input type="file" name="product_image_gallery_img[]" multiple class="form-control">
+                                <input type="hidden" name="product_image_gallery_product_id" value="{{$product->id}}">
+                            </div>
+                             <div class="form-group">
+                                <button class="btn btn-primary mt-4">Submit</button>
                              </div>
                            </form>
                         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BackendData;
 use App\DataTables\VendorProductImageGalleryDataTable;
 use App\DataTables\VendorProductVariantDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\ProductImageGallery;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -15,9 +16,10 @@ class VendorProductImageGalleryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(VendorProductImageGalleryDataTable $datatables)
-    {
-          return $datatables->render('vendor.products.imageGallery.index');
+    public function index(VendorProductImageGalleryDataTable $datatables, Request $request)
+    {     
+          $product = Product::findOrFail($request->product);
+          return $datatables->render('vendor.products.imageGallery.index', compact('product'));
     }
 
     /**
@@ -34,19 +36,31 @@ class VendorProductImageGalleryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_image_gallery_product_id.*' => ['required', 'image', 'mimes:png,jpg', 'max:5120'],
-            'product' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product_image_gallery_img.*' => ['required', 'image', 'mimes:png,jpg', 'max:91440'],
+            'product_image_gallery_product_id' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
 
         ]);
        
-         $path = $this->MultipleImageFilePathHandling($request, 'product_image_gallery_product_id', 'uploads');
-        $vendorProductImageGallery = new ProductImageGallery();
-        $vendorProductImageGallery->product_image_gallery_img = $request->product_image_gallery_img;
-        $vendorProductImageGallery->product_image_gallery_product_id = $request->product_image_gallery_product_id;
-        $vendorProductImageGallery->save();
+        $ImagePaths = $this->MultipleImageFilePathHandling($request, 'product_image_gallery_img', 'uploads');
+        if ($ImagePaths) {
+            foreach ($ImagePaths as $ImagePath) {
+                $vendorProductImageGallery = new ProductImageGallery();
+                $vendorProductImageGallery->product_image_gallery_img = $ImagePath;
+                $vendorProductImageGallery->product_image_gallery_product_id = $request->product_image_gallery_product_id;
+                $vendorProductImageGallery->save();
+            }
+            toastr()->success("Image Uploaded Successfully!");
+            return redirect()->route('vendor.image-gallery.index', ['product' => $request->product_image_gallery_product_id]);
+        } 
+        else {
+            toastr()->error("No images were uploaded.");
+            return redirect()->back()->withErrors(['product_image_gallery_img' => 'No images were uploaded.']);
+        }
 
 
     }
+      
+  
 
     /**
      * Display the specified resource.
