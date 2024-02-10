@@ -42,7 +42,7 @@ class VendorProductImageGalleryController extends Controller
         ]);
        
         $ImagePaths = $this->MultipleImageFilePathHandling($request, 'product_image_gallery_img', 'uploads');
-        if ($ImagePaths) {
+        if($ImagePaths) {
             foreach ($ImagePaths as $ImagePath) {
                 $vendorProductImageGallery = new ProductImageGallery();
                 $vendorProductImageGallery->product_image_gallery_img = $ImagePath;
@@ -91,6 +91,9 @@ class VendorProductImageGalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $vendorProductImageGallery = Product::findOrFail($id);
+        $this->DeleteImage($vendorProductImageGallery->product_image_gallery_img);
+        $vendorProductImageGallery->delete();
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }
