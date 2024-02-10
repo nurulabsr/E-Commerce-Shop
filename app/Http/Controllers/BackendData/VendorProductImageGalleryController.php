@@ -38,7 +38,11 @@ class VendorProductImageGalleryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
+        if(Auth::user()->is_vendor !== 1){
+            abort(404);
+        }
+
         $request->validate([
             'product_image_gallery_img.*' => ['required', 'image', 'mimes:png,jpg', 'max:91440'],
             'product_image_gallery_product_id' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
@@ -94,7 +98,10 @@ class VendorProductImageGalleryController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
+    {   
+        if(Auth::user()->is_vendor !== 1){
+            abort(404);
+        }
         $vendorProductImageGallery = Product::findOrFail($id);
         $this->DeleteImage($vendorProductImageGallery->product_image_gallery_img);
         $vendorProductImageGallery->delete();
