@@ -3,6 +3,7 @@
 use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\BackendData\VendorProductController;
 use App\Http\Controllers\BackendData\VendorProductImageGalleryController;
+use App\Http\Controllers\BackendData\VendorProductVariantController;
 use App\Http\Controllers\BackendData\VendorShopProfileController;
 use App\Http\Controllers\ProfileVendorController;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::resource('products', VendorProductController::class);
 // Vendor Image Gallery
 
 Route::resource('image-gallery', VendorProductImageGalleryController::class);
+
+Route::resource('products-variant', VendorProductVariantController::class);
