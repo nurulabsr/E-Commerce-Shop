@@ -43,6 +43,11 @@ class VendorProductImageGalleryController extends Controller
             abort(404);
         }
 
+        /*
+        *** Must add a user id to identify product and showing certain data of that user in the Yajra data table
+        * 
+        */
+
         $request->validate([
             'product_image_gallery_img.*' => ['required', 'image', 'mimes:png,jpg', 'max:91440'],
             'product_image_gallery_product_id' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
