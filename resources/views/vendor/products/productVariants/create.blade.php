@@ -24,7 +24,7 @@
                      </div>
                     <div class="card-body">
                         <section class="input_style">
-                            <form action="" method="POST" enctype="multipart/form-data"> 
+                            <form action="{{route('vendor.products-variant.store')}}" method="POST"> 
                                 @csrf
                                 <div class="form-group">
                                    <label for="">Variant Name</label>
