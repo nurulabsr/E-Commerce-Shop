@@ -17,7 +17,14 @@
                 <section>
                    <div class="card">
                     <div class="card-header">
-                        <h4>{{$product->product_name}} : Variant Items Table</h4>
+                         <div class="row">
+                          <div class="col-md-6">
+                            <h4>{{$product->product_name}} : Variant Items Table</h4>
+                          </div>
+                          <div class="col-md-6 d-flex justify-content-end">
+                            <a class="btn btn-primary btn-m" href="{{route('vendor.products-variant-item.create')}}"><i class="fa-solid fa-plus"></i> Create Variant Items</a>
+                          </div>
+                         </div>
                     </div>
                     <div class="card-body">
                       {{ $dataTable->table() }}
