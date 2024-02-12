@@ -23,9 +23,9 @@ class VendorProductVariantItemController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
-    {   
+    {   $product = Product::findOrFail($request->product);
         $vendorProductVariant = ProductVariant::findOrFail($request->variant);
-        return view('vendor.products.productVariantItems.create', compact('vendorProductVariant'));
+        return view('vendor.products.productVariantItems.create', compact('vendorProductVariant', 'product'));
     }
 
     /**
@@ -33,7 +33,13 @@ class VendorProductVariantItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           'name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
+           'product' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+           'product_variant_item_price' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+           'product_variant_item_is_default' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+           'status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+        ]);
     }
 
     /**

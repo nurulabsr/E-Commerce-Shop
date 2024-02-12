@@ -24,12 +24,14 @@
                      </div>
                     <div class="card-body">
                         <section class="input_style">
-                            <form action="{{route('vendor.products-variant.store')}}" method="POST"> 
+                            <form action="{{route('vendor.products-variant-item.store')}}" method="POST"> 
                                 @csrf
                                 <div class="form-group">
                                    <label for="">Variant Name</label>
                                    <input type="text" name="name"value="{{$vendorProductVariant->product_variant_name}}"  class="form-control" readonly>
-                                   {{-- <input type="hidden" name="product" value="{{$product->id}}"> --}}
+                                   <input type="hidden" name="product" value="{{$product->id}}">
+                                   <input type="hidden" name="product" value="{{$vendorProductVariant->id}}">
+
                                 </div>
                                 <div class="form-group">
                                   <label for="">Price</label>
@@ -37,8 +39,11 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="">is Default? <code>[Make 0 set as default]</code> </label>
-                                  <input type="text" name="product_variant_item_is_default" class="form-control">
-                                </div>
+                                  <select name="product_variant_item_is_default" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                   </select>                                </div>
                                 <div class="form-group">
                                    <label for=""> Product Status</label>
                                    <select name="status" class="form-control">
