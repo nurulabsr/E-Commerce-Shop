@@ -81,7 +81,9 @@ class VendorProductVariantController extends Controller
         $vendorProductVariant->product_variant_status = $request->status;
         $vendorProductVariant->product_variant_product_id = $request->product;
         $vendorProductVariant->save();
-        
+        toastr()->success($request->name ."Updated Successfully!");
+        return redirect()->route('vendor.products-variant.index', ['product' => $request->product]);
+
     }
 
     /**

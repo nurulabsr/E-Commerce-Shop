@@ -36,8 +36,8 @@
                                    <label for=""> Product Status</label>
                                    <select name="status" class="form-control">
                                     <option value="">Select</option>
-                                    <option {{$vendorProductVariant->product_variant_product_id == 1 ? 'selected' : ''}} value="1">Active</option>
-                                    <option {{$vendorProductVariant->product_variant_product_id == 0 ? 'selected' : ''}} value="0">In Active</option>
+                                    <option {{$vendorProductVariant->product_variant_status == 1 ? 'selected' : ''}} value="1">Active</option>
+                                    <option {{$vendorProductVariant->product_variant_status == 0 ? 'selected' : ''}} value="0">In Active</option>
                                    </select>
                                 </div>
                                 <div class="form-group">
