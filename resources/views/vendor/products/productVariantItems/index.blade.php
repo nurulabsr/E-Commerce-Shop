@@ -22,7 +22,7 @@
                             <h4>{{$product->product_name}} : Variant Items Table</h4>
                           </div>
                           <div class="col-md-6 d-flex justify-content-end">
-                            <a class="btn btn-primary btn-m" href="{{route('vendor.products-variant-item.create')}}"><i class="fa-solid fa-plus"></i> Create Variant Items</a>
+                            <a class="btn btn-primary btn-m" href="{{route('vendor.products-variant-item.create', ['product' => request()->product, 'variant' => request()->variant])}}"><i class="fa-solid fa-plus"></i> Create Variant Items</a>
                           </div>
                          </div>
                     </div>

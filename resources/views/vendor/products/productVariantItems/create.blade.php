@@ -28,8 +28,16 @@
                                 @csrf
                                 <div class="form-group">
                                    <label for="">Variant Name</label>
-                                   <input type="text" name="name"value="{{old("name")}}"  class="form-control">
+                                   <input type="text" name="name"value="{{$vendorProductVariant->product_variant_name}}"  class="form-control" readonly>
                                    {{-- <input type="hidden" name="product" value="{{$product->id}}"> --}}
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Price</label>
+                                  <input type="text" name="product_variant_item_price" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">is Default? <code>[Make 0 set as default]</code> </label>
+                                  <input type="text" name="product_variant_item_is_default" class="form-control">
                                 </div>
                                 <div class="form-group">
                                    <label for=""> Product Status</label>
