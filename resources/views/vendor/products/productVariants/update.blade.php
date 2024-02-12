@@ -16,27 +16,28 @@
                    <div class="card">
                     <div class="card-header">
                         <div class="row">
-                          <div class="col-md-6"> <h4>Product Variant Table</h4></div>
+                          <div class="col-md-6"> <h4>Update Product Variant</h4></div>
                           <div class="col-md-6 d-flex justify-content-end">
-                           <a class="btn btn-primary btn-sm" href="{{route('vendor.products-variant.index', ['product' => request()->product])}}"><i class="fa-solid fa-backward p-2"></i>Back</a>
+                           <a class="btn btn-primary btn-sm" href="{{route('vendor.products-variant.index', ['product'=>request()->product])}}"><i class="fa-solid fa-backward p-2"></i>Back</a>
                           </div>
                         </div>
                      </div>
                     <div class="card-body">
                         <section class="input_style">
-                            <form action="{{route('vendor.products-variant.store')}}" method="POST"> 
+                            <form action="{{route('vendor.products-variant.update',  $vendorProductVariant->id)}}" method="POST"> 
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                    <label for="">Variant Name</label>
-                                   <input type="text" name="name"value="{{}}"  class="form-control">
+                                   <input type="text" name="name"value="{{$vendorProductVariant->product_variant_name}}"  class="form-control">
                                    <input type="hidden" name="product" value="{{$product->id}}">
                                 </div>
                                 <div class="form-group">
                                    <label for=""> Product Status</label>
                                    <select name="status" class="form-control">
                                     <option value="">Select</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">In Active</option>
+                                    <option {{$vendorProductVariant->product_variant_product_id == 1 ? 'selected' : ''}} value="1">Active</option>
+                                    <option {{$vendorProductVariant->product_variant_product_id == 0 ? 'selected' : ''}} value="0">In Active</option>
                                    </select>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +48,7 @@
                             </form>
                           </section>
                    </div>
-                </section>
+                </section> 
               </div>
             </div>
           </div>

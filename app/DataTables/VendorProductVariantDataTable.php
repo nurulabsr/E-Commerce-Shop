@@ -24,11 +24,12 @@ class VendorProductVariantDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = '<a href="'.route('vendor.products-variant.edit', $query->id).'" class="btn btn-primary btn-sm">Edit</a>';
-                $dltBtn  = '<a href="'.route('vendor.products-variant.destroy', $query->id).'" class="btn btn-warning btn-sm ml-2">Delete</a>';
-                $mngBtn  = '<a href="'.route('vendor.products-variant.destroy', $query->id).'" class="btn btn-info btn-sm ml-2">Manage Product Variant</a>';
-                return $editBtn.$dltBtn.$mngBtn;
+                $editBtn = "<a href='".route('vendor.products-variant.edit', [$query->id, 'product' => request()->product])."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $dltBtn = "<a href='".route('vendor.products-variant.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+                // $manageBtn = "<a href='".route('vendor.product-variant-items.index', ['product' => request()->product, 'variant' => $query->id])."' class='btn btn-primary btn-sm ml-2'><i class='fas fa-tasks pr-2'></i>Manage Product Variant</a>";
+                return $editBtn.$dltBtn;
             })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 

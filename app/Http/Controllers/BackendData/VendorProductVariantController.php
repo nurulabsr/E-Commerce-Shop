@@ -59,9 +59,10 @@ class VendorProductVariantController extends Controller
      */
     public function edit(string $id, Request $request)
     {  
+        // dd($id);
         $product = Product::findOrFail($request->product);
         $vendorProductVariant = ProductVariant::findOrFail($id);
-        return view('vendor.products.productVariants.update', compact('product', 'vendorProductVariant'));
+        return view('vendor.products.productVariants.update', compact('vendorProductVariant', 'product'));
     }
 
     /**
@@ -69,7 +70,18 @@ class VendorProductVariantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:250', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'product' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+            'status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+        ]);
+
+        $vendorProductVariant = ProductVariant::findOrFail($id);
+        $vendorProductVariant->product_variant_name = $request->name;
+        $vendorProductVariant->product_variant_status = $request->status;
+        $vendorProductVariant->product_variant_product_id = $request->product;
+        $vendorProductVariant->save();
+        
     }
 
     /**
