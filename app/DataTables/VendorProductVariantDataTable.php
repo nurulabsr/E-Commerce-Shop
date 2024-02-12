@@ -26,7 +26,8 @@ class VendorProductVariantDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = '<a href="'.route('vendor.products-variant.edit', $query->id).'" class="btn btn-primary btn-sm">Edit</a>';
                 $dltBtn  = '<a href="'.route('vendor.products-variant.destroy', $query->id).'" class="btn btn-warning btn-sm ml-2">Delete</a>';
-                return $editBtn.$dltBtn;
+                $mngBtn  = '<a href="'.route('vendor.products-variant.destroy', $query->id).'" class="btn btn-info btn-sm ml-2">Manage Product Variant</a>';
+                return $editBtn.$dltBtn.$mngBtn;
             })
             ->setRowId('id');
     }
@@ -74,7 +75,7 @@ class VendorProductVariantDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(200)
+                  ->width(400)
                   ->addClass('text-center'),
         ];
     }

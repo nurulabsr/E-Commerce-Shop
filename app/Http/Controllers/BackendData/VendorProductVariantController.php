@@ -57,9 +57,11 @@ class VendorProductVariantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $id, Request $request)
+    {  
+        $product = Product::findOrFail($request->product);
+        $vendorProductVariant = ProductVariant::findOrFail($id);
+        return view('vendor.products.productVariants.update', compact('product', 'vendorProductVariant'));
     }
 
     /**
