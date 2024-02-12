@@ -15,8 +15,13 @@
                 <section>
                    <div class="card">
                     <div class="card-header">
-                        <h4>Create Product</h4>
-                    </div>
+                        <div class="row">
+                          <div class="col-md-6"> <h4>Product Variant Table</h4></div>
+                          <div class="col-md-6 d-flex justify-content-end">
+                           <a class="btn btn-primary btn-sm" href="{{route('vendor.products-variant.index', ['product' => request()->product])}}"><i class="fa-solid fa-backward p-2"></i>Back</a>
+                          </div>
+                        </div>
+                     </div>
                     <div class="card-body">
                         <section class="input_style">
                             <form action="" method="POST" enctype="multipart/form-data"> 
