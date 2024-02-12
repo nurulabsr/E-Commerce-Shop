@@ -30,7 +30,11 @@ class VendorProductVariantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+             'name' => ['required', 'string', 'max:250', 'not_regex:/<[^>]*>|[=\';"]/'],
+             'product' => ['numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
+             'status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+        ]);
     }
 
     /**
