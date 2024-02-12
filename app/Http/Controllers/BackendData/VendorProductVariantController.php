@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\VendorProductVariantDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class VendorProductVariantController extends Controller
@@ -19,9 +20,9 @@ class VendorProductVariantController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   $product = Product::findOrFail($request->product);
+        return view('vendor.products.productVariants.create', compact('product'));
     }
 
     /**
