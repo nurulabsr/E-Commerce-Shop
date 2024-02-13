@@ -23,6 +23,7 @@
                           </div>
                           <div class="col-md-6 d-flex justify-content-end">
                             <a class="btn btn-primary btn-m" href="{{route('vendor.products-variant-item.create', ['product' => request()->product, 'variant' => request()->variant])}}"><i class="fa-solid fa-plus"></i> Create Variant Items</a>
+                            <a href="{{route('vendor.products-variant.index', ['product' => request()->product])}}" class="btn btn-primary btn-sm ml-2"><i class="fa-solid fa-backward p-2"></i>Back</a>
                           </div>
                          </div>
                     </div>
