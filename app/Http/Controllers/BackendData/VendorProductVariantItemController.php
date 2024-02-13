@@ -25,7 +25,7 @@ class VendorProductVariantItemController extends Controller
      */
     public function create(Request $request)
     {   $product = Product::findOrFail($request->product);
-        $vendorProductVariant = ProductVariant::findOrFail($request->variant);
+        $variant = ProductVariant::findOrFail($request->variant);
         return view('vendor.products.productVariantItems.create', compact('vendorProductVariant', 'product'));
     }
 
@@ -85,6 +85,7 @@ class VendorProductVariantItemController extends Controller
         $vendorProductVariantItem->product_variant_item_status = $request->status;
         $vendorProductVariantItem->product_variant_item_product_variant_id = $request->variant;
         $vendorProductVariantItem->save();
+        return redirect()->route('vendor.products-variant-item.index', ['product' => $request->product, 'variant' => $request->variant]);
     }
 
     /**

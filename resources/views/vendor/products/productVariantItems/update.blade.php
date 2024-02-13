@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
           <div class="dashboard_content mt-2 mt-md-0">
-            <h3><i class="far fa-user"></i>Update profile</h3>
+            <h3><i class="far fa-user"></i>Update Product Variant Item</h3>
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">
                 <section>
@@ -24,36 +24,38 @@
                      </div>
                     <div class="card-body">
                         <section class="input_style">
-                            <form action="{{route('vendor.products-variant-item.store')}}" method="POST"> 
+                            <form action="{{route('vendor.products-variant-item.update', $vendorProductVariantItem->id)}}" method="POST"> 
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                    <label for="">Variant Name</label>
-                                   <input type="text" name="name"value="{{$vendorProductVariant->product_variant_name}}"  class="form-control" readonly>
+                                   <input type="text" name="name"value="{{$variant->product_variant_name}}"  class="form-control" readonly>
                                    <input type="hidden" name="product" value="{{$product->id}}">
-                                   <input type="hidden" name="variant" value="{{$vendorProductVariant->id}}">
+                                   <input type="hidden" name="variant" value="{{$variant->id}}">
 
                                 </div>
                                 <div class="form-group">
                                   <label for="">Variant Item Name</label>
-                                  <input type="text" name="product_variant_item_name" class="form-control">
+                                  <input type="text" name="product_variant_item_name" value="{{$vendorProductVariantItem->product_variant_item_name}}" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                  <label for="">Price</label>
-                                  <input type="text" name="product_variant_item_price" class="form-control">
+                                  <label for="">Item Price</label>
+                                  <input type="text" name="product_variant_item_price" value="{{$vendorProductVariantItem->product_variant_item_price}}" class="form-control">
                                 </div>
                                 <div class="form-group">
                                   <label for="">is Default? <code>[Make 0 set as default]</code> </label>
                                   <select name="product_variant_item_is_default" class="form-control">
                                     <option value="">Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                   </select>                                </div>
+                                    <option {{$vendorProductVariantItem->product_variant_item_is_default == 1 ? 'selected' : ''}} value="1">Yes</option>
+                                    <option {{$vendorProductVariantItem->product_variant_item_is_default == 0 ? 'selected' : ''}} value="0">No</option>
+                                   </select>                               
+                                 </div>
                                 <div class="form-group">
                                    <label for=""> Product Status</label>
                                    <select name="status" class="form-control">
                                     <option value="">Select</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">In Active</option>
+                                    <option {{$vendorProductVariantItem->product_variant_item_status == 1 ? 'selected' : ''}} value="1">Active</option>
+                                    <option {{$vendorProductVariantItem->product_variant_item_status == 0 ? 'selected' : ''}} value="0">In Active</option>
                                    </select>
                                 </div>
                                 <div class="form-group">
