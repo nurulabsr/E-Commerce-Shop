@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean("product_variant_item_is_default");
             $table->boolean("product_variant_item_status");
             $table->integer("product_variant_item_product_variant_id");
+            $table->integer('product_variant_item_vendor_id');
             $table->timestamps();
             $table->softDeletes();
         });

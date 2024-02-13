@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VendorProductVariantItemController extends Controller
 {
@@ -26,7 +27,7 @@ class VendorProductVariantItemController extends Controller
     public function create(Request $request)
     {   $product = Product::findOrFail($request->product);
         $variant = ProductVariant::findOrFail($request->variant);
-        return view('vendor.products.productVariantItems.create', compact('vendorProductVariant', 'product'));
+        return view('vendor.products.productVariantItems.create', compact('variant', 'product'));
     }
 
     /**
@@ -49,6 +50,7 @@ class VendorProductVariantItemController extends Controller
         $vendorProductVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
         $vendorProductVariantItem->product_variant_item_status = $request->status;
         $vendorProductVariantItem->product_variant_item_product_variant_id = $request->variant;
+        $vendorProductVariantItem->product_variant_item_vendor_id = Auth::user()->id;
         $vendorProductVariantItem->save();
         toastr()->success("Variant Item Created Successfully!");
         return redirect()->route('vendor.products-variant-item.index', ['product' => $request->product, 'variant' => $request->variant]);
@@ -84,6 +86,7 @@ class VendorProductVariantItemController extends Controller
         $vendorProductVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
         $vendorProductVariantItem->product_variant_item_status = $request->status;
         $vendorProductVariantItem->product_variant_item_product_variant_id = $request->variant;
+        $vendorProductVariantItem->product_variant_vendor_id = Auth::user()->id;
         $vendorProductVariantItem->save();
         return redirect()->route('vendor.products-variant-item.index', ['product' => $request->product, 'variant' => $request->variant]);
     }

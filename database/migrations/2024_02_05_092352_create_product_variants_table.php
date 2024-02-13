@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('product_variant_name');
             $table->boolean('product_variant_status');
             $table->integer("product_variant_product_id");
+            $table->integer("product_variant_vendor_id");
             $table->timestamps();
             $table->softDeletes();
         });

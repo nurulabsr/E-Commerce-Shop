@@ -60,10 +60,14 @@ class ProductVariantItemDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(ProductVariantItem $model): QueryBuilder
+    public function query(ProductVariantItem $model)
     {
-        return $model->where('product_variant_item_product_variant_id', request()->variant)->newQuery();
+        return $model
+            ->where('product_variant_item_product_variant_id', request()->variant)
+            ->where('product_variant_item_vendor_id', auth()->id())
+            ->newQuery();
     }
+    
 
     /**
      * Optional method if you want to use the html builder.

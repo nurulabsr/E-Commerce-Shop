@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VendorProductVariantController extends Controller
 {
@@ -41,6 +42,7 @@ class VendorProductVariantController extends Controller
         $vendorProductVariant->product_variant_name = $request->name;
         $vendorProductVariant->product_variant_status = $request->status;
         $vendorProductVariant->product_variant_product_id = $request->product;
+        $vendorProductVariant->product_variant_vendor_id = Auth::user()->id;
         $vendorProductVariant->save();
         toastr()->success($request->name ."Created Successfully!");
         return redirect()->route('vendor.products-variant.index', ['product' => $request->product]);
@@ -80,6 +82,7 @@ class VendorProductVariantController extends Controller
         $vendorProductVariant->product_variant_name = $request->name;
         $vendorProductVariant->product_variant_status = $request->status;
         $vendorProductVariant->product_variant_product_id = $request->product;
+        $vendorProductVariant->product_variant_vendor_id = Auth::user()->id;
         $vendorProductVariant->save();
         toastr()->success($request->name ."Updated Successfully!");
         return redirect()->route('vendor.products-variant.index', ['product' => $request->product]);

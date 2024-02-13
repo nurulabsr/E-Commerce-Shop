@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('product_image_gallery_img');
             $table->integer('product_image_gallery_product_id');
+            $table->integer('product_vendor_id');
             $table->timestamps();
             $table->softDeletes();
         });

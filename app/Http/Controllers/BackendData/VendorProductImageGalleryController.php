@@ -60,6 +60,7 @@ class VendorProductImageGalleryController extends Controller
                 $vendorProductImageGallery = new ProductImageGallery();
                 $vendorProductImageGallery->product_image_gallery_img = $ImagePath;
                 $vendorProductImageGallery->product_image_gallery_product_id = $request->product_image_gallery_product_id;
+                $vendorProductImageGallery->product_vendor_id = Auth::user()->id;
                 $vendorProductImageGallery->save();
             }
             toastr()->success("Image Uploaded Successfully!");
