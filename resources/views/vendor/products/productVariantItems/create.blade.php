@@ -34,7 +34,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                  <label for="">Price</label>
+                                  <label for="">Variant Item Name</label>
                                   <input type="text" name="product_variant_item_name" class="form-control">
                                 </div>
                                 <div class="form-group">

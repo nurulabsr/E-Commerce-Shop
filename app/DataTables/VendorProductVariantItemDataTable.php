@@ -35,7 +35,7 @@ class VendorProductVariantItemDataTable extends DataTable
      */
     public function query(ProductVariantItem $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('product_variant_item_product_variant_id', request()->variant)->newQuery();
     }
 
     /**
@@ -48,7 +48,7 @@ class VendorProductVariantItemDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
