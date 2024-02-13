@@ -30,7 +30,7 @@
                                    <label for="">Variant Name</label>
                                    <input type="text" name="name"value="{{$vendorProductVariant->product_variant_name}}"  class="form-control" readonly>
                                    <input type="hidden" name="product" value="{{$product->id}}">
-                                   <input type="hidden" name="product" value="{{$vendorProductVariant->id}}">
+                                   <input type="hidden" name="variant" value="{{$vendorProductVariant->id}}">
 
                                 </div>
                                 <div class="form-group">

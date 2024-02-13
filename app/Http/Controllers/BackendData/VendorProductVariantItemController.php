@@ -46,6 +46,12 @@ class VendorProductVariantItemController extends Controller
         $vendorProductVariantItem = new ProductVariantItem();
         $vendorProductVariantItem->product_variant_item_name = $request->product_variant_item_name;
         $vendorProductVariantItem->product_variant_item_price = $request->product_variant_item_price;
+        $vendorProductVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
+        $vendorProductVariantItem->product_variant_item_status = $request->product_variant_item_status;
+        $vendorProductVariantItem->product_variant_item_product_variant_id = $request->variant;
+        $vendorProductVariantItem->save();
+        toastr()->success("Variant Item Created Successfully!");
+        return redirect()->route('vendor.products-variant-item.index');
     }
 
     /**
