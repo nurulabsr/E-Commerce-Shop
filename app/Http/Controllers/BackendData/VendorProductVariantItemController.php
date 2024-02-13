@@ -6,6 +6,7 @@ use App\DataTables\VendorProductVariantItemDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\ProductVariantItem;
 use Illuminate\Http\Request;
 
 class VendorProductVariantItemController extends Controller
@@ -38,8 +39,13 @@ class VendorProductVariantItemController extends Controller
            'product' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
            'product_variant_item_price' => ['required', 'numeric', 'not_regex:/<[^>]*>|[=\';"]/'],
            'product_variant_item_is_default' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
+           'product_variant_item_name' => ['required', 'string', 'max:254', 'not_regex:/<[^>]*>|[=\';"]/'],
            'status' => ['required', 'boolean', 'not_regex:/<[^>]*>|[=\';"]/'],
         ]);
+
+        $vendorProductVariantItem = new ProductVariantItem();
+        $vendorProductVariantItem->product_variant_item_name = $request->product_variant_item_name;
+        $vendorProductVariantItem->product_variant_item_price = $request->product_variant_item_price;
     }
 
     /**
