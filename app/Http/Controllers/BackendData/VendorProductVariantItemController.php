@@ -65,7 +65,18 @@ class VendorProductVariantItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id, Request $request)
+    { 
+      $vendorProductVariantItem = ProductVariantItem::findOrFail($id);
+      $product = Product::findOrFail($request->product);
+      $variant = ProductVariant::findOrFail($request->variant);
+      return view('vendor.products.productVariantItems.update', compact('vendorProductVariantItem', 'variant', 'product'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         $vendorProductVariantItem = ProductVariantItem::findOrFail($id);
         $vendorProductVariantItem->product_variant_item_name = $request->product_variant_item_name;
@@ -74,14 +85,6 @@ class VendorProductVariantItemController extends Controller
         $vendorProductVariantItem->product_variant_item_status = $request->status;
         $vendorProductVariantItem->product_variant_item_product_variant_id = $request->variant;
         $vendorProductVariantItem->save();
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**
