@@ -85,8 +85,11 @@ class ProductDataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model
+            ->where('product_vendor_id', auth()->id())
+            ->newQuery();
     }
+    
 
     /**
      * Optional method if you want to use the html builder.
