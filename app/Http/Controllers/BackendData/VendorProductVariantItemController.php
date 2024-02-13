@@ -93,6 +93,8 @@ class VendorProductVariantItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $vendorProductVariantItem = ProductVariantItem::findOrFail($id);
+        $vendorProductVariantItem->delete();
+        return(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }
