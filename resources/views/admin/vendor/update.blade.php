@@ -64,9 +64,9 @@
                     
                      <div class="form-group">
                         <label for="">Vendor Active Status</label>
-                        <select name="admin_vendor_profile_status" value="{{old('admin_vendor_profile_status')}}" class="form-control">
-                            <option value="1">Active</option>
-                            <option value="0">In Active</option>
+                        <select name="admin_vendor_profile_status"  class="form-control">
+                            <option {{$vendor_profile->admin_vendor_profile_status==1 ? 'selected' : ''}} value="1">Active</option>
+                            <option {{$vendor_profile->admin_vendor_profile_status==0 ? 'selected' : ''}} value="0">In Active</option>
                         </select>
                      </div>
                       <div class="form-group">

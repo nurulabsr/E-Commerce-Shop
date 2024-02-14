@@ -82,7 +82,7 @@ class AdminVendorProfileController extends Controller
     public function edit(string $id)
     {
         $vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
-        return view('admin.vendor.update', compact('user_profile'));
+        return view('admin.vendor.update', compact('vendor_profile'));
     }
 
     /**
@@ -90,7 +90,17 @@ class AdminVendorProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'admin_vendor_profile_banner' => ['nullable', 'image', 'max:4096', 'mimes:png,jpg'],
+            'admin_vendor_profile_phone' => ['nullable', 'string', 'max:25'],
+            'admin_vendor_profile_email' => ['required', 'email', 'max:254'],
+            'admin_vendor_profile_address' => ['required', 'string', 'max:400'],
+            'admin_vendor_profile_description' => ['required', 'string', 'max:500'],
+            'admin_vendor_profile_facebook_url' => ['nullable', 'url', 'max:400'],
+            'admin_vendor_profile_twitter_url' => ['nullable', 'url', 'max:400'],
+            'admin_vendor_profile_insagram_url' => ['nullable', 'url', 'max:400'],
+            'admin_vendor_profile_status'  => ['boolean'],
+        ]);
     }
 
     /**
