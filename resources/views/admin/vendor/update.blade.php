@@ -1,4 +1,4 @@
-{{-- @extends('admin.layouts.master')
+@extends('admin.layouts.master')
 @section('content')
 <section class="section">
     <div class="section-header">
@@ -17,6 +17,7 @@
                 <div class="card-body">
                    <form action="{{route('admin.vendor-profile.store')}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
+                     @method('PUT')
                      <div class="form-group">
                         <label for="">Banner</label>
                         <div>
@@ -78,4 +79,4 @@
       </div>
     </div>
   </section>
-@endsection --}}
+@endsection

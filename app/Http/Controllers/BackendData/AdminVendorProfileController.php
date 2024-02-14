@@ -81,7 +81,8 @@ class AdminVendorProfileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
+        return view('admin.vendor.update', compact('user_profile'));
     }
 
     /**
