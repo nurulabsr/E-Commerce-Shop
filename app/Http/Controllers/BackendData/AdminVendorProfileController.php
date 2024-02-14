@@ -112,6 +112,9 @@ class AdminVendorProfileController extends Controller
         $admin_vendor_profile->admin_vendor_profile_facebook_url = $request->admin_vendor_profile_facebook_url;
         $admin_vendor_profile->admin_vendor_profile_status = $request->admin_vendor_profile_status;
         $admin_vendor_profile->admin_vendor_profile_user_id = $request->admin_vendor_profile_user_id;
+        $admin_vendor_profile->save();
+        toastr()->success('Admin Vendor Profile updated!');
+        return redirect()->back();
 
     }
 
