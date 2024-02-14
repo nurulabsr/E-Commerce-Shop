@@ -108,6 +108,8 @@ class AdminVendorProfileController extends Controller
         $admin_vendor_profile->admin_vendor_profile_phone = $request->admin_vendor_profile_phone;
         $admin_vendor_profile->admin_vendor_profile_email = $request->admin_vendor_profile_email;
         $admin_vendor_profile->admin_vendor_profile_address = $request->admin_vendor_profile_address;
+        $admin_vendor_profile->admin_vendor_profile_description = $request->admin_vendor_profile_description;
+        $admin_vendor_profile->admin_vendor_profile_facebook_url = $request->admin_vendor_profile_facebook_url;
 
     }
 
