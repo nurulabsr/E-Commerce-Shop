@@ -101,6 +101,11 @@ class AdminVendorProfileController extends Controller
             'admin_vendor_profile_insagram_url' => ['nullable', 'url', 'max:400'],
             'admin_vendor_profile_status'  => ['boolean'],
         ]);
+
+        $admin_vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
+        $path = $this->UpdateImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads', $admin_vendor_profile->admin_vendor_profile_banner);
+        $admin_vendor_profile->admin_vendor_profile_banner = !empty($path) ? $path : $admin_vendor_profile->admin_vendor_profile_banner;
+
     }
 
     /**
