@@ -12,6 +12,7 @@ use App\Http\Controllers\BackendData\SubCategoryController;
 use App\Http\Controllers\BackendData\ProductImageGalleryController;
 use App\Http\Controllers\BackendData\ProductVariantController;
 use App\Http\Controllers\BackendData\ProductVariantItemController;
+use App\Http\Controllers\BackendData\SellerProductsController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -71,3 +72,8 @@ Route::resource('product-variant', ProductVariantController::class);
 //Product Vatriant Item 
 Route::put('product-variant-items-status', [ProductVariantItemController::class, 'UpdateStatus'])->name('product-variant-items.status');
 Route::resource('product-variant-items', ProductVariantItemController::class);
+
+//seller product
+
+
+Route::get('seller-product', [SellerProductsController::class, 'sellerProduct'])->name('seller-product.all');
