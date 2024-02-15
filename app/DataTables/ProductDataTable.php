@@ -78,9 +78,13 @@ class ProductDataTable extends DataTable
            })
            ->addColumn('is_product_approved', function($query){
             if($query->is_product_approved ==1){
-              $pending = '<h4><span class="badge bg-secondary">Approved</span></h4>';
+              $approved = '<h4><span class="badge bg-secondary">Approved</span></h4>';
+              return $approved;
+            } else{
+              $pending = '<h4><span class="badge bg-info">Pending</span></h4>';
               return $pending;
             }
+
            })
             ->rawColumns(['action', 'product_thumnail_img', 'product_type', 'product_status', 'is_product_approved'])
             ->setRowId('id');

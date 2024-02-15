@@ -64,9 +64,10 @@ class SellerProductsDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('product_name'),
+            Column::make('product_quantity'),
+            Column::make('product_price'),
+            Column::make('is_product_approved'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
