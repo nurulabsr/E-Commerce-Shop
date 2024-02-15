@@ -38,8 +38,26 @@ class SellerApprovedProductsDataTable extends DataTable
             </div>';
             return $editBtn.$dltBtn.$moreBtn;
         })
-       
-       ->rawColumns(['action'])
+        ->addColumn('product_type', function($query){
+            switch ($query->product_type) {
+             case 'top_product':
+                 return '<i class="badge badge-success">Top Product</i>';
+                 break;
+             case 'best_product':
+                  return '<i class="badge badge-success">Best Product</i>';
+                  break;
+             case 'new_product':
+             return '<i class="badge badge-warning">New Product</i>';
+             break;
+             case 'featured_product':
+                 return '<i class="badge badge-warning">Featured Product</i>';
+                 break;
+             default:
+                 return '<i class="badge badge-dark">No Product Avaiable</i>';
+                 break;
+            }
+         })
+       ->rawColumns(['action', 'product_type'])
         ->setRowId('id');
     }
 
