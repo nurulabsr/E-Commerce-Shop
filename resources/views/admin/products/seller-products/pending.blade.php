@@ -60,7 +60,8 @@
             method: 'PUT',
             data:{
               _token: '{{ csrf_token() }}', 
-              value:value
+              value:value,
+              id:id
             },
             success: function(data){
               toastr.success(data.message);
