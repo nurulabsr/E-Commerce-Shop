@@ -76,7 +76,13 @@ class ProductDataTable extends DataTable
                  return $toggleBtn;
                 }
            })
-            ->rawColumns(['action', 'product_thumnail_img', 'product_type', 'product_status'])
+           ->addColumn('is_product_approved', function($query){
+            if($query->is_product_approved ==1){
+              $pending = '<h4><span class="badge bg-secondary">Approved</span></h4>';
+              return $pending;
+            }
+           })
+            ->rawColumns(['action', 'product_thumnail_img', 'product_type', 'product_status', 'is_product_approved'])
             ->setRowId('id');
     }
 
@@ -127,6 +133,7 @@ class ProductDataTable extends DataTable
             Column::make('product_short_description'),
             Column::make('product_type')->title('Product Type'),
             Column::make('product_status')->title('Product Status'),
+            Column::make('is_product_approved'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
