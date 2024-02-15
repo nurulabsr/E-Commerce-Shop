@@ -25,6 +25,59 @@
 @endsection
 @push('scripts')
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+<script>
+    $(function(){
+        $('body').on('click', '.status', function(){
+            let isChecked = $(this).is(':checked');
+            let id = $(this).data('id');     
+                      // console.log(id);  // let id = $(this).attr('id');                                       
+            $.ajax({
+              url:'{{route("admin.products.status")}}',  //products.status
+              method: 'PUT',
+              data:{
+                _token: '{{ csrf_token() }}', 
+                product_status:isChecked,
+                id:id,
+              },
+              success: function(data){
+                toastr.success(data.message);
+              },
+              error: function(xhr, status, error){
+                console.log(error);
+              }
+  
+  
+            })
+        });
+    });
+  
 
+    //Change Product Approve Status
+        $('body').on('change', '.is_approve', function(){
+          let value = $(this).val();
+          let id = $(this).data('id');
+          console.log(value);
+          
+          $.ajax({
+              url: '{{ route("admin.product.approve.status") }}', 
+              method: 'PUT',
+              data: {
+                  _token: '{{ csrf_token() }}', 
+                  value: value,
+                  id: id
+              },
+              success: function(data){
+                  console.log(data);
+                  toastr.success(data.message);
+              },
+              error: function(xhr, status, error){
+                  console.log(error);
+              }
+          });
+      });
+  
+  </script>
 @endpush
+
+
 
