@@ -95,8 +95,8 @@ class SellerPendingProductsDataTable extends DataTable
         
         
 
-                ->rawColumns(['is_product_approved', 'product_type', 'approve', 'product_status', 'action', 'product_thumnail_img'])
-                ->setRowId('id');
+            ->rawColumns(['is_product_approved', 'product_type', 'approve', 'product_status', 'action', 'product_thumnail_img'])
+            ->setRowId('id');
     }
 
     /**
