@@ -49,6 +49,12 @@ class SellerPendingProductsDataTable extends DataTable
                 }
              })
 
+             ->addColumn('is_product_approved', function($query){
+                if($query->is_product_approved == 0){
+                   return '<i class="badge badge-danger">Pending</i>';
+                }
+             })
+
              ->addColumn('approve', function($query) {
                 $pendingSelected = $query->is_product_approved == 0 ? 'selected' : '';
                 return '<select class="form-control form-select-sm is_approve" aria-label="Default select example">' .
