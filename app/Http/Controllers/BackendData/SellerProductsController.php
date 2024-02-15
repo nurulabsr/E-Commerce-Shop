@@ -22,10 +22,13 @@ class SellerProductsController extends Controller
     }
 
 
-    public function changeProductApproveStatus(Request $request, $id){
-        $product = Product::findOrFail($id);
+    public function changeProductApproveStatus(Request $request) {
+        $product = Product::findOrFail($request->id);
         $product->is_product_approved = $request->value;
         $product->save();
-        return response (['message' => 'Product approve status has changed!']);
+        return response(['message' => 'Product approve status has changed!']);
     }
+    
+
+    
 }

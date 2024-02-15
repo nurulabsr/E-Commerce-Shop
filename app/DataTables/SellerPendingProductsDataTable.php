@@ -63,6 +63,7 @@ class SellerPendingProductsDataTable extends DataTable
                     '<option ' . $pendingSelected . ' value="0" style="font-weight:bold; font-style:italic;color:red;">Pending</option>' .
                     '</select>';
             })
+            
 
             ->addColumn('product_status', function($query){
                 if($query->product_status==1){

@@ -51,30 +51,29 @@
       });
   });
 
-  $('body').on('change', '.is_approve', function(){
-    let value = $(this).val();
-    console.log(value);
-    
-    $.ajax({
-            url:'{{route("admin.product.approve.status")}}', 
+      $('body').on('change', '.is_approve', function(){
+        let value = $(this).val();
+        let id = $(this).data('id');
+        console.log(value);
+        
+        $.ajax({
+            url: '{{ route("admin.product.approve.status") }}', 
             method: 'PUT',
-            data:{
-              _token: '{{ csrf_token() }}', 
-              value:value,
-              id:id
+            data: {
+                _token: '{{ csrf_token() }}', 
+                value: value,
+                id: id
             },
             success: function(data){
-              console.log(data);
-              toastr.success(data.message);
+                console.log(data);
+                toastr.success(data.message);
             },
             error: function(xhr, status, error){
-              console.log(error);
+                console.log(error);
             }
+        });
+    });
 
-
-          })
-
-  })
 </script>
 @endpush
 
