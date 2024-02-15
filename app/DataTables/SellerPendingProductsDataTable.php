@@ -29,14 +29,37 @@ class SellerPendingProductsDataTable extends DataTable
 
             })
 
-            ->addColumn('is_product_approved', function($query){
-               if($query->is_product_approved == 0){
-                $approved = '<h4><span class="badge bg-secondary">Approved</span></h4>';
-                return $approved;
-               }
-            })
+            ->addColumn('product_type', function($query){
+                switch ($query->product_type) {
+                 case 'top_product':
+                     return '<i class="badge badge-success">Top Product</i>';
+                     break;
+                 case 'best_product':
+                      return '<i class="badge badge-success">Best Product</i>';
+                      break;
+                 case 'new_product':
+                 return '<i class="badge badge-warning">New Product</i>';
+                 break;
+                 case 'featured_product':
+                     return '<i class="badge badge-warning">Featured Product</i>';
+                     break;
+                 default:
+                     return '<i class="badge badge-dark">No Product Avaiable</i>';
+                     break;
+                }
+             })
 
-            ->rawColumns(['is_product_approved'])
+             ->addColumn('approve', function($query) {
+                $pendingSelected = $query->is_product_approved == 0 ? 'selected' : '';
+                return '<select class="form-control form-select-sm is_approve" aria-label="Default select example">' .
+                    '<option value="1" style="font-weight:bold;color:green;">Approved</option>' .
+                    '<option ' . $pendingSelected . ' value="0" style="font-weight:bold; font-style:italic;color:red;">Pending</option>' .
+                    '</select>';
+            })
+            
+            
+
+            ->rawColumns(['is_product_approved', 'product_type', 'approve'])
             ->setRowId('id');
     }
 
@@ -80,10 +103,12 @@ class SellerPendingProductsDataTable extends DataTable
             Column::make('product_name'),
             Column::make('product_quantity'),
             Column::make('is_product_approved'),
+            Column::make('product_type'),
+            Column::make('approve')->width(120),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(260)
                   ->addClass('text-center'),
         ];
     }
