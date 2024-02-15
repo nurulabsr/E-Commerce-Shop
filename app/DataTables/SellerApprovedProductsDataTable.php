@@ -38,6 +38,9 @@ class SellerApprovedProductsDataTable extends DataTable
             </div>';
             return $editBtn.$dltBtn.$moreBtn;
         })
+        ->addColumn('product_thumnail_img', function($query){
+            return "<img width='40px' src='".asset($query->product_thumnail_img)."'></img>";
+        })
         ->addColumn('product_type', function($query){
             switch ($query->product_type) {
              case 'top_product':
@@ -87,7 +90,7 @@ class SellerApprovedProductsDataTable extends DataTable
             }
        })
 
-       ->rawColumns(['action', 'product_type', 'is_product_approved', 'approve', 'product_status'])
+       ->rawColumns(['action', 'product_type', 'is_product_approved', 'approve', 'product_status', 'product_thumnail_img'])
         ->setRowId('id');
     }
 
@@ -136,7 +139,7 @@ class SellerApprovedProductsDataTable extends DataTable
             Column::make('is_product_approved'), 
             Column::make('approve'),
             Column::make('product_status'),
-
+            Column::make('product_thumnail_img'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
