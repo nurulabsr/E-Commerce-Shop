@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\Product;
 use App\Models\SellerApprovedProduct;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -29,7 +30,7 @@ class SellerApprovedProductsDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(SellerApprovedProduct $model): QueryBuilder
+    public function query(Product $model): QueryBuilder
     {
         return $model->newQuery();
     }

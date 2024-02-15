@@ -23,11 +23,21 @@ class SellerPendingProductsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function($query){
-               $dltBtn = '';
-               $editBtn = '';
-
-            })
+        ->addColumn('action', function($query){
+            $editBtn = "<a href='".route('admin.products.edit', $query->id)."' class='btn btn-primary btn-sm'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+            $dltBtn = "<a href='".route('admin.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+            $moreBtn = '
+            <div class="btn-group ml-2">
+              <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden"><i class="fa-solid fa-gear"></i></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="'.route('admin.products-image-gallery.index',['product' => $query->id]).'"><i class="fas fa-images pr-2"></i> Image Gallery</a></li>
+                <li><a class="dropdown-item" href="'.route('admin.product-variant.index', ['product' => $query->id]).'"><i class="fad fa-box pr-2"></i> Product Variant</a></li>
+              </ul>
+            </div>';
+            return $editBtn.$dltBtn.$moreBtn;
+        })
 
             ->addColumn('product_type', function($query){
                 switch ($query->product_type) {
