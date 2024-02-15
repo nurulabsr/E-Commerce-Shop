@@ -45,7 +45,7 @@ class SellerApprovedProductsDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -63,15 +63,18 @@ class SellerApprovedProductsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id'),
+            Column::make('product_name'),
+            Column::make('product_quantity'),
+            Column::make('product_price'),
+            Column::make('product_video_link'),
+            Column::make('product_type'),
+            Column::make('is_product_approved'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 
