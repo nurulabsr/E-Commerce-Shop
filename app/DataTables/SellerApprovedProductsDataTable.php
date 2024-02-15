@@ -71,9 +71,23 @@ class SellerApprovedProductsDataTable extends DataTable
                 '<option ' . $pendingSelected . ' value="0" style="font-weight:bold; font-style:italic;color:red;">Pending</option>' .
                 '</select>';
         })
-        
+        ->addColumn('product_status', function($query){
+            if($query->product_status==1){
+               $toggleBtn = '<label>
+               <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+               <span class="custom-switch-indicator"> </span>
+              </label>';
+           return $toggleBtn;
+            } else{
+               $toggleBtn = '<label>
+               <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+               <span class="custom-switch-indicator"> </span>
+             </label>';
+             return $toggleBtn;
+            }
+       })
 
-       ->rawColumns(['action', 'product_type', 'is_product_approved', 'approve'])
+       ->rawColumns(['action', 'product_type', 'is_product_approved', 'approve', 'product_status'])
         ->setRowId('id');
     }
 
@@ -119,8 +133,10 @@ class SellerApprovedProductsDataTable extends DataTable
             Column::make('product_price'),
             Column::make('product_video_link'),
             Column::make('product_type'),
-            Column::make('is_product_approved'),
+            Column::make('is_product_approved'), 
             Column::make('approve'),
+            Column::make('product_status'),
+
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
