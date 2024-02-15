@@ -56,11 +56,9 @@ class AdminVendorProfileController extends Controller
         ]);
 
         $admin_vendor_profile = new Vendor();
-        // $admin_vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
+        $user_profile = User::where('email', 'admin@edu.com')->first();
         $path = $this->ImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads');
         $admin_vendor_profile->admin_vendor_profile_banner = $path;
-        // $path = $this->UpdateImageFilePathHandling($request, 'admin_vendor_profile_banner', 'uploads', $admin_vendor_profile->admin_vendor_profile_banner);
-        // $admin_vendor_profile->admin_vendor_profile_banner = !empty($path) ? $path : $admin_vendor_profile->admin_vendor_profile_banner;
         $admin_vendor_profile->admin_vendor_profile_phone = $request->admin_vendor_profile_phone;
         $admin_vendor_profile->admin_vendor_profile_email = $request->admin_vendor_profile_email;
         $admin_vendor_profile->admin_vendor_profile_address = $request->admin_vendor_profile_address;
@@ -69,7 +67,7 @@ class AdminVendorProfileController extends Controller
         $admin_vendor_profile->admin_vendor_profile_twitter_url = $request->admin_vendor_profile_twitter_url;
         $admin_vendor_profile->admin_vendor_profile_insagram_url = $request->admin_vendor_profile_insagram_url;
         $admin_vendor_profile->admin_vendor_profile_status = $request->admin_vendor_profile_status;
-        $admin_vendor_profile->admin_vendor_profile_user_id = $request->admin_vendor_profile_user_id;
+        $admin_vendor_profile->admin_vendor_profile_user_id = $user_profile->id;
         $admin_vendor_profile->save();
         toastr()->success('Admin Vendor Profile Uploaded!');
         return redirect()->route('admin.vendor-profile.update');
@@ -89,7 +87,8 @@ class AdminVendorProfileController extends Controller
     public function edit(string $id)
     {
         $vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
-        return view('admin.vendor.update', compact('vendor_profile'));
+        $user_profile = User::where('email', 'admin@edu.com')->first();
+        return view('admin.vendor.update', compact('vendor_profile', 'user_profile'));
     }
 
     /**
@@ -118,11 +117,10 @@ class AdminVendorProfileController extends Controller
         $admin_vendor_profile->admin_vendor_profile_description = $request->admin_vendor_profile_description;
         $admin_vendor_profile->admin_vendor_profile_facebook_url = $request->admin_vendor_profile_facebook_url;
         $admin_vendor_profile->admin_vendor_profile_status = $request->admin_vendor_profile_status;
-        $admin_vendor_profile->admin_vendor_profile_user_id = $request->admin_vendor_profile_user_id;
+        $admin_vendor_profile->admin_vendor_profile_user_id = $admin_vendor_profile->id;
         $admin_vendor_profile->save();
         toastr()->success('Admin Vendor Profile updated!');
         return redirect()->back();
-
     }
 
     /**

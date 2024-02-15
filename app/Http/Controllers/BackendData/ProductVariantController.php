@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductVariantController extends Controller
 {
@@ -15,16 +16,17 @@ class ProductVariantController extends Controller
      */
     public function index(ProductVariantDataTable $datatable, Request $request)
     {   
-        $product = Product::findOrFail($request->product);
+        $product = Product::findOrFail($request->product)->first();
         return $datatable->render('admin.products.ProductVariant.index', compact('product'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('admin.products.ProductVariant.create');
+    public function create(Request $request)
+    {   
+        $product = Product::findOrFail($request->product);
+        return view('admin.products.ProductVariant.create', compact('product'));
     }
 
     /**
@@ -42,6 +44,7 @@ class ProductVariantController extends Controller
         $productVariant->product_variant_name = $request->product_variant_name;
         $productVariant->product_variant_status = $request->product_variant_status;
         $productVariant->product_variant_product_id = $request->product_variant_product_id;
+        $productVariant->product_variant_vendor_id = Auth::user()->vendor->first()->id;
         $productVariant->save();
         toastr()->success("Product Variant Added Successfully!");
         return redirect()->route('admin.product-variant.index', ['product' => $request->product_variant_product_id]);

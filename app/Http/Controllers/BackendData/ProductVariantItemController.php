@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductVariantItemController extends Controller
 {
@@ -50,6 +51,7 @@ class ProductVariantItemController extends Controller
         $productVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
         $productVariantItem->product_variant_item_status = $request->product_variant_item_status;
         $productVariantItem->product_variant_item_product_variant_id = $request->product_variant;
+        $productVariantItem->product_variant_item_vendor_id= Auth::user()->vendor->first()->id;
         $productVariantItem->save();
         toastr()->success("Variant Item: " .$request->product_variant_item_name ." Added Successfully!");
         return redirect()->route('admin.product-variant-items.index', ['product' => $request->product, 'variant' => $request->product_variant]);
@@ -94,6 +96,7 @@ class ProductVariantItemController extends Controller
         $productVariantItem->product_variant_item_is_default = $request->product_variant_item_is_default;
         $productVariantItem->product_variant_item_status = $request->product_variant_item_status;
         $productVariantItem->product_variant_item_product_variant_id = $request->product_variant;
+        $productVariantItem->product_variant_item_vendor_id= Auth::user()->vendor->first()->id;
         $productVariantItem->save();
         toastr()->success("Variant Item: " .$request->product_variant_item_name ." Updated Successfully!");
         return redirect()->route('admin.product-variant-items.index', ['product' => $request->product, 'variant' => $request->product_variant]);

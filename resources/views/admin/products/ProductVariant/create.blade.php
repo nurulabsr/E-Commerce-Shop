@@ -21,7 +21,7 @@
                         <div class="form-group">
                            <label for="">Product Variant Name</label>
                            <input type="text" name="product_variant_name" class="form-control">
-                           <input type="hidden" name="product_variant_product_id"value="{{request()->product}}">
+                           <input type="hidden" name="product_variant_product_id"value="{{$product->id}}">
                         </div>
                         
                       

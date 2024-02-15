@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   <form action="{{route('admin.vendor-profile.store')}}" method="POST" enctype="multipart/form-data"> 
+                   <form action="{{route('admin.vendor-profile.update', $vendor_profile->id)}}" method="POST" enctype="multipart/form-data"> 
                      @csrf
                      @method('PUT')
                      <div class="form-group">
@@ -56,7 +56,6 @@
                         <label for="">Vendor Instagram URL</label>
                         <input type="url" name="admin_vendor_profile_insagram_url" class="form-control" value="{{$vendor_profile->admin_vendor_profile_insagram_url}}">
                      </div>
-                    
                      <div class="form-group">
                         <label for="">Vendor Active Status</label>
                         <select name="admin_vendor_profile_status"  class="form-control">
