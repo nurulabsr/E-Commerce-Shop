@@ -55,6 +55,7 @@ class SellerPendingProductsDataTable extends DataTable
                 }
              })
 
+
              ->addColumn('approve', function($query) {
                 $pendingSelected = $query->is_product_approved == 0 ? 'selected' : '';
                 return '<select class="form-control form-select-sm is_approve" aria-label="Default select example">' .
@@ -62,10 +63,26 @@ class SellerPendingProductsDataTable extends DataTable
                     '<option ' . $pendingSelected . ' value="0" style="font-weight:bold; font-style:italic;color:red;">Pending</option>' .
                     '</select>';
             })
+
+            ->addColumn('product_status', function($query){
+                if($query->product_status==1){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
             
             
 
-            ->rawColumns(['is_product_approved', 'product_type', 'approve'])
+            ->rawColumns(['is_product_approved', 'product_type', 'approve', 'product_status'])
             ->setRowId('id');
     }
 
@@ -110,7 +127,8 @@ class SellerPendingProductsDataTable extends DataTable
             Column::make('product_quantity'),
             Column::make('is_product_approved'),
             Column::make('product_type'),
-            Column::make('approve')->width(120),
+            Column::make('approve')->width(150),
+            Column::make('product_status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
