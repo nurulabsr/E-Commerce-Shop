@@ -72,7 +72,7 @@ class AdminVendorProfileController extends Controller
         $admin_vendor_profile->admin_vendor_profile_user_id = $request->admin_vendor_profile_user_id;
         $admin_vendor_profile->save();
         toastr()->success('Admin Vendor Profile Uploaded!');
-        return redirect()->back();
+        return redirect()->route('admin.vendor-profile.update');
     }
 
     /**

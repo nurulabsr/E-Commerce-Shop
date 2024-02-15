@@ -56,11 +56,6 @@
                         <label for="">Vendor Instagram URL</label>
                         <input type="url" name="admin_vendor_profile_insagram_url" class="form-control" value="{{$vendor_profile->admin_vendor_profile_insagram_url}}">
                      </div>
-
-                     <div class="form-group">
-                        <label for="">Admin Vendor ID</label>
-                        <input type="number" name="admin_vendor_profile_user_id" class="form-control" value="{{ $user_profile ? $user_profile->id : '' }}">
-                    </div>
                     
                      <div class="form-group">
                         <label for="">Vendor Active Status</label>
