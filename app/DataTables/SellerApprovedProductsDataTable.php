@@ -63,7 +63,17 @@ class SellerApprovedProductsDataTable extends DataTable
             }
          })
 
-       ->rawColumns(['action', 'product_type', 'is_product_approved'])
+         
+         ->addColumn('approve', function($query) {
+            $pendingSelected = $query->is_product_approved == 0 ? 'selected' : '';
+            return '<select class="form-control form-select-sm is_approve" data-id="'.$query->id.'" aria-label="Default select example">' .
+                '<option value="1" style="font-weight:bold;color:green;">Approved</option>' .
+                '<option ' . $pendingSelected . ' value="0" style="font-weight:bold; font-style:italic;color:red;">Pending</option>' .
+                '</select>';
+        })
+        
+
+       ->rawColumns(['action', 'product_type', 'is_product_approved', 'approve'])
         ->setRowId('id');
     }
 
@@ -110,6 +120,7 @@ class SellerApprovedProductsDataTable extends DataTable
             Column::make('product_video_link'),
             Column::make('product_type'),
             Column::make('is_product_approved'),
+            Column::make('approve'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
