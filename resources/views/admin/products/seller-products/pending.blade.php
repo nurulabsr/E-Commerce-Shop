@@ -50,6 +50,11 @@
           })
       });
   });
+
+  $('body').on('change', '.is_approve', function(){
+    let value = $(this).val();
+    console.log(value);
+  })
 </script>
 @endpush
 
