@@ -53,7 +53,25 @@
 
   $('body').on('change', '.is_approve', function(){
     let value = $(this).val();
-    console.log(value);
+    // console.log(value);
+    
+    $.ajax({
+            url:'{{route("admin.")}}', 
+            method: 'PUT',
+            data:{
+              _token: '{{ csrf_token() }}', 
+              value:value
+            },
+            success: function(data){
+              toastr.success(data.message);
+            },
+            error: function(xhr, status, error){
+              console.log(error);
+            }
+
+
+          })
+
   })
 </script>
 @endpush
