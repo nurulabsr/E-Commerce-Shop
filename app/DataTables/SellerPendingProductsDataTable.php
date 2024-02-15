@@ -23,7 +23,20 @@ class SellerPendingProductsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'sellerpendingproducts.action')
+            ->addColumn('action', function($query){
+               $dltBtn = '';
+               $editBtn = '';
+
+            })
+
+            ->addColumn('is_product_approved', function($query){
+               if($query->is_product_approved == 0){
+                $approved = '<h4><span class="badge bg-secondary">Approved</span></h4>';
+                return $approved;
+               }
+            })
+
+            ->rawColumns(['is_product_approved'])
             ->setRowId('id');
     }
 
