@@ -57,7 +57,13 @@ class SellerApprovedProductsDataTable extends DataTable
                  break;
             }
          })
-       ->rawColumns(['action', 'product_type'])
+         ->addColumn('is_product_approved', function($query){
+            if($query->is_product_approved == 0){
+               return '<i class="badge badge-danger">Pending</i>';
+            }
+         })
+
+       ->rawColumns(['action', 'product_type', 'is_product_approved'])
         ->setRowId('id');
     }
 
