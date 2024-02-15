@@ -53,7 +53,7 @@
 
   $('body').on('change', '.is_approve', function(){
     let value = $(this).val();
-    // console.log(value);
+    console.log(value);
     
     $.ajax({
             url:'{{route("admin.product.approve.status")}}', 
@@ -64,6 +64,7 @@
               id:id
             },
             success: function(data){
+              console.log(data);
               toastr.success(data.message);
             },
             error: function(xhr, status, error){

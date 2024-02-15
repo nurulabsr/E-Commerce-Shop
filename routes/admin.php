@@ -77,5 +77,5 @@ Route::resource('product-variant-items', ProductVariantItemController::class);
 
 
 Route::get('seller-product', [SellerProductsController::class, 'sellerProduct'])->name('seller-product.all');
-Route::get('product-approve-status', [SellerProductsController::class, 'changeProductApproveStatus'])->name('product.approve.status');
 Route::get('pending-product', [SellerProductsController::class, 'sellerPendingProduct'])->name('sellers.pending.product');
+Route::put('product-approve-status', [SellerProductsController::class, 'changeProductApproveStatus'])->name('product.approve.status');
