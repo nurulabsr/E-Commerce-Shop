@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\Product;
 use App\Models\SellerPendingProduct;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -29,9 +30,9 @@ class SellerPendingProductsDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(SellerPendingProduct $model): QueryBuilder
+    public function query(Product $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('is_product_approved', 0)->newQuery();
     }
 
     /**
@@ -44,7 +45,7 @@ class SellerPendingProductsDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -62,15 +63,15 @@ class SellerPendingProductsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id'),
+            Column::make('product_name'),
+            Column::make('product_quantity'),
+            Column::make('is_product_approved'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

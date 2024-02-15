@@ -77,3 +77,4 @@ Route::resource('product-variant-items', ProductVariantItemController::class);
 
 
 Route::get('seller-product', [SellerProductsController::class, 'sellerProduct'])->name('seller-product.all');
+Route::get('pending-product', [SellerProductsController::class, 'sellerPendingProduct'])->name('sellers.pending.product');
