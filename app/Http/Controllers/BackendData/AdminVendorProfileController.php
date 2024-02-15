@@ -26,9 +26,16 @@ class AdminVendorProfileController extends Controller
     {
        
         $user_profile = User::where('email', 'admin@edu.com')->first();
-        // $vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
-        // dd($user_profile->id);
-        return view('admin.vendor.create', compact('user_profile'));
+        $existing_vendor_profile = Vendor::where('admin_vendor_profile_user_id', Auth::user()->id)->first();
+
+        if($existing_vendor_profile) {
+            return redirect()->route('already.exist');
+        } else {
+            return view('admin.vendor.create', compact('user_profile'));
+        }
+
+        
+       
     }
 
     /**

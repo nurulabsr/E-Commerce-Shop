@@ -45,6 +45,10 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
 }); 
 
 
+
+Route::get('exist', function(){
+  return view('admin.already-exist');
+})->name('already.exist');
 Route::get('/error-page', [ErrorController::class, 'Handle_419_Error'])->name('error.page');
 
 
