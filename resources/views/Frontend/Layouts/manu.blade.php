@@ -142,7 +142,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="route('logout')" onclick="event.preventDefault();
-                                this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a></li>
+                                this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a>
                             </form>
                             @else
                                 <a href="{{ route('login') }}"><i class="far fa-sign-in-alt"></i> Log in</a>
