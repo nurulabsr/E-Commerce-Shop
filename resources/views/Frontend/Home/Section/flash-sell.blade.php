@@ -18,11 +18,21 @@
             @endphp
             <div class="col-xl-3 col-sm-6 col-lg-4">
                 <div class="wsus__product_item">
-                    <span class="wsus__new">New</span>
-                    <span class="wsus__minus">-20%</span>
+                    <span class="wsus__new">{{productType($product->product_type)}}</span>
+                    @if (checkDiscount($product))
+                        
+                    <span class="wsus__minus">{{caculateDisCountPrice($product->product_price, $product->product_offer_price)}}%</span>
+                    @endif
                     <a class="wsus__pro_link" href="product_details.html">
                         <img src="{{$product->product_thumnail_img}}" alt="product" class="img-fluid w-100 img_1" />
-                        <img src="{{$product->product_thumnail_img}}" alt="product" class="img-fluid w-100 img_2" />
+                        <img src="
+                        @if (isset($product->productImageGallery[0]->product_image_gallery_img))
+                           {{asset($product->productImageGallery[0]->product_image_gallery_img)}}
+                        @else
+                        {{asset($product->product_thumnail_img)}}
+                        @endif
+                        
+                        " alt="product" class="img-fluid w-100 img_2" />
                     </a>
                     <ul class="wsus__single_pro_icon">
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i

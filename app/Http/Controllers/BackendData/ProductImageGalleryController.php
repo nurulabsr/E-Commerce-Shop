@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductImageGallery;
 use Illuminate\Http\Request;
 use App\Traits\UploadImageTrait;
+use Illuminate\Support\Facades\Auth;
 
 class ProductImageGalleryController extends Controller
 {
@@ -42,6 +43,7 @@ class ProductImageGalleryController extends Controller
             foreach ($ImagePaths as $ImagePath) {
                 $productImageGallery = new ProductImageGallery();
                 $productImageGallery->product_image_gallery_img = $ImagePath;
+                $productImageGallery->product_vendor_id = Auth::user()->id;
                 $productImageGallery->product_image_gallery_product_id = $request->product_image_gallery_product_id;
                 $productImageGallery->save();
             }

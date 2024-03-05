@@ -24,6 +24,25 @@ function checkDiscount($product){
 function caculateDisCountPrice($orginalPrice, $discuntPrice){
    $discountAmmount = $orginalPrice - $discuntPrice;
    $discoutInPercentage = ($discountAmmount/$orginalPrice) * 100;
-   return $discoutInPercentage;
+   return round($discoutInPercentage, 2);
+}
 
+function productType(string $type){
+    switch ($type) {
+        case 'top_product':
+            return 'Top';
+            break;
+        case 'best_product':
+             return 'Best';
+             break;
+        case 'new_product':
+        return 'New';
+        break;
+        case 'featured_product':
+            return 'Featured';
+            break;
+        default:
+            return 'NA';
+            break;
+       }
 }
