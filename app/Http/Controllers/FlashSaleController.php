@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\FlashSellItemDataTable;
+use App\Models\FlashSellItem;
 use Illuminate\Http\Request;
 
 class FlashSaleController extends Controller
@@ -9,9 +11,9 @@ class FlashSaleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(FlashSellItemDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.flashSell.index');
     }
 
     /**

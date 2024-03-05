@@ -13,6 +13,7 @@ use App\Http\Controllers\BackendData\ProductImageGalleryController;
 use App\Http\Controllers\BackendData\ProductVariantController;
 use App\Http\Controllers\BackendData\ProductVariantItemController;
 use App\Http\Controllers\BackendData\SellerProductsController;
+use App\Http\Controllers\FlashSaleController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -80,3 +81,8 @@ Route::get('seller-product', [SellerProductsController::class, 'sellerProduct'])
 Route::put('product-approve-status', [SellerProductsController::class, 'changeProductPendingStatus'])->name('product.approve.status');
 Route::put('pending', [SellerProductsController::class, 'changeProductApproveStatus'])->name('product.pending');
 Route::get('pending-product', [SellerProductsController::class, 'sellerPendingProduct'])->name('sellers.pending.product');
+
+
+//FlashSell
+
+Route::resource('flashsell', FlashSaleController::class);
