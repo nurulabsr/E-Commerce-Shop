@@ -119,5 +119,30 @@
         }
       })
   });
+
+
+  $('body').on('change', '.is_home_page', function(){
+          let value = $(this).val();
+          let id = $(this).data('id');
+          console.log(value);
+          
+          $.ajax({
+              url: '{{ route("admin.flashsell.home_page_status") }}', 
+              method: 'PUT',
+              data: {
+                  _token: '{{ csrf_token() }}', 
+                  value: value,
+                  id: id
+              },
+              success: function(data){
+                  console.log(data);
+                  toastr.success(data.message);
+                  location.reload();
+              },
+              error: function(xhr, status, error){
+                  console.log(error);
+              }
+          });
+      });
 </script>
 @endpush

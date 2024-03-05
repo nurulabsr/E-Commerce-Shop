@@ -109,4 +109,12 @@ class FlashSaleController extends Controller
         return response(['message' => 'Status Changed Successfully!'], 200);
     }
 
+    public function changeAtHomePageStatus(Request $request) {
+        $flashSellItem = FlashSellItem::findOrFail($request->id);
+        $flashSellItem->show_at_home_page = $request->value;
+        $flashSellItem->save();
+        return response(['message' => 'Product pending status has changed!']);
+    }
+    
+
 }

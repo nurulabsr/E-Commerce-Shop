@@ -85,5 +85,6 @@ Route::get('pending-product', [SellerProductsController::class, 'sellerPendingPr
 
 //FlashSell
 Route::put('flashsell-status', [FlashSaleController::class, 'UpdateStatus'])->name('flashsell.status');
+Route::put('at_home_page', [FlashSaleController::class, 'changeAtHomePageStatus'])->name('flashsell.home_page_status');
 Route::post('flash-sell-product', [FlashSaleController::class, 'FlashSellProduct'])->name('flashsell.product.store');
 Route::resource('flashsell', FlashSaleController::class);

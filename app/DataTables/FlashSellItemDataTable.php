@@ -46,9 +46,9 @@ class FlashSellItemDataTable extends DataTable
                 }
            })
             ->addColumn('show_at_home_page', function($query){
-                $yes = $query->show_at_home_page == 0 ? 'selected' : '';
-                $no = $query->show_at_home_page == 1 ? 'selected' : '';
-                return '<select class="form-control form-select-sm is_pending" data-id="'.$query->id.'" aria-label="Default select example">' .
+                $yes = $query->show_at_home_page == 1 ? 'selected' : '';
+                $no = $query->show_at_home_page == 0 ? 'selected' : '';
+                return '<select class="form-control form-select-sm is_home_page" data-id="'.$query->id.'" aria-label="Default select example">' .
                     '<option '.$yes.' value="1" style="font-weight:bold;color:green;">Yes</option>' .
                     '<option ' . $no . ' value="0" style="font-weight:bold; font-style:italic;color:red;">No</option>' .
                     '</select>';
