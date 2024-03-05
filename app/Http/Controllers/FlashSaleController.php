@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\FlashSellItemDataTable;
 use App\Models\FlashSell;
 use App\Models\FlashSellItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FlashSaleController extends Controller
@@ -13,8 +14,9 @@ class FlashSaleController extends Controller
      * Display a listing of the resource.
      */
     public function index(FlashSellItemDataTable $dataTable)
-    {
-        return $dataTable->render('admin.flashSell.index');
+    {   $flashSell = FlashSell::first();
+        $products = Product::all();
+        return $dataTable->render('admin.flashSell.index', compact('flashSell', 'products'));
     }
 
     /**
@@ -29,19 +31,42 @@ class FlashSaleController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   $request->validate([
-          'flashsell_end_date' => ['required', 'date']
-       ]);
-        $flashsell_end_date = new FlashSell();
-        $flashsell_end_date->end_date = $request->flashsell_end_date;
-        $flashsell_end_date->save();
-        toastr()->success("Added Successfully!");
+    {
+        $request->validate([
+            'flashsell_end_date' => ['required', 'date']
+        ]);
+    
+        $flashSell = FlashSell::firstOrCreate(
+            [], 
+            ['end_date' => $request->flashsell_end_date] 
+        );
+        if ($flashSell->wasRecentlyCreated) {
+            toastr()->success("Data Added Successfully!");
+        } else {
+            toastr()->success("Data Updated Successfully!");
+        }
+    
         return redirect()->back();
     }
-
     /**
      * Display the specified resource.
      */
+
+    public function FlashSellProduct(Request $request){
+       $request->validate([
+           'product' => ['required', 'string', 'max:254'],
+           'status' => ['required', 'boolean'],
+           'home_page' => ['required', 'boolean']
+       ]);
+
+       $flashSellItem = new FlashSellItem();
+       $flashSellItem->product_id = $request->product;
+       $flashSellItem->show_at_home_page = $request->home_page;
+       $flashSellItem->status = $request->status;
+       $flashSellItem->save();
+       
+    }
+
     public function show(string $id)
     {
         //

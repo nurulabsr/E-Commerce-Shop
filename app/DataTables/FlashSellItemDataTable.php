@@ -23,6 +23,9 @@ class FlashSellItemDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'flashsellitem.action')
+            ->addColumn('product_name', function($query){
+                return $query->product->product_name;
+            })
             ->setRowId('id');
     }
 
@@ -44,7 +47,7 @@ class FlashSellItemDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -62,15 +65,15 @@ class FlashSellItemDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id'),
+            Column::make('product_name'),
+            Column::make('created_at'),
+            Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(260)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

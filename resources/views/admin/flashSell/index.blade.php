@@ -20,7 +20,7 @@
                     @csrf
                     <div class="form-group">
                        <label for="">Flash Sell End Date</label>
-                       <input type="date" name="flashsell_end_date" class="form-control">
+                       <input type="date" name="flashsell_end_date" value="{{$flashSell->end_date??''}}" class="form-control">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary">Submit</button>
@@ -33,13 +33,41 @@
                     <h5>Flash Sell Product</h5>
                 </div>
                 <div>
-                   <form action="">
+                   <form action="{{route('admin.flashsell.store')}}" method="POST">
+                    @csrf
                        <div class="form-group">
                           <label for="">Flash Sell Product</label>
-                          <select id="flash-sell-product" class="form-control select2">
-                           
+                          <select id="flash-sell-product" name="product" class="form-control select2">
+                             @foreach ($products as $product)
+                                  <option value="{{$product->id}}">{{$product->product_name}}</option>
+                             @endforeach
                         </select>
                         </div>
+                       <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <select name="status" class="form-control ">
+                                 <option value="">Select</option>
+                                <option value="1">Active</option>
+                                <option value="0">In Active</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">At Home Page?</label>
+                                <select name="home_page" class="form-control ">
+                                 <option value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                              </select>
+                            </div>
+                        </div>
+                       </div>
+                       <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                       </div>
                   </form>
                 </div>
                     

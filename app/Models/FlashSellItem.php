@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FlashSellItem extends Model
 {
     use HasFactory;
+
+    public function products(){
+      return $this->belongsTo(Product::class, 'product_id');
+    } 
+
+    
 }

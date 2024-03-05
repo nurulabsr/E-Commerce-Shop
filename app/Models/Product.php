@@ -12,4 +12,8 @@ class Product extends Model
     public function brands(){
         return $this->belongsTo(Brand::class, 'product_brand_id');
     }
+
+    public function FlashSellItem(){
+        return $this->hasMany(FlashSellItem::class);
+    }
 }
