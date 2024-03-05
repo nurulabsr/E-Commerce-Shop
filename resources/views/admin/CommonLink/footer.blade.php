@@ -62,6 +62,7 @@
    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <!--main/custom js-->
     <script src="{{asset('FrontendData/js/main.js')}}"></script>
+    <script src="{{asset('assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
     <script>
         @if($errors->any())
             @foreach ($errors->all() as $error )
