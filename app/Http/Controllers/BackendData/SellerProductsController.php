@@ -20,15 +20,19 @@ class SellerProductsController extends Controller
     public function SellerPendingProduct(SellerPendingProductsDataTable $datatable){
         return $datatable->render('admin.products.seller-products.pending');
     }
+    
 
-
-    public function changeProductApproveStatus(Request $request) {
+    public function changeProductPendingStatus(Request $request) {
         $product = Product::findOrFail($request->id);
         $product->is_product_approved = $request->value;
         $product->save();
         return response(['message' => 'Product approve status has changed!']);
     }
     
+
+    public function changeProductApproveStatus(Request $request){
+       
+    }
 
     
 }
