@@ -10,3 +10,12 @@ function SetActive(array $routes)
     
     return "";
 }
+
+function checkDiscount($product){
+   $currentDate = date('Y-m-d');
+   if($product->product_offer_price > 0 && $currentDate >= $product->product_offer_start_date && $currentDate <= $product->product_offer_end_date){
+      return true;
+   }
+
+   return false;
+}

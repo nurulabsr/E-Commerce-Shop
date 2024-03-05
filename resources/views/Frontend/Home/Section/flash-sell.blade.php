@@ -12,13 +12,17 @@
             </div>
         </div>
         <div class="row flash_sell_slider">
+            @foreach($flashsellItems as $flashsellItem)
+            @php
+                $product = \App\Models\Product::find($flashsellItem->product_id)
+            @endphp
             <div class="col-xl-3 col-sm-6 col-lg-4">
                 <div class="wsus__product_item">
                     <span class="wsus__new">New</span>
                     <span class="wsus__minus">-20%</span>
                     <a class="wsus__pro_link" href="product_details.html">
-                        <img src="images/pro3.jpg" alt="product" class="img-fluid w-100 img_1" />
-                        <img src="images/pro3_3.jpg" alt="product" class="img-fluid w-100 img_2" />
+                        <img src="{{$product->product_thumnail_img}}" alt="product" class="img-fluid w-100 img_1" />
+                        <img src="{{$product->product_thumnail_img}}" alt="product" class="img-fluid w-100 img_2" />
                     </a>
                     <ul class="wsus__single_pro_icon">
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
@@ -42,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </section>

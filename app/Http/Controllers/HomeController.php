@@ -13,11 +13,11 @@ class HomeController extends Controller{
         
         $sliders = Slider::where('slider_status', 1)->orderBy('slider_serial', 'asc')->get();
         $flashsell = FlashSell::first();
-        $flashsellItem = FlashSellItem::where('show_at_home_page', 1)->where('status', 1)->get();
+        $flashsellItems = FlashSellItem::where('show_at_home_page', 1)->where('status', 1)->get();
         return view('Frontend.Home.home', compact(
            'sliders',
            'flashsell',
-           'flashsellItem',
+           'flashsellItems',
 
         ));
     }
