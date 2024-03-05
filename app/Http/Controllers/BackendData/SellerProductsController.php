@@ -26,12 +26,16 @@ class SellerProductsController extends Controller
         $product = Product::findOrFail($request->id);
         $product->is_product_approved = $request->value;
         $product->save();
-        return response(['message' => 'Product approve status has changed!']);
+        return response(['message' => 'Product pending status has changed!']);
     }
     
 
     public function changeProductApproveStatus(Request $request){
-       
+       $product = Product::findOrFail($request->id);
+       $product->is_product_approved = $request->value;
+       $product->save();
+       return response(['message' => 'Product approve status has changed!']);
+
     }
 
     

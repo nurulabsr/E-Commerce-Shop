@@ -6,7 +6,7 @@
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
         <div class="breadcrumb-item"><a href="#">Components</a></div>
-        <div class="breadcrumb-item">All Seller Products</div>
+        <div class="breadcrumb-item">Seller Products....</div>
       </div>
     </div>
 
@@ -48,6 +48,29 @@
 
 
           })
+      });
+        $('body').on('change', '.is_pending', function(){
+          let value = $(this).val();
+          let id = $(this).data('id');
+          console.log(value);
+          
+          $.ajax({
+              url: '{{ route("admin.product.pending") }}', 
+              method: 'PUT',
+              data: {
+                  _token: '{{ csrf_token() }}', 
+                  value: value,
+                  id: id
+              },
+              success: function(data){
+                  console.log(data);
+                  toastr.success(data.message);
+                  location.reload();
+              },
+              error: function(xhr, status, error){
+                  console.log(error);
+              }
+          });
       });
   });
 </script>

@@ -23,16 +23,30 @@ class SellerProductsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'sellerproducts.action')
+        ->addColumn('action', function($query){
+            $editBtn = "<a href='".route('admin.products.edit', $query->id)."' class='btn btn-primary btn-sm'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+            $dltBtn = "<a href='".route('admin.products.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+            $moreBtn = '
+            <div class="btn-group ml-2">
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden"><i class="fa-solid fa-gear"></i></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="'.route('admin.products-image-gallery.index',['product' => $query->id]).'"><i class="fas fa-images pr-2"></i> Image Gallery</a></li>
+                <li><a class="dropdown-item" href="'.route('admin.product-variant.index', ['product' => $query->id]).'"><i class="fad fa-box pr-2"></i> Product Variant</a></li>
+                </ul>
+                </div>';
+                return $editBtn.$dltBtn.$moreBtn;
+            })
             ->addColumn('is_product_approved', function($query){
                 $pendingSelected = $query->is_product_approved == 0 ? 'selected' : '';
                 $approvedSelected = $query->is_product_approved == 0 ? 'selected' : '';
-                return '<select class="form-control form-select-sm is_approve" data-id="'.$query->id.'" aria-label="Default select example">' .
+                return '<select class="form-control form-select-sm is_pending" data-id="'.$query->id.'" aria-label="Default select example">' .
                     '<option '.$approvedSelected.' value="1" style="font-weight:bold;color:green;">Approved</option>' .
                     '<option ' . $pendingSelected . ' value="0" style="font-weight:bold; font-style:italic;color:red;">Pending</option>' .
                     '</select>';
             })
-            ->rawColumns(['is_product_approved'])
+            ->rawColumns(['is_product_approved', 'action'])
             ->setRowId('id');
     }
 
@@ -41,7 +55,7 @@ class SellerProductsDataTable extends DataTable
      */
     public function query(Product $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('is_product_approved', 1)->newQuery();
     }
 
     /**
@@ -80,7 +94,7 @@ class SellerProductsDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(260)
                   ->addClass('text-center'),
         ];
     }

@@ -67,6 +67,7 @@
             success: function(data){
                 console.log(data);
                 toastr.success(data.message);
+                location.reload();
             },
             error: function(xhr, status, error){
                 console.log(error);
