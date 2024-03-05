@@ -44,7 +44,7 @@
 
 
  @include('Frontend.FrontendCommonLink.footer')
-
+@stack('scripts')
 </body>
 
 </html>
