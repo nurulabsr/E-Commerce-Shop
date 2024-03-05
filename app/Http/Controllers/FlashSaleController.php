@@ -54,9 +54,11 @@ class FlashSaleController extends Controller
 
     public function FlashSellProduct(Request $request){
        $request->validate([
-           'product' => ['required', 'string', 'max:254'],
+           'product' => ['required', 'string', 'max:254', 'unique:flash_sell_items,product_id'],
            'status' => ['required', 'boolean'],
            'home_page' => ['required', 'boolean']
+       ], [
+          'product.unique' => "The Flash Sell Product Already Exist!" 
        ]);
 
        $flashSellItem = new FlashSellItem();

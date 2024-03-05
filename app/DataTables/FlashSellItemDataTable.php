@@ -98,7 +98,8 @@ class FlashSellItemDataTable extends DataTable
             Column::make('id'),
             Column::make('product_name'),
             Column::make('status'),
-            Column::make('show_at_home_page'),
+            Column::make('show_at_home_page')->title('Is display at Home Page?'),
+            Column::make('flash_sell_end_date'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
