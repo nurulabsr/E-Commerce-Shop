@@ -22,12 +22,16 @@ class FlashSellItemDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'flashsellitem.action')
+            ->addColumn('action', function($query){
+                $editBtn = "<a href='".route('admin.product-variant.edit', $query->id)."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+                $dltBtn = "<a href='".route('admin.flashsell.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+                return $editBtn.$dltBtn;
+            })
             ->addColumn('product_name', function($query){
                 return $query->products->product_name;
             })
 
-            ->rawColumns(['product_name'])
+            ->rawColumns(['product_name', 'action'])
             ->setRowId('id');
     }
 

@@ -15,7 +15,7 @@ class FlashSaleController extends Controller
      */
     public function index(FlashSellItemDataTable $dataTable)
     {   $flashSell = FlashSell::first();
-        $products = Product::all();
+        $products = Product::where('product_status', 1)->get();
         return $dataTable->render('admin.flashSell.index', compact('flashSell', 'products'));
     }
 
@@ -60,9 +60,11 @@ class FlashSaleController extends Controller
        ]);
 
        $flashSellItem = new FlashSellItem();
+       $flashSell = FlashSell::first();
        $flashSellItem->product_id = $request->product;
        $flashSellItem->show_at_home_page = $request->home_page;
        $flashSellItem->status = $request->status;
+       $flashSellItem->flash_sell_end_date = $flashSell->end_date;
        $flashSellItem->save();
        toastr()->success("FlashSell Product added successfully!");
        return redirect()->back();
@@ -78,7 +80,7 @@ class FlashSaleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+    
     }
 
     /**
@@ -86,7 +88,7 @@ class FlashSaleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
     }
 
     /**
@@ -94,6 +96,9 @@ class FlashSaleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $flashSellItem = FlashSellItem::findOrFail($id);
+        $flashSellItem->delete();
+        return response(['status' => 'success', 'message'=> 'Deleted Successfully!']);
+
     }
 }
