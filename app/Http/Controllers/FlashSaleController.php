@@ -101,4 +101,12 @@ class FlashSaleController extends Controller
         return response(['status' => 'success', 'message'=> 'Deleted Successfully!']);
 
     }
+
+    public function UpdateStatus(Request $request){
+        $flashSellItem = FlashSellItem::findOrFail($request->id);
+        $flashSellItem->status = $request->status == "true" ? 1 : 0;
+        $flashSellItem->save();
+        return response(['message' => 'Status Changed Successfully!'], 200);
+    }
+
 }

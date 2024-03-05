@@ -30,8 +30,23 @@ class FlashSellItemDataTable extends DataTable
             ->addColumn('product_name', function($query){
                 return $query->products->product_name;
             })
+            ->addColumn('status', function($query){
+                if($query->status==1){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
 
-            ->rawColumns(['product_name', 'action'])
+            ->rawColumns(['product_name', 'action', 'status'])
             ->setRowId('id');
     }
 
@@ -73,7 +88,7 @@ class FlashSellItemDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('product_name'),
-            Column::make('created_at'),
+            Column::make('status'),
             Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)

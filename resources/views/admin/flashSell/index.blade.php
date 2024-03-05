@@ -101,15 +101,17 @@
   $('body').on('click', '.status', function(){
       let isChecked = $(this).is(':checked');
       let id = $(this).data('id');     
+      console.log(id);
       $.ajax({
-        url:'{{route("admin.products.status")}}',  //products.status
+        url:'{{route("admin.flashsell.status")}}',  //products.status
         method: 'PUT',
         data:{
           _token: '{{ csrf_token() }}', 
-          product_status:isChecked,
+          status:isChecked,
           id:id,
         },
         success: function(data){
+          console.log(data);
           toastr.success(data.message);
         },
         error: function(xhr, status, error){
