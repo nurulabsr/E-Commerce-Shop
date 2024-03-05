@@ -84,5 +84,5 @@ Route::get('pending-product', [SellerProductsController::class, 'sellerPendingPr
 
 
 //FlashSell
-
+Route::post('flash-sell-product', [FlashSaleController::class, 'FlashSellProduct'])->name('flashsell.product.store');
 Route::resource('flashsell', FlashSaleController::class);

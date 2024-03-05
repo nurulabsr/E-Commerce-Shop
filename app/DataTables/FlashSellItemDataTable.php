@@ -24,7 +24,7 @@ class FlashSellItemDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', 'flashsellitem.action')
             ->addColumn('product_name', function($query){
-                return $query->product->product_name;
+                return $query->products->product_name;
             })
             ->setRowId('id');
     }

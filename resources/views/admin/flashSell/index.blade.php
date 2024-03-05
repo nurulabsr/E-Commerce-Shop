@@ -33,7 +33,7 @@
                     <h5>Flash Sell Product</h5>
                 </div>
                 <div>
-                   <form action="{{route('admin.flashsell.store')}}" method="POST">
+                   <form action="{{route('admin.flashsell.product.store')}}" method="POST">
                     @csrf
                        <div class="form-group">
                           <label for="">Flash Sell Product</label>

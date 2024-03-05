@@ -64,7 +64,8 @@ class FlashSaleController extends Controller
        $flashSellItem->show_at_home_page = $request->home_page;
        $flashSellItem->status = $request->status;
        $flashSellItem->save();
-       
+       toastr()->success("FlashSell Product added successfully!");
+       return redirect()->back();
     }
 
     public function show(string $id)
