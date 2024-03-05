@@ -28,8 +28,10 @@ class FlashSellItemDataTable extends DataTable
                 return $editBtn.$dltBtn;
             })
             ->addColumn('product_name', function($query){
-                return $query->products->product_name;
+                return "<a href='".route('admin.products.edit', $query->products->id)."'>".$query->products->product_name."</a>" ;
             })
+          
+            
             ->addColumn('status', function($query){
                 if($query->status==1){
                    $toggleBtn = '<label>
