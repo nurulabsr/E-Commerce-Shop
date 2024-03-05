@@ -45,8 +45,17 @@ class FlashSellItemDataTable extends DataTable
                  return $toggleBtn;
                 }
            })
+            ->addColumn('show_at_home_page', function($query){
+                $yes = $query->show_at_home_page == 0 ? 'selected' : '';
+                $no = $query->show_at_home_page == 1 ? 'selected' : '';
+                return '<select class="form-control form-select-sm is_pending" data-id="'.$query->id.'" aria-label="Default select example">' .
+                    '<option '.$yes.' value="1" style="font-weight:bold;color:green;">Yes</option>' .
+                    '<option ' . $no . ' value="0" style="font-weight:bold; font-style:italic;color:red;">No</option>' .
+                    '</select>';
+            })
+     
 
-            ->rawColumns(['product_name', 'action', 'status'])
+            ->rawColumns(['product_name', 'action', 'status', 'show_at_home_page'])
             ->setRowId('id');
     }
 
@@ -89,7 +98,7 @@ class FlashSellItemDataTable extends DataTable
             Column::make('id'),
             Column::make('product_name'),
             Column::make('status'),
-            Column::make('updated_at'),
+            Column::make('show_at_home_page'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
