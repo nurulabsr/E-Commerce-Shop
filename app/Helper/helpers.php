@@ -19,3 +19,11 @@ function checkDiscount($product){
 
    return false;
 }
+
+
+function caculateDisCountPrice($orginalPrice, $discuntPrice){
+   $discountAmmount = $orginalPrice - $discuntPrice;
+   $discoutInPercentage = ($discountAmmount/$orginalPrice) * 100;
+   return $discoutInPercentage;
+
+}

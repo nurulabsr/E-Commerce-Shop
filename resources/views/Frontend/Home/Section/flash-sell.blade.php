@@ -31,7 +31,7 @@
                         <li><a href="#"><i class="far fa-random"></i></a>
                     </ul>
                     <div class="wsus__product_details">
-                        <a class="wsus__category" href="#">Electronics </a>
+                        <a class="wsus__category" href="#">{{$product->category->category_name}} </a>
                         <p class="wsus__pro_rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -40,8 +40,13 @@
                             <i class="fas fa-star-half-alt"></i>
                             <span>(133 review)</span>
                         </p>
-                        <a class="wsus__pro_name" href="#">hp 24" FHD monitore</a>
-                        <p class="wsus__price">$159 <del>$200</del></p>
+                        <a class="wsus__pro_name" href="#">{{$product->product_name}}</a>
+                        @if (checkDiscount($product))
+                        <p class="wsus__price">${{$product->product_offer_price}} <del>${{$product->product_price}}</del></p>
+                        @else
+                        <p class="wsus__price">${{$product->product_price}} </p>
+                        @endif
+                        
                         <a class="add_cart" href="#">add to cart</a>
                     </div>
                 </div>
