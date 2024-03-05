@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('product_id');
             $table->boolean('show_at_home_page');
             $table->boolean('status');
+            $table->date('flash_sell_end_date');
             $table->timestamps();
         });
     }

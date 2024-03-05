@@ -26,6 +26,8 @@ class FlashSellItemDataTable extends DataTable
             ->addColumn('product_name', function($query){
                 return $query->products->product_name;
             })
+
+            ->rawColumns(['product_name'])
             ->setRowId('id');
     }
 
