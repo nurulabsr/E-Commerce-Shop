@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class FrontendProductController extends Controller
 {
-    //
+    public function producDetails(){
+        return view('Frontend.pages.products.product-details');
+    }
 }

@@ -2,11 +2,11 @@
     <div class=" container">
         <div class="row">
             <div class="col-xl-12">
-                <div class="offer_time" style="background: url(images/flash_sell_bg.jpg)">
+                <div class="offer_time" style="background: url(asset('FrontendData/images/flash_sell_bg.jpg'))">
                     <div class="wsus__flash_coundown">
                         <span class=" end_text">flash sell</span>
                         <div class="simply-countdown simply-countdown-one"></div>
-                        <a class="common_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
+                        <a class="common_btn" href="{{route('flashsell')}}">see more <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
             </div>
