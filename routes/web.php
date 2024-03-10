@@ -5,6 +5,7 @@ use App\Http\Controllers\BackendData\ErrorController;
 use App\Http\Controllers\BackendData\VendorController;
 use App\Http\Controllers\FrontendData\DashboardController;
 use App\Http\Controllers\FrontendData\FlashSellController;
+use App\Http\Controllers\FrontendData\FrontendProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileDahboardController;
@@ -30,7 +31,7 @@ Route::get('/', [HomeController::class, 'Index'])->name('home');
 Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
 Route::get('flash-sale', [FlashSellController::class, 'index'])->name('flashsell');
-
+Route::get('product-detail/{slug}', [FrontendProductController::class, 'producDetails'])->name('product-detail');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -23,7 +23,7 @@
                         
                     <span class="wsus__minus">{{caculateDisCountPrice($product->product_price, $product->product_offer_price)}}%</span>
                     @endif
-                    <a class="wsus__pro_link" href="product_details.html">
+                    <a class="wsus__pro_link" href="{{route('product-detail', $product->product_slug)}}">
                         <img src="{{$product->product_thumnail_img}}" alt="product" class="img-fluid w-100 img_1" />
                         <img src="
                         @if (isset($product->productImageGallery[0]->product_image_gallery_img))
@@ -50,7 +50,7 @@
                             <i class="fas fa-star-half-alt"></i>
                             <span>(133 review)</span>
                         </p>
-                        <a class="wsus__pro_name" href="#">{{$product->product_name}}</a>
+                        <a class="wsus__pro_name" href="{{route('product-detail', $product->product_slug)}}">{{$product->product_name}}</a>
                         @if (checkDiscount($product))
                         <p class="wsus__price">${{$product->product_offer_price}} <del>${{$product->product_price}}</del></p>
                         @else

@@ -1,4 +1,4 @@
-@extends('Frontend.Dashboard.Layouts.master')
+@extends('Frontend.Layouts.master')
 @section('content')
          <!--==========================
     PRODUCT  REPORT MODAL VIEW
@@ -212,7 +212,7 @@
         </div>
     </section>
     <!--============================
-        BREADCRUMB END
+        {{-- BREADCRUMB END  <!--{{asset($product->product_thumnail_img)}}--> --}}
     ==============================-->
 
 
@@ -231,15 +231,11 @@
                                         href="https://youtu.be/7m16dFI1AF8">
                                         <i class="fas fa-play"></i>
                                     </a>
-                                    <ul class='exzoom_img_ul'>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom1.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom2.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom3.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom4.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom1.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom2.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom1.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="images/zoom2.jpg" alt="product"></li>
+                                    <ul class='exzoom_img_ul'>   
+                                        <li><img class="zoom ing-fluid w-100" src="{{asset($product->product_thumnail_img)}}" alt="product"></li>
+                                       @foreach ($product->productImageGallery as $Thumnailimg)
+                                       <li><img class="zoom ing-fluid w-100" src="{{asset($Thumnailimg->product_image_gallery_img)}}" alt="product"></li>
+                                       @endforeach
                                     </ul>
                                 </div>
                                 <div class="exzoom_nav"></div>

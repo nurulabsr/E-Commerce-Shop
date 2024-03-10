@@ -71,7 +71,21 @@
               <li> <a class="nav-link" href="{{route('admin.products.index')}}">Product Table</a> </li>
          </ul> 
        </li>
-       
+
+       <li class="dropdown 
+       {{
+        SetActive([
+         'admin.flashsell.*',
+        ])
+     }}"
+       ">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Flash Sale Product</span></a>
+        <ul class="dropdown-menu">
+             <li> <a class="nav-link" href="{{route('admin.flashsell.index')}}">Manage Flash Sale</a> </li>
+           
+        </ul> 
+      </li>
+
         <li class="dropdown {{
           SetActive([
            'admin.vendor-profile.*',
@@ -87,7 +101,7 @@
         
 
 {{-- 
-       <li class="dropdown">
+       <li class="dropdown"> admin.flashsell.index
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="layout-default.html">Slider</a></li>

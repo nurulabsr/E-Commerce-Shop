@@ -78,7 +78,7 @@
                                 
                             <span class="wsus__minus">{{caculateDisCountPrice($product->product_price, $product->product_offer_price)}}%</span>
                             @endif
-                            <a class="wsus__pro_link" href="product_details.html">
+                            <a class="wsus__pro_link" href="">
                                 <img src="{{$product->product_thumnail_img}}" alt="product" class="img-fluid w-100 img_1" />
                                 <img src="
                                 @if (isset($product->productImageGallery[0]->product_image_gallery_img))
