@@ -94,3 +94,4 @@ Route::resource('flashsell', FlashSaleController::class);
 // General Sttings
 
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+Route::put('general', [SettingController::class, 'generalSettingsCreateORUpdate'])->name('settings.general');

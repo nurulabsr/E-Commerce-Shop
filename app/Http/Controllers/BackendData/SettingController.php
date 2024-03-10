@@ -10,4 +10,9 @@ class SettingController extends Controller
     public function index(){
         return view('admin.settings.index');
     }
+
+    public function generalSettingsCreateORUpdate(){
+
+        
+    }
 }
