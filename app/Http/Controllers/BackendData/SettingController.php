@@ -13,7 +13,7 @@ class SettingController extends Controller
     }
 
     public function generalSettingsCreateORUpdate(Request $request){
-      
+    //   dd($request->all());
        $request->validate([
           'site_name' => ['required', 'string', 'max:255',],
           'layout' => ['required', 'string', 'max:255'],

@@ -1,3 +1,4 @@
+
     <!--jquery library js-->
     <script src="{{asset('FrontendData/js/jquery-3.6.0.min.js')}}"></script>
     <!--bootstrap js-->
