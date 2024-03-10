@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
     public function index(){
-        return view('admin.settings.index');
+        $generalSettings = GeneralSetting::first();
+        return view('admin.settings.index', compact('generalSettings'));
     }
 
     public function generalSettingsCreateORUpdate(Request $request){
