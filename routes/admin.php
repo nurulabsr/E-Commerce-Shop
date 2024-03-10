@@ -13,6 +13,7 @@ use App\Http\Controllers\BackendData\ProductImageGalleryController;
 use App\Http\Controllers\BackendData\ProductVariantController;
 use App\Http\Controllers\BackendData\ProductVariantItemController;
 use App\Http\Controllers\BackendData\SellerProductsController;
+use App\Http\Controllers\BackendData\SettingController;
 use App\Http\Controllers\FlashSaleController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
@@ -88,3 +89,8 @@ Route::put('flashsell-status', [FlashSaleController::class, 'UpdateStatus'])->na
 Route::put('at_home_page', [FlashSaleController::class, 'changeAtHomePageStatus'])->name('flashsell.home_page_status');
 Route::post('flash-sell-product', [FlashSaleController::class, 'FlashSellProduct'])->name('flashsell.product.store');
 Route::resource('flashsell', FlashSaleController::class);
+
+
+// General Sttings
+
+Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
