@@ -227,10 +227,12 @@
                         <div id="sticky_pro_zoom">
                             <div class="exzoom hidden" id="exzoom">
                                 <div class="exzoom_img_box">
-                                    <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
-                                        href="https://youtu.be/7m16dFI1AF8">
-                                        <i class="fas fa-play"></i>
-                                    </a>
+                                      @if ($product->product_video_link)
+                                      <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
+                                      href="{{$product->product_video_link}}">
+                                      <i class="fas fa-play"></i>
+                                  </a>
+                                      @endif
                                     <ul class='exzoom_img_ul'>   
                                         <li><img class="zoom ing-fluid w-100" src="{{asset($product->product_thumnail_img)}}" alt="product"></li>
                                        @foreach ($product->productImageGallery as $Thumnailimg)
@@ -250,9 +252,13 @@
                     </div>
                     <div class="col-xl-5 col-md-7 col-lg-7">
                         <div class="wsus__pro_details_text">
-                            <a class="title" href="#">Electronics Black Wrist Watch</a>
+                            <a class="title" href="#">{{$product->product_name}}</a>
                             <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
-                            <h4>$50.00 <del>$60.00</del></h4>
+                           @if (checkDiscount($product))
+                           <h4>${{$product->product_offer_price}} <del>${{$product->product_price}}</del></h4>
+                           @else
+                               
+                           @endif
                             <p class="review">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -1246,3 +1252,18 @@
         </div>
     </section>
 @endsection
+
+
+@push('scripts')
+<script>
+$(document).ready(function(){
+
+    simplyCountdown('.simply-countdown-one', {
+        year: {{date('Y', strtotime($flashsell->end_date))}},
+        month: {{date('m', strtotime($flashsell->end_date))}},
+        day:  {{date('d', strtotime($flashsell->end_date))}},
+        enableUtc: true
+    });
+});    
+</script>    
+@endpush
