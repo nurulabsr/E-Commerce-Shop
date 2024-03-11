@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackendData;
 
+use App\DataTables\CouponDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class CouponController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CouponDataTable $dataTables)
     {
         //
     }
