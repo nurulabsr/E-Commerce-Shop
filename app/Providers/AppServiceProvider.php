@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\GeneralSetting;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
     {
        Paginator::useBootstrap();
        $generalSettings = GeneralSetting::first();
-       Config::set('app.timezone', $generalSettings->timezone);
+       $timezone = $generalSettings ? $generalSettings->timezone : config('app.timezone');
+       Config::set('app.timezone', $timezone);
+   
+       // Share settings with all views
+       View::composer('*', function($view) use ($generalSettings) {
+           $view->with('settings', $generalSettings);
+       });
     }
 }

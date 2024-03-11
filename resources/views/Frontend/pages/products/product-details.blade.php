@@ -255,7 +255,7 @@
                             <a class="title" href="#">{{$product->product_name}}</a>
                             <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
                            @if (checkDiscount($product))
-                           <h4>${{$product->product_offer_price}} <del>${{$product->product_price}}</del></h4>
+                           <h4>{{$settings->currency_icon}}{{$product->product_offer_price}} <del>{{$settings->currency_icon}}{{$product->product_price}}</del></h4>
                            @else
                                
                            @endif
@@ -1262,7 +1262,6 @@ $(document).ready(function(){
         year: {{date('Y', strtotime($flashsell->end_date))}},
         month: {{date('m', strtotime($flashsell->end_date))}},
         day:  {{date('d', strtotime($flashsell->end_date))}},
-        enableUtc: true
     });
 });    
 </script>    

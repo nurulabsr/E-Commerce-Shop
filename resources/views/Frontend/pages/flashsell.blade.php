@@ -107,9 +107,9 @@
                                 </p>
                                 <a class="wsus__pro_name" href="#">{{$product->product_name}}</a>
                                 @if (checkDiscount($product))
-                                <p class="wsus__price">${{$product->product_offer_price}} <del>${{$product->product_price}}</del></p>
+                                <p class="wsus__price">{{$settings->currency_icon}}{{$product->product_offer_price}} <del>{{$settings->currency_icon}}{{$product->product_price}}</del></p>
                                 @else
-                                <p class="wsus__price">${{$product->product_price}} </p>
+                                <p class="wsus__price">{{$settings->currency_icon}}{{$product->product_price}} </p>
                                 @endif
                                 
                                 <a class="add_cart" href="#">add to cart</a>
@@ -139,7 +139,6 @@ $(document).ready(function(){
         year: {{date('Y', strtotime($flashsell->end_date))}},
         month: {{date('m', strtotime($flashsell->end_date))}},
         day:  {{date('d', strtotime($flashsell->end_date))}},
-        enableUtc: true
     });
 });    
 </script>    
