@@ -13,7 +13,7 @@ class CouponController extends Controller
      */
     public function index(CouponDataTable $dataTables)
     {
-        //
+        return view('admin.coupon.index');
     }
 
     /**
