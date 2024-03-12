@@ -4,6 +4,7 @@ use App\Http\Controllers\BackendData\AdminVendorProfileController;
 use App\Http\Controllers\BackendData\BrandController;
 use App\Http\Controllers\BackendData\CategoryController;
 use App\Http\Controllers\BackendData\ChildCategoryController;
+use App\Http\Controllers\BackendData\CouponController;
 use App\Http\Controllers\BackendData\ProductController;
 use App\Http\Controllers\BackendData\ProductImageGalleryController as BackendDataProductImageGalleryController;
 use App\Http\Controllers\BackendData\ProfileController;
@@ -90,6 +91,9 @@ Route::put('at_home_page', [FlashSaleController::class, 'changeAtHomePageStatus'
 Route::post('flash-sell-product', [FlashSaleController::class, 'FlashSellProduct'])->name('flashsell.product.store');
 Route::resource('flashsell', FlashSaleController::class);
 
+//Coupon
+
+Route::resource('coupons', CouponController::class);
 
 // General Sttings
 

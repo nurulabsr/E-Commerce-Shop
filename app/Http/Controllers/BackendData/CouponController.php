@@ -11,9 +11,9 @@ class CouponController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(CouponDataTable $dataTables)
+    public function index(CouponDataTable $dataTable)
     {
-        return view('admin.coupon.index');
+        return $dataTable->render('admin.coupon.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.coupon.create');
     }
 
     /**

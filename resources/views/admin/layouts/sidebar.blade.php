@@ -97,7 +97,7 @@
               <li class="{{SetActive(['admin.vendor-profile.edit'])}}"> <a class="nav-link" href="{{route('admin.vendor-profile.edit', 1)}}">Update Profile</a> </li>
             </ul> 
        </li>
-
+       <li><a class="nav-link" href="{{route('admin.coupons.index')}}"><i class="far fa-setting"></i> <span>Coupon</span></a></li>
        <li><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-setting"></i> <span>Settings</span></a></li>
 
 
