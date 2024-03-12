@@ -22,16 +22,45 @@
                         <label for="">Coupon Code</label>
                         <input type="text" name="" class="form-control">
                      </div>
-                     <div class="form-group">
-                        <label for="">Coupon Start Date</label>
-                        <input type="date" name="" class="form-control">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Coupon Start Date</label>
+                              <input type="date" name="" class="form-control">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Coupon Start Date</label>
+                              <input type="date" name="" class="form-control">
+                           </div>
+                        </div>
                      </div>
                      <div class="form-group">
-                        <label for="">Coupon End Date</label>
-                        <input type="date" name="" class="form-control">
+                        <label for="">Quantity</label>
+                        <input type="text" name="" class="form-control">
                      </div>
                      <div class="form-group">
-                        <label for="">Ttal Coupon</label>
+                        <label for="">Max Use Per Person</label>
+                        <input type="text" name="" class="form-control">
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <select name="" id="">
+                                 <option value="">Select</option>
+                                 <option value=""></option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="">Discount Value(%)</label>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Toal Coupon</label>
                         <input type="text" name="" class="form-group">
                      </div>
                       <div class="form-group">
