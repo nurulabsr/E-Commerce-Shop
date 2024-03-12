@@ -97,7 +97,18 @@
               <li class="{{SetActive(['admin.vendor-profile.edit'])}}"> <a class="nav-link" href="{{route('admin.vendor-profile.edit', 1)}}">Update Profile</a> </li>
             </ul> 
        </li>
-       <li><a class="nav-link" href="{{route('admin.coupons.index')}}"><i class="far fa-setting"></i> <span>Coupon</span></a></li>
+       <li class="dropdown {{
+        SetActive([
+         'admin.coupons.*',
+        ])
+     }}">
+       <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Coupon</span></a>
+       <ul class="dropdown-menu">
+          <li class="{{SetActive(['admin.coupons.index'])}}"><a class="nav-link" href="{{route('admin.coupons.index')}}">Coupon Table</a></li>
+          <li class="{{SetActive(['admin.coupons.create'])}}"><a class="nav-link" href="{{route('admin.coupons.create')}}">Create Coupon</a></li>
+
+          </ul> 
+     </li>
        <li><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-setting"></i> <span>Settings</span></a></li>
 
 
