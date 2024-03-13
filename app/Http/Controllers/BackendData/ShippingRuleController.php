@@ -72,7 +72,24 @@ class ShippingRuleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'rule_name' => ['required', 'string', 'max:255'],
+            'shipping_type' => ['required', 'string', 'max:20'],
+            'min_amount' => ['required', 'integer'],
+            'cost' => ['required', 'integer'],
+            'status' => ['required', 'boolean'],
+
+        ]);
+
+        $shipping_rule = ShippingRule::findOrFail($id);
+        $shipping_rule->rule_name = $request->rule_name;
+        $shipping_rule->shipping_type = $request->shipping_type;
+        $shipping_rule->min_amount = $request->min_amount;
+        $shipping_rule->cost = $request->cost;
+        $shipping_rule->status = $request->status;
+        $shipping_rule->save();
+        toastr()->success('Shipping Rule Updated Successfully!');
+        return redirect()->back();  
     }
 
     /**

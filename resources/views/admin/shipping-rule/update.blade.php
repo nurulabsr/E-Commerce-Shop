@@ -13,35 +13,35 @@
                         <h4>Shipping</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('admin.shipping-rule.update', $shipping_rule->id)}}">
+                        <form method="POST" action="{{ route('admin.shipping-rule.update', $shipping_rule->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="rule_name" value="{{ old('rule_name') }}" class="form-control">
+                                <input type="text" name="rule_name" value="{{ @$shipping_rule->rule_name }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Shipping Type</label>
-                                <select name="shipping_type" class="form-control">
+                                <select name="shipping_type" class="form-control shipping_type">
                                     <option value="">Select</option>
-                                    <option value="flat_cost">Flat Cost</option>
-                                    <option value="min_amount">Minimum Amount</option>
+                                    <option {{ $shipping_rule->shipping_type == 'flat_cost' ? 'selected' : '' }} value="flat_cost">Flat Cost</option>
+                                    <option {{ $shipping_rule->shipping_type == 'min_amount' ? 'selected' : '' }} value="min_amount">Minimum Amount</option>
                                 </select>
                             </div>
-                            <div class="form-group min_amount d-none">
+                            <div class="form-group min_amount{{ $shipping_rule->shipping_type == 'min_amount' ? '' : ' d-none' }}">
                                 <label for="">Minimum Cost</label>
-                                <input type="text" name="min_amount" value="{{old('min_amount')}}" class="form-control">
+                                <input type="text" name="min_amount" value="{{ $shipping_rule->min_amount }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Cost</label>
-                                <input type="text" name="cost"  value="{{old('cost')}}" class="form-control">
+                                <input type="text" name="cost" value="{{ $shipping_rule->cost }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select name="status" class="form-control">
                                     <option value="">Select</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">In Active</option>
+                                    <option {{ $shipping_rule->status == 1 ? 'selected' : '' }} value="1">Active</option>
+                                    <option {{ $shipping_rule->status == 0 ? 'selected' : '' }} value="0">In Active</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -61,11 +61,12 @@
     $(document).ready(function(){
         $('select[name="shipping_type"]').on('change', function(){
             let value = $(this).val();
+            let minAmountField = $(this).closest('form').find('.min_amount');
 
             if(value === 'min_amount'){
-                $('.min_amount').removeClass('d-none');
+                minAmountField.removeClass('d-none');
             } else {
-                $('.min_amount').addClass('d-none');
+                minAmountField.addClass('d-none');
             }
         });
     });
