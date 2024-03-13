@@ -29,7 +29,16 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+           'coupon_name' => ['required', 'string', 'max:254'],
+           'coupon_code' => ['required', 'string', 'max:254'],
+           'max_use' => ['required', 'string', 'max:254'],
+           'quantity' => ['required', 'string', 'max:254'],
+           'start_date' => ['required', 'date'],
+           'end_date' => ['required', 'date'],
+           'discount_type' => ['required', 'string', 'max:254'],
+           
+       ]);
     }
 
     /**

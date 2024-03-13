@@ -12,30 +12,30 @@
                      <h4>Coupon</h4>
                 </div>
                 <div class="card-body">
-                   <form action="" method="POST"> 
+                  <form method="POST" action="{{ route('admin.coupons.store') }}"> 
                      @csrf
                      <div class="form-group">
                         <label for="">Coupon Name</label>
-                        <input type="text" name="coupon_name" class="form-control">
+                        <input type="text" name="coupon_name" value="{{old('coupon_name')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Coupon Code</label>
-                        <input type="text" name="coupon_code" class="form-control">
+                        <input type="text" name="coupon_code" value="{{old('coupon_code')}}" class="form-control">
                      </div>
 
                      <div class="form-group">
                         <label for="">Max Use Per Person</label>
-                        <input type="text" name="max_use" class="form-control">
+                        <input type="text" name="max_use" value="{{old('max_use')}}" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="">Quantity</label>
-                        <input type="text" name="quantity" class="form-control">
+                        <input type="text" name="quantity" value="{{old('quantity')}}" class="form-control">
                      </div>
                      <div class="row">
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="">Coupon Start Date</label>
-                              <input type="date" name="start_date" class="form-control">
+                              <input type="date" name="start_date"  class="form-control">
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -59,7 +59,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                               <label for="">Discount Value</label>
-                              <input type="text" name="discount_value" class="form-control">
+                              <input type="text" name="discount_value" value="{{old('discount_value')}}" class="form-control">
                             </div>
                         </div>
                      </div>
@@ -74,7 +74,7 @@
                       <div class="form-group">
                          <button type="submit" class="btn btn-primary mt-5">Submit</button>
                       </div>
-                   </form>
+                  </form>
                 </div>
             </div>
         </div>
