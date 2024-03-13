@@ -28,6 +28,22 @@ class ShippingRuleDataTable extends DataTable
                 return $editBtn.$dltBtn;
             })
 
+            ->addColumn('status', function($query){
+                if($query->status== '1'){
+                   $toggleBtn = '<label>
+                   <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                  </label>';
+               return $toggleBtn;
+                } else{
+                   $toggleBtn = '<label>
+                   <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+                   <span class="custom-switch-indicator"> </span>
+                 </label>';
+                 return $toggleBtn;
+                }
+           })
+            ->rawColumns(['action', 'status'])
             ->setRowId('id');
     }
 
@@ -68,8 +84,11 @@ class ShippingRuleDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('rule_name'),
+            Column::make('shipping_type'),
+            Column::make('min_amount'),
+            Column::make('cost'),
+            Column::make('status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
