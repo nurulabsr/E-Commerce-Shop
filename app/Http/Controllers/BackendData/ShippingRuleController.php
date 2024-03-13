@@ -81,4 +81,12 @@ class ShippingRuleController extends Controller
     {
         //
     }
+
+    public function changeShippingStatus(Request $request){
+        $shipping_rule = ShippingRule::findOrFail($request->id);
+        $shipping_rule->status = $request->status == 'true' ? 1 : 0;
+        $shipping_rule->save();
+        return response(['message' => 'Status Changed Successfully!']);
+
+    }
 }
