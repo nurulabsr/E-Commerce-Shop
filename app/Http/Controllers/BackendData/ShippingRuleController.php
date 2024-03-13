@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\ShippingRuleDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\ShippingRule;
 use Illuminate\Http\Request;
 
 class ShippingRuleController extends Controller
@@ -35,8 +36,18 @@ class ShippingRuleController extends Controller
             'min_amount' => ['required', 'integer'],
             'cost' => ['required', 'integer'],
             'status' => ['required', 'boolean'],
-            
+
         ]);
+
+        $shipping_rule = new ShippingRule();
+        $shipping_rule->rule_name = $request->rule_name;
+        $shipping_rule->shipping_type = $request->shipping_type;
+        $shipping_rule->min_amount = $request->min_amount;
+        $shipping_rule->cost = $request->cost;
+        $shipping_rule->status = $request->status;
+        $shipping_rule->save();
+        toastr()->success('Shipping Rule Added Successfully!');
+        return redirect()->back();
     }
 
     /**

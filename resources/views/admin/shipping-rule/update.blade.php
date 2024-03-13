@@ -13,7 +13,7 @@
                         <h4>Shipping</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('admin.shipping-rule.store')}}">
+                        <form method="POST" action="{{route('admin.shipping-rule.update')}}">
                             @csrf
                             <div class="form-group">
                                 <label for="">Name</label>
