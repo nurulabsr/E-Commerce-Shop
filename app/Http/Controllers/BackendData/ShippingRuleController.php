@@ -29,7 +29,14 @@ class ShippingRuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rule_name' => ['required', 'string', 'max:255'],
+            'shipping_type' => ['required', 'string', 'max:20'],
+            'min_amount' => ['required', 'integer'],
+            'cost' => ['required', 'integer'],
+            'status' => ['required', 'boolean'],
+            
+        ]);
     }
 
     /**

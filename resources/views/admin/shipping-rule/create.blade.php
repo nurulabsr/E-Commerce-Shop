@@ -13,7 +13,7 @@
                         <h4>Coupon</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="">
+                        <form method="POST" action="{{route('admin.shipping-rule.store')}}">
                             @csrf
                             <div class="form-group">
                                 <label for="">Name</label>
@@ -29,11 +29,11 @@
                             </div>
                             <div class="form-group min_amount d-none">
                                 <label for="">Minimum Cost</label>
-                                <input type="text" name="min_amount" class="form-control">
+                                <input type="text" name="min_amount" value="{{old('min_amount')}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Cost</label>
-                                <input type="text" name="cost" class="form-control">
+                                <input type="text" name="cost"  value="{{old('cost')}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Status</label>
