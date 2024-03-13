@@ -29,7 +29,8 @@ class CouponController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {  
+        // dd($request->all());
        $request->validate([
            'coupon_name' => ['required', 'string', 'max:254'],
            'coupon_code' => ['required', 'string', 'max:254'],
@@ -43,16 +44,20 @@ class CouponController extends Controller
        ]);
 
        $coupon = new Coupon();
+       $coupon->fill($request->only($coupon->getFillable()));
        $coupon->coupon_name = $request->coupon_name ; 
        $coupon->coupon_code =$request->coupon_code ;
        $coupon->max_use =  $request->max_use ;
        $coupon->quantity = $request->quantity ;
-       $coupon->start_date = $request->quantity ;
-       $coupon->end_date =$request->start_date ;
-       $coupon->discount_type =$request->end_date ;
-       $coupon->discount_value =$request->discount_type ;
+       $coupon->start_date = $request->start_date ;
+       $coupon->end_date =$request->end_date ;
+       $coupon->discount_type =$request->discount_type ;
+       $coupon->discount_value =$request->discount_value ;
        $coupon->total_used = 0;
        $coupon->status = $request->status;
+       $coupon->save();
+       toastr('Added Successfully!');
+       return redirect()->back();
     }
 
     /**
