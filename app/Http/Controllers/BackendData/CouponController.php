@@ -92,6 +92,23 @@ class CouponController extends Controller
             'status' => ['boolean'],
  
         ]);
+        
+        $coupon = Coupon::findOrFail($id);
+        $coupon->fill($request->only($coupon->getFillable()));
+        $coupon->coupon_name = $request->coupon_name ; 
+        $coupon->coupon_code =$request->coupon_code ;
+        $coupon->max_use =  $request->max_use ;
+        $coupon->quantity = $request->quantity ;
+        $coupon->start_date = $request->start_date ;
+        $coupon->end_date =$request->end_date ;
+        $coupon->discount_type =$request->discount_type ;
+        $coupon->discount_value =$request->discount_value ;
+        $coupon->total_used = 0;
+        $coupon->status = $request->status;
+        $coupon->save();
+        toastr('Updated Successfully!');
+        return redirect()->back();
+
  
     }
 
