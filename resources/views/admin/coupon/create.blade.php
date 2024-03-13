@@ -49,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                               <label for="">Discount Type</label>
-                              <select name="" class="form-control">
+                              <select name="discount_type" class="form-control">
                                  <option value="">Select</option>
                                  <option value="percentage">%(Percentage)</option>
                                  <option value="amount">Amount {{$settings->currency_icon}}</option>
@@ -59,13 +59,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                               <label for="">Discount Value</label>
-                              <input type="text" name="" class="form-control">
+                              <input type="text" name="discount_value" class="form-control">
                             </div>
                         </div>
                      </div>
                      <div class="form-group">
                         <label for="">Status</label>
-                        <select name=""  class="form-control">
+                        <select name="status"  class="form-control">
                            <option value="">Select</option>
                            <option value="1">Active</option>
                            <option value="0">In Active</option>

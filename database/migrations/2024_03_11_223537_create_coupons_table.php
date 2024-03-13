@@ -19,6 +19,10 @@ return new class extends Migration
             $table->integer('quantity');
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('discount_type');
+            $table->string('discount_value');
+            $table->boolean('status');
+            $table->integer('total_used');
             $table->timestamps();
         });
     }
