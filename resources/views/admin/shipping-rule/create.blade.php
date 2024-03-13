@@ -17,7 +17,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+                                <input type="text" name="rule_name" value="{{ old('rule_name') }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Shipping Type</label>

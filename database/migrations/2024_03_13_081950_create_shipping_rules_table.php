@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('shipping_rules', function (Blueprint $table) {
             $table->id();
+            $table->string('rule_name');
+            $table->string('shipping_type');
+            $table->integer('min_amount');
+            $table->integer('cost');
+            $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -21,7 +27,10 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
+        Schema::table('shipping_rules', function(Blueprint $table){
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('shipping_rules');
     }
 };
