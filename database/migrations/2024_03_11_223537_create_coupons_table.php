@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('status');
             $table->integer('total_used');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,7 +32,10 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
+        Schema::table('coupons', function(Blueprint $table){
+           $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('coupons');
     }
 };
