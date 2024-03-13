@@ -52,8 +52,8 @@
                               <label for="">Discount Type</label>
                               <select name="discount_type" class="form-control">
                                  <option value="">Select</option>
-                                 <option value="percentage">%(Percentage)</option>
-                                 <option value="amount">Amount {{$settings->currency_icon}}</option>
+                                 <option {{$coupon->discount_type == 'percentage' ? 'selected' : ''}} value="percentage">%(Percentage)</option>
+                                 <option {{$coupon->discount_type == 'amount' ? 'selected' : ''}} value="amount">Amount {{$settings->currency_icon}}</option>
                               </select>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
                         <label for="">Status</label>
                         <select name="status"  class="form-control">
                            <option value="">Select</option>
-                           <option value="1">Active</option>
-                           <option value="0">In Active</option>
+                           <option {{$coupon->status == 1 ? 'selected' : ''}} value="1">Active</option>
+                           <option {{$coupon->status == 0 ? 'selected' : ''}} value="0">In Active</option>
                         </select>
                      </div>
                       <div class="form-group">
