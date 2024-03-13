@@ -109,6 +109,18 @@
 
           </ul> 
      </li>
+     <li class="dropdown {{
+      SetActive([
+       'admin.shipping-rule.*',
+      ])
+   }}">
+     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Shipping Rule</span></a>
+     <ul class="dropdown-menu">
+        <li class="{{SetActive(['admin.shipping-rule.index'])}}"><a class="nav-link" href="{{route('admin.shipping-rule.index')}}">Shipping Rule Table</a></li>
+        <li class="{{SetActive(['admin.shipping-rule.create'])}}"><a class="nav-link" href="{{route('admin.shipping-rule.create')}}">Create Shipping Rule</a></li>
+
+        </ul> 
+   </li>
        <li><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-setting"></i> <span>Settings</span></a></li>
 
 

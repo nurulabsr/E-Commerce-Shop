@@ -15,6 +15,7 @@ use App\Http\Controllers\BackendData\ProductVariantController;
 use App\Http\Controllers\BackendData\ProductVariantItemController;
 use App\Http\Controllers\BackendData\SellerProductsController;
 use App\Http\Controllers\BackendData\SettingController;
+use App\Http\Controllers\BackendData\ShippingRuleController;
 use App\Http\Controllers\FlashSaleController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
@@ -94,6 +95,10 @@ Route::resource('flashsell', FlashSaleController::class);
 //Coupon
 Route::put('status', [CouponController::class, 'Changestatus'])->name('coupons.status');
 Route::resource('coupons', CouponController::class);
+
+// Shipping Rule
+
+Route::resource('shipping-rule', ShippingRuleController::class);
 
 // General Sttings
 
