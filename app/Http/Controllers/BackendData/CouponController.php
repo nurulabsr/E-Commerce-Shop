@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackendData;
 
 use App\DataTables\CouponDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -37,8 +38,21 @@ class CouponController extends Controller
            'start_date' => ['required', 'date'],
            'end_date' => ['required', 'date'],
            'discount_type' => ['required', 'string', 'max:254'],
-           
+           'status' => ['boolean'],
+
        ]);
+
+       $coupon = new Coupon();
+       $coupon->coupon_name = $request->coupon_name ; 
+       $coupon->coupon_code =$request->coupon_code ;
+       $coupon->max_use =  $request->max_use ;
+       $coupon->quantity = $request->quantity ;
+       $coupon->start_date = $request->quantity ;
+       $coupon->end_date =$request->start_date ;
+       $coupon->discount_type =$request->end_date ;
+       $coupon->discount_value =$request->discount_type ;
+       $coupon->total_used = 0;
+       $coupon->status = $request->status;
     }
 
     /**
