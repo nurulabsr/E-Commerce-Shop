@@ -17,7 +17,7 @@
                 <div class="card-header">
                      <h4>All Coupon Table</h4>
                     <div class="card-header-action"> 
-                        <a href="" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New Coupon</a>
+                        <a href="{{route('admin.coupons.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus p-2"></i>Creat New Coupon</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -38,7 +38,7 @@
           let id = $(this).data('id');     
                     // console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
-            url:'{{route("admin.category.change-status")}}',  //category.change-status
+            url:'{{route("admin.coupons.status")}}',  //category.change-status
             method: 'PUT',
             data:{
               _token: '{{ csrf_token() }}', 

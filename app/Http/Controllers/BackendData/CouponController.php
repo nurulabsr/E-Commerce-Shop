@@ -57,7 +57,7 @@ class CouponController extends Controller
        $coupon->status = $request->status;
        $coupon->save();
        toastr('Added Successfully!');
-       return redirect()->back();
+       return redirect()->route('admin.coupons.index');
     }
 
     /**
@@ -107,7 +107,7 @@ class CouponController extends Controller
         $coupon->status = $request->status;
         $coupon->save();
         toastr('Updated Successfully!');
-        return redirect()->back();
+        return redirect()->route('admin.coupons.index');
 
  
     }
@@ -119,6 +119,14 @@ class CouponController extends Controller
     {
        $coupon = Coupon::findOrFail($id);
        $coupon->delete();
-       return redirect(['status' => 'success', 'message' => 'Deleted Successfully!']);
-    }
+       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);   
+     }
+
+
+     public function Changestatus(Request $request){
+        $coupon = Coupon::findOrFail($request->id);
+        $coupon->status = $request->status == "true" ? 1 : 0;
+        $coupon->save();
+        return response(['message' => 'Status Changed Successfully!']);
+     }
 }

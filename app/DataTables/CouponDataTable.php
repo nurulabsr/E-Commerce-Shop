@@ -27,7 +27,22 @@ class CouponDataTable extends DataTable
             $dltBtn = "<a href='".route('admin.coupons.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
             return $editBtn.$dltBtn;
         })
-        ->rawColumns(['action'])
+        ->addColumn('status', function($query){
+            if($query->status== '1'){
+               $toggleBtn = '<label>
+               <input type="checkbox" checked name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+               <span class="custom-switch-indicator"> </span>
+              </label>';
+           return $toggleBtn;
+            } else{
+               $toggleBtn = '<label>
+               <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input status" data-id="'.$query->id.'">
+               <span class="custom-switch-indicator"> </span>
+             </label>';
+             return $toggleBtn;
+            }
+       })
+        ->rawColumns(['action', 'status'])
         ->setRowId('id');
     }
 
@@ -68,12 +83,15 @@ class CouponDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('coupon_name'),
+            Column::make('coupon_code'),
+            Column::make('max_use'),
+            Column::make('quantity'),
+            Column::make('status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(360)
+                  ->width(160)
                   ->addClass('text-center'),
         ];
     }

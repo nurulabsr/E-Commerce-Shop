@@ -92,7 +92,7 @@ Route::post('flash-sell-product', [FlashSaleController::class, 'FlashSellProduct
 Route::resource('flashsell', FlashSaleController::class);
 
 //Coupon
-
+Route::put('status', [CouponController::class, 'Changestatus'])->name('coupons.status');
 Route::resource('coupons', CouponController::class);
 
 // General Sttings
