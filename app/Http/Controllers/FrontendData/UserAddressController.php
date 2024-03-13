@@ -12,7 +12,7 @@ class UserAddressController extends Controller
      */
     public function index()
     {
-        //
+        return view('Frontend.Dashboard.address.index');
     }
 
     /**
