@@ -38,7 +38,7 @@
           let id = $(this).data('id');     
                     // console.log(id);  // let id = $(this).attr('id');                                       
           $.ajax({
-            url:'{{route("admin.coupons.status")}}',  //category.change-status
+            url:'{{route("admin.shipping-rule.status")}}',  //shipping-rule.status
             method: 'PUT',
             data:{
               _token: '{{ csrf_token() }}', 
