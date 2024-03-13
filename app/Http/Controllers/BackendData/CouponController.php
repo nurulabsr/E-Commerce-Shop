@@ -117,6 +117,8 @@ class CouponController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $coupon = Coupon::findOrFail($id);
+       $coupon->delete();
+       return redirect(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

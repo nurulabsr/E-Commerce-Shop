@@ -22,8 +22,13 @@ class CouponDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'coupon.action')
-            ->setRowId('id');
+        ->addColumn('action', function($query){
+            $editBtn = "<a href='".route('admin.coupons.edit', $query->id)."' class='btn btn-info btn-sm ml-2'><i class='fa-regular fa-pen-to-square'></i>Edit</a>";
+            $dltBtn = "<a href='".route('admin.coupons.destroy', $query->id)."' class='btn btn-warning btn-sm ml-2 delete-item'><i class='fa-solid fa-trash'></i>Delete</a>";
+            return $editBtn.$dltBtn;
+        })
+        ->rawColumns(['action'])
+        ->setRowId('id');
     }
 
     /**
@@ -68,7 +73,7 @@ class CouponDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(360)
                   ->addClass('text-center'),
         ];
     }
