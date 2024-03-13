@@ -72,8 +72,8 @@ class CouponController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   $coupon = Coupon::findOrFail($id);
+        return view('admin.coupon.update', compact('coupon'));
     }
 
     /**
