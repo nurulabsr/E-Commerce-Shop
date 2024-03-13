@@ -13,8 +13,9 @@
                         <h4>Shipping</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('admin.shipping-rule.update')}}">
+                        <form method="POST" action="{{route('admin.shipping-rule.update', $shipping_rule->id)}}">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="">Name</label>
                                 <input type="text" name="rule_name" value="{{ old('rule_name') }}" class="form-control">

@@ -63,7 +63,8 @@ class ShippingRuleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $shipping_rule = ShippingRule::findOrFail($id);
+        return view('admin.shipping-rule.update', compact('shipping_rule'));
     }
 
     /**
