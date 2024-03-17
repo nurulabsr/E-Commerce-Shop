@@ -285,7 +285,7 @@
                                         <select class="select_2" name="variant">
                                              @foreach ( $variant->productVariantItems as $productVariantItem)
                                              <option value="">Select</option>
-                                             <option value="">{{$productVariantItem->product_variant_item_name}}</option>
+                                             <option {{$productVariantItem->product_variant_item_is_default==1?'selected':''}}>{{$productVariantItem->product_variant_item_name}} ({{$productVariantItem->product_variant_item_price}}{{$settings->currency_icon}})</option>
                                              @endforeach
                                         </select>
                                     </div>

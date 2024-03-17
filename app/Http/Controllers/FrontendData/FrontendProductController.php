@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class FrontendProductController extends Controller
 {
     public function producDetails(string $slug){
-        $product = Product::where('product_slug', $slug)->where('product_status', 1)->first();
+        $product = Product::with([''])->where('product_slug', $slug)->where('product_status', 1)->first();
         $flashsell = FlashSell::first();
         $flashsellItems = FlashSellItem::where('status', 1)->orderBy('id', 'DESC')->paginate(120);
         return view('Frontend.pages.products.product-details', compact('product', 'flashsell', 'flashsellItems'));
