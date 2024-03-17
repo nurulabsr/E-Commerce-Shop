@@ -276,39 +276,41 @@
                                 <h5>offer ending time : </h5>
                                 <div class="simply-countdown simply-countdown-one"></div>
                             </div>
-                            <div class="wsus__selectbox">
-                                <div class="row">
-                                    @foreach ($product->productVariants as $variant)
-                                    
-                                    <div class="col-xl-12 col-sm-6">
-                                        <h5 class="mb-2">{{ $variant->product_variant_name }} :</h5>
-                                        <select class="select_2" name="variant">
-                                             @foreach ( $variant->productVariantItems as $productVariantItem)
-                                             <option value="">Select</option>
-                                             <option {{$productVariantItem->product_variant_item_is_default==1?'selected':''}}>{{$productVariantItem->product_variant_item_name}} ({{$productVariantItem->product_variant_item_price}}{{$settings->currency_icon}})</option>
-                                             @endforeach
-                                        </select>
+                             <form action="" class="shopping-cart-form">
+                                    <div class="wsus__selectbox">
+                                        <div class="row">
+                                            @foreach ($product->productVariants as $variant)
+                                            
+                                            <div class="col-xl-12 col-sm-6">
+                                                <h5 class="mb-2">{{ $variant->product_variant_name }} :</h5>
+                                                <select class="select_2" name="variant">
+                                                    @foreach ( $variant->productVariantItems as $productVariantItem)
+                                                    <option value="">Select</option>
+                                                    <option {{$productVariantItem->product_variant_item_is_default==1?'selected':''}}>{{$productVariantItem->product_variant_item_name}} ({{$productVariantItem->product_variant_item_price}}{{$settings->currency_icon}})</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @endforeach
+                                        
+        
+                                        
+                                        </div>
                                     </div>
-                                     @endforeach
+                                    <div class="wsus__quentity">
+                                        <h5>quentity :</h5>
+                                        <div class="select_number">
+                                            <input class="number_area" type="text" min="1" max="100" value="1" />
+                                        </div>
+                                        <h3>$50.00</h3>
+                                    </div>
                                 
-
-                                  
-                                </div>
-                            </div>
-                            <div class="wsus__quentity">
-                                <h5>quentity :</h5>
-                                <form class="select_number">
-                                    <input class="number_area" type="text" min="1" max="100" value="1" />
-                                </form>
-                                <h3>$50.00</h3>
-                            </div>
-                           
-                            <ul class="wsus__button_area">
-                                <li><a class="add_cart" href="#">add to cart</a></li>
-                                <li><a class="buy_now" href="#">buy now</a></li>
-                                <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                <li><a href="#"><i class="far fa-random"></i></a></li>
-                            </ul>
+                                    <ul class="wsus__button_area">
+                                        <li><button class="add_cart" >add to cart</button></li>
+                                        <li><a class="buy_now" href="#">buy now</a></li>
+                                        <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="far fa-random"></i></a></li>
+                                    </ul>
+                             </form>
                             <p class="brand_model"><span>model :</span> 12345670</p>
                             <p class="brand_model"><span>brand :</span> The Northland</p>
                             <div class="wsus__pro_det_share">
@@ -1235,11 +1237,15 @@
 <script>
 $(document).ready(function(){
 
-    simplyCountdown('.simply-countdown-one', {
-        year: {{date('Y', strtotime($flashsell->end_date))}},
-        month: {{date('m', strtotime($flashsell->end_date))}},
-        day:  {{date('d', strtotime($flashsell->end_date))}},
-    });
+        simplyCountdown('.simply-countdown-one', {
+            year: {{date('Y', strtotime($flashsell->end_date))}},
+            month: {{date('m', strtotime($flashsell->end_date))}},
+            day:  {{date('d', strtotime($flashsell->end_date))}},
+        });
+
+        $('.shopping-cart-form').on('submit', function(e){
+           e.preventDefault();
+        })
 });    
 </script>    
 @endpush
