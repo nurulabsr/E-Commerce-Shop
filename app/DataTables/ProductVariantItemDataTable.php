@@ -49,11 +49,11 @@ class ProductVariantItemDataTable extends DataTable
                 return '<i class="badge badge-pill badge-success">Default</i>';
              }
            })
-           ->addColumn('product_variant_item_product_variant_id', function ($query) {
+           ->addColumn('product_variant_id', function ($query) {
             return $query->productVariant->product_variant_name;
             })
         
-            ->rawColumns(['action', 'product_variant_item_status', 'product_variant_item_is_default', 'product_variant_item_product_variant_id'])
+            ->rawColumns(['action', 'product_variant_item_status', 'product_variant_item_is_default', 'product_variant_id'])
             ->setRowId('id');
     }
 
@@ -63,7 +63,7 @@ class ProductVariantItemDataTable extends DataTable
     public function query(ProductVariantItem $model)
     {
         return $model
-            ->where('product_variant_item_product_variant_id', request()->variant)
+            ->where('product_variant_id', request()->variant)
             ->where('product_variant_item_vendor_id', auth()->id())
             ->newQuery();
     }
@@ -101,8 +101,8 @@ class ProductVariantItemDataTable extends DataTable
             Column::make('product_variant_item_name'),
             Column::make('product_variant_item_price')->title("Price($)"),
             Column::make('product_variant_item_is_default'),
-            Column::make('product_variant_item_status'),
-            Column::make('product_variant_item_product_variant_id')->title('Product Variant ID'),
+            Column::make('product_variant_item_status')->title('Status'),
+            Column::make('product_variant_id')->title('Product Variant'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

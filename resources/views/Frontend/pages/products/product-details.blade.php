@@ -276,24 +276,24 @@
                                 <h5>offer ending time : </h5>
                                 <div class="simply-countdown simply-countdown-one"></div>
                             </div>
-                            <div class="wsus_pro_det_color">
-                                <h5>color :</h5>
-                                <ul>
-                                    <li><a class="blue" href="#"><i class="far fa-check"></i></a></li>
-                                    <li><a class="orange" href="#"><i class="far fa-check"></i></a></li>
-                                    <li><a class="yellow" href="#"><i class="far fa-check"></i></a></li>
-                                    <li><a class="black" href="#"><i class="far fa-check"></i></a></li>
-                                    <li><a class="red" href="#"><i class="far fa-check"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="wsus_pro__det_size">
-                                <h5>size :</h5>
-                                <ul>
-                                    <li><a href="#">S</a></li>
-                                    <li><a href="#">M</a></li>
-                                    <li><a href="#">L</a></li>
-                                    <li><a href="#">XL</a></li>
-                                </ul>
+                            <div class="wsus__selectbox">
+                                <div class="row">
+                                    @foreach ($product->productVariants as $variant)
+                                    
+                                    <div class="col-xl-12 col-sm-6">
+                                        <h5 class="mb-2">{{ $variant->product_variant_name }} :</h5>
+                                        <select class="select_2" name="variant">
+                                             @foreach ( $variant->productVariantItems as $productVariantItem)
+                                             <option value="">Select</option>
+                                             <option value="">{{$productVariantItem->product_variant_item_name}}</option>
+                                             @endforeach
+                                        </select>
+                                    </div>
+                                     @endforeach
+                                
+
+                                  
+                                </div>
                             </div>
                             <div class="wsus__quentity">
                                 <h5>quentity :</h5>
@@ -302,30 +302,7 @@
                                 </form>
                                 <h3>$50.00</h3>
                             </div>
-                            <div class="wsus__selectbox">
-                                <div class="row">
-                                    <div class="col-xl-6 col-sm-6">
-                                        <h5 class="mb-2">select:</h5>
-                                        <select class="select_2" name="state">
-                                            <option>default select</option>
-                                            <option>select 1</option>
-                                            <option>select 2</option>
-                                            <option>select 3</option>
-                                            <option>select 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-6 col-sm-6">
-                                        <h5 class="mb-2">select:</h5>
-                                        <select class="select_2" name="state">
-                                            <option>default select</option>
-                                            <option>select 1</option>
-                                            <option>select 2</option>
-                                            <option>select 3</option>
-                                            <option>select 4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <ul class="wsus__button_area">
                                 <li><a class="add_cart" href="#">add to cart</a></li>
                                 <li><a class="buy_now" href="#">buy now</a></li>
@@ -1089,7 +1066,7 @@
     <!--============================
         RELATED PRODUCT START
     ==============================-->
-    <section id="wsus__flash_sell">
+    {{-- <section id="wsus__flash_sell">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -1250,7 +1227,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 

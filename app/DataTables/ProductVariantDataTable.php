@@ -53,7 +53,7 @@ class ProductVariantDataTable extends DataTable
     public function query(ProductVariant $model): QueryBuilder
     {
         return $model
-            ->where('product_variant_product_id', request()->product)
+            ->where('product_id', request()->product)
             ->where('product_variant_vendor_id', auth()->id())
             ->newQuery();
     }
@@ -89,7 +89,7 @@ class ProductVariantDataTable extends DataTable
             Column::make('id'),
             Column::make('product_variant_name'),
             Column::make('product_variant_status'),
-            Column::make('product_variant_product_id'),
+            Column::make('product_id'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

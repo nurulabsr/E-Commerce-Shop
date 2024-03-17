@@ -20,7 +20,7 @@ class UserAddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('Frontend.Dashboard.address.create');
     }
 
     /**

@@ -24,4 +24,19 @@ class Product extends Model
     public function productImageGallery(){
         return $this->hasMany(ProductImageGallery::class, 'product_image_gallery_product_id');
     }
+
+    public function productVariants()
+    {
+        return $this->hasMany(ProductVariant::class, 'product_id');
+    }
+
+    // public function productVariantItem(){
+    //     return $this->hasMany();
+    // }
+    
+    
+    
+
+    
+ 
 }
