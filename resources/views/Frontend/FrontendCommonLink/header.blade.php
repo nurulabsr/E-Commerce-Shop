@@ -1,6 +1,6 @@
     <title>Sazao || e-Commerce HTML Template</title>
         <!-- toaster.js -->
- 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{asset('Frontend/images/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('FrontendData/css/all.min.css')}}">
 

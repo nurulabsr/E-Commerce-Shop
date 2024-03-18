@@ -276,17 +276,17 @@
                                 <h5>offer ending time : </h5>
                                 <div class="simply-countdown simply-countdown-one"></div>
                             </div>
-                             <form action="" class="shopping-cart-form">
+                             <form class="shopping-cart-form">
                                     <div class="wsus__selectbox">
                                         <div class="row">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
                                             @foreach ($product->productVariants as $variant)
-                                            
                                             <div class="col-xl-12 col-sm-6">
                                                 <h5 class="mb-2">{{ $variant->product_variant_name }} :</h5>
-                                                <select class="select_2" name="variants[]">
+                                                <select class="select_2" name="variants_items[]">
                                                     @foreach ( $variant->productVariantItems as $productVariantItem)
                                                     <option value="">Select</option>
-                                                    <option {{$productVariantItem->product_variant_item_is_default==1?'selected':''}}>{{$productVariantItem->product_variant_item_name}} ({{$productVariantItem->product_variant_item_price}}{{$settings->currency_icon}})</option>
+                                                    <option value="{{$productVariantItem->id}}" {{$productVariantItem->product_variant_item_is_default == 1 ? 'selected' :'' }}>{{$productVariantItem->product_variant_item_name}} ({{$productVariantItem->product_variant_item_price}}{{$settings->currency_icon}})</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -1236,6 +1236,12 @@
 @push('scripts')
 <script>
 $(document).ready(function(){
+
+    $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+     });
        
       $('.shopping-cart-form').on('submit', function(e){
             e.preventDefault();
@@ -1244,9 +1250,9 @@ $(document).ready(function(){
             $.ajax({
                 method: "POST",
                 data: formData,
-                url: "",
+                url: "{{ route('add-to-cart') }}",
                 success: function(data){
-                   
+                  alert(data);
                 },
 
                 error: function(data){
