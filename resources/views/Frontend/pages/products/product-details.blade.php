@@ -283,7 +283,7 @@
                                             
                                             <div class="col-xl-12 col-sm-6">
                                                 <h5 class="mb-2">{{ $variant->product_variant_name }} :</h5>
-                                                <select class="select_2" name="variant">
+                                                <select class="select_2" name="variants[]">
                                                     @foreach ( $variant->productVariantItems as $productVariantItem)
                                                     <option value="">Select</option>
                                                     <option {{$productVariantItem->product_variant_item_is_default==1?'selected':''}}>{{$productVariantItem->product_variant_item_name}} ({{$productVariantItem->product_variant_item_price}}{{$settings->currency_icon}})</option>
@@ -299,7 +299,7 @@
                                     <div class="wsus__quentity">
                                         <h5>quentity :</h5>
                                         <div class="select_number">
-                                            <input class="number_area" type="text" min="1" max="100" value="1" />
+                                            <input class="number_area" name="qty" type="text" min="1" max="100" value="1" />
                                         </div>
                                         <h3>$50.00</h3>
                                     </div>
@@ -367,7 +367,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-12">
                     <div class="wsus__pro_det_description">
                         <div class="wsus__details_bg">
@@ -1057,7 +1057,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
     </section>
     <!--============================
@@ -1236,16 +1236,32 @@
 @push('scripts')
 <script>
 $(document).ready(function(){
+       
+      $('.shopping-cart-form').on('submit', function(e){
+            e.preventDefault();
+            let formData = $(this).serialize();
+            console.log("data :", formData);
+            $.ajax({
+                method: "POST",
+                data: formData,
+                url: "",
+                success: function(data){
+                   
+                },
+
+                error: function(data){
+                 
+                }
+            })
+
+     })
+
 
         simplyCountdown('.simply-countdown-one', {
             year: {{date('Y', strtotime($flashsell->end_date))}},
             month: {{date('m', strtotime($flashsell->end_date))}},
             day:  {{date('d', strtotime($flashsell->end_date))}},
         });
-
-        $('.shopping-cart-form').on('submit', function(e){
-           e.preventDefault();
-        })
 });    
 </script>    
 @endpush
