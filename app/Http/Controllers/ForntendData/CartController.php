@@ -12,18 +12,35 @@ class CartController extends Controller
 {
     public function AddToCart(Request $request){
 
-        // $product = Product::findOrFail($request->product_id);
+        $product = Product::findOrFail($request->product_id);
         // Cart::add();
         $variants = [];
+        $variantTotalAmount = 0;
         // dd($request->variants_items);
         foreach($request->variants_items as $item_id){
 
             $variantItem = ProductVariantItem::findOrFail($item_id);
             $variants[$variantItem->productVariant->product_variant_name]['product_variant_item_name'] = $variantItem->product_variant_item_name;
+            $variants[$variantItem->productVariant->product_variant_name]['product_variant_item_price'] = $variantItem->product_variant_item_price;
+            $variantTotalAmount += $variantItem->product_variant_item_price;
          
         }
+        $totalProductAmount = 0;
+        if(checkDiscount($product)){
+           $totalProductAmount += ($product->product_offer_price + $variantTotalAmount);
+        }
 
-        dd($variants);
+        // dd($variants);
+        $cartData = [];
+        $cartData["id"] = $product->id;
+        $cartData["name"] = $product->product_name;
+        $cartData["qty"] = $request->qty;
+        $cartData["price"] = $product->product_price * $request->qty;
+        $cartData["weight"] = 10;
+        $cartData["options"]["variants"] = $variants;
+        $cartData["options"]["image"] = $product->product_thumnail_img;
+        $cartData["options"]["slug"] = $product->product_slug;
+        dd($cartData);
 
      }
 }

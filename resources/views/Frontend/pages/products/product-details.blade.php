@@ -257,7 +257,7 @@
                            @if (checkDiscount($product))
                            <h4>{{$settings->currency_icon}}{{$product->product_offer_price}} <del>{{$settings->currency_icon}}{{$product->product_price}}</del></h4>
                            @else
-                               
+                           <h4>{{$settings->currency_icon}}{{$product->product_price}}</h4>
                            @endif
                             <p class="review">
                                 <i class="fas fa-star"></i>
