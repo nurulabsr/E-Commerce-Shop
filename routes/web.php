@@ -3,6 +3,7 @@
 use App\Http\Controllers\BackendData\AdminController;
 use App\Http\Controllers\BackendData\ErrorController;
 use App\Http\Controllers\BackendData\VendorController;
+use App\Http\Controllers\ForntendData\CartController;
 use App\Http\Controllers\FrontendData\DashboardController;
 use App\Http\Controllers\FrontendData\FlashSellController;
 use App\Http\Controllers\FrontendData\FrontendProductController;
@@ -33,6 +34,11 @@ Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.l
 
 Route::get('flash-sale', [FlashSellController::class, 'index'])->name('flashsell');
 Route::get('product-detail/{slug}', [FrontendProductController::class, 'producDetails'])->name('product-detail');
+
+// add to cart route
+
+Route::post('add-to-cart', [CartController::class, 'AddToCart'])->name('add-to-cart');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
