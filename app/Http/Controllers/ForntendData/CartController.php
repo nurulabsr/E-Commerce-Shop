@@ -26,11 +26,11 @@ class CartController extends Controller
              
             }
           }
-        $totalProductAmount = 0;
+        $productPrice = 0;
         if(checkDiscount($product)){
-           $totalProductAmount += ($product->product_offer_price + $variantTotalAmount);
+           $productPrice = $product->product_offer_price;
         }else{
-            $totalProductAmount += ($product->product_price + $variantTotalAmount);
+            $productPrice = $product->product_price;
         }
 
         // dd($variants);
@@ -38,9 +38,10 @@ class CartController extends Controller
         $cartData["id"] = $product->id;
         $cartData["name"] = $product->product_name;
         $cartData["qty"] = $request->qty;
-        $cartData["price"] = $totalProductAmount;
+        $cartData["price"] = $productPrice;
         $cartData["weight"] = 10;
         $cartData["options"]["variants"] = $variants;
+        $cartData["options"]["variantTotalAmount"] = $variantTotalAmount;
         $cartData["options"]["image"] = $product->product_thumnail_img;
         $cartData["options"]["slug"] = $product->product_slug;
         dd($cartData);

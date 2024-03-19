@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
      <meta name="csrf-token" content="{{ csrf_token() }}">
+         <link rel="stylesheet" href="{{asset('FrontendData/css/style.css')}}">
        @include('Frontend.FrontendCommonLink.header')
     </head>
 <body>

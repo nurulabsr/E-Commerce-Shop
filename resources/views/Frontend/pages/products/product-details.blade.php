@@ -281,7 +281,7 @@
                                         <div class="row">
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                                             @foreach ($product->productVariants as $variant)
-                                            <div class="col-xl-12 col-sm-6">
+                                            <div class="col-xl-6 col-sm-6">
                                                 <h5 class="mb-2">{{ $variant->product_variant_name }} :</h5>
                                                 <select class="select_2" name="variants_items[]">
                                                     @foreach ( $variant->productVariantItems as $productVariantItem)
@@ -312,7 +312,7 @@
                                     </ul>
                              </form>
                             <p class="brand_model"><span>model :</span> 12345670</p>
-                            <p class="brand_model"><span>brand :</span> The Northland</p>
+                            <p class="brand_model"><span>brand :</span>{{$product->brands->brand_name}}</p>
                             <div class="wsus__pro_det_share">
                                 <h5>share :</h5>
                                 <ul class="d-flex">
