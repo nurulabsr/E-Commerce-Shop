@@ -16,18 +16,21 @@ class CartController extends Controller
         // Cart::add();
         $variants = [];
         $variantTotalAmount = 0;
-        // dd($request->variants_items);
-        foreach($request->variants_items as $item_id){
+          if($request->has('variants_items')){
+            foreach($request->variants_items as $item_id){
 
-            $variantItem = ProductVariantItem::findOrFail($item_id);
-            $variants[$variantItem->productVariant->product_variant_name]['product_variant_item_name'] = $variantItem->product_variant_item_name;
-            $variants[$variantItem->productVariant->product_variant_name]['product_variant_item_price'] = $variantItem->product_variant_item_price;
-            $variantTotalAmount += $variantItem->product_variant_item_price;
-         
-        }
+                $variantItem = ProductVariantItem::findOrFail($item_id);
+                $variants[$variantItem->productVariant->product_variant_name]['product_variant_item_name'] = $variantItem->product_variant_item_name;
+                $variants[$variantItem->productVariant->product_variant_name]['product_variant_item_price'] = $variantItem->product_variant_item_price;
+                $variantTotalAmount += $variantItem->product_variant_item_price;
+             
+            }
+          }
         $totalProductAmount = 0;
         if(checkDiscount($product)){
            $totalProductAmount += ($product->product_offer_price + $variantTotalAmount);
+        }else{
+            $totalProductAmount += ($product->product_price + $variantTotalAmount);
         }
 
         // dd($variants);
@@ -35,12 +38,14 @@ class CartController extends Controller
         $cartData["id"] = $product->id;
         $cartData["name"] = $product->product_name;
         $cartData["qty"] = $request->qty;
-        $cartData["price"] = $product->product_price * $request->qty;
+        $cartData["price"] = $totalProductAmount;
         $cartData["weight"] = 10;
         $cartData["options"]["variants"] = $variants;
         $cartData["options"]["image"] = $product->product_thumnail_img;
         $cartData["options"]["slug"] = $product->product_slug;
         dd($cartData);
+
+        Cart::add($cartData);
 
      }
 }

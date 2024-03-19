@@ -231,7 +231,7 @@
                                       <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
                                       href="{{$product->product_video_link}}">
                                       <i class="fas fa-play"></i>
-                                  </a>
+                                     </a>
                                       @endif
                                     <ul class='exzoom_img_ul'>   
                                         <li><img class="zoom ing-fluid w-100" src="{{asset($product->product_thumnail_img)}}" alt="product"></li>
@@ -1252,7 +1252,7 @@ $(document).ready(function(){
                 data: formData,
                 url: "{{ route('add-to-cart') }}",
                 success: function(data){
-                  alert(data);
+                
                 },
 
                 error: function(data){
