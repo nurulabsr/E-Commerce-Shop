@@ -38,6 +38,7 @@ Route::get('product-detail/{slug}', [FrontendProductController::class, 'producDe
 // add to cart route
 
 Route::post('add-to-cart', [CartController::class, 'AddToCart'])->name('add-to-cart');
+Route::get('cart-details', [CartController::class, 'CartDetails'])->name('cart-details');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

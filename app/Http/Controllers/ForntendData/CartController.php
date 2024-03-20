@@ -49,4 +49,8 @@ class CartController extends Controller
         Cart::add($cartData);
 
      }
+
+     public function CartDetail(){
+      return view('Frontend.pages.cart-detail');
+     }
 }
