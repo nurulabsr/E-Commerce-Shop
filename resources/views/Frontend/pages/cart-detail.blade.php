@@ -45,135 +45,57 @@
                                         </th>
 
                                         <th class="wsus__pro_status">
-                                            status
+                                            Unit Price
                                         </th>
 
+                                        <th class="wsus__pro_tk">
+                                            Total Price
+                                        </th>
                                         <th class="wsus__pro_select">
                                             quantity
                                         </th>
 
-                                        <th class="wsus__pro_tk">
-                                            price
-                                        </th>
 
                                         <th class="wsus__pro_icon">
                                             <a href="#" class="common_btn">clear cart</a>
                                         </th>
                                     </tr>
+                                    @foreach ($cartItems as $cartItem)
+                                        
                                     <tr class="d-flex">
-                                        <td class="wsus__pro_img"><img src="images/pro9_9.jpg" alt="product"
+                                        <td class="wsus__pro_img"><img src="{{asset($cartItem->options->image)}}" alt="product"
                                                 class="img-fluid w-100">
                                         </td>
 
                                         <td class="wsus__pro_name">
-                                            <p>men's fashion sholder leather bag</p>
-                                            <span>color: red</span>
-                                            <span>size: XL</span>
-                                        </td>
-
-                                        <td class="wsus__pro_status">
-                                            <p>in stock</p>
-                                        </td>
-
-                                        <td class="wsus__pro_select">
-                                            <form class="select_number">
-                                                <input class="number_area" type="text" min="1" max="100" value="1" />
-                                            </form>
+                                            <p>{{$cartItem->name}}</p>
+                                            @foreach ($cartItem->options->variants as $key => $variantValue )     
+                                            <span>{{$key}}: {{$variantValue['product_variant_item_name']}} ({{$settings->currency_icon}} {{$variantValue['product_variant_item_price']}})</span>
+                                            @endforeach
+                                            
                                         </td>
 
                                         <td class="wsus__pro_tk">
-                                            <h6>$180,00</h6>
+                                            <h6>{{$settings->currency_icon}} {{$cartItem->price}}</h6>
                                         </td>
+                                        <td class="wsus__pro_status">
+                                            <p>{{$cartItem->price + $cartItem->options->variantTotalAmount}} </p>
+                                        </td>
+
+                                        <td class="wsus__pro_select">
+                                            <div class="product_qty_wrapper">
+                                                <button class="btn btn-danger btn-sm product_decrement">-</button>
+                                                <input class="product_qty" type="text" min="1" max="100" value="1" />
+                                                <button class="btn btn-success btn-sm product_increment">+</button>
+                                            </div>
+                                        </td>
+
 
                                         <td class="wsus__pro_icon">
                                             <a href="#"><i class="far fa-times"></i></a>
                                         </td>
                                     </tr>
-                                    <tr class="d-flex">
-                                        <td class="wsus__pro_img">
-                                            <img src="images/pro4.jpg" alt="product" class="img-fluid w-100">
-                                        </td>
-
-                                        <td class="wsus__pro_name">
-                                            <p>mean's casula fashion watch</p>
-                                            <span>color: black</span>
-                                        </td>
-
-                                        <td class="wsus__pro_status">
-                                            <p>in stock</p>
-                                        </td>
-
-                                        <td class="wsus__pro_select">
-                                            <form class="select_number">
-                                                <input class="number_area" type="text" min="1" max="100" value="1" />
-                                            </form>
-                                        </td>
-
-                                        <td class="wsus__pro_tk">
-                                            <h6>$140,00</h6>
-                                        </td>
-
-                                        <td class="wsus__pro_icon">
-                                            <a href="#"><i class="far fa-times"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="d-flex">
-                                        <td class="wsus__pro_img">
-                                            <img src="images/blazer_1.jpg" alt="product" class="img-fluid w-100">
-                                        </td>
-
-                                        <td class="wsus__pro_name">
-                                            <p>product name and details</p>
-                                            <span>color: black</span>
-                                            <span>size: M</span>
-                                        </td>
-
-                                        <td class="wsus__pro_status">
-                                            <span>almost gone</span>
-                                        </td>
-
-                                        <td class="wsus__pro_select">
-                                            <form class="select_number">
-                                                <input class="number_area" type="text" min="1" max="100" value="1" />
-                                            </form>
-                                        </td>
-
-                                        <td class="wsus__pro_tk">
-                                            <h6>$220,00</h6>
-                                        </td>
-
-                                        <td class="wsus__pro_icon">
-                                            <a href="#"><i class="far fa-times"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="d-flex">
-                                        <td class="wsus__pro_img">
-                                            <img src="images/pro2.jpg" alt="product" class="img-fluid w-100">
-                                        </td>
-                                        <td class="wsus__pro_name">
-                                            <p>product name and details</p>
-                                            <span>color: black</span>
-                                            <span>size: L</span>
-                                        </td>
-
-                                        <td class="wsus__pro_status">
-                                            <p>in stock</p>
-                                        </td>
-
-                                        <td class="wsus__pro_select">
-                                            <form class="select_number">
-                                                <input class="number_area" type="text" min="1" max="100" value="1" />
-                                            </form>
-                                        </td>
-
-                                        <td class="wsus__pro_tk">
-                                            <h6>$180.00</h6>
-                                        </td>
-
-                                        <td class="wsus__pro_icon">
-                                            <a href="#"><i class="far fa-times"></i></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -233,3 +155,34 @@
           CART VIEW PAGE END
     ==============================-->
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.product_increment').on('click', function(){
+                let input = $(this).siblings('.product_qty');
+                let currentQuantity = parseInt(input.val());
+                let newQuantity = currentQuantity + 1;
+                input.val(newQuantity);
+                console.log(newQuantity);
+
+                // AJAX request
+                $.ajax({
+                    url: "your_endpoint_url",
+                    method: 'POST',
+                    data: {
+                        quantity: newQuantity
+                    },
+                    success: function(data){
+                        
+                    },
+                    error: function(xhr, textStatus, error){
+                      
+                    }
+                });
+            });
+
+
+        });
+    </script>
+@endpush

@@ -44,13 +44,17 @@ class CartController extends Controller
         $cartData["options"]["variantTotalAmount"] = $variantTotalAmount;
         $cartData["options"]["image"] = $product->product_thumnail_img;
         $cartData["options"]["slug"] = $product->product_slug;
-        dd($cartData);
+        // dd($cartData);
 
         Cart::add($cartData);
 
      }
 
-     public function CartDetail(){
-      return view('Frontend.pages.cart-detail');
+     public function CartDetails(){
+
+      $cartItems = Cart::content();
+     
+
+      return view('Frontend.pages.cart-detail', compact('cartItems'));
      }
 }
