@@ -85,7 +85,7 @@
                                         <td class="wsus__pro_select">
                                             <div class="product_qty_wrapper">
                                                 <button class="btn btn-danger btn-sm product_decrement">-</button>
-                                                <input class="product_qty" type="text" min="1" max="100" value="1" />
+                                                <input class="product_qty" data-rowid ="{{$cartItem->rowId}}" type="text" min="1" max="100" value="1" />
                                                 <button class="btn btn-success btn-sm product_increment">+</button>
                                             </div>
                                         </td>
@@ -159,8 +159,15 @@
 @push('scripts')
     <script>
         $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+       
             $('.product_increment').on('click', function(){
                 let input = $(this).siblings('.product_qty');
+                let rowId = input.data('rowid');
                 let currentQuantity = parseInt(input.val());
                 let newQuantity = currentQuantity + 1;
                 input.val(newQuantity);
@@ -168,13 +175,16 @@
 
                 // AJAX request
                 $.ajax({
-                    url: "your_endpoint_url",
+                    url: "{{route('update-cart-quantity')}}",
                     method: 'POST',
                     data: {
-                        quantity: newQuantity
+                        quantity: newQuantity,
+                        rowId:rowId
                     },
                     success: function(data){
-                        
+                        if(data.status == "success"){
+                            toastr.success(data.message);
+                        }
                     },
                     error: function(xhr, textStatus, error){
                       
