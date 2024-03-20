@@ -182,7 +182,29 @@
                 });
             });
 
+            $('.product_decrement').on('click', function(){
+                let input = $(this).siblings('.product_qty');
+                let currentQuantity = parseInt(input.val());
+                let newQuantity = currentQuantity - 1;
+                if(newQuantity < 1) newQuantity = 1;
+                input.val(newQuantity);
+                console.log(newQuantity);
 
+                // AJAX request
+                $.ajax({
+                    url: "your_endpoint_url",
+                    method: 'POST',
+                    data: {
+                        quantity: newQuantity
+                    },
+                    success: function(data){
+                        // Handle success response
+                    },
+                    error: function(xhr, textStatus, error){
+                        // Handle error
+                    }
+                });
+            });
         });
     </script>
 @endpush
