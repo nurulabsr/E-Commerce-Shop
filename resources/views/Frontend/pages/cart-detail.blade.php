@@ -57,7 +57,7 @@
 
 
                                         <th class="wsus__pro_icon">
-                                            <a href="#" class="common_btn">clear cart</a>
+                                            <a href="#" class="common_btn clear_cart">clear cart</a>
                                         </th>
                                     </tr>
                                     @foreach ($cartItems as $cartItem)
@@ -79,13 +79,13 @@
                                             <h6>{{$settings->currency_icon}} {{$cartItem->price}}</h6>
                                         </td>
                                         <td class="wsus__pro_status">
-                                            <p>{{$cartItem->price + $cartItem->options->variantTotalAmount}} </p>
+                                            <h5 id="{{$cartItem->rowId}}">{{$settings->currency_icon}}{{ ($cartItem->price + $cartItem->options->variantTotalAmount) * $cartItem->qty}}</h5>
                                         </td>
 
                                         <td class="wsus__pro_select">
                                             <div class="product_qty_wrapper">
                                                 <button class="btn btn-danger btn-sm product_decrement">-</button>
-                                                <input class="product_qty" data-rowid ="{{$cartItem->rowId}}" type="text" min="1" max="100" value="1" />
+                                                <input class="product_qty" data-rowid ="{{$cartItem->rowId}}" type="text" min="1" max="100" value="{{$cartItem->qty}}" readonly />
                                                 <button class="btn btn-success btn-sm product_increment">+</button>
                                             </div>
                                         </td>
@@ -171,7 +171,7 @@
                 let currentQuantity = parseInt(input.val());
                 let newQuantity = currentQuantity + 1;
                 input.val(newQuantity);
-                console.log(newQuantity);
+                // console.log(newQuantity);
 
                 // AJAX request
                 $.ajax({
@@ -182,7 +182,11 @@
                         rowId:rowId
                     },
                     success: function(data){
+                        console.log(data);
                         if(data.status == "success"){
+                            let productId = '#' + rowId;
+                            let product_total = "{{$settings->currency_icon}}" + data.product_total;
+                            console.log("data:", $(productId).text(product_total));
                             toastr.success(data.message);
                         }
                     },
@@ -194,6 +198,7 @@
 
             $('.product_decrement').on('click', function(){
                 let input = $(this).siblings('.product_qty');
+                let rowId = input.data('rowid');
                 let currentQuantity = parseInt(input.val());
                 let newQuantity = currentQuantity - 1;
                 if(newQuantity < 1) newQuantity = 1;
@@ -202,19 +207,52 @@
 
                 // AJAX request
                 $.ajax({
-                    url: "your_endpoint_url",
+                    url: "{{route('update-cart-quantity')}}",
                     method: 'POST',
                     data: {
-                        quantity: newQuantity
+                        quantity: newQuantity,
+                        rowId:rowId
                     },
                     success: function(data){
-                        // Handle success response
+                        console.log(data);
+                        if(data.status == "success"){
+                            let productId = '#' + rowId;
+                            let product_total = "{{$settings->currency_icon}}" + data.product_total;
+                            console.log("data:", $(productId).text(product_total));
+                            toastr.success(data.message);
+                        }
                     },
                     error: function(xhr, textStatus, error){
-                        // Handle error
+                      
                     }
                 });
             });
+
+            $('.clear_cart').on('click', function(){
+                event.preventDefault();
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Continuing will empty your cart!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, clear it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'get',
+                            url: "",
+                            success: function(data) {
+                        
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        });
+                    }
+                });
+            })
         });
     </script>
 @endpush

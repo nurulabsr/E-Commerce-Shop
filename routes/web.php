@@ -40,6 +40,7 @@ Route::get('product-detail/{slug}', [FrontendProductController::class, 'producDe
 Route::post('add-to-cart', [CartController::class, 'AddToCart'])->name('add-to-cart');
 Route::get('cart-details', [CartController::class, 'CartDetails'])->name('cart-details');
 Route::post('cart/update-quantity', [CartController::class, 'UpdateCartQuantity'])->name('update-cart-quantity');
+Route::get('clear-cart', [CartController::class, 'ClearCart'])->name("clear.cart");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
